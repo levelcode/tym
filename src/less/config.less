@@ -1,0 +1,77 @@
+//colores
+@negro: #000;
+@blanco: #fff;
+@rojo: #f00;
+@azul: #138bd8;
+@azul-claro: #6DBCDB;
+@verde: #22B573;
+@amarillo: #fc0;
+@naranja: #eb690b;
+@violeta: #e8308a;
+@gris: #888;
+@offset: 60px;
+@min-width: 320px;
+@color1: #30313f; // verde corporativo
+@color2: #2e3d98; // verde oscuro 
+@color3: #36baef; // amarillo corporativo 
+//rutas
+@f-url: '../fonts/';
+//otros
+@bloque-padding: 16px;
+@f-f: 'Exo';
+@f-f1: 'Bebas';
+//@f-f1: 'JosefinSans';
+
+/* mixing para definir fuentes */
+.define-font(@u, @f, @s, @w){
+	@font-face{
+		font-family: @f;
+		src: url(@u);
+		font-style: @s;
+		font-weight: @w;
+	}
+}
+
+/* mixing tamaños de fuente desde 8px a 24px */
+.txt-sizes(@min, @max) when (@min <= @max){
+	.txt-@{min}{
+		font-size: unit(@min, px);
+	}
+
+	.txt-sizes((@min + 1), @max);
+}
+
+.color(@nom, @color){
+	.c-@{nom}{
+		color: @color !important;
+	}
+	.bg-@{nom}{
+		background-color: @color !important; 
+	}
+}
+
+/* mixing grosor de fuentes, light, normal, bold, bolder */
+.f-grosor(@nom, @gros){
+	.fw-@{nom}{
+		font-weight: @gros;
+	}
+}
+
+/* clases para programacion únicamente */
+.no-pm{
+	padding: 0;
+	margin: 0;
+}
+.limpiar-float{
+	&::after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+/*
+@media (min-width:768px){}
+@media (min-width:992px){}
+@media (min-width:1200px){}
+*/

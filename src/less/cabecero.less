@@ -1,0 +1,93 @@
+@import (reference) "config.less";
+@import (reference) "general.less";
+
+/* animaciones */
+@keyframes logo{
+	25%{
+		transform: scale(.96);
+	}
+	50%{
+		transform: scale(1);
+	}
+	75%{
+		transform: scale(.96);
+	}
+}
+
+#cabecero{
+	@h: 100px;
+	width: 100%;
+	height: @h;
+	background-color: fade(@color1, 80%);
+	box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+	.container{
+		height: @h;
+		position: relative;
+		background-image: url(../img/bg-cabecero.png);
+		background-repeat: no-repeat;
+		background-position: center;
+		.logo{
+			display: block;
+			position: absolute;
+			left: 0;
+			top: 0;
+			transform-origin: 50% 0;
+			&:hover{
+				animation-name: logo;
+				animation-duration: .4s;
+				animation-iteration-count: 1;
+			}
+		}
+		#alternador-menu{
+			display: block;
+			width: 55px;
+			height: 38px;
+			background-image: url(../img/alternador-menu.png);
+			position: absolute;
+			right: 15px;
+			top: 30px;
+			cursor: pointer;
+			z-index: 4;
+		}
+		.menu{
+			position: absolute;
+			width: 280px;
+			top: 0;
+			right: 0;
+			background-color: #42bef0;
+			z-index: 3;
+			box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+			display: none;
+			ul{
+				list-style: none;
+				.no-pm;
+				font-family: @f-f1;
+				padding-top: 92px;
+				font-size: 22px;
+				font-weight: 500;
+				padding-left: 10px;
+				padding-right: 10px;
+				li{
+					&:first-child{
+						a{
+							border-top: none;
+						}
+					}
+					&:last-child{
+						a{
+							border-bottom: none;
+						}
+					}
+					a{
+						display: block;
+						padding-top: 24px;
+						padding-bottom: 20px;
+						border-top: 2px solid #2193d7;
+						border-bottom: 2px solid @color2;
+						color: @color2;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,1 @@
+$("#cabecero .container .menu ul li .inicio").addClass("activo"),st.index={};

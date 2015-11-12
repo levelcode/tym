@@ -185,6 +185,7 @@ body{
 	//background-color: desaturate(@color1, 30%);
 	background-color: @color1;
 	background-image: url(../img/bg-body.png);
+	background-attachment: fixed;
 }
 a{
 	cursor: pointer;
@@ -207,10 +208,12 @@ h1, h2, h3, h4, h5, h6{
 .st-separador{
 	display: block;
 	width: 100%;
-	height: 38px;
-	background-image: url(../img/img-separador.png);
+	max-width: 270px;
+	height: 3px;
+	background-image: url(../img/separador.png);
 	background-repeat: no-repeat;
 	background-position: center;
+	background-size: 100% 3px;
 	margin-top: 16px;
 	margin-bottom: 16px;
 	text-align: center;
@@ -233,17 +236,21 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .st-titulo{
-	font-family: @f-f1;
-	color: @color3;
-	margin-top: 0;
-	font-size: 44px;
-	line-height: 44px;
+	h1{
+		font-family: @f-f1;
+		color: @color3;
+		margin-top: 0;
+		margin-bottom: 0;
+		font-size: 44px;
+		line-height: 42px;
+	}
 	small{
 		color: @blanco;
 		font-family: @f-f;
 		font-weight: 800;
 		font-style: italic;
 		font-size: 18px;
+		margin: 0;
 	}
 }
 
@@ -456,7 +463,7 @@ a.st-enlace{
 	bottom: 20px;
 	width: @h;
 	height: @h;
-	border-radius: (@h / 2);
+	border-radius: 4px;
 	text-align: center;
 	line-height: @h;
 	background-color: fade(@color1, 80%);

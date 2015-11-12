@@ -5,5 +5,6 @@
 		</a>
 		<div id="alternador-menu"></div>
 		<?php require_once(_INC.'menu.php') ?>
+		<?php require_once(_INC.'menu-accesorios.php') ?>
 	</div>
 </header>

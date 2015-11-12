@@ -1,1 +1,1 @@
-#promociones-galeria .container .promociones{background-color:#5a5c76}#promociones-galeria .container .galeria{background-color:#30313f}
+#promociones-galeria .container>.row{border-bottom:3px solid #30313f}#promociones-galeria .container>.row .promociones{background-color:#5a5c76;box-shadow:inset 0 0 80px rgba(0,0,0,.14)}#promociones-galeria .container>.row .galeria{background-color:#30313f;box-shadow:inset 0 0 80px rgba(0,0,0,.14)}#te-puede-interesar .container.cont{background-color:#77799b}

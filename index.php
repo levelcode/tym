@@ -37,7 +37,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="carousel-caption">
 									<div class="etiqueta">
 										<span class="grande">Rines ultralivianos</span><br>
-										<span class="pequeño">en <b>aluminio y cromados</b></span>
+										<i class="pequeño">en <b>aluminio y cromados</b></i>
 									</div>
 								</div>
 							</div>
@@ -46,7 +46,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="carousel-caption">
 									<div class="etiqueta">
 										<span class="grande">Rines ultralivianos</span><br>
-										<span class="pequeño">en <b>aluminio y cromados</b></span>
+										<i class="pequeño">en <b>aluminio y cromados</b></i>
 									</div>
 								</div>
 							</div>
@@ -55,7 +55,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="carousel-caption">
 									<div class="etiqueta">
 										<span class="grande">Rines ultralivianos</span><br>
-										<span class="pequeño">en <b>aluminio y cromados</b></span>
+										<i class="pequeño">en <b>aluminio y cromados</b></i>
 									</div>
 								</div>
 							</div>
@@ -78,14 +78,18 @@ $cabecero = new html\Cabecero($opciones);
 			<section id="promociones-galeria">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-8 promociones st-seccion">
+						<div class="col-sm-7 promociones st-seccion">
 							<div class="row">
 								<div class="col-xs-12">
 									
 								</div>
 								<div class="col-sm-6">
-									<h1 class="st-titulo"><small>Nuestra</small><br>Promoción del mes</h1>
-									<p class="">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									<div class="st-titulo">
+										<small>Nuestra</small>
+										<h1>Promoción del mes</h1>
+									</div>
+									<i class="st-separador"></i>
+									<p class="txt-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 								</div>
 								<div class="col-sm-6">
 									<br>
@@ -93,8 +97,54 @@ $cabecero = new html\Cabecero($opciones);
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4 galeria st-seccion">
-							MUndo
+						<div class="col-sm-5 galeria st-seccion">
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="st-titulo">
+										<h1>Galería</h1>
+										<small>Vídeos/Eventos</small>
+									</div>
+									<i class="st-separador"></i>
+								</div>
+								<div class="col-sm-7">
+									<a href="./videos">
+										<img src="recursos/img/imac-videos.png" alt="" class="img-responsive">
+									</a>
+								</div>
+							</div>
+							
+							
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id="te-puede-interesar">
+				<div class="container cont st-seccion">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="st-titulo">
+								<h1>Te puede interesar</h1>
+								<i class="st-separador"></i>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="row">
+								<div class="col-xs-6">Hola mundo</div>
+								<div class="col-xs-6">Hola mundo</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="row">
+								<div class="col-xs-6">Hola mundo</div>
+								<div class="col-xs-6">Hola mundo</div>
+							</div>
+						</div>
+						<div class="col-sm-4">
+							<div class="row">
+								<div class="col-xs-6">Hola mundo</div>
+								<div class="col-xs-6">Hola mundo</div>
+							</div>
 						</div>
 					</div>
 				</div>

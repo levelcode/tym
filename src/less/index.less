@@ -1,6 +1,51 @@
 @import (reference) "config.less";
 @import (reference) "general.less";
 
+/* animación de botón de selección de vehículo */
+@keyframes selecciona-vehiculo{
+	25%{
+		//-webkit-filter: ~"saturate(30%)";
+		//filter: ~"saturate(30%)";
+		transform: scale(.8);
+	}
+	50%{
+		-webkit-filter: ~"saturate(0%)";
+		filter: ~"saturate(0%)";
+		transform: scale(1);
+	}
+	75%{
+		//-webkit-filter: ~"saturate(30%)";
+		//filter: ~"saturate(30%)";
+		transform: scale(.9);
+	}
+}
+
+/* slider */
+#slider{
+	.slider{
+		position: relative;
+		.boton-selecciona-vehiculo{
+			display: block;
+			position: absolute;
+			background-color: transparent;
+			z-index: 12;
+			@t: 180px;
+			width: @t;
+			height: @t;
+			right: 40px;
+			top: 40px;
+			background-image: url(../img/boton-selecciona-vehiculo.png);
+			&:hover{
+				animation-name: selecciona-vehiculo;
+				animation-duration: .8s;
+				animation-iteration-count: 1;
+			}
+		}
+	}
+}
+
+
+
 #promociones-galeria{
 	.container{
 		> .row{

@@ -47,7 +47,7 @@
 			right: 15px;
 			top: 30px;
 			cursor: pointer;
-			z-index: 4;
+			z-index: 14;
 		}
 		.menu{
 			position: absolute;
@@ -55,7 +55,7 @@
 			top: 0;
 			right: 0;
 			background-color: #42bef0;
-			z-index: 3;
+			z-index: 13;
 			box-shadow: 0 0 12px rgba(0, 0, 0, .2);
 			display: none;
 			ul{
@@ -161,6 +161,7 @@
 						}
 					}
 					a{
+						position: relative;
 						display: block;
 						padding-top: 26px;
 						padding-bottom: 26px;
@@ -171,6 +172,18 @@
 						text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
 						&:hover{
 							color: @blanco;
+						}
+						&.activo{
+							&::after{
+								content: '';
+								display: block;
+								width: 74px;
+								height: 37px;
+								position: absolute;
+								bottom: 0;
+								left: 10px;
+								background-image: url(../img/menu-accesorios-activo.png);
+							}
 						}
 					}
 				}

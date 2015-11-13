@@ -21,7 +21,7 @@ $cabecero = new html\Cabecero($opciones);
 <!-- contenido -->
 		<div id="contenido">
 			<section id="slider">
-				<div class="container no-padding-horizontal">
+				<div class="container no-padding-horizontal slider">
 					<!-- slider inicio -->
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 						<!-- Indicators -->
@@ -72,6 +72,7 @@ $cabecero = new html\Cabecero($opciones);
 							</div>
 						</a>-->
 					</div>
+					<a href="" class="boton-selecciona-vehiculo"></a>
 				</div>
 			</section>
 

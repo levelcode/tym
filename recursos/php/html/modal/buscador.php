@@ -55,7 +55,6 @@
 							<div class="form-group">
 								<select name="" id="" class="form-control">
 									<option value="">Selecciona Modelo</option>
-									<option value="">Selecciona Año</option>
 									<option value="">1981</option>
 									<option value="">1982</option>
 									<option value="">1983</option>

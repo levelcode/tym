@@ -72,7 +72,7 @@ $cabecero = new html\Cabecero($opciones);
 							</div>
 						</a>-->
 					</div>
-					<a href="" class="boton-selecciona-vehiculo"></a>
+					<a href="" class="boton-selecciona-vehiculo" data-modal="buscador"></a>
 				</div>
 			</section>
 

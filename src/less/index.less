@@ -4,8 +4,8 @@
 /* animación de botón de selección de vehículo */
 @keyframes selecciona-vehiculo{
 	25%{
-		//-webkit-filter: ~"saturate(30%)";
-		//filter: ~"saturate(30%)";
+		-webkit-filter: ~"saturate(30%)";
+		filter: ~"saturate(30%)";
 		transform: scale(.8);
 	}
 	50%{
@@ -14,8 +14,8 @@
 		transform: scale(1);
 	}
 	75%{
-		//-webkit-filter: ~"saturate(30%)";
-		//filter: ~"saturate(30%)";
+		-webkit-filter: ~"saturate(30%)";
+		filter: ~"saturate(30%)";
 		transform: scale(.9);
 	}
 }
@@ -49,7 +49,7 @@
 #promociones-galeria{
 	.container{
 		> .row{
-			border-bottom: 3px solid @color1;
+			border-bottom: 3px solid lighten(@color1, 8%);
 			.promociones{
 				background-color: #5a5c76;
 				box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.14);

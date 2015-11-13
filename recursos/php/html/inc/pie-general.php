@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<span>Chat</span>
-				i.fa.fa
+				<i class="fa fa-comments-o txt-24"></i>
 			</div>
 			<div class="col-sm-6">
 				<span>Búscanos en redes sociales</span>
@@ -22,3 +22,4 @@
 		</div>
 	</div>
 </footer>
+<?php require_once(_MODAL.'buscador.php') ?>

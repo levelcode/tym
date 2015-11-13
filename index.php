@@ -130,20 +130,20 @@ $cabecero = new html\Cabecero($opciones);
 						</div>
 						<div class="col-sm-4">
 							<div class="row">
-								<div class="col-xs-6">Hola mundo</div>
-								<div class="col-xs-6">Hola mundo</div>
+								<div class="col-xs-6 nopadding-horizontal"></div>
+								<div class="col-xs-6 nopadding-horizontal"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="row">
-								<div class="col-xs-6">Hola mundo</div>
-								<div class="col-xs-6">Hola mundo</div>
+								<div class="col-xs-6 nopadding-horizontal"></div>
+								<div class="col-xs-6 nopadding-horizontal"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="row">
-								<div class="col-xs-6">Hola mundo</div>
-								<div class="col-xs-6">Hola mundo</div>
+								<div class="col-xs-6 nopadding-horizontal"></div>
+								<div class="col-xs-6 nopadding-horizontal"></div>
 							</div>
 						</div>
 					</div>

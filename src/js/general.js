@@ -75,6 +75,71 @@ st.menu = {
 st.menu.ini();
 
 
+
+
+// menu accesorios
+st.menuAccesorios = {
+	// props
+	abierto: false,
+	dur: 300,
+	efe: 'slide',
+	dir: 'left',
+	eas: 'easeOutCirc',
+
+	// metds
+	ini: function(){
+		this.eventos();
+	},
+
+	analizar: function(){
+		if(this.abierto){
+			this.cerrar();
+		}else{
+			this.abrir();
+		}
+	},
+
+	abrir: function(){
+		var t = this;
+
+		$('#cabecero .container .menu-accesorios').show({
+			duration: t.dur,
+			effect: t.efe,
+			direction: t.dir,
+			easing: t.eas,
+			complete: function(){
+				t.abierto = true;
+			}
+		});
+		$('#alternador-menu-accesorios .flecha').html('<i class="fa fa-arrow-left"></i>');
+		$('#alternador-menu-accesorios').css('left', '114px');
+	},
+
+	cerrar: function(){
+		var t = this;
+		$('#cabecero .container .menu-accesorios').hide({
+			duration: t.dur,
+			effect: t.efe,
+			direction: t.dir,
+			easing: t.eas,
+			complete: function(){
+				t.abierto = false;
+			}
+		});
+		$('#alternador-menu-accesorios .flecha').html('<i class="fa fa-arrow-right"></i>');
+		$('#alternador-menu-accesorios').css('left', '14px');
+	},
+
+	eventos: function(){
+		var t = this;
+		$('#alternador-menu-accesorios').on('click', function(){
+			t.analizar();
+		});
+	}
+}
+st.menuAccesorios.ini();
+
+
 /* botonArriba */
 st.botonArriba = {
     /* props */

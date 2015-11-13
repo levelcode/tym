@@ -1,3 +1,8 @@
+<div id="alternador-menu-accesorios" data-toggle="tooltip" data-placement="right" title="Menú accesorios">
+	<span class="flecha">
+		<i class="fa fa-arrow-right"></i>
+	</span>
+</div>
 <nav class="menu-accesorios">
 	<ul class="text-uppercase text-center">
 		<li>

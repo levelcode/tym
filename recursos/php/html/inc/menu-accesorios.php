@@ -1,4 +1,4 @@
-<div id="alternador-menu-accesorios" data-toggle="tooltip" data-placement="right" title="Menú accesorios">
+<div id="alternador-menu-accesorios" data-toggle="tooltip" data-placement="right" title="Accesorios">
 	<span class="flecha">
 		<i class="fa fa-arrow-right"></i>
 	</span>

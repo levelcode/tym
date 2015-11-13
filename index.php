@@ -123,27 +123,36 @@ $cabecero = new html\Cabecero($opciones);
 				<div class="container cont st-seccion">
 					<div class="row">
 						<div class="col-xs-12">
-							<div class="st-titulo">
+							<div class="st-titulo text-left">
 								<h1>Te puede interesar</h1>
 								<i class="st-separador"></i>
 							</div>
 						</div>
+					</div>
+
+					<div class="row etiquetas">
 						<div class="col-sm-4">
-							<div class="row">
-								<div class="col-xs-6 nopadding-horizontal"></div>
-								<div class="col-xs-6 nopadding-horizontal"></div>
+							<div class="row tanques">
+								<div class="col-xs-6 cuadro txt">
+									<i>Tanques</i>
+								</div>
+								<div class="col-xs-6 cuadro bg"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<div class="row">
-								<div class="col-xs-6 nopadding-horizontal"></div>
-								<div class="col-xs-6 nopadding-horizontal"></div>
+							<div class="row racks">
+								<div class="col-xs-6 cuadro txt">
+									<i>Racks</i>
+								</div>
+								<div class="col-xs-6 cuadro bg"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<div class="row">
-								<div class="col-xs-6 nopadding-horizontal"></div>
-								<div class="col-xs-6 nopadding-horizontal"></div>
+							<div class="row bicicleteros">
+								<div class="col-xs-6 cuadro txt">
+									<i>Bicicleteros</i>
+								</div>
+								<div class="col-xs-6 cuadro bg"></div>
 							</div>
 						</div>
 					</div>

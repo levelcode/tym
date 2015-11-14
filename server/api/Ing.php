@@ -212,12 +212,12 @@ function list_varios( $data ){
 
 
 function get_all_vehicles() {
-  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle ORDER BY brand ASC";
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle WHERE status = 1 ORDER BY brand ASC";
   return Core\query($sql, array());
 }
 
 function get_models_by_brand( $brand_id ) {
-  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE ".$GLOBALS["prefix"]. "vehicle_id = ". $brand_id ." ORDER BY model ASC";
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE ".$GLOBALS["prefix"]. "vehicle_id = ". $brand_id ." AND status = 1 ORDER BY model ASC";
   return Core\query($sql, array());
 }
 

@@ -21,7 +21,7 @@ $cabecero = new html\Cabecero($opciones);
 <!-- contenido -->
 		<div id="contenido">
 			<section id="slider">
-				<div class="container no-padding-horizontal">
+				<div class="container no-padding-horizontal slider">
 					<!-- slider inicio -->
 					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 						<!-- Indicators -->
@@ -72,6 +72,7 @@ $cabecero = new html\Cabecero($opciones);
 							</div>
 						</a>-->
 					</div>
+					<a href="" class="boton-selecciona-vehiculo" data-modal="buscador"></a>
 				</div>
 			</section>
 
@@ -123,27 +124,36 @@ $cabecero = new html\Cabecero($opciones);
 				<div class="container cont st-seccion">
 					<div class="row">
 						<div class="col-xs-12">
-							<div class="st-titulo">
+							<div class="st-titulo text-left">
 								<h1>Te puede interesar</h1>
 								<i class="st-separador"></i>
 							</div>
 						</div>
+					</div>
+
+					<div class="row etiquetas">
 						<div class="col-sm-4">
-							<div class="row">
-								<div class="col-xs-6">Hola mundo</div>
-								<div class="col-xs-6">Hola mundo</div>
+							<div class="row tanques">
+								<div class="col-xs-6 cuadro txt">
+									<i>Tanques</i>
+								</div>
+								<div class="col-xs-6 cuadro bg"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<div class="row">
-								<div class="col-xs-6">Hola mundo</div>
-								<div class="col-xs-6">Hola mundo</div>
+							<div class="row racks">
+								<div class="col-xs-6 cuadro txt">
+									<i>Racks</i>
+								</div>
+								<div class="col-xs-6 cuadro bg"></div>
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<div class="row">
-								<div class="col-xs-6">Hola mundo</div>
-								<div class="col-xs-6">Hola mundo</div>
+							<div class="row bicicleteros">
+								<div class="col-xs-6 cuadro txt">
+									<i>Bicicleteros</i>
+								</div>
+								<div class="col-xs-6 cuadro bg"></div>
 							</div>
 						</div>
 					</div>

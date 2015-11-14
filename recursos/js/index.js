@@ -1,1 +1,1 @@
-$("#cabecero .container .menu ul li .inicio").addClass("activo"),st.index={};
+$("#cabecero .container .menu-accesorios ul li .rines").addClass("activo"),st.index={};

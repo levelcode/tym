@@ -10,7 +10,7 @@ require 'email/Email.php';
 use App\Db as Database;
 use App\Email as Notificaciones;
 $_SERVER["DB_PREX"] = isset($_SERVER["DB_PREX"]) ? $_SERVER["DB_PREX"]  : "tym";
-$_SERVER["APP_NAME"] = isset($_SERVER["APP_NAME"]) ? $_SERVER["APP_NAME"] : "Syntex CRM";
+$_SERVER["APP_NAME"] = isset($_SERVER["APP_NAME"]) ? $_SERVER["APP_NAME"] : "Syntex CMS";
 $prefix = $_SERVER["DB_PREX"]."_";
 
 /*

@@ -20,16 +20,16 @@
 							</g>
 						</svg>
 						<br>
-						<span class="titulo">Páginas</span>
+						<span class="titulo">Contenido</span>
 					</div>
 				</a>
 				<div class="opciones">
 					<ul>
 						<li>
-							<a href="./cms-inicio">Inicio</a>
+							<a href="./cms-redes-sociales">Redes sociales</a>
 						</li>
 						<li>
-							<a href="./cms-quienes-somos">Quienes somos</a>
+							<a href="./cms-galeria">Galeria principal</a>
 						</li>
 					</ul>
 				</div>
@@ -64,11 +64,11 @@
 						<div class="opciones">
 							<ul>
 								<li>
-									<a href="./cms-admin-paquetes">Paquetes</a>
+									<a href="./cms-admin-productos">Ver productos</a>
 								</li>
-								<li>
+								<!-- <li>
 									<a href="./cms-admin-ebooks">Ebooks</a>
-								</li>
+								</li> -->
 							</ul>
 						</div>
 			</li>

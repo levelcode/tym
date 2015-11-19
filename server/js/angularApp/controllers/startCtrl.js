@@ -8,7 +8,7 @@ tymApp.controller('startCtrl', ['$scope', '$http', '$timeout', '$cookies', '$win
 
 	angular.element(document).ready(function(){
 		
-		loadNotifications();
+		//loadNotifications();
 		//loadChart();
 		
 	});

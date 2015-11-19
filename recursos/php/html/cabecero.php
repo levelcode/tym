@@ -47,8 +47,9 @@ class Cabecero extends a_Html
 		<!-- <link rel="stylesheet" href="recursos/css/eventi-iconos.css">  -->
 		<?php if( $this->is_admin ): ?>
 			<link rel="stylesheet" href="recursos/css/admin/general.css">
+		<?php else:?>
+			<link rel="stylesheet" href="recursos/css/general.css">
 		<?php endif;?>
-		<link rel="stylesheet" href="recursos/css/general.css">
 		<?php $this->obtener('css') ?>
 		<script src="recursos/js/jquery.js"></script>
 		<?php $this->obtener('js') ?>

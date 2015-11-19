@@ -15,7 +15,7 @@
 	<!-- Angular js controllers start -->
 	
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.2/angular.min.js"></script>
+	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/angular.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/ui-bootstrap-tpls-0.13.4.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/angular-cookies.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/server/js/angularApp/angularApp.js'?>"></script>

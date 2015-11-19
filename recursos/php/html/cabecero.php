@@ -38,7 +38,7 @@ class Cabecero extends a_Html
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<meta charset="UTF-8" ng-app="tavApp" >
+		<meta charset="UTF-8" ng-app="tymApp" >
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php $this->obtener('titulo') ?></title>
 		<link rel="icon" href="recursos/img/favicon.png">

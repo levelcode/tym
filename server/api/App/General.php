@@ -282,7 +282,7 @@ function login( $id = "", $pass = "", $json = false, $debug = false, $email = fa
       " WHERE ". $table_name. "." .$user_colum." = :id AND status = 1";
 
     $user = query($sql, array("id" => $id), $con);
-    //return $user;
+    
     if( count($user) == 1 ){
       $salida["user"] = true;
       $user[0]["pass"] = $user[0]["password"];

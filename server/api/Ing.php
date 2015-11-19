@@ -72,7 +72,7 @@ function login( $id, $pass, $is_admin ){
 
   $is_json = true;
   $resultado = Core\login( $id,$pass, $is_json, false, false, $is_admin  );
-
+  
   if( $is_json ){
     $resultado = json_decode($resultado);
     $resultado = (array)$resultado;

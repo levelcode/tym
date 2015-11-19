@@ -33,5 +33,5 @@
 		<div id="notificaciones">
 			<?php// require(_INC_ADMIN.'notificaciones.php'); ?>
 		</div>
-		<?php //require(_INC_ADMIN.'usuario.php'); ?>
+		<?php require(_INC_ADMIN.'usuario.php'); ?>
 	</div>

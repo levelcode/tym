@@ -261,7 +261,7 @@ function update($data,  $uppercase = false , $json = true, $debug = false){
   }
 }
 
-function login( $id = "", $pass = "", $json = false, $debug = false, $email = false ){
+function login( $id = "", $pass = "", $json = false, $debug = false, $email = false, $is_admin = false ){
   $con = conectar();
 
   if($id == "" || $pass == ""){
@@ -269,14 +269,20 @@ function login( $id = "", $pass = "", $json = false, $debug = false, $email = fa
     if($json) return json_encode($salida); else return $salida["error"];
   } else {
 
-    $table_name = $GLOBALS["prefix"]."client";
-    $user_colum = "identification";
+    if( $is_admin ) {
+      $table_name = $GLOBALS["prefix"]."user_admin";
+      $user_colum = "identification";
+    }else {
+      $table_name = $GLOBALS["prefix"]."user";
+      $user_colum = "email";
+    }
 
     $sql = "SELECT " . $table_name .".*".
       " FROM ".$table_name.
       " WHERE ". $table_name. "." .$user_colum." = :id AND status = 1";
-    $user = query($sql, array("id" => $id), $con);
 
+    $user = query($sql, array("id" => $id), $con);
+    //return $user;
     if( count($user) == 1 ){
       $salida["user"] = true;
       $user[0]["pass"] = $user[0]["password"];
@@ -285,41 +291,19 @@ function login( $id = "", $pass = "", $json = false, $debug = false, $email = fa
       //echo $pass;
       //echo "<br>";
       //echo $user[0]["pass"];
+
       if ( $pass_hash === crypt( $pass , $pass_hash ) ){
         $salida["pass"] = true;
         $salida["response"] = true;
         unset($user[0]["password"]);
         unset($user[0]["pass"]);
 
-
-        if( $user[0]['user_type_id']  == 3 ){
-
-          $result = array();
-          $result['user'] = $user[0];
-
-          $query_data['table_name'] = $GLOBALS["prefix"]."vehicle";
-          $query_data['user_column'] = "driver_id";
-          $query_data['user_id'] = $user[0]["id"];
-
-          $sql = "SELECT veh.id AS vehicle_id, veh.plate".
-            " FROM ".$query_data['table_name']. " veh".
-            " WHERE veh." .$query_data['user_column']." = :id AND status = 1";
-          $vehicle = query($sql, array("id" => $query_data['user_id']), $con);
-
-          if( isset($vehicle) )
-            $result['vehicle_info'] = $vehicle[0];
-          else
-            $result['vehicle_info'] = NULL;
-
-          $salida["info"] = $result; 
-        }else {
-          $salida["info"] = $user[0];
-        }
+        $salida["info"] = $user[0];
         
         //SESSION START
         $last_login = date("Y/m/d H:i:s", $_SERVER["REQUEST_TIME"]);
 
-        $update_data["table"] = "client";
+        $update_data["table"] = $table_name;
         $update_data["column_id"] = "id";
         $update_data["id"] = $user[0]["id"];
         $update_data["last_login"] = $last_login;

@@ -8,7 +8,7 @@ require 'App/General.php';
 //require '../../recursos/mail/Mandrill_lib.php';
 
 Use App\General as Core;
-Use App\WS as Ws;
+//Use App\WS as Ws;
 use \stdClass;
 
 function notificaciones(){
@@ -68,20 +68,11 @@ function init_session($data){
 }
 
 
-function login( $id, $pass ){
+function login( $id, $pass, $is_admin ){
 
   $is_json = true;
-  //call from Zeus WS
-  //get token
-  //$ws_result = get_client_by_nit();
-  
-  // if( $ws_result->status == 'SUCCESS' ) {
+  $resultado = Core\login( $id,$pass, $is_json, false, false, $is_admin  );
 
-  // }
-  //get client
-
-  $resultado = Core\login( $id,$pass, $is_json );
-  
   if( $is_json ){
     $resultado = json_decode($resultado);
     $resultado = (array)$resultado;
@@ -89,13 +80,8 @@ function login( $id, $pass ){
 
   if($resultado["response"]){
     $salida["accede"] = true;
-    if( isset($resultado['info']->vehicle_info ) ) {
-      init_session($resultado["info"]->user);
-      init_session($resultado["info"]->vehicle_info);
-    }else{
-      init_session($resultado["info"]);  
-    }
-
+    
+    init_session($resultado["info"]);  
     
   }else{
     $salida["accede"] = false;

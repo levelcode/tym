@@ -106,7 +106,7 @@
 							</div>
 			</li>
 			
-			<li data-nombre="bascula">
+			<!-- <li data-nombre="bascula">
 							<a href="#">
 								<div class="bg">
 									<svg class="icono" width="60" viewBox="0 0 32 32">
@@ -134,7 +134,7 @@
 									</li>
 								</ul>
 							</div>
-			</li>
+			</li> -->
 			<?php if( $_SESSION['user_type_id'] == 2  || $_SESSION['user_type_id'] == 3): ?>
 				<li data-nombre="parametrizacion">
 							<a href="#">

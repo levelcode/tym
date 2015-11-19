@@ -11,7 +11,6 @@ $opciones = array(
 	'is_admin' => true,
 	'descripcion' => 'TYM Accesorios es una empresa de ',
 	'autor' => 'prograCOL - http://progracol.com',
-	'titulo' => 'Turismo al vuelo',
 	'css' => array(
 		'recursos/css/admin/inicio.css', 
 		'recursos/css/admin/clientes.css'),

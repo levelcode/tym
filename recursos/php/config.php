@@ -7,6 +7,7 @@ session_start();
 define('_TITULO', 'TYM Accesorios');
 define('_INC', 'recursos/php/html/inc/');
 define('_INC_ADMIN', 'recursos/php/html/inc/admin/');
+define('_MODAL', 'recursos/php/html/modal/');
 
 # autocarga de clases de datos
 function cargarClase($clase){

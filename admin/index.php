@@ -1,5 +1,5 @@
 <?php
-require_once('recursos/php/config.php');
+require_once('../recursos/php/config.php');
 
 
 $opciones = array(

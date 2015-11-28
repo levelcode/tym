@@ -1,0 +1,1 @@
+$("#cabecero .container .menu-accesorios ul li .rines").addClass("activo"),st.index={};

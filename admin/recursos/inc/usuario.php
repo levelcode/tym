@@ -1,5 +1,5 @@
 <div id="alternador-usuario">
-	<span><?php echo $_SESSION["name"]?></span>
+	<span><?php echo $_SESSION["first_names"]?></span>
 </div>
 <div id="usuario">
 	<a href="#" class="cerrar">
@@ -10,7 +10,7 @@
 			<img class="img-thumbnail" src="<?= ( isset($_SESSION['uri_img']) ) ? $_SESSION['uri_img'].$_SESSION['image_format_id'] : 'recursos/img/no-user-thumbnail.png'; ?>" alt="">
 		</div>
 		<div class="nombre">
-			<span><?php echo $_SESSION["name"]?><?= ( isset($_SESSION["last_name"]) ) ? ' '. $_SESSION["last_name"] : '';?></span>
+			<span><?php echo $_SESSION["first_names"]?><?= ( isset($_SESSION["last_names"]) ) ? ' '. $_SESSION["last_names"] : '';?></span>
 		</div>
 		<hr>
 		<ul class="opciones text-left">

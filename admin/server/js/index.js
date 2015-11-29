@@ -17,15 +17,14 @@ var do_login = function(){
   //console.log("Iniciar Validacion");
   //EVALUAR EMAIL  Y PASS
   var pass = $("#form_login #pass").val(),
-      user = $("#form_login #id").val(),
-      isAdmin = 1;
+      user = $("#form_login #id").val()
 
   if(pass != '' && user != ''){
 
       st.ventanaInfo.abrir("Cargando...", "succes", 3000);  
       
       $.ajax({
-        data : 'a=login&pass='+pass+'&id='+user+'&isAdmin='+isAdmin,
+        data : 'a=login&pass='+pass+'&id='+user,
         complete: function(response, status){
           //console.log(response, ' - ', status);
           console.log(response);

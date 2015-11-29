@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $a = $_POST["a"];
     switch ($a) {
       case 'login':
-      echo Ing\login($_POST["id"],$_POST["pass"], $_POST["isAdmin"]);
+      echo Ing\login($_POST["id"],$_POST["pass"]);
       break;
       /* LISTAS */
       case 'list_all':

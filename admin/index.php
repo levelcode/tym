@@ -129,7 +129,7 @@ $cabecero = new html\Cabecero($opciones);
 $opciones = array(
 	'js' => array(
 		'recursos/js/index.js',
-		'server/js/admin/index.js'
+		'server/js/index.js'
 	)
 );
 

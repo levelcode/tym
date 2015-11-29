@@ -8,12 +8,11 @@ echo '</pre>';*/
 
 $opciones = array(
 	'responsivo' => true,
-	'is_admin' => true,
 	'descripcion' => 'TYM Accesorios es una empresa de ',
 	'autor' => 'prograCOL - http://progracol.com',
 	'css' => array(
-		'recursos/css/admin/inicio.css', 
-		'recursos/css/admin/clientes.css'),
+		'recursos/css/inicio.css', 
+		'recursos/css/clientes.css'),
 	'js' => array(	
 		'recursos/js/angular.min.js',
 		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js', 
@@ -73,14 +72,12 @@ $cabecero = new html\Cabecero($opciones);
 $opciones = array(
 	'js' => array(
 		'https://www.google.com/jsapi',
-		'recursos/js/admin/inicio.js', 
-		'recursos/js/admin/clock.js',
+		'recursos/js/inicio.js', 
+		'recursos/js/clock.js',
 		'server/js/angularApp/angularApp.js',
-		'server/js/angularApp/controllers/startCtrl.js'
-		//'server/js/angularApp/controllers/notificationsCtrl.js'
-	),
-	'pie' => 'admin/pie-general',
-	'user' => 'admin'
+		'server/js/angularApp/controllers/startCtrl.js',
+		'server/js/angularApp/controllers/notificationsCtrl.js'
+	)
 );
 
 $pie = new html\Pie($opciones);

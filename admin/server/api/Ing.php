@@ -68,10 +68,10 @@ function init_session($data){
 }
 
 
-function login( $id, $pass, $is_admin ){
+function login( $id, $pass ){
 
   $is_json = true;
-  $resultado = Core\login( $id,$pass, $is_json, false, false, $is_admin  );
+  $resultado = Core\login( $id,$pass, $is_json, false, false );
   
   if( $is_json ){
     $resultado = json_decode($resultado);

@@ -1,4 +1,4 @@
-carterApp.controller( 'notificationsCtrl', ['$scope', '$http', '$window', '$timeout', '$cookies', function( $scope, $http, $window, $timeout, $cookies ){
+adminTymApp.controller( 'notificationsCtrl', ['$scope', '$http', '$window', '$timeout', '$cookies', function( $scope, $http, $window, $timeout, $cookies ){
 	
 	'use strict';
 
@@ -7,7 +7,7 @@ carterApp.controller( 'notificationsCtrl', ['$scope', '$http', '$window', '$time
 
 	angular.element(document).ready(function(){
 		
-		loadNotifications();	
+		//loadNotifications();	
 		
 	});
 	

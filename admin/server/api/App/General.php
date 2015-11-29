@@ -261,21 +261,16 @@ function update($data,  $uppercase = false , $json = true, $debug = false){
   }
 }
 
-function login( $id = "", $pass = "", $json = false, $debug = false, $email = false, $is_admin = false ){
+function login( $id = "", $pass = "", $json = false, $debug = false, $email = false ){
   $con = conectar();
 
   if($id == "" || $pass == ""){
     $salida["error"] = "ERR-USER-01"; //NO DATA
     if($json) return json_encode($salida); else return $salida["error"];
   } else {
-
-    if( $is_admin ) {
-      $table_name = $GLOBALS["prefix"]."user_admin";
-      $user_colum = "identification";
-    }else {
-      $table_name = $GLOBALS["prefix"]."user";
-      $user_colum = "email";
-    }
+    $table_name = $GLOBALS["prefix"]."user_admin";
+    $user_colum = "identification";
+    
 
     $sql = "SELECT " . $table_name .".*".
       " FROM ".$table_name.
@@ -296,7 +291,6 @@ function login( $id = "", $pass = "", $json = false, $debug = false, $email = fa
         $salida["pass"] = true;
         $salida["response"] = true;
         unset($user[0]["password"]);
-        unset($user[0]["pass"]);
 
         $salida["info"] = $user[0];
         

@@ -3,16 +3,13 @@
 		<header>
 			<div class="logo">
 				<a href="./inicio" title="Dirigirse al inicio" data-toggle="tooltip" data-placement="bottom">
-					<img src="recursos/img/logo1.png" alt="logotipo">
+					<img src="recursos/img/logo.png" alt="logotipo">
 				</a>
 			</div>			
 			<!-- alternador menu -->
 			<div class="alternador">
 				<i class="fa fa-reorder"></i>
 			</div>
-			<a href="#" class="lupa">
-				<i class="fa fa-search"></i>
-			</a>
 			<a href="#" class="actualizar">
 				<i class="fa fa-refresh"></i>
 			</a>

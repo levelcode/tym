@@ -1,0 +1,1 @@
+$('#menu .main li[data-nombre="parametrizar"] a .bg, #menu .main li[data-nombre="parametrizar"] .opciones ul li a[href="./productos"]').addClass("activo");

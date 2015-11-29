@@ -1,5 +1,5 @@
 <?php
-require_once('../recursos/php/config.php');
+require_once('recursos/php/config.php');
 
 
 $opciones = array(
@@ -10,7 +10,7 @@ $opciones = array(
 	'autor' => 'prograCOL - http://progracol.com',
 	'titulo' => _TITULO.' CMS',
 	'css' => array(
-		'recursos/css/admin/index.css'
+		'recursos/css/index.css'
 	),
 	'js' => array()
 );
@@ -21,17 +21,6 @@ $cabecero = new html\Cabecero($opciones);
 //require_once(_INC.'menu-general.php');
 
 ?>
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-65408004-2', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
 <!-- contenido -->
 		<div id="contenido">
@@ -139,11 +128,9 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/admin/index.js',
+		'recursos/js/index.js',
 		'server/js/admin/index.js'
-	),
-	'pie' => 'admin/pie-general',
-	'user' => 'admin'
+	)
 );
 
 $pie = new html\Pie($opciones);

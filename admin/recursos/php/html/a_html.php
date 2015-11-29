@@ -1,5 +1,4 @@
 <?php 
-
 namespace html;
 
 abstract class a_Html
@@ -13,7 +12,7 @@ abstract class a_Html
 		$this->imprimirHtml();
 	}
 
-	public function imprimirHtml(){
+	protected function imprimirHtml(){
 		echo $this->html;
 	}
 

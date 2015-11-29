@@ -1,0 +1,1 @@
+$('#menu .main li[data-nombre="informes"] a .bg, #menu .main li[data-nombre="informes"] .opciones ul li a[href="./reportes"]').addClass("activo");

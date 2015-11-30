@@ -1,6 +1,14 @@
 adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$cookies', '$window', '$cookies', function( $scope, $http, $timeout, $cookies, $window, $cookies ){
 
 	$scope.loadingData = false;
+	$scope.productTypeSelected = false;
+
+	//accordion config
+	$scope.oneAtATime = true;
+	$scope.status = {
+		isFirstOpen: true,
+		isFirstDisabled: false
+	};
 
 	//panel control status
 	$scope.addproductSection = false;
@@ -40,14 +48,23 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
             });
 	}
 
+	$scope.showForm = function( selectedTypeofProduct ){
+		$scope.productTypeSelected = true;
+		console.log(selectedTypeofProduct);
+	}
+
 	$scope.switchPanelSection = function( sectionToSelect ) {
 
 		switch( sectionToSelect ) {
 			case 'add':
+				$scope.productTypeSelected = false;
+
 				$scope.addproductSection = true;
 				$scope.searchAndEditSection = false;
 			break;
 			case 'searchAndEdit':
+				$scope.productTypeSelected = false;
+
 				$scope.addproductSection = false;
 				$scope.searchAndEditSection = true;
 			break;

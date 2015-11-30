@@ -90,6 +90,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
                 	case 'SUCCESS':
 		            	var jsonObject = angular.fromJson(data);
 			            updatetDataToShow( jsonObject['menu_items'], "menu_items" );
+			            st.ventanaInfo.abrir("Guandado con éxito", "success", 2000);
 		            break;
 		            case 'ERROR':
 		            	st.ventanaInfo.abrir("Intentalo de nuevo", "error", 2000);

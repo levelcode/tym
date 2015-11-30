@@ -51,7 +51,16 @@ $cabecero = new html\Cabecero($opciones);
 			</div>
 			<div class="panel-body">
 				<div class="row">
-
+					<div class="col-sm-4 st-bloque">
+						<div class="form-group">
+							<label for="productType">Tipo de producto a añadir</label>
+							<select name="productType" id="productType" class="form-control" ng-disabled="loadingData" ng-model="request.productType" ng-options="productType.type for (key, productType) in producTypes.data track by productType.id" required>
+								<option disabled selected value="">-- Selecciona una opción --</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
 				</div>
 			</div>
 		</div>

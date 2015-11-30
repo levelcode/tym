@@ -189,13 +189,11 @@ function list_varios( $data ){
                 break;
             }
             break;
-
         }
 
   }
   return json_encode($info_to_return);
 }
-
 
 function get_all_vehicles() {
   $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle WHERE status = 1 ORDER BY brand ASC";

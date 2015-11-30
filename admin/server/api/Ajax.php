@@ -20,6 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       case 'login':
       echo Ing\login($_POST["id"],$_POST["pass"]);
       break;
+      case 'save_item':
+      echo Ing\save_item($_POST);
+      break;
+
       /* LISTAS */
       case 'list_all':
       echo Ing\list_all($_POST);

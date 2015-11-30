@@ -26,6 +26,9 @@
 				<div class="opciones">
 					<ul>
 						<li>
+							<a href="./pagina-principal">Página principal</a>
+						</li>
+						<li>
 							<a href="./redes-sociales">Redes sociales</a>
 						</li>
 						<li>

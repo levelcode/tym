@@ -4,11 +4,10 @@ namespace App\Ing;
 session_start();
 date_default_timezone_set("America/Bogota");
 
-//require 'App/General.php';
-require '../../../model/product_type.php';
+require 'App/General.php';
 //require '../../recursos/mail/Mandrill_lib.php';
 Use Model\Product_type as product_type_model;
-//Use App\General as Core;
+Use App\General as Core;
 //Use App\WS as Ws;
 use \stdClass;
 
@@ -160,6 +159,37 @@ function date_compare($a, $b){
     $t1 = strtotime($a['request_date']);
     $t2 = strtotime($b['request_date']);
     return $t1 - $t2;
+}
+
+
+
+function save_item( $data ) {
+
+  if ( isset($data['from']) ){
+
+        switch( $data['from'] ) {
+
+          case 'admin-main-page':
+            switch ( $data['action'] ) {
+              case 'save_main_menu_item':
+                $inserted = insert_product_type( $data['data'] );
+
+                if( $inserted ) {
+                  $info_to_return['menu_items'] = get_all_product_types();
+                  $info_to_return['status'] = 'SUCCESS';  
+                }else {
+                  $info_to_return['status'] = 'ERROR';
+                }
+                
+              break;
+            }
+          break;
+        }
+
+  }else{
+    $info_to_return['status'] = 'NO_FROM';
+  }
+  return json_encode($info_to_return);
 }    
 
 function list_varios( $data ){
@@ -170,11 +200,17 @@ function list_varios( $data ){
           case 'admin-products':
             switch ( $data['action'] ) {
               case 'get_base_data':
-                  $info_to_return['product_types'] = product_type_model\get_all_product_types();
-                  $info_to_return['status'] = 'LOADED';
-                break;
+                $info_to_return['product_types'] = get_all_product_types();
+                $info_to_return['status'] = 'LOADED';
+              break;
             }
+          break;
+          case 'admin-main-page':
+            case 'get_base_data':
+              $info_to_return['menu_items'] = get_all_product_types();
+              $info_to_return['status'] = 'LOADED';
             break;
+          break;
 
         }
 
@@ -182,6 +218,29 @@ function list_varios( $data ){
     $info_to_return['status'] = 'NO_FROM';
   }
   return json_encode($info_to_return);
+}
+
+function get_all_product_types() {
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type ORDER BY type DESC";
+  return Core\query($sql, array());
+}
+
+function insert_product_type( $data ) {
+
+  $product_type_to_save['table'] = "product_type";
+  $product_type_to_save['column_id'] = "id";
+
+  $product_type_to_save['type'] = $data['itemName'];
+
+  $insert_id = Core\create($product_type_to_save, false, false);
+
+  $completed = false;
+
+  if( isset($insert_id) ) 
+    $completed = true;
+
+  return $completed;
+  
 }
 
 function get_all_vehicles() {

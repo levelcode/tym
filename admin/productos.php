@@ -9,7 +9,7 @@ $opciones = array(
 	'autor' => 'prograCOL - http://progracol.com',
 	'titulo' => 'Admin contenido :: '._TITULO,
 	'css' => array(
-		'recursos/css/admin/clientes.css'
+		'recursos/css/clientes.css'
 	),
 	'js' => array(	
 		'recursos/js/angular.min.js',
@@ -20,41 +20,64 @@ $opciones = array(
 
 $cabecero = new html\Cabecero($opciones);
 
-
 /* --- menu --- */
 
 ?>
 <!-- contenido -->
-<div id="contenido" ng-controller="">
-<ol class="breadcrumb">
-	<li><a href="./admin">Inicio</a></li>
-	<li class="active">Administrar contenido</li>
-</ol>
-<h3 class="st-titulo-admin"><i class="fa fa-file-text"></i> &nbsp;Administrador de productos</h3>
+<div id="contenido" ng-controller="adminProductsCtrl">
+	<ol class="breadcrumb">
+		<li><a href="./admin">Inicio</a></li>
+		<li class="active">Administrar contenido</li>
+	</ol>
+	<h3 class="st-titulo"><i class="fa fa-file-text"></i> &nbsp;Administrador de productos</h3>
 	<div class="container">
-
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="alert alert-info">
-						<strong ng-if="collectRequests.empty">En construcción</strong>
+	<!-- panel: clientes actuales -->
+		<div class="panel" >
+			<div class="panel-body">
+				<div class="row">
+					<div class="col-sm-4 st-bloque">
+						<a class="btn btn-success" ng-click="switchPanelSection('add')"><i class="fa fa-file-text"></i> &nbsp;Agregar</a>
+					</div>
+					<div class="col-sm-4 st-bloque">
+						<a class="btn btn-success" ng-click="switchPanelSection('searchAndEdit')"><i class="fa fa-file-text"></i> &nbsp;Buscar y editar</a>
+					</div>
 				</div>
-			</div>	
+			</div>
+		</div>
 
+		<div class="panel panel-default" ng-if="addproductSection">
+			<div class="panel-heading">
+				<i class="fa fa-file-text"></i> &nbsp; Añadir productos
+			</div>
+			<div class="panel-body">
+				<div class="row">
+
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default" ng-if="searchAndEditSection">
+			<div class="panel-heading">
+				<i class="fa fa-file-text"></i> &nbsp; Busqueda y edición
+			</div>
+			<div class="panel-body">
+				<div class="row">
+
+				</div>
+			</div>
 		</div>
 	</div>
+</div>
 </div>
 <!-- Pie de página -->
 <?php
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/admin/clock.js',
+		'recursos/js/clock.js',
 		'server/js/angularApp/angularApp.js',
-		'server/js/angularApp/controllers/collectRequestCtrl.js',
-		'server/js/angularApp/controllers/notificationsCtrl.js'
-	),
-	'pie' => 'admin/pie-general',
-	'user' => 'admin'
+		'server/js/angularApp/controllers/notificationsCtrl.js',
+		'server/js/angularApp/controllers/adminProductsCtrl.js'
+	)
 );
 
 $pie = new html\Pie($opciones);

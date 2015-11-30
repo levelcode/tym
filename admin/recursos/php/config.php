@@ -1,8 +1,8 @@
 <?php 
 session_start();
-/*if(!isset($_SESSION["id"])){
+if(!isset($_SESSION["id"])){
 	header("Location: ./");
-}*/
+}
 	//echo print_r($_SESSION);
 # constantes
 //error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);

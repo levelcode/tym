@@ -1,1 +1,0 @@
-$('#menu .main li[data-nombre="gestion-comercial"] a .bg, #menu .main li[data-nombre="gestion-comercial"] .opciones ul li a[href="./seguimiento"]').addClass("activo");

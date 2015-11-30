@@ -31,9 +31,9 @@ var do_login = function(){
           if(status == 'success'){
               //console.log(response);
               if(response.responseJSON.accede){
-                window.location = 'inicio-admin';
+                window.location = 'inicio';
                 
-                st.ventanaInfo.abrir("Bienvenido a Turismo al vuelo", "succes");  
+                st.ventanaInfo.abrir("Bienvenido al CMS de TYM", "succes");  
               } else {
                  st.ventanaInfo.abrir("Datos incorrectos", "error");              
               }

@@ -26,10 +26,10 @@
 				<div class="opciones">
 					<ul>
 						<li>
-							<a href="./cms-redes-sociales">Redes sociales</a>
+							<a href="./redes-sociales">Redes sociales</a>
 						</li>
 						<li>
-							<a href="./cms-galeria">Galeria principal</a>
+							<a href="./galeria">Galeria principal</a>
 						</li>
 					</ul>
 				</div>
@@ -58,13 +58,13 @@
 											L4,16.5l9.6-2.5l2.9,11.2L6.8,27.7z"/>
 									</g>
 								</svg><br>
-								<span class="titulo">Productos</span>
+								<span class="titulo">Admin productos</span>
 							</div>
 						</a>
 						<div class="opciones">
 							<ul>
 								<li>
-									<a href="./cms-admin-productos">Ver productos</a>
+									<a href="./productos">Ver productos</a>
 								</li>
 								<!-- <li>
 									<a href="./cms-admin-ebooks">Ebooks</a>
@@ -100,7 +100,7 @@
 							<div class="opciones">
 								<ul>
 									<li>
-										<a href="./cms-ordenes">Historial</a>
+										<a href="./ordenes">Historial</a>
 									</li>
 								</ul>
 							</div>

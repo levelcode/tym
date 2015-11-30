@@ -1,17 +1,18 @@
-<?php session_start();
-if(isset($_SESSION["id_user"])){
-	header("Location:inicio");
-}
-	//echo print_r($_SESSION);
+<?php 
+session_start();
+
 # constantes
-define('_TITULO', 'Cartecrudo');
+define('_TITULO', 'TYM Accesorios');
 define('_INC', 'recursos/inc/');
 
-# autocarga de clases
-function cargarClases($clase){
+# autocarga de clases de datos
+function cargarClase($clase){
+
 	$clase = strtolower($clase);
-	require_once('recursos/php/'.$clase.'.php');
+	$clase = str_replace('\\', '/', $clase);
+
+	include_once('recursos/php/'.$clase.'.php');
 }
 
-spl_autoload_register('cargarClases');
-?>
+spl_autoload_register('cargarClase');
+

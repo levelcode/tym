@@ -1,6 +1,10 @@
 <?php 
 session_start();
 
+if(isset($_SESSION["id"])){
+	header("Location: ./inicio");
+}
+
 # constantes
 define('_TITULO', 'TYM Accesorios');
 define('_INC', 'recursos/inc/');

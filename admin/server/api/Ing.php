@@ -201,6 +201,7 @@ function list_varios( $data ){
             switch ( $data['action'] ) {
               case 'get_base_data':
                 $info_to_return['product_types'] = get_all_product_types();
+                $info_to_return['vehicles'] = get_all_vehicles();
                 $info_to_return['status'] = 'LOADED';
               break;
             }

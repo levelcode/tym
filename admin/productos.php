@@ -99,7 +99,33 @@ $cabecero = new html\Cabecero($opciones);
 											<label for="productPrice">Precio unidad</label>
 											<input type="text" name="productPrice" ng-disabled="loadingData" ng-model="request.productPrice" id="productPrice" class="form-control" required>
 										</div>
-									</div>						
+									</div>
+									<hr>
+									<h3>Datos del vehiculo:</h3>
+									<div class="col-sm-4 col-lg-4">
+										<div class="form-group">
+											<label for="vehicleBrand">Marca</label>
+											<select name="vehicleBrand" id="vehicleBrand" class="form-control" ng-change="showForm( request.vehicleBrand )" ng-disabled="loadingData" ng-model="request.vehicleBrand" ng-options="productType.type for (key, productType) in producTypes.data track by productType.id" required>
+												<option disabled selected value="">-- Selecciona una opción --</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-sm-4 col-lg-4">
+										<div class="form-group">
+											<label for="vehicleModel">Modelo</label>
+											<select name="vehicleModel" id="vehicleModel" class="form-control" ng-change="showForm( request.vehicleModel )" ng-disabled="loadingData" ng-model="request.vehicleModel" ng-options="productType.type for (key, productType) in producTypes.data track by productType.id" required>
+												<option disabled selected value="">-- Selecciona una opción --</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-sm-4 col-lg-4">
+										<div class="form-group">
+											<label for="vehicleYear">Año</label>
+											<select name="vehicleYear" id="vehicleYear" class="form-control" ng-change="showForm( request.vehicleYear )" ng-disabled="loadingData" ng-model="request.vehicleYear" ng-options="productType.type for (key, productType) in producTypes.data track by productType.id" required>
+												<option disabled selected value="">-- Selecciona una opción --</option>
+											</select>
+										</div>
+									</div>																																																
 									<hr>				
 									<div class="col-xs-12 bloque text-right">
 										<button class="btn btn-danger" ng-click="cancelAll()"><i class="fa fa-remove"></i> &nbsp;Cancelar</button>

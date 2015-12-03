@@ -1,4 +1,4 @@
-adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$cookies', '$window', '$cookies', 'ConstantsService', function( $scope, $http, $timeout, $cookies, $window, $cookies, ConstantsService ){
+adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$cookies', '$window', '$cookies', 'ConstantsService', 'HttpMethodsService', function( $scope, $http, $timeout, $cookies, $window, $cookies, ConstantsService, HttpMethodsService ){
 
 	$scope.loadingData = false;
 	$scope.productTypeSelected = false;
@@ -21,6 +21,8 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 	angular.element(document).ready(function(){
 		loadData();
 	});
+
+	HttpMethodsService.doPost($http);
 
 	function loadData() {
 		$scope.loadingData = true;

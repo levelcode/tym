@@ -1,4 +1,4 @@
-adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$cookies', '$window', '$cookies', function( $scope, $http, $timeout, $cookies, $window, $cookies ){
+adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$cookies', '$window', '$cookies', 'ConstantsService', function( $scope, $http, $timeout, $cookies, $window, $cookies, ConstantsService ){
 
 	$scope.loadingData = false;
 	$scope.productTypeSelected = false;
@@ -37,7 +37,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
                 $scope.loadingData = false;
 
                 switch( data['status'] ) {
-                	case 'LOADED':
+                	case ConstantsService.responseStatus.LOADED:
 		            	var jsonObject = angular.fromJson(data);
 			            updatetDataToShow( jsonObject['product_types'], "product_types" );
 			            updatetDataToShow( jsonObject['vehicles'], "vehicles" );
@@ -61,7 +61,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
 		var post = 	{};
 			post.a = 'list_varios';
-			post.from = 'home';
+			post.from = 'admin-products';
 			post.action = "get_models_by_brand";
 			post.brandId = selectedVehicleBrand.id;
 
@@ -72,7 +72,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
                 $scope.loadingData = false;
 
                 switch( data['status'] ) {
-                	case 'VEHICLE_MODELS_LOADED':
+                	case ConstantsService.responseStatus.LOADED:
 		            	var jsonObject = angular.fromJson(data);
 			            updatetDataToShow( jsonObject['models'], "models" );
 			            break;

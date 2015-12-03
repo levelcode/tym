@@ -174,6 +174,7 @@ $opciones = array(
 	'js' => array(
 		'recursos/js/clock.js',
 		'server/js/angularApp/angularApp.js',
+		'server/js/angularApp/services/ConstantsService.js',
 		'server/js/angularApp/controllers/notificationsCtrl.js',
 		'server/js/angularApp/controllers/adminProductsCtrl.js'
 	)

@@ -204,6 +204,10 @@ function list_varios( $data ){
                 $info_to_return['vehicles'] = get_all_vehicles();
                 $info_to_return['status'] = 'LOADED';
               break;
+              case 'get_models_by_brand':
+                $info_to_return['models'] = get_models_by_brand( $data['brandId']);
+                $info_to_return['status'] = 'LOADED';
+              break;
             }
           break;
           case 'admin-main-page':

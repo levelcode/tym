@@ -15,7 +15,8 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 	$scope.searchAndEditSection = false;
 
 	//data arrays
-	$scope.producTypes = {};	
+	$scope.producTypes = {};
+	$scope.vehicles = {};	
 
 	angular.element(document).ready(function(){
 		loadData();
@@ -39,6 +40,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
                 	case 'LOADED':
 		            	var jsonObject = angular.fromJson(data);
 			            updatetDataToShow( jsonObject['product_types'], "product_types" );
+			            updatetDataToShow( jsonObject['vehicles'], "vehicles" );
 			            break;
                 }
 
@@ -51,6 +53,60 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 	$scope.showForm = function( selectedTypeofProduct ){
 		$scope.productTypeSelected = true;
 		console.log(selectedTypeofProduct);
+	}
+
+	$scope.searchByBrand = function( selectedVehicleBrand ) {
+		console.log( selectedVehicleBrand );
+		$scope.loadingData = true;
+
+		var post = 	{};
+			post.a = 'list_varios';
+			post.from = 'home';
+			post.action = "get_models_by_brand";
+			post.brandId = selectedVehicleBrand.id;
+
+        $http.post("server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+                
+                console.log(data);
+                $scope.loadingData = false;
+
+                switch( data['status'] ) {
+                	case 'VEHICLE_MODELS_LOADED':
+		            	var jsonObject = angular.fromJson(data);
+			            updatetDataToShow( jsonObject['models'], "models" );
+			            break;
+                }
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+	}
+	
+	$scope.loadYear = function( modelSelected ) {
+		console.log(modelSelected);
+
+		var years = [];
+
+		if( modelSelected.year.search( "-" ) != -1 ) {
+			var yearsArray = modelSelected.year.split("-");	
+
+			var yearsDifference = yearsArray[1] - yearsArray[0];
+
+			for (var i = 0; i <= yearsDifference; i++) {
+				if( i==0 )
+					years[i] = parseInt(yearsArray[0]);
+				else
+					years[i] = parseInt(yearsArray[0]) + i;
+			};
+		}else {
+			years[0] = modelSelected.year;
+		}
+		
+		console.log(years);
+		updatetDataToShow( years, "years" );
+
 	}
 
 	$scope.switchPanelSection = function( sectionToSelect ) {
@@ -84,7 +140,11 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
         			$scope.producTypes.data = na;
         			$scope.producTypes.empty = false;		
         			break;
-    			case 'models':
+    			case 'vehicles':
+    					$scope.vehicles.data = na;
+        				$scope.vehicles.empty = false;
+					break;
+				case 'models':
     					$scope.models.data = na;
         				$scope.models.empty = false;
 					break;

@@ -104,25 +104,25 @@ $cabecero = new html\Cabecero($opciones);
 									<h3>Datos del vehiculo:</h3>
 									<div class="col-sm-4 col-lg-4">
 										<div class="form-group">
-											<label for="vehicleBrand">Marca</label>
-											<select name="vehicleBrand" id="vehicleBrand" class="form-control" ng-change="showForm( request.vehicleBrand )" ng-disabled="loadingData" ng-model="request.vehicleBrand" ng-options="productType.type for (key, productType) in producTypes.data track by productType.id" required>
+											<label for="tipo">Marca</label>
+											<select name="tipo" id="p" class="form-control" ng-disabled="sendingData" ng-model="request.vehicle" ng-options="vehicle.brand for (key, vehicle) in vehicles.data track by vehicle.id" ng-change="searchByBrand( request.vehicle )" required>
 												<option disabled selected value="">-- Selecciona una opción --</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-4 col-lg-4">
 										<div class="form-group">
-											<label for="vehicleModel">Modelo</label>
-											<select name="vehicleModel" id="vehicleModel" class="form-control" ng-change="showForm( request.vehicleModel )" ng-disabled="loadingData" ng-model="request.vehicleModel" ng-options="productType.type for (key, productType) in producTypes.data track by productType.id" required>
-												<option disabled selected value="">-- Selecciona una opción --</option>
+											<label for="tipo1">Modelo</label>
+											<select name="tipo1" id="p1" class="form-control" ng-disabled="sendingRequest" ng-model="request.model" ng-options="model.model for (key, model) in models.data track by model.id" ng-change="loadYear( request.model )" required>
+												<option disabled selected value="">-- Opción --</option>
 											</select>
 										</div>
 									</div>
 									<div class="col-sm-4 col-lg-4">
 										<div class="form-group">
-											<label for="vehicleYear">Año</label>
-											<select name="vehicleYear" id="vehicleYear" class="form-control" ng-change="showForm( request.vehicleYear )" ng-disabled="loadingData" ng-model="request.vehicleYear" ng-options="productType.type for (key, productType) in producTypes.data track by productType.id" required>
-												<option disabled selected value="">-- Selecciona una opción --</option>
+											<label for="tipo1">Año</label>
+											<select name="tipo1" id="p1" class="form-control" ng-disabled="sendingRequest" ng-model="request.year" ng-options="year for (key, year) in years.data" ng-change="searchProducts( request )" required>
+												<option disabled selected value="">-- Opción --</option>
 											</select>
 										</div>
 									</div>																																																

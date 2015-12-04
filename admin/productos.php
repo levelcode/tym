@@ -145,7 +145,7 @@ $cabecero = new html\Cabecero($opciones);
 										<p class="help-block">El archivo no debe exceder los 20MB.</p>
 									</div>
 									<div class="col-sm-2 st-bloque">
-										<a class="btn btn-success"><i class="fa fa-file-text"></i> &nbsp;Exportar</a>
+										<a class="btn btn-success"><i class="fa fa-file-text"></i> &nbsp;Importar</a>
 									</div>
 						      	</form>
 					      	</accordion-group>

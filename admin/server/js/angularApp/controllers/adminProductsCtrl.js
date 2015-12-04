@@ -22,8 +22,6 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 		loadData();
 	});
 
-	HttpMethodsService.doPost($http);
-
 	function loadData() {
 		$scope.loadingData = true;
 

@@ -2,6 +2,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
 	$scope.loadingData = false;
 	$scope.productTypeSelected = false;
+	$scope.sendingRequest = false;
 
 	//accordion config
 	$scope.oneAtATime = true;
@@ -19,6 +20,8 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 	$scope.vehicles = {};
 	$scope.models = {};	
 	$scope.years = {};
+
+	//request status
 
 	angular.element(document).ready(function(){
 		loadData();

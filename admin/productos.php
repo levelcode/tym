@@ -129,8 +129,7 @@ $cabecero = new html\Cabecero($opciones);
 									<hr>				
 									<div class="col-xs-12 bloque text-right">
 										<button class="btn btn-danger" ng-click="cancelAll()"><i class="fa fa-remove"></i> &nbsp;Cancelar</button>
-										<button id="save_waste_info" ng-hide="multipleWastes && (wastesToAddArray.length > 0)" class="btn btn-success" ng-click="sendNewCollectrequest(requestingCollect)" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
-										<button id="save_waste_info" ng-if="multipleWastes && (wastesToAddArray.length > 0)" class="btn btn-success" ng-click="sendNewCollectrequest(requestingCollect)" ng-disabled="sendingRequest"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
+										<button id="save_waste_info" class="btn btn-success" ng-click="" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
 									</div>
 								</form>
 							</accordion-group>

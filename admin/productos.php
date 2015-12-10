@@ -26,7 +26,7 @@ $cabecero = new html\Cabecero($opciones);
 <!-- contenido -->
 <div id="contenido" ng-controller="adminProductsCtrl">
 	<ol class="breadcrumb">
-		<li><a href="./admin">Inicio</a></li>
+		<li><a href="./inicio">Inicio</a></li>
 		<li class="active">Administrar contenido</li>
 	</ol>
 	<h3 class="st-titulo"><i class="fa fa-file-text"></i> &nbsp;Administrador de productos</h3>
@@ -61,7 +61,7 @@ $cabecero = new html\Cabecero($opciones);
 					</div>
 				</div>
 				<div class="row" ng-if="productTypeSelected">
-					<hr>
+					<h3 class="st-titulo" ng-bind="formTittle"></h3>
 					<div class="col-xs-12">
 						<accordion close-others="oneAtATime">
 							<accordion-group  panel-class="panel-info">

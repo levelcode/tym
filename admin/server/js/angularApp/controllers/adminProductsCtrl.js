@@ -54,7 +54,19 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
 	$scope.showForm = function( selectedTypeofProduct ){
 		$scope.productTypeSelected = true;
+
+		$scope.selectFormTittle( selectedTypeofProduct );
 		console.log(selectedTypeofProduct);
+	}
+
+	$scope.selectFormTittle = function( selectedTypeofProduct ) {
+
+		$scope.formTittle = 'Añadir ';
+		var keepIterator = true;
+
+		$scope.formTittle += selectedTypeofProduct.type;
+		$scope.typeOfProductType = selectedTypeofProduct;
+
 	}
 
 	$scope.searchByBrand = function( selectedVehicleBrand ) {
@@ -143,25 +155,25 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
         			$scope.producTypes.empty = false;		
         			break;
     			case 'vehicles':
-    					$scope.vehicles.data = na;
-        				$scope.vehicles.empty = false;
-					break;
+					$scope.vehicles.data = na;
+    				$scope.vehicles.empty = false;
+				break;
 				case 'models':
-    					$scope.models.data = na;
-        				$scope.models.empty = false;
-					break;
+					$scope.models.data = na;
+    				$scope.models.empty = false;
+				break;
 				case 'years':
-    					$scope.years.data = na;
-        				$scope.years.empty = false;
-					break;
+					$scope.years.data = na;
+    				$scope.years.empty = false;
+				break;
 				case 'rin_types':
-    					$scope.rinTypes.data = na;
-        				$scope.rinTypes.empty = false;
-					break;
+					$scope.rinTypes.data = na;
+    				$scope.rinTypes.empty = false;
+				break;
 				case 'tires':
-    					$scope.tires.data = na;
-        				$scope.tires.empty = false;
-					break;
+					$scope.tires.data = na;
+    				$scope.tires.empty = false;
+				break;	
         	}
         	
         }else {

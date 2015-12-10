@@ -226,7 +226,7 @@ function list_varios( $data ){
 }
 
 function get_all_product_types() {
-  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type ORDER BY type DESC";
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type ORDER BY type ASC";
   return Core\query($sql, array());
 }
 

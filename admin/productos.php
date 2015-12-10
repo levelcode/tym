@@ -145,7 +145,7 @@ $cabecero = new html\Cabecero($opciones);
 										<p class="help-block">El archivo no debe exceder los 20MB.</p>
 									</div>
 									<div class="col-sm-2 st-bloque">
-										<a class="btn btn-success"><i class="fa fa-file-text"></i> &nbsp;Exportar</a>
+										<a class="btn btn-success"><i class="fa fa-file-text"></i> &nbsp;Importar</a>
 									</div>
 						      	</form>
 					      	</accordion-group>
@@ -160,7 +160,45 @@ $cabecero = new html\Cabecero($opciones);
 			</div>
 			<div class="panel-body">
 				<div class="row">
-
+					<div class="col-lg-12">
+						<div class="alert alert-info" ng-if="loadingRequests || collectRequests.empty">
+  							<span ng-if="loadingRequests"><strong>Cargando &nbsp;<i class="fa fa-circle-o-notch fa-spin"></i></strong></span>
+  							<strong ng-if="collectRequests.empty">No existen solicitudes de recolección confirmadas</strong>
+						</div>
+						<div class="table-responsive" ng-if="!loadingRequests && !collectRequests.empty">
+							<table class="table" id="myTable">
+								<thead>
+									<tr>
+										<th colspan="12" class="text-center">Productos existentes</th>
+									</tr>
+									<tr>
+										<th>NIT</th>
+										<th>Cliente</th>
+										<th>Fecha de recolección</th>
+										<th>N<sup>o</sup> recolección</th>
+										<th>Residuo</th>
+										<th>Cantidad Recolectada</th>
+										<th>Cantidad Verificada</th>
+										<th>Embalaje</th>
+										<th>Vehículo(Placa)</th>
+										<th>Vehículo(Peso neto)</th>
+										<th>Grados API</th>
+										<th>%Sedimientos</th>
+										<th>%Humedad</th>
+									</tr>
+								</thead>
+								<tbody>									
+									<tr ng-if="results.length == 0">
+										<td colspan="12">
+											<div class="alert alert-warning">
+				  								<strong >La busqueda no genera resultados</strong>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

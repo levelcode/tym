@@ -16,13 +16,13 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
 	//data arrays
 	$scope.producTypes = {};
-	$scope.vehicles = {};	
+	$scope.vehicles = {};
+	$scope.models = {};	
+	$scope.years = {};
 
 	angular.element(document).ready(function(){
 		loadData();
 	});
-
-	HttpMethodsService.doPost($http);
 
 	function loadData() {
 		$scope.loadingData = true;

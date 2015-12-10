@@ -35,9 +35,9 @@ $cabecero = new html\Cabecero($opciones);
 		<div class="panel" >
 			<div class="panel-body">
 				<div class="row">
-					<div class="col-sm-2 st-bloque">
+					<!--<div class="col-sm-2 st-bloque">
 						<a class="btn btn-success" ng-click="switchPanelSection('mainMenu')"><i class="fa fa-file-text"></i> &nbsp;Menú principal</a>
-					</div>
+					</div>-->
 					<div class="col-sm-2 st-bloque">
 						<a class="btn btn-success" ng-click="switchPanelSection('universalSection')"><i class="fa fa-file-text"></i> &nbsp;Sección de "Te puede interesar"</a>
 					</div>

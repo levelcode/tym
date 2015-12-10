@@ -230,6 +230,128 @@ function get_all_product_types() {
   return Core\query($sql, array());
 }
 
+  function read_products() {
+    
+    //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
+    $handle = fopen(__ROOT__FILES__ . "csv/preciosmnd.csv", 'r');
+    
+    if( $handle !== FALSE ) {
+      $products = array();
+        
+//      $category_id = 1;
+        
+      while ( ($data = fgetcsv($handle, 130, '|')) !== FALSE ){
+        $current_row = new \stdClass();
+    
+        if( (count($data)) >= 6 ){
+            
+//          if ($category_id > 4 )
+//            $category_id = 0;
+            
+          $current_row->PLU = utf8_encode(trim($data[0]));
+          $current_row->barcode = utf8_encode(trim($data[1]));
+          $current_row->name =  utf8_encode( ucfirst( strtolower( trim( str_replace('/', '-', $data[2]))) ));
+        //  $current_row->category_id = utf8_encode($category_id); //WTF ?
+          $current_row->presentation = utf8_encode(trim($data[3]));
+          $current_row->description = utf8_encode(trim($data[3]));
+          $current_row->stock = utf8_encode(trim($data[4]));
+          $current_row->price = utf8_encode(trim($data[5]));
+            
+          $products[] = $current_row;
+            
+//          $category_id++;
+        }
+      }
+      fclose( $handle );
+      
+      return $products;
+        
+    }
+  }
+
+  function read_vehicles() {
+  
+    //$CI->load->model('tym_vehicle_model');
+    
+    //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
+    $handle = fopen(__ROOT__FILES__ . "csv/Tablas_finalescsv.csv", 'r');
+    
+    if( $handle !== FALSE ) {
+      $vehicles = array();
+        
+//      $category_id = 1;
+
+      $count_aux = 0;
+        
+      while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE  ){
+        $current_row = new \stdClass();
+
+        //var_dump($data);
+        if ( ($count_aux >= 2) && (count($data) >= 5) ) {
+          //die();
+          $current_row->type = utf8_encode(trim($data[0]));
+          $current_row->brand = utf8_encode(trim($data[1]));
+          $current_row->model = utf8_encode(trim($data[2]));
+          $current_row->pcd = utf8_encode(trim($data[3]));
+          $current_row->year = utf8_encode(trim($data[4]));
+        }
+            
+          $vehicles[] = $current_row;
+            
+//          $category_id++;
+        
+        $count_aux++;
+      }
+      fclose( $handle );
+      
+      return $vehicles;
+        
+    }
+  }
+
+  function save_vechicles( $to_save ) {
+
+    //$CI =& get_instance();
+    //$CI->load->model('tym_vehicle_model');
+
+    $rin_types = $CI->tym_vehicle_model->get_rin_types();
+
+    //var_dump($rin_types);
+
+    //var_dump($to_save);
+
+    //var_dump($this->_search_rin_types( $rin_types, $to_save ));
+    $result = $CI->tym_vehicle_model->insert_vehicles( $this->_search_rin_types( $rin_types, $to_save ) );
+
+      return $result;
+  }
+  
+  function _search_rin_types( $rin_types, $types_and_inch ) {
+
+    $rines = array();
+
+    $data = $types_and_inch;
+
+    $i =0;
+
+    foreach ($rin_types as $key1 => $value1) {
+
+      $current_rin = new \stdClass();
+
+      foreach ($types_and_inch as $key2 => $value2) {
+        
+        if( $key2 == $value1->brand ) {
+          
+          $data[$value1->brand]['id'] = $value1->id;
+
+        }
+        //(var_dump($rines));
+      }
+    }
+
+    return $data;
+  }
+
 function insert_product_type( $data ) {
 
   $product_type_to_save['table'] = "product_type";

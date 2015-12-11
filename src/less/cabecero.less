@@ -17,9 +17,12 @@
 #cabecero{
 	@h: 100px;
 	width: 100%;
+	margin-bottom: -@h;
 	height: @h;
 	background-color: fade(@color1, 80%);
 	box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+	position: relative;
+	z-index: 6;
 	.container{
 		height: @h;
 		position: relative;
@@ -92,98 +95,96 @@
 				}
 			}
 		}
-		#alternador-menu-accesorios{
-			@t: 52px;
+
+	}
+	#alternador-menu-accesorios{
+		@t: 52px;
+		width: @t;
+		height: @t;
+		//background-color: rgba(255, 255, 255, 0.2);
+		position: absolute;
+		top: 120px;
+		left: 114px;
+		border-radius: 4px;
+		z-index: 12;
+		color: @blanco;
+		text-shadow: rgba(0, 0, 0, 0.5);
+		//line-height: @t;
+		//text-align: center;
+		cursor: pointer;
+		//box-shadow: 0 0 40px rgba(0, 0, 0, .3);
+		transition-property: left, transform;
+		transition-duration: .2s;
+		background-image: url(../img/bg-menu-accesorios.png);
+		&:hover{
+			transform: scale(.96);
+		}
+		.flecha{
+			position: absolute;
+			@t: 20px;
 			width: @t;
 			height: @t;
-			//background-color: rgba(255, 255, 255, 0.2);
-			position: absolute;
-			top: 120px;
-			left: 14px;
-			border-radius: 4px;
-			z-index: 12;
+			text-align: center;
+			line-height: @t;
+			font-size: 12px;
+			right: 0;
+			bottom: 0;
+			background-color: #000;
 			color: @blanco;
-			text-shadow: rgba(0, 0, 0, 0.5);
-			//line-height: @t;
-			//text-align: center;
-			cursor: pointer;
-			//box-shadow: 0 0 40px rgba(0, 0, 0, .3);
-			transition-property: left, transform;
-			transition-duration: .2s;
-			background-image: url(../img/bg-menu-accesorios.png);
-			&:hover{
-				transform: scale(.96);
-			}
-			.flecha{
-				position: absolute;
-				@t: 20px;
-				width: @t;
-				height: @t;
-				text-align: center;
-				line-height: @t;
-				font-size: 12px;
-				right: 0;
-				bottom: 0;
-				background-color: #000;
-				color: @blanco;
-				border-radius: (@t / 2);
-				box-shadow: 0 0 10px @color3;
-			}
-
-
+			border-radius: (@t / 2);
+			box-shadow: 0 0 10px @color3;
 		}
-		.menu-accesorios{
-			width: 105px;
-			position: absolute;
-			left: 0;
-			top: 120px;
-			background-color: lighten(@color1, 10%);
-			z-index: 12;
-			border-top: 3px solid #222;
-			box-shadow: inset 0 0 40px rgba(0, 0, 0, .3), 0 0 40px rgba(0, 0, 0, .4);
-			display: none;
-			ul{
-				list-style-type: none;
-				.no-pm;
-				font-family: @f-f1;
-				font-weight: 600;
-				padding-left: 6px;
-				padding-right: 6px;
-				li{
-					&:first-child{
-						a{
-							border-top: none;
-						}
-					}
-					&:last-child{
-						a{
-							border-bottom: none;
-						}
-					}
+	}
+	.menu-accesorios{
+		width: 105px;
+		position: absolute;
+		left: 0;
+		top: 120px;
+		background-color: lighten(@color1, 10%);
+		z-index: 12;
+		border-top: 3px solid #222;
+		box-shadow: inset 0 0 40px rgba(0, 0, 0, .3), 0 0 40px rgba(0, 0, 0, .4);
+		ul{
+			list-style-type: none;
+			.no-pm;
+			font-family: @f-f1;
+			font-weight: 600;
+			padding-left: 6px;
+			padding-right: 6px;
+			li{
+				&:first-child{
 					a{
-						position: relative;
-						display: block;
-						padding-top: 26px;
-						padding-bottom: 26px;
-						border-top: 2px solid @color1;
-						border-bottom: 2px solid lighten(@color1, 20%);
-						font-size: 20px;
-						color: #bce7ff;
-						text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
-						&:hover{
-							color: @blanco;
-						}
-						&.activo{
-							&::after{
-								content: '';
-								display: block;
-								width: 74px;
-								height: 37px;
-								position: absolute;
-								bottom: 0;
-								left: 10px;
-								background-image: url(../img/menu-accesorios-activo.png);
-							}
+						border-top: none;
+					}
+				}
+				&:last-child{
+					a{
+						border-bottom: none;
+					}
+				}
+				a{
+					position: relative;
+					display: block;
+					padding-top: 26px;
+					padding-bottom: 26px;
+					border-top: 2px solid @color1;
+					border-bottom: 2px solid lighten(@color1, 20%);
+					font-size: 20px;
+					color: #bce7ff;
+					text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
+					&:hover, &.activo{
+						color: @blanco;
+					}
+					&.activo{
+						&::after{
+							content: '';
+							display: block;
+							width: 74px;
+							height: 37px;
+							position: absolute;
+							bottom: 0;
+							left: 10px;
+							background-image: url(../img/menu-accesorios-activo.png);
 						}
 					}
 				}

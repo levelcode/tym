@@ -21,59 +21,78 @@ $cabecero = new html\Cabecero($opciones);
 <!-- contenido -->
 		<div id="contenido">
 			<section id="slider">
-				<div class="container no-padding-horizontal slider">
-					<!-- slider inicio -->
-					<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-							<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-						</ol>
-						<!-- Wrapper for slides -->
-						<div class="carousel-inner" role="listbox">
-							<div class="item active">
-								<img src="recursos/img/sld-1.jpg" alt="...">
-								<div class="carousel-caption">
-									<div class="etiqueta">
-										<span class="grande">Rines ultralivianos</span><br>
-										<i class="pequeño">en <b>aluminio y cromados</b></i>
+				<!-- slider inicio -->
+				<div id="rotabanner" class="carousel slide" data-ride="carousel">
+					<!-- Indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#rotabanner" data-slide-to="0" class="active"></li>
+						<li data-target="#rotabanner" data-slide-to="1"></li>
+						<li data-target="#rotabanner" data-slide-to="2"></li>
+					</ol>
+					<!-- Wrapper for slides --> 
+					<div class="carousel-inner" role="listbox">
+						<div class="item active text-center sld-1">
+							<!-- <img src="recursos/img/sld-1.jpg" alt="..."> -->
+							<div class="container">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="carousel-caption">
+											<div class="etiqueta">
+												<span class="grande">Rines ultralivianos</span><br>
+												<i class="pequeño">en <b>aluminio y cromados</b></i>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
-							<div class="item">
-								<img src="recursos/img/sld-2.jpg" alt="...">
-								<div class="carousel-caption">
-									<div class="etiqueta">
-										<span class="grande">Rines ultralivianos</span><br>
-										<i class="pequeño">en <b>aluminio y cromados</b></i>
-									</div>
-								</div>
-							</div>
-							<div class="item">
-								<img src="recursos/img/sld-3.jpg" alt="...">
-								<div class="carousel-caption">
-									<div class="etiqueta">
-										<span class="grande">Rines ultralivianos</span><br>
-										<i class="pequeño">en <b>aluminio y cromados</b></i>
-									</div>
-								</div>
-							</div>
+								
 						</div>
-						<!-- Controls 
-						<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-							<div class="flecha">
-								<span class="fa fa-angle-left fa-3x"></span>
+						<div class="item text-center sld-2">
+							<!-- <img src="recursos/img/sld-2.jpg" alt="..."> -->
+							<div class="container">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="carousel-caption">
+											<div class="etiqueta">
+												<span class="grande">Rines ultralivianos</span><br>
+												<i class="pequeño">en <b>aluminio y cromados</b></i>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-						</a>
-						<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-							<div class="flecha">
-								<span class="fa fa-angle-right fa-3x"></span>
+								
+						</div>
+						<div class="item text-center sld-3">
+							<!-- <img src="recursos/img/sld-3.jpg" alt="..."> -->
+							<div class="container">
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="carousel-caption">
+											<div class="etiqueta">
+												<span class="grande">Rines ultralivianos</span><br>
+												<i class="pequeño">en <b>aluminio y cromados</b></i> 
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-						</a>-->
+										
+						</div>
 					</div>
-					<a href="" class="boton-selecciona-vehiculo" data-modal="buscador"></a>
+					<!-- Controls 
+					<a class="left carousel-control" href="#rotabanner" role="button" data-slide="prev">
+						<div class="flecha">
+							<span class="fa fa-angle-left fa-3x"></span>
+						</div>
+					</a>
+					<a class="right carousel-control" href="#rotabanner" role="button" data-slide="next">
+						<div class="flecha">
+							<span class="fa fa-angle-right fa-3x"></span>
+						</div>
+					</a>-->
 				</div>
+				<!-- <a href="" class="boton-selecciona-vehiculo" data-modal="buscador"></a> -->
 			</section>
 
 			<section id="promociones-galeria">
@@ -100,14 +119,14 @@ $cabecero = new html\Cabecero($opciones);
 						</div>
 						<div class="col-sm-5 galeria st-seccion">
 							<div class="row">
-								<div class="col-sm-5">
+								<div class="col-lg-5">
 									<div class="st-titulo">
 										<h1>Galería</h1>
 										<small>Vídeos/Eventos</small>
 									</div>
 									<i class="st-separador"></i>
 								</div>
-								<div class="col-sm-7">
+								<div class="col-lg-7">
 									<a href="./videos">
 										<img src="recursos/img/imac-videos.png" alt="" class="img-responsive">
 									</a>

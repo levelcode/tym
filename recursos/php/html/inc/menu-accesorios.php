@@ -1,6 +1,6 @@
 <div id="alternador-menu-accesorios" data-toggle="tooltip" data-placement="right" title="Accesorios">
 	<span class="flecha">
-		<i class="fa fa-arrow-right"></i>
+		<i class="fa fa-arrow-left"></i>
 	</span>
 </div>
 <nav class="menu-accesorios">

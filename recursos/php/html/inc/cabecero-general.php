@@ -4,6 +4,6 @@
 			<img src="recursos/img/logo.png" alt="">
 		</a>
 		<?php require_once(_INC.'menu.php') ?>
-		<?php require_once(_INC.'menu-accesorios.php') ?>
 	</div>
+	<?php require_once(_INC.'menu-accesorios.php') ?>
 </header>

@@ -80,7 +80,7 @@ st.menu.ini();
 // menu accesorios
 st.menuAccesorios = {
 	// props
-	abierto: false,
+	abierto: true,
 	dur: 300,
 	efe: 'slide',
 	dir: 'left',
@@ -102,7 +102,7 @@ st.menuAccesorios = {
 	abrir: function(){
 		var t = this;
 
-		$('#cabecero .container .menu-accesorios').show({
+		$('#cabecero .menu-accesorios').show({
 			duration: t.dur,
 			effect: t.efe,
 			direction: t.dir,
@@ -117,7 +117,7 @@ st.menuAccesorios = {
 
 	cerrar: function(){
 		var t = this;
-		$('#cabecero .container .menu-accesorios').hide({
+		$('#cabecero .menu-accesorios').hide({
 			duration: t.dur,
 			effect: t.efe,
 			direction: t.dir,

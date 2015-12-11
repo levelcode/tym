@@ -1,5 +1,4 @@
 <?php 
-
 namespace html;
 
 
@@ -38,15 +37,17 @@ class Cabecero extends a_Html
 <!DOCTYPE html>
 <html lang="es">
 	<head>
-		<meta charset="UTF-8">
+		<meta charset="UTF-8" ng-app="tymApp" >
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php $this->obtener('titulo') ?></title>
 		<link rel="icon" href="recursos/img/favicon.png">
 		<link rel="stylesheet" href="recursos/css/bootstrap.css">
 		<link rel="stylesheet" href="recursos/css/font-awesome.css">
 		<!-- <link rel="stylesheet" href="recursos/css/eventi-iconos.css">  -->
+		<?php if( $this->is_admin ): ?>
+			<link rel="stylesheet" href="recursos/css/admin/general.css">
+		<?php endif;?>
 		<link rel="stylesheet" href="recursos/css/general.css">
-	
 		<?php $this->obtener('css') ?>
 		<script src="recursos/js/jquery.js"></script>
 		<?php $this->obtener('js') ?>
@@ -77,7 +78,12 @@ class Cabecero extends a_Html
 		</noscript>
 <?php	
 		if( !$this->no_cabecero ){
-			require_once(_INC."{$this->cabecero}.php");	
+			if( $this->is_admin ) {
+				require_once(_INC_ADMIN."{$this->cabecero}.php");	
+			}else {
+				require_once(_INC."{$this->cabecero}.php");		
+			}
+			
 		}
 		
 		$this->html = ob_get_contents();

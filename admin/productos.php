@@ -74,9 +74,10 @@ $cabecero = new html\Cabecero($opciones);
 							    	<div class="col-sm-6 col-lg-6">
 							    		<div class="form-group">
 											<label for="productimage">Imagen</label>
+											<br>
 											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> 
-											<input type="file" name="productimage" ngf-select ng-model="picFile" class="form-control" name="file" accept="image/*" ngf-max-size="2MB" required>
-											<span class="help-text">Las dimensiones de la imagen deben de ser 220px x 220px</span>
+											<input type="file" name="productimage" ngf-select ng-model="picFile" class="form-control" name="file" accept="image/*" ngf-resize="{width: 250, height: 250}" ngf-min-height="250" ngf-max-size="2MB" required>
+											<span class="help-text">Las dimensiones de la imagen deben de ser 250px x 250px</span>
 										</div>
 							    	</div>
 									<div class="col-sm-6 col-lg-6">

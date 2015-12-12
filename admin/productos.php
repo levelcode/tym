@@ -14,7 +14,8 @@ $opciones = array(
 	'js' => array(	
 		'recursos/js/angular.min.js',
 		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js', 
-		'recursos/js/angular-cookies.min.js'
+		'recursos/js/angular-cookies.min.js',
+		'recursos/js/ng-file-upload/ng-file-upload.min.js'
 	)
 );
 
@@ -70,6 +71,13 @@ $cabecero = new html\Cabecero($opciones);
 						      	</accordion-heading>
 								<form id="AddProductForm" name="AddProductForm" novalidate>
 							    	<br>
+							    	<div class="col-sm-6 col-lg-6">
+							    		<div class="form-group">
+											<label for="productimage">Imagen</label>
+											<input type="file" name="productimage" ngf-select ng-model="picFile" class="form-control" name="file" accept="image/*" ngf-max-size="2MB" required>
+											<span class="help-text">Las dimensiones de la imagen deben de ser 220px x 220px</span>
+										</div>
+							    	</div>
 									<div class="col-sm-6 col-lg-6">
 										<div class="form-group">
 											<label for="productName">Nombre del producto</label>

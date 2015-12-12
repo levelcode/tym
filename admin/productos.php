@@ -75,8 +75,8 @@ $cabecero = new html\Cabecero($opciones);
 							    		<div class="form-group">
 											<label for="productimage">Imagen</label>
 											<br>
-											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> 
-											<input type="file" name="productimage" ngf-select ng-model="picFile" class="form-control" name="file" accept="image/*" ngf-resize="{width: 250, height: 250}" ngf-min-height="250" ngf-max-size="2MB" required>
+											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="request.picFile" class="thumb"> 
+											<input type="file" name="productimage" ngf-select ng-model="request.picFile" class="form-control" ng-change="viewSize(request.picFile)" ngf-resize="{width: 250, height: 250, centerCrop: true}" name="file" accept="image/*" ngf-min-height="250" ngf-max-size="2MB" required>
 											<span class="help-text">Las dimensiones de la imagen deben de ser 250px x 250px</span>
 										</div>
 							    	</div>
@@ -95,7 +95,7 @@ $cabecero = new html\Cabecero($opciones);
 									<div class="col-sm-6 col-lg-6">
 										<div class="form-group">
 											<label for="productDescription">Descripción</label>
-											<textarea class="form-control" name="productDescription" id="productDescription" ng-model="request.productReference" ng-disabled="loadingData" rows="3" required></textarea>
+											<textarea class="form-control" name="productDescription" id="productDescription" ng-model="request.productDescription" ng-disabled="loadingData" rows="3" required></textarea>
 										</div>
 									</div>
 									<div class="col-sm-6 col-lg-6">
@@ -139,7 +139,7 @@ $cabecero = new html\Cabecero($opciones);
 									<hr>				
 									<div class="col-xs-12 bloque text-right">
 										<button class="btn btn-danger" ng-click="cancelAll()"><i class="fa fa-remove"></i> &nbsp;Cancelar</button>
-										<button id="save_waste_info" class="btn btn-success" ng-click="" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
+										<button id="save_waste_info" class="btn btn-success" ng-click="addProduct( request )" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
 									</div>
 								</form>
 							</accordion-group>

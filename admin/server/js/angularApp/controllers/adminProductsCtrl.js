@@ -126,6 +126,22 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
 	}
 
+	$scope.addProduct = function( request ){
+
+		console.log(request);
+		var post = 	{};
+			post.a = 'list_varios';
+			post.from = 'admin-products';
+			post.action = "get_models_by_brand";
+			post.brandId = selectedVehicleBrand.id;
+
+
+	}
+
+	$scope.viewSize = function( data ){
+		console.log(data);
+	}
+
 	$scope.switchPanelSection = function( sectionToSelect ) {
 
 		switch( sectionToSelect ) {

@@ -189,24 +189,19 @@ $cabecero = new html\Cabecero($opciones);
 										<th colspan="12" class="text-center">Productos existentes</th>
 									</tr>
 									<tr>
-										<th>NIT</th>
-										<th>Cliente</th>
+										<th>Tipo de producto</th>
+										<th>Nombre</th>
 										<th>Fecha de recolección</th>
-										<th>N<sup>o</sup> recolección</th>
-										<th>Residuo</th>
-										<th>Cantidad Recolectada</th>
-										<th>Cantidad Verificada</th>
-										<th>Embalaje</th>
-										<th>Vehículo(Placa)</th>
-										<th>Vehículo(Peso neto)</th>
-										<th>Grados API</th>
-										<th>%Sedimientos</th>
-										<th>%Humedad</th>
+										<th>N<sup>o</sup> referencia</th>
+										<th>Descripción</th>
+										<th>Stock</th>
+										<th>Precio</th>
+										<th>estado</th>
 									</tr>
 								</thead>
 								<tbody>									
 									<tr ng-if="results.length == 0">
-										<td colspan="12">
+										<td colspan="8">
 											<div class="alert alert-warning">
 				  								<strong >La busqueda no genera resultados</strong>
 											</div>

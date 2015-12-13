@@ -14,7 +14,7 @@
 			<a href="./empresas-aliadas">Empresas Aliadas</a>
 		</li>
 		<li>
-			<a href="./contacto">Contacto</a>
+			<a href="./contacto" data-modal="contacto">Contacto</a>
 		</li>
 	</ul>
 </nav>

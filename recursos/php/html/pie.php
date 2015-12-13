@@ -20,18 +20,19 @@ class Pie extends a_Html
 			<i class="fa fa-angle-double-up"></i>
 		</div>  
 
-		<!-- modal -->
+		<!-- modal 
 		<div id="modal">
             <div class="contenido">
 				<span class="cerrar"><i class="fa fa-remove"></i></span>
             	<div class="datos"><div class="wrap">Hola mundo</div></div>
             </div>
-        </div>
+        </div>-->
         
 		<script src="recursos/js/jquery-ui.js"></script>
 		<script src="recursos/js/bootstrap.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
 		<script src="recursos/js/general.js"></script>
-<?php $this->obtener('js') ?>
+		<?php $this->obtener('js') ?>
 	</body>
 </html>
 <?php

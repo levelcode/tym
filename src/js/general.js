@@ -11,6 +11,17 @@ $('[data-ir]').on('click', function(e){
     }, 1000);
 });
 
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById('mapa'), {
+    center: {lat: 4.676541, lng: -74.141177},
+    zoom: 12
+  });
+}
+
+initMap();
+
+
 /* variable global para el sitio */
 var st = {};
 
@@ -80,7 +91,7 @@ st.menu.ini();
 // menu accesorios
 st.menuAccesorios = {
 	// props
-	abierto: true,
+	abierto: false,
 	dur: 300,
 	efe: 'slide',
 	dir: 'left',
@@ -111,8 +122,8 @@ st.menuAccesorios = {
 				t.abierto = true;
 			}
 		});
-		$('#alternador-menu-accesorios .flecha').html('<i class="fa fa-arrow-left"></i>');
-		$('#alternador-menu-accesorios').css('left', '114px');
+		$('#alternador-menu-accesorios .flecha').html('<i class="fa fa-remove"></i>');
+		//$('#alternador-menu-accesorios').css('left', '114px');
 	},
 
 	cerrar: function(){
@@ -126,8 +137,8 @@ st.menuAccesorios = {
 				t.abierto = false;
 			}
 		});
-		$('#alternador-menu-accesorios .flecha').html('<i class="fa fa-arrow-right"></i>');
-		$('#alternador-menu-accesorios').css('left', '14px');
+		$('#alternador-menu-accesorios .flecha').html('<i class="fa fa-reorder"></i>');
+		st.catalogoAccesorios.cerrar();
 	},
 
 	eventos: function(){
@@ -138,6 +149,77 @@ st.menuAccesorios = {
 	}
 }
 st.menuAccesorios.ini();
+
+
+
+
+
+/* catálogo de accesorios */
+st.catalogoAccesorios = {
+	// props
+	abierto: false,
+	dur: 800,
+	efe: 'slide',
+	dir: 'left',
+	eas: 'easeOutCirc',
+
+	// metds
+	ini: function(){
+		this.eventos();
+	},
+
+	analizar: function(elm){
+		if(elm.hasClass('activo')){
+			elm.removeClass('activo');
+			this.cerrar();
+			return;
+		}
+
+		$('#accesorio-tipo').html('<div class="text-center"> <br> <p class="txt-11">Cargando accesorios...</p> <br> <img src="recursos/img/preloader-productos.gif" alt=""> </div>');
+
+		$('#cabecero .menu-accesorios ul li a.activo').removeClass('activo');
+		elm.addClass('activo');
+		$('#catalogo-accesorios .catalogo .indicador').css('top', elm.offset().top - 110);
+		$.ajax({
+			url: 'recursos/php/html/inc/' + elm.attr('data-nombre') + '.php',
+			type: 'get',
+			dataType: 'html',
+			complete: function(d){
+				console.log(d);
+				setTimeout(function(){
+					$('#accesorio-tipo').html(d.responseText);
+				},1200);
+			}
+		});
+		this.abrir();
+	},
+
+	abrir: function(){
+		var t = this;
+		$('#catalogo-accesorios').fadeIn(t.dur);
+		t.abierto = true;
+	},
+
+	cerrar: function(){
+		var t = this;
+		$('#catalogo-accesorios').fadeOut(t.dur);
+		t.abierto = false;
+		
+	},
+
+	eventos: function(){
+		var t = this;
+		$('#cabecero .menu-accesorios ul li a').on('click', function(e){
+			e.preventDefault();
+			t.analizar($(this));
+		});
+	}
+}
+st.catalogoAccesorios.ini();
+
+
+
+
 
 
 /* botonArriba */

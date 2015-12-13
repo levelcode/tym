@@ -8,20 +8,23 @@
 				</a>
 			</div>
 			<div class="col-sm-6 redes">
-				<i>Búscanos en redes sociales</i>
-				&nbsp; &nbsp; &nbsp;
-				<a href=""><i class="fa fa-facebook-square txt-24"></i></a>
-				&nbsp;
-				&nbsp;
-				<a href=""><i class="fa fa-twitter-square txt-24"></i></a>
-				&nbsp;
-				&nbsp;
-				<a href=""><i class="fa fa-instagram txt-24"></i></a>
-				&nbsp;
-				&nbsp;
-				<a href=""><i class="fa fa-youtube-square txt-24"></i></a>
+				<div class="row">
+					<div class="col-lg-6">
+						<i>Búscanos en redes sociales</i>
+					</div>
+					<div class="col-lg-6">
+						<a href=""><i class="fa fa-facebook-square txt-28"></i></a>
+						
+						<a href=""><i class="fa fa-twitter-square txt-28"></i></a>
+						
+						<a href=""><i class="fa fa-instagram txt-28"></i></a>
+						
+						<a href=""><i class="fa fa-youtube-square txt-28"></i></a>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 </footer>
-<?php require_once(_MODAL.'buscador.php') ?>
+<?php require_once(_MODAL.'contacto.php'); ?>
+<?php require_once(_INC.'catalogo-accesorios.php'); ?>

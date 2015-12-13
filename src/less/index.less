@@ -20,34 +20,7 @@
 	}
 }
 
-/* slider */
-#slider{
-	#rotabanner{
-		.carousel-inner{
-			.item{
-				background-position: center;
-				background-repeat: no-repeat;
-				height: 560px;
-				&.sld-1{
-					background-image: url(../img/sld-1.jpg);
-				}
-				&.sld-2{
-					background-image: url(../img/sld-2.jpg);
-				}
-				&.sld-3{
-					background-image: url(../img/sld-3.jpg);
-				}
-				.container{
-					.row{
-						.col-xs-12{
-							height: 560px;
-						}
-					}
-				}
-			}
-		}
-	}
-}
+@import (less) "slider-intro.less";
 
 
 
@@ -76,25 +49,8 @@
 			.etiquetas{
 				padding-left: 15px;
 				padding-right: 15px;
-				.txt{
-					background-color: @color1;
-					position: relative;
-					overflow: hidden;
-					text-align: left;
-					background-image: url(../img/escuadra-enlace.png);
-					background-repeat: no-repeat;
-					&::after{
-						@t: 40px;
-						content: '';
-						width: @t;
-						height: @t;
-						display: block;
-						position: absolute;
-						right: -(@t / 2);
-						top: -(@t / 2);
-						background-color: @color3;
-						transform: rotate(45deg);
-					}
+				.cuadro{
+					height: 140px;
 				}
 				.tanques{
 					.bg{
@@ -111,6 +67,45 @@
 						background-image: url(../img/img-bicicleteros.jpg);
 					}
 				}
+				.txt{
+					background-color: @color1;
+					position: relative;
+					overflow: hidden;
+					text-align: left;
+					background-image: url(../img/escuadra-enlace.png);
+					background-repeat: no-repeat;
+					background-position: right -40px bottom 30px;
+					color: @blanco;
+					i{
+						display: inline-block;
+						text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+						padding-top: 40px;
+					}
+					&::after{
+						@t: 40px;
+						content: '';
+						width: @t;
+						height: @t;
+						display: block;
+						position: absolute;
+						right: -(@t / 2);
+						top: -(@t / 2);
+						background-color: @color3;
+						transform: rotate(45deg);
+					}
+					&:hover{
+						color: @color3;
+						& + .bg{
+							background-size: 116%;
+						}
+					}
+				}
+				.bg{
+					background-size: 100%;
+					transition-property: background-size;
+					transition-duration: .3s;
+					background-position: center;
+				}
 			}
 		}
 	}
@@ -122,9 +117,8 @@
 					.etiquetas{
 						.txt{
 							font-size: 18px;
+							background-position: right -60px bottom 14px;
 							i{
-
-								display: inline-block;
 								padding-top: 40px;
 							}
 						}
@@ -141,6 +135,13 @@
 		.container{
 			&.cont{
 				.etiquetas{
+					.txt{
+						background-position: right -40px bottom 26px;
+						i{
+							font-size: 22px;
+							padding-top: 54px;
+						}
+					}
 					.cuadro{
 						height: 156px;
 					}
@@ -154,6 +155,13 @@
 		.container{
 			&.cont{
 				.etiquetas{
+					.txt{
+						background-position: right -10px bottom 34px;
+						i{
+							font-size: 26px;
+							padding-top: 74px;
+						}
+					}
 					.cuadro{
 						height: 190px;
 					}

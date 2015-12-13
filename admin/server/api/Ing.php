@@ -37,34 +37,7 @@ function init_session($data){
     if($nombre == 'password' || $nombre == 'confirmacion') continue;
     $_SESSION[$nombre] = $valor;
   }
-  /*$_SESSION["perfil"] = $data["perfil"];
 
-  if(isset($data["documento"])){
-    $_SESSION["documento"] = $data["documento"];
-  }
-
-  if(isset($data["fecha_nacimiento"])){
-    $_SESSION["fecha_nacimiento"] = $data["fecha_nacimiento"];
-  }
-  if(isset($data["cargo"])){
-    $_SESSION["cargo"] = $data["cargo"];
-  }
-  $_SESSION["nickname"] = $data["nombre"];
-  //FOTO FILE
-  if($data["foto_file"] == "" or $data["foto_file"] == null){
-    $_SESSION["foto_file"] = "NA";
-  } else {
-    $_SESSION["foto_file"] = $data["foto_file"];
-  }
-  //FIRMA
-  if($data["firma_file"] == "" or $data["firma_file"] == null){
-    $_SESSION["firma_file"] = "NA";
-  } else {
-    $_SESSION["firma_file"] = $data["firma_file"];
-  }
-  $_SESSION["celular"] = $data["celular"];
-  $_SESSION["iniciales"] = $data["iniciales"];
-  $_SESSION["firma_file"] = $data["firma_file"];*/
 }
 
 
@@ -200,6 +173,9 @@ function list_varios( $data ){
           case 'admin-products':
             switch ( $data['action'] ) {
               case 'get_base_data':
+
+                //group_models(read_vehicles()); read vehicles from .csv
+
                 $info_to_return['product_types'] = get_all_product_types();
                 $info_to_return['vehicles'] = get_all_vehicles();
                 $info_to_return['status'] = 'LOADED';
@@ -225,15 +201,131 @@ function list_varios( $data ){
   return json_encode($info_to_return);
 }
 
+function group_models( $readed ) {
+  $vehicles = array();
+
+  foreach ($readed as $key => $value) {
+    $model = new \stdClass();
+
+    $model->model = $value->model;
+    $model->year = $value->year;
+
+    $vehicles[$value->brand][$value->model] = $model; 
+  }
+
+  save_vehicles_and_models($vehicles);
+
+}
+
+function save_vehicles_and_models( $grouped_vehicles ){
+  $insert_id = null;
+  foreach ($grouped_vehicles as $brand => $models) {
+    if( !empty($brand) ){
+
+      $vehicle['table'] = "vehicle";
+      $vehicle['column_id'] = "id";
+
+      $vehicle['brand'] = $brand;
+      $vehicle['status'] = 1;
+
+      $vehicle_insert_id = Core\create($vehicle, false, false);
+
+      foreach ($models as $key => $value) {
+        $model['table'] = "vehicle_model";
+        $model['column_id'] = "id";
+
+        $model['model'] = $value->model;
+        $model['year'] = $value->year;
+        $model['status'] = 1;
+        $model['tym_vehicle_id'] = $vehicle_insert_id;
+
+        $insert_id = Core\create($model, false, false);
+      }
+    }
+  }
+  return $insert_id;
+}
+
 function get_all_product_types() {
   $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type ORDER BY type ASC";
   return Core\query($sql, array());
 }
 
+function create_product( $post ) {
+
+  $result = new \stdClass();
+
+  switch( $post['data']['productType']['id'] ) {
+    case 1://rines
+    break;
+    case 2://tires
+      $insert_ids = insert_product_type_tire( $post['data'] );
+      $result->status = 'INSERTED';
+      $result->data = $insert_ids;
+    break;
+    case 3://sillas
+    break;
+    case 4://luces hd
+    break;
+    case 5://racks
+    break;
+
+  }
+
+  return json_encode($result);
+
+}
+
+function insert_product_type_tire( $product_info ){
+  
+  $product_to_save['table'] = "tire";
+  $product_to_save['column_id'] = "id";
+
+  $product_to_save['name'] = $product_info['productName'];
+  $product_to_save['tire'] = $product_info['tireDetail'];
+  $product_to_save['referencie'] = $product_info['productReference'];
+  $product_to_save['description'] = $product_info['productDescription'];
+  $product_to_save['stock'] = $product_info['productStock'];
+  $product_to_save['price_unit'] = $product_info['productPrice'];
+  $product_to_save['img_base'] = $product_info['picFile']['$ngfDataUrl'];
+
+  $insert_id = Core\create($product_to_save, false, false);
+
+  //associate_vehicle( $product_info['model'], $insert_id, 'tire' )
+
+  return $insert_id;  
+}
+
+function associate_vehicle( $vehicle_data, $inserted_tire_id, $type_of_product ){
+  //check if exist a equal
+
+  switch( $type_of_product ){
+    case 'tire':
+      $table = 'vehicle_model_has_tym_tire';
+      $column_id = 'tym_tire_id';
+    break;
+  }
+
+  $association_to_save['table'] = $table;
+  $association_to_save['column_id'] = "id";
+
+  $association_to_save['tym_vehicle_model_id'] = $vehicle_data['id'];
+  $association_to_save['tym_vehicle_model_tym_vehicle_id'] = $vehicle_data['tym_vehicle_id'];
+  $association_to_save[$column_id] = $inserted_tire_id;
+
+  $insert_id = Core\create($association_to_save, false, false);
+
+  if( isset($insert_id) && is_numeric($insert_id) )
+    return false;
+
+  return true;
+
+}
+
   function read_products() {
     
     //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
-    $handle = fopen(__ROOT__FILES__ . "csv/preciosmnd.csv", 'r');
+    $handle = fopen("csv/preciosmnd.csv", 'r');
     
     if( $handle !== FALSE ) {
       $products = array();
@@ -274,26 +366,21 @@ function get_all_product_types() {
     //$CI->load->model('tym_vehicle_model');
     
     //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
-    $handle = fopen(__ROOT__FILES__ . "csv/Tablas_finalescsv.csv", 'r');
+    $handle = fopen("../../recursos/csv/vehicles.csv", 'r');
     
     if( $handle !== FALSE ) {
       $vehicles = array();
-        
-//      $category_id = 1;
 
       $count_aux = 0;
         
       while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE  ){
         $current_row = new \stdClass();
 
-        //var_dump($data);
-        if ( ($count_aux >= 2) && (count($data) >= 5) ) {
+        if ( ($count_aux >= 1) && (count($data) >= 4) ) {
           //die();
-          $current_row->type = utf8_encode(trim($data[0]));
           $current_row->brand = utf8_encode(trim($data[1]));
           $current_row->model = utf8_encode(trim($data[2]));
-          $current_row->pcd = utf8_encode(trim($data[3]));
-          $current_row->year = utf8_encode(trim($data[4]));
+          $current_row->year = utf8_encode(trim($data[3]));
         }
             
           $vehicles[] = $current_row;

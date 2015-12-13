@@ -75,9 +75,10 @@ $cabecero = new html\Cabecero($opciones);
 							    		<div class="form-group">
 											<label for="productimage">Imagen</label>
 											<br>
-											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="picFile" class="thumb"> 
-											<input type="file" name="productimage" ngf-select ng-model="picFile" class="form-control" name="file" accept="image/*" ngf-resize="{width: 250, height: 250}" ngf-min-height="250" ngf-max-size="2MB" required>
+											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="request.picFile" class="thumb"> 
+											<input type="file" name="productimage" ngf-select ng-model="request.picFile" class="form-control" ng-change="viewSize(request.picFile)" ngf-resize="{width: 250, height: 250, centerCrop: true}" accept="image/*" ngf-min-height="250" ngf-max-size="1MB" required>
 											<span class="help-text">Las dimensiones de la imagen deben de ser 250px x 250px</span>
+											<!-- {{AddProductForm.productimage.$ngfValidations}} -->
 										</div>
 							    	</div>
 									<div class="col-sm-6 col-lg-6">
@@ -92,10 +93,17 @@ $cabecero = new html\Cabecero($opciones);
 											<input type="text" name="productReference" ng-disabled="loadingData" ng-model="request.productReference" id="productReference" class="form-control" required>
 										</div>
 									</div>
+									<div class="col-sm-6 col-lg-6" ng-if="typeOfProductType.id == 2">
+										<div class="form-group">
+											<label for="productReference">Detalle de la llanta</label>
+											<input type="text" name="productReference" ng-disabled="loadingData" ng-model="request.tireDetail" id="productReference" class="form-control" required>
+											<span class="help-block">(ancho-perfil-rin)</span>
+										</div>
+									</div>
 									<div class="col-sm-6 col-lg-6">
 										<div class="form-group">
 											<label for="productDescription">Descripción</label>
-											<textarea class="form-control" name="productDescription" id="productDescription" ng-model="request.productReference" ng-disabled="loadingData" rows="3" required></textarea>
+											<textarea class="form-control" name="productDescription" id="productDescription" ng-model="request.productDescription" ng-disabled="loadingData" rows="3" required></textarea>
 										</div>
 									</div>
 									<div class="col-sm-6 col-lg-6">
@@ -139,7 +147,7 @@ $cabecero = new html\Cabecero($opciones);
 									<hr>				
 									<div class="col-xs-12 bloque text-right">
 										<button class="btn btn-danger" ng-click="cancelAll()"><i class="fa fa-remove"></i> &nbsp;Cancelar</button>
-										<button id="save_waste_info" class="btn btn-success" ng-click="" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
+										<button id="save_waste_info" class="btn btn-success" ng-click="addProduct( request )" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
 									</div>
 								</form>
 							</accordion-group>
@@ -181,24 +189,19 @@ $cabecero = new html\Cabecero($opciones);
 										<th colspan="12" class="text-center">Productos existentes</th>
 									</tr>
 									<tr>
-										<th>NIT</th>
-										<th>Cliente</th>
+										<th>Tipo de producto</th>
+										<th>Nombre</th>
 										<th>Fecha de recolección</th>
-										<th>N<sup>o</sup> recolección</th>
-										<th>Residuo</th>
-										<th>Cantidad Recolectada</th>
-										<th>Cantidad Verificada</th>
-										<th>Embalaje</th>
-										<th>Vehículo(Placa)</th>
-										<th>Vehículo(Peso neto)</th>
-										<th>Grados API</th>
-										<th>%Sedimientos</th>
-										<th>%Humedad</th>
+										<th>N<sup>o</sup> referencia</th>
+										<th>Descripción</th>
+										<th>Stock</th>
+										<th>Precio</th>
+										<th>estado</th>
 									</tr>
 								</thead>
 								<tbody>									
 									<tr ng-if="results.length == 0">
-										<td colspan="12">
+										<td colspan="8">
 											<div class="alert alert-warning">
 				  								<strong >La busqueda no genera resultados</strong>
 											</div>

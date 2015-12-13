@@ -126,6 +126,38 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
 	}
 
+	$scope.addProduct = function( request ){
+
+		console.log(request);
+		var post = 	{};
+			post.a = 'create_product';
+			post.from = 'admin-products';
+			post.data = request;
+
+		$http.post("server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+                
+                console.log(data);
+                $scope.loadingData = false;
+
+                switch( data['status'] ) {
+                	case ConstantsService.responseStatus.LOADED:
+		            	var jsonObject = angular.fromJson(data);
+			            break;
+                }
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+
+
+	}
+
+	$scope.viewSize = function( data ){
+		console.log(data);
+	}
+
 	$scope.switchPanelSection = function( sectionToSelect ) {
 
 		switch( sectionToSelect ) {

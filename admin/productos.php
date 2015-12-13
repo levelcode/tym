@@ -76,8 +76,9 @@ $cabecero = new html\Cabecero($opciones);
 											<label for="productimage">Imagen</label>
 											<br>
 											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="request.picFile" class="thumb"> 
-											<input type="file" name="productimage" ngf-select ng-model="request.picFile" class="form-control" ng-change="viewSize(request.picFile)" ngf-resize="{width: 250, height: 250, centerCrop: true}" name="file" accept="image/*" ngf-min-height="250" ngf-max-size="2MB" required>
+											<input type="file" name="productimage" ngf-select ng-model="request.picFile" class="form-control" ng-change="viewSize(request.picFile)" ngf-resize="{width: 250, height: 250, centerCrop: true}" accept="image/*" ngf-min-height="250" ngf-max-size="1MB" required>
 											<span class="help-text">Las dimensiones de la imagen deben de ser 250px x 250px</span>
+											<!-- {{AddProductForm.productimage.$ngfValidations}} -->
 										</div>
 							    	</div>
 									<div class="col-sm-6 col-lg-6">
@@ -90,6 +91,13 @@ $cabecero = new html\Cabecero($opciones);
 										<div class="form-group">
 											<label for="productReference">Referencia</label>
 											<input type="text" name="productReference" ng-disabled="loadingData" ng-model="request.productReference" id="productReference" class="form-control" required>
+										</div>
+									</div>
+									<div class="col-sm-6 col-lg-6" ng-if="typeOfProductType.id == 2">
+										<div class="form-group">
+											<label for="productReference">Detalle de la llanta</label>
+											<input type="text" name="productReference" ng-disabled="loadingData" ng-model="request.tireDetail" id="productReference" class="form-control" required>
+											<span class="help-block">(ancho-perfil-rin)</span>
 										</div>
 									</div>
 									<div class="col-sm-6 col-lg-6">

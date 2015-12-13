@@ -5,7 +5,8 @@
 adminTymApp.factory( 'ConstantsService', function(){ // no inject $scope dependency,
 
     var responseStatusGettingData = {
-        LOADED: 'LOADED'
+        LOADED: 'LOADED',
+        INSERTED: 'INSERTED'
     }
 
     var constantService = {

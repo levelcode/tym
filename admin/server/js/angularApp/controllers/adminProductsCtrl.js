@@ -130,10 +130,26 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
 		console.log(request);
 		var post = 	{};
-			post.a = 'list_varios';
+			post.a = 'create_product';
 			post.from = 'admin-products';
-			post.action = "get_models_by_brand";
-			post.brandId = selectedVehicleBrand.id;
+			post.data = request;
+
+		$http.post("server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+                
+                console.log(data);
+                $scope.loadingData = false;
+
+                switch( data['status'] ) {
+                	case ConstantsService.responseStatus.LOADED:
+		            	var jsonObject = angular.fromJson(data);
+			            break;
+                }
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
 
 
 	}

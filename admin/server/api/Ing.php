@@ -37,34 +37,7 @@ function init_session($data){
     if($nombre == 'password' || $nombre == 'confirmacion') continue;
     $_SESSION[$nombre] = $valor;
   }
-  /*$_SESSION["perfil"] = $data["perfil"];
 
-  if(isset($data["documento"])){
-    $_SESSION["documento"] = $data["documento"];
-  }
-
-  if(isset($data["fecha_nacimiento"])){
-    $_SESSION["fecha_nacimiento"] = $data["fecha_nacimiento"];
-  }
-  if(isset($data["cargo"])){
-    $_SESSION["cargo"] = $data["cargo"];
-  }
-  $_SESSION["nickname"] = $data["nombre"];
-  //FOTO FILE
-  if($data["foto_file"] == "" or $data["foto_file"] == null){
-    $_SESSION["foto_file"] = "NA";
-  } else {
-    $_SESSION["foto_file"] = $data["foto_file"];
-  }
-  //FIRMA
-  if($data["firma_file"] == "" or $data["firma_file"] == null){
-    $_SESSION["firma_file"] = "NA";
-  } else {
-    $_SESSION["firma_file"] = $data["firma_file"];
-  }
-  $_SESSION["celular"] = $data["celular"];
-  $_SESSION["iniciales"] = $data["iniciales"];
-  $_SESSION["firma_file"] = $data["firma_file"];*/
 }
 
 
@@ -228,6 +201,70 @@ function list_varios( $data ){
 function get_all_product_types() {
   $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type ORDER BY type ASC";
   return Core\query($sql, array());
+}
+
+function create_product( $post ) {
+
+  $result = new \stdClass();
+
+  switch( $post['data']['productType']['id'] ) {
+    case 1:
+    break;
+    case 2://tires
+      $insert_ids = insert_product_type_tire( $post['data'] );
+      $result->status = 'INSERTED';
+      $result->data = $insert_ids;
+    break;
+    case 3:
+    break;
+    case 4:
+    break;
+    case 5:
+    break;
+
+  }
+
+  return json_encode($result);
+
+}
+
+function insert_product_type_tire( $product_info ){
+  
+  $product_to_save['table'] = "tire";
+  $product_to_save['column_id'] = "id";
+
+  $product_to_save['name'] = $product_info['productName'];
+  $product_to_save['tire'] = $product_info['tireDetail'];
+  $product_to_save['referencie'] = $product_info['productReference'];
+  $product_to_save['description'] = $product_info['productDescription'];
+  $product_to_save['stock'] = $product_info['productStock'];
+  $product_to_save['price_unit'] = $product_info['productPrice'];
+  $product_to_save['img_base'] = $product_info['picFile']['$ngfDataUrl'];
+
+  $insert_id = Core\create($product_to_save, false, false);
+
+  //associate_vehicle( $product_info['model'] )
+
+  return $insert_id;  
+}
+
+function associate_vehicle( $vehicle_data, $inserted_tire_id ){
+  //check if exist a equal
+
+  $association_tire_to_save['table'] = 'vehicle_model_has_tym_tire';
+  $association_tire_to_save['column_id'] = "id";
+
+  $association_tire_to_save['tym_vehicle_model_id'] = $vehicle_data['id'];
+  $association_tire_to_save['tym_vehicle_model_tym_vehicle_id'] = $vehicle_data['tym_vehicle_id'];
+  $association_tire_to_save['tym_tire_id'] = $inserted_tire_id;
+
+  $insert_id = Core\create($association_tire_to_save, false, false);
+
+  if( isset($insert_id) && is_numeric($insert_id) )
+    return false;
+
+  return true;
+
 }
 
   function read_products() {

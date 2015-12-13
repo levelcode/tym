@@ -34,6 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       case 'list_varios':
       echo Ing\list_varios($_POST);
       break;
+      //create products
+      case 'create_product':
+      echo Ing\create_product($_POST);
+      break;
       default :
       return json_encode($salida["error"]= "ERR-00");
       break;

@@ -1,0 +1,1271 @@
+ID,MARCA,MODELO,AÑO
+1,alfa romeo,159,2005-2011
+2,alfa romeo,giulietta,2010-2015
+3,alfa romeo,mito,2008-2012
+4,ford,ecosport,2007
+5,ford,explorer,2007
+6,ford,f-150,2003
+,alfa romeo,giulietta,2010-2015
+7,ford,f-150,2007
+,alfa romeo,mito,2008-2012
+8,ford,fiesta hatchback,2011
+9,ford,ranger,2010
+10,audi,a1,2010-2016
+11,audi,a3,1996-2016
+12,audi,a4,2001-2010
+13,audi,a4 2.0,2010-2016
+14,audi,a4 3.0,2010-2016
+15,audi,a5,2007-2016
+,audi,a1,2010-2016
+16,audi,a6,1995-2016
+,audi,a3,1996-2016
+17,audi,a7,2011-2015
+,audi,a4,2001-2010
+18,audi,a8,1994-2016
+,audi,a4 2.0,2010-2016
+19,audi,q3,2011-2016
+,audi,a4 3.0,2010-2016
+20,audi,q5,2007-2016
+,audi,a5,2007-2016
+,audi,a6,1995-2016
+21,audi,q5,2011-2015
+,audi,a7,2011-2015
+,audi,a8,1994-2016
+,audi,q3,2011-2016
+22,audi,q7,2005-2016
+23,audi,q7,2008-2015
+,audi,q5,2007-2016
+24,audi,s3,1998-2016
+,audi,q7,2005-2016
+25,audi,s4,2000-2016
+26,audi,s5,2005-2012
+27,audi,s6,1994-2015
+,audi,s3,1998-2016
+28,bmw,118i,2004-2016
+,audi,s4,2000-2016
+29,bmw,120i,2004-2016
+30,bmw,125i,2004-2016
+31,bmw,130i,2004-2016
+,audi,s6,1994-2015
+,bmw,118i,2004-2016
+32,bmw,135i,2004-2016
+,bmw,120i,2004-2016
+33,bmw,320i,2004-2016
+,bmw,125i,2004-2016
+34,bmw,325i,1977-2016
+,bmw,130i,2004-2016
+35,bmw,328i,1977-2016
+36,bmw,330i,1977-2016
+37,bmw,335i,1977-2016
+,bmw,320i,2004-2016
+38,bmw,428i,2013-2016
+,bmw,325i,1977-2016
+39,bmw,525i,2013-2016
+,bmw,328i,1977-2016
+40,bmw,528i,2013-2016
+,bmw,330i,1977-2016
+41,bmw,530i,2013-2016
+,bmw,335i,1977-2016
+42,bmw,540i,2013-2016
+,bmw,428i,2013-2016
+43,bmw,545i,2013-2016
+,bmw,525i,2013-2016
+44,bmw,550i,2013-2016
+,bmw,528i,2013-2016
+45,bmw,645i,2009-2016
+,bmw,530i,2013-2016
+46,bmw,740i,2015-2016
+,bmw,540i,2013-2016
+47,bmw,745li,2015-2016
+,bmw,545i,2013-2016
+48,bmw,750i,2015-2016
+,bmw,550i,2013-2016
+49,bmw,760li,2015-2016
+,bmw,645i,2009-2016
+50,bmw,active hibrid 3,2012-2015
+,bmw,740i,2015-2016
+51,bmw,i3,2012-2015
+,bmw,745li,2015-2016
+52,bmw,i8,2013-2015
+,bmw,750i,2015-2016
+53,bmw,m3,2008-2016
+,bmw,760li,2015-2016
+54,bmw,m4,2008-2016
+,bmw,active hibrid 3,2012-2015
+55,bmw,m6,2008-2016
+,bmw,i3,2012-2015
+56,bmw,x1,2001-2016
+,bmw,i8,2013-2015
+,bmw,m3,2008-2016
+,bmw,m4,2008-2016
+57,bmw,x1,2013-2016
+,bmw,m6,2008-2016
+,bmw,x1,2001-2016
+58,bmw,x3,2001-2016
+59,bmw,x3,2013-2016
+,bmw,x3,2001-2016
+60,bmw,x4,2001-2016
+61,bmw,x5,2001-2016
+62,bmw,x6,2001-2016
+,bmw,x4,2001-2016
+63,bmw,z4,2003-2016
+,bmw,x5,2001-2016
+64,brilliance,h220,2012-2016
+,bmw,x6,2001-2016
+65,brilliance,h530,2012-2016
+,bmw,z4,2003-2016
+66,brilliance,v5,2012-2016
+,brilliance,h220,2012-2016
+67,byd,f0,2006-2012
+,brilliance,h530,2012-2016
+68,byd,f3,2006-2012
+69,byd,new f3,2006-2012
+,brilliance,v5,2012-2016
+70,byd,qin,2006-2012
+,byd,f0,2006-2012
+71,byd,s6,2006-2012
+,byd,f3,2006-2012
+,byd,new f3,2006-2012
+,byd,qin,2006-2012
+72,cadillac,srx,2012-2015
+,byd,s6,2006-2012
+73,chana,benni,2012-2015
+74,chana,star cargo,2012-2015
+75,chana,star van,2012-2015
+,chana,benni,2012-2015
+76,changan,cs 35 luxury,2014-2016
+,chana,star cargo,2012-2015
+77,changan,cx 20,2014-2016
+,chana,star van,2012-2015
+78,changan,eulove,2014-2016
+,changan,cs 35 luxury,2014-2016
+79,chery,fulwin,2011-2016
+,changan,cx 20,2014-2016
+80,chery,grand tiggo,2011-2016
+,changan,eulove,2014-2016
+81,chery,qq,2011-2016
+82,chery,qq 311,2011-2016
+,chery,fulwin,2011-2016
+83,chery,tiggo,2011-2016
+,chery,grand tiggo,2011-2016
+84,chery,tiggo 2.0,2011-2016
+,chery,qq,2011-2016
+,chery,qq 311,2011-2016
+,chery,tiggo,2011-2016
+85,chery,van cargo,2011-2016
+,chery,tiggo 2.0,2011-2016
+86,chery,vanpass,2011-2016
+87,chery,xcross,2011-2016
+88,chery,y380 cargo,2011-2016
+,chery,vanpass,2011-2016
+89,chery,yoya,2011-2016
+,chery,xcross,2011-2016
+90,chevrolet,alto,1988-2016
+,chery,y380 cargo,2011-2016
+91,chevrolet,astra,1990-2008
+,chery,yoya,2011-2016
+92,chevrolet,astra,2009-2016
+,chevrolet,alto,1988-2016
+93,chevrolet,aveo,2013-2016
+,chevrolet,astra,1990-2008
+94,chevrolet,aveo,2003-2012
+,chevrolet,astra,2009-2016
+95,chevrolet,blazer,1983-1998
+96,chevrolet,camaro ss,2012-2016
+,chevrolet,aveo,2013-2016
+97,chevrolet,camaro zl1,2012-2016
+,chevrolet,aveo,2003-2012
+98,chevrolet,camaro zl2,2013-2016
+,chevrolet,blazer,1983-1998
+,chevrolet,camaro ss,2012-2016
+,chevrolet,camaro zl1,2012-2016
+99,chevrolet,captiva,2007-2010
+,chevrolet,camaro zl2,2013-2016
+100,chevrolet,captiva sport,2006-2015
+101,chevrolet,chevy,2007-2009
+102,chevrolet,chevy taxi,2010-2016
+103,chevrolet,cobalt,2004-2016
+104,chevrolet,corsa,2000-2016
+,chevrolet,chevy,2007-2009
+,chevrolet,chevy taxi,2010-2016
+105,chevrolet,cruze,2015
+,chevrolet,cobalt,2004-2016
+106,chevrolet,cruze,2013-2016
+,chevrolet,corsa,2000-2016
+107,chevrolet,dmax,2008
+108,chevrolet,dmax,2012
+,chevrolet,cruze,2013-2016
+109,chevrolet,dmax,2003-2005
+110,chevrolet,dmax,2004-2006
+111,chevrolet,dmax,2007-2008
+112,chevrolet,dmax,2007-2016
+113,chevrolet,dmax,2012-2014
+114,chevrolet,dmax,2012-2016
+115,chevrolet,epica,2006-2012
+,chevrolet,dmax,2007-2016
+116,chevrolet,gran vitara,1998-2004
+117,chevrolet,hhr,2006-2010
+118,chevrolet,luv,1990-2005
+119,chevrolet,n300 cargo,2010-2016
+120,chevrolet,n300 pasajeros,2010-2016
+,chevrolet,dmax,2007-2008
+121,chevrolet,optra,2004-2007
+122,chevrolet,orlando,2012-2015
+,chevrolet,epica,2006-2012
+123,chevrolet,rodeo,1991-2003
+124,chevrolet,sail,2012-2016
+125,chevrolet,sail sedan,2013-2016
+126,chevrolet,samurai,1987-2012
+127,chevrolet,sonic,2011-2016
+,chevrolet,hhr,2006-2010
+128,chevrolet,spark,2005-2012
+129,chevrolet,spark gt,2013-2016
+,chevrolet,luv,1990-2005
+130,chevrolet,spark life,2013-2016
+,chevrolet,n300 cargo,2010-2016
+,chevrolet,n300 pasajeros,2010-2016
+,chevrolet,optra,2004-2007
+131,chevrolet,sprint,1995-2005
+,chevrolet,rodeo,1991-2003
+,chevrolet,sail,2012-2016
+132,chevrolet,swift,1995-2006
+133,chevrolet,tahoe,1995-2016
+134,chevrolet,tracker,1998-2016
+,chevrolet,sonic,2011-2016
+,chevrolet,spark,2005-2012
+,chevrolet,spark gt,2013-2016
+135,chevrolet,tracker,2014-2016
+,chevrolet,spark life,2013-2016
+136,chevrolet,tracker ls,2015-2016
+,chevrolet,sprint,1995-2005
+,chevrolet,swift,1995-2006
+137,chevrolet,trailbalzer,2001-2012
+,chevrolet,tahoe,1995-2016
+138,chevrolet,traverse,2008-2015
+139,chevrolet,trooper,1996-2002
+140,chevrolet,vitara,1999-2015
+141,chevrolet,vivant,1998-2010
+142,chevrolet,wagon,1998-2002
+143,chevrolet,zafira,2003-2009
+144,chevrolet,aveo,2004
+145,chevrolet,aveo,2009
+146,chevrolet,aveo hatchback,2004
+147,chevrolet,captiva,2007
+148,chrysler,gran caravan,1991-2001
+,chevrolet,trooper,1996-2002
+149,chrysler,neon,1994-2005
+150,chrysler,pacifica,2004-2008
+,chevrolet,vivant,1998-2010
+151,chrysler,pt cruiser,2000-2010
+,chevrolet,wagon,1998-2002
+152,chrysler,town & country,2001-2007
+153,citroen,berlingo,1996-2015
+154,citroen,c3,2002-2015
+155,citroen,c4-picasso,2013-2015
+156,citroen,c-elysee,2010-2016
+157,citroen,ds3,2010-2015
+158,citroen,ds4,2011-2016
+159,citroen,ds5,2011-2016
+160,citroen,grand c4 picasso,2013-2016
+,chrysler,gran caravan,1991-2001
+161,citroen,jumper pasajeros,2010-2016
+162,citroen,saxo,1996-2004
+163,daewoo,cielo,1994-2002
+,chrysler,neon,1994-2005
+164,daewoo,lanos,2005-2009
+,chrysler,pacifica,2004-2008
+165,daewoo,leganza,2000-2003
+,chrysler,pt cruiser,2000-2010
+166,daewoo,matiz,2000-2012
+,chrysler,town & country,2001-2007
+167,daewoo,nubira,1997-2007
+,citroen,berlingo,1996-2015
+168,daewoo,racer,1994-1997
+,citroen,c3,2002-2015
+169,daewoo,tacuma,2000-2002
+,citroen,c-elysee,2010-2016
+170,daewoo,tico,1991-2001
+171,daihatsu,f20,1977-1984
+172,daihatsu,rocky,1987-1992
+173,daihatsu,sirion,1998-2008
+174,daihatsu,terios,1997-2005
+,citroen,ds3,2010-2015
+,citroen,ds4,2011-2016
+175,daihatsu,terios okii,2006-2014
+,citroen,ds5,2011-2016
+,citroen,grand c4 picasso,2013-2016
+176,dfsk,van cargo,2007-2016
+,citroen,saxo,1996-2004
+,daewoo,cielo,1994-2002
+,daewoo,lanos,2005-2009
+,daewoo,leganza,2000-2003
+,daewoo,matiz,2000-2012
+,daewoo,nubira,1997-2007
+,daewoo,racer,1994-1997
+,daewoo,tacuma,2000-2002
+,daewoo,tico,1991-2001
+177,dfsk,van pasajeros,2007-2016
+178,dodge,ram 1500,2006-2009
+,daihatsu,sirion,1998-2008
+,daihatsu,terios,1997-2005
+,daihatsu,terios okii,2006-2014
+,dfsk,van cargo,2007-2016
+,dfsk,van pasajeros,2007-2016
+179,dodge,chalenger srt8,2008-2016
+180,dodge,durango,2004-2016
+181,dodge,journey,2009-2012
+182,dodge,journey,2009-2016
+183,dodge,ram 1500,2002-2012
+,dodge,journey,2009-2016
+184,dodge,ram 2500,2008-2015
+185,fiat,500,2002-2016
+186,fiat,fiorino carga,1996-2011
+187,fiat,idea adventure,2006-2016
+188,fiat,palio,1990-2009
+189,fiat,palio adventure,2010-2016
+190,fiat,palio atractive,2010-2016
+191,fiat,palio taxi,2010-2016
+192,fiat,siena taxi,1999-2012
+193,fiat,strada,2000-2012
+194,fiat,uno atractive,2010-2016
+195,fiat,uno taxi,2010-2016
+196,fiat,uno way,2010-2016
+197,ford,bronco,1975-1996
+198,ford,bronco 2,1983-1990
+199,ford,ecosport,2004-2016
+200,ford,ecosport,2006-2010
+201,ford,edge,2006-2016
+202,ford,escape,2000-2016
+203,ford,escape kuga,2013-2015
+204,ford,expedition,1997-2002
+205,ford,expedition,2003-2016
+,ford,bronco 2,1983-1990
+206,ford,explorer,2013-2015
+,ford,sport trac,2002-2010
+,ford,ecosport,2004-2016
+207,ford,explorer,1990-2009
+,ford,edge,2006-2016
+,ford,escape,2000-2016
+208,ford,explorer limited,2012-2016
+209,ford,f-150,2003
+210,ford,f-150,1987-2016
+211,ford,f-150,2009-2012
+212,ford,fiesta,1990-2016
+,ford,explorer,1990-2009
+213,ford,fiesta hatchback,2013-2015
+,ford,explorer limited,2012-2016
+214,ford,focus,1998-2016
+215,ford,focus hatchback,2012-2013
+216,ford,focus hatchback classical,2010-2015
+217,ford,fusion,2002-2004
+218,ford,fusion,2005-2011
+219,ford,fusion,2012-2016
+,ford,sport trac,2002-2010
+,ford,fiesta,1990-2016
+220,ford,laser,1990-2007
+221,ford,mustang,1964-2016
+222,ford,ranger,1994-2004
+,ford,focus,1998-2016
+223,ford,ranger,2005-2016
+224,ford,sport trac,2002-2010
+225,ford,triton,2009-2014
+226,ford,ecosport,2013-2015
+227,ford,ecosport,2013-2016
+,ford,fusion,2002-2004
+228,ford,ecosport,2014-2015
+229,foton,tunland,2010-2016
+230,geely,ck taxi,2010-2016
+231,geely,ec7,2010-2016
+232,geely,lc,2010-2016
+,ford,laser,1990-2007
+233,geely,mk taxi,2010-2016
+,ford,mustang,1964-2016
+234,gonow,cargo,2013-2015
+,ford,ranger,1994-2004
+235,gonow,pass,2013-2015
+,ford,ranger,2005-2016
+236,great wall,h3,2010-2012
+,ford,sport trac,2002-2010
+237,great wall,h5,2010-2012
+238,great wall,hover,2005-2016
+239,great wall,wingle 5,2008-2016
+240,hafei,luzun,2006-2016
+241,hafei,minyi,2006-2016
+242,hafei,ruiyi,2006-2016
+243,hafei,zhongyi,2006-2016
+244,haima,1,2011-2016
+245,haima,2,2011-2016
+246,haima,3,2011-2016
+247,haima,7,2011-2016
+,geely,ck taxi,2010-2016
+248,haima,freema,2011-2016
+,geely,ec7,2010-2016
+249,honda,cr-v,2012-2015
+,geely,lc,2010-2016
+250,honda,accord,1982-1990
+,geely,mk taxi,2010-2016
+251,honda,accord,1993-2003
+252,honda,accord,2003-2015
+,gonow,cargo,2013-2015
+253,honda,civic,1991-2005
+,gonow,pass,2013-2015
+254,honda,civic,2006-2012
+,great wall,h3,2010-2012
+,great wall,h5,2010-2012
+,great wall,hover,2005-2016
+255,honda,cr-v,2012
+,great wall,wingle 5,2008-2016
+256,honda,cr-v,2004-2007
+,hafei,luzun,2006-2016
+257,honda,cr-v,2005-2010
+,hafei,minyi,2006-2016
+258,honda,cr-v city,2012-2016
+,hafei,ruiyi,2006-2016
+259,honda,cr-v ex,2012-2016
+,hafei,zhongyi,2006-2016
+260,honda,cr-v lx,2012-2016
+,haima,1,2011-2016
+261,honda,fit,2001-2016
+,haima,2,2011-2016
+262,honda,odyssey,2011
+,haima,3,2011-2016
+,haima,7,2011-2016
+263,honda,odyssey,1996-2004
+264,honda,odyssey,2005-2010
+265,honda,odyssey,2012-2016
+,haima,freema,2011-2016
+266,honda,pilot,2002-2008
+,honda,accord,1982-1990
+267,honda,pilot,2009-2016
+,honda,accord,1993-2003
+268,honda,cr-v city,2011
+,honda,accord,2003-2015
+269,hummer,h2,2002-2010
+,honda,civic,1991-2005
+270,hummer,h3,2005-2010
+,honda,civic,2006-2012
+271,hyundai,santafe,2013
+272,hyundai,tucson,2004-2006
+273,hyundai,tucson,2004-2006
+,honda,cr-v,2004-2007
+274,hyundai,tucson,2004-2009
+275,hyundai,tucson ix35,2010-2013
+276,hyundai,tucson ix35,2010-2014
+,honda,cr-v city,2012-2016
+277,hyundai,tucson ix35,2010-2015
+,honda,cr-v ex,2012-2016
+278,hyundai,accent,1994-1999
+,honda,cr-v lx,2012-2016
+,honda,fit,2001-2016
+279,hyundai,accent,2000-2016
+,honda,odyssey,2011
+,hyundai,genesis,2008-2015
+280,hyundai,atos,1997-2001
+281,hyundai,atos,2001-2008
+,honda,odyssey,1996-2004
+282,hyundai,azera,2013-2014
+,honda,odyssey,2005-2010
+283,hyundai,city taxi,2013-2016
+,honda,odyssey,2012-2016
+284,hyundai,elantra,1990-2005
+,honda,pilot,2002-2008
+285,hyundai,elantra,2006-2016
+,honda,pilot,2009-2016
+286,hyundai,eon,2015-2016
+287,hyundai,excel,1985-1998
+288,hyundai,genesis,2008-2015
+289,hyundai,getz,2002-2008
+290,hyundai,grand city taxi,2013-2016
+,hummer,h3,2005-2010
+291,hyundai,grand pony taxi,2013-2016
+292,hyundai,i10,2008-2015
+293,hyundai,i10 sedan,2014-2016
+294,hyundai,i25 sedan,2014-2016
+295,hyundai,i30,2008-2016
+296,hyundai,i35,2010-2016
+297,hyundai,i40,2011-2016
+298,hyundai,santafe,2001-2016
+299,hyundai,santafe,2006-2007
+300,hyundai,santafe,2008-2012
+,hyundai,accent,1994-1999
+,hyundai,super pony taxi,2013-2016
+,hyundai,accent,2000-2016
+301,hyundai,santafe,2010-2013
+,hyundai,atos,1997-2001
+302,hyundai,santafe,2010-2014
+,hyundai,atos,2001-2008
+,hyundai,azera,2013-2014
+,hyundai,city taxi,2013-2016
+,hyundai,elantra,1990-2005
+,hyundai,elantra,2006-2016
+303,hyundai,santafe,2013-2015
+,hyundai,eon,2015-2016
+,hyundai,excel,1985-1998
+304,hyundai,santafe,2006
+305,hyundai,santafe,2009
+306,hyundai,santafe ix45,2013
+,hyundai,genesis,2008-2015
+307,hyundai,sonata,1985-2004
+,hyundai,getz,2002-2008
+308,hyundai,sonata,2005-2016
+,hyundai,grand city taxi,2013-2016
+309,hyundai,super pony taxi,2013-2016
+310,hyundai,terracan,2001-2006
+,hyundai,grand pony taxi,2013-2016
+311,hyundai,tucson,2004-2010
+,hyundai,i10,2008-2015
+312,hyundai,tucson,2011-2015
+,hyundai,i10 sedan,2014-2016
+313,hyundai,tucson,2004-2006
+,hyundai,i25 sedan,2014-2016
+314,hyundai,tucson,2004
+315,hyundai,tucson,2011
+316,hyundai,tucson,2004-2006
+317,hyundai,tucson ix35,2011-2015
+,hyundai,i30,2008-2016
+318,hyundai,tucson ix35,2011-2016
+,hyundai,i35,2010-2016
+319,hyundai,tucson ix35,2010-2013
+,hyundai,i40,2011-2016
+320,hyundai,veloster,2011-2014
+321,hyundai,veracruz,2006-2012
+322,hyundai,accent,2006
+323,hyundai,ix35,2011
+324,hyundai,verna,2006
+325,infiniti,fx 35,2003-2014
+326,infiniti,fx 45,2003-2012
+327,infiniti,jx 35,2013-2014
+328,jac,b cross,2014-2016
+329,jac,j2,2011-2014
+330,jac,j3,2011-2016
+,hyundai,sonata,1985-2004
+331,jac,j5,2010-2014
+,hyundai,sonata,2005-2016
+332,jac,j6,2012-2016
+,hyundai,super pony taxi,2013-2016
+,hyundai,terracan,2001-2006
+,hyundai,tucson,2004-2010
+333,jac,potenza,2012-2016
+334,jac,rein,2012-2016
+335,jac,smile,2012-2016
+336,jac,star cross,2012-2016
+337,jac,star taxi,2012-2016
+338,jac,street taxi,2012-2016
+339,jac,veloce,2012-2016
+340,jeep,cherokee,1980-2007
+341,jeep,cherokee,2014-2016
+,hyundai,tucson ix35,2011-2016
+342,jeep,comander,2005-2008
+343,jeep,compass,2007-2016
+344,jeep,grand cherokee,1999-2006
+345,jeep,liberty,2001-2013
+346,jeep,willys,1950-1975
+,hyundai,veloster,2011-2014
+,hyundai,veracruz,2006-2012
+347,jeep,wrangler,1987-2006
+348,jeep,wrangler,2007-2016
+349,jeep,wrangler unlimited,2009-2016
+350,kia,sorento,2003-2006
+351,kia,carens,1999-2006
+352,kia,carens,2007-2016
+353,kia,carens rondo,2006-2016
+354,kia,carnival,1999-2005
+355,kia,carnival,2006-2016
+356,kia,cerato,2004
+357,kia,cerato,2009
+358,kia,cerato,2003-2007
+359,kia,cerato,2008-2016
+360,kia,cerato forte,2009
+361,kia,cerato forte,2011
+362,kia,cerato hatchback,2008-2013
+363,kia,cerato sedan,2008-2013
+,infiniti,fx 35,2003-2014
+,infiniti,fx 45,2003-2012
+,infiniti,jx 35,2013-2014
+364,kia,koup race,2013-2016
+365,kia,mohave,2008-2015
+,jac,b cross,2014-2016
+,jac,j2,2011-2014
+,jac,j3,2011-2016
+366,kia,optima,2000-2005
+,jac,j5,2010-2014
+,jac,j6,2012-2016
+367,kia,optima,2006-2016
+,jac,potenza,2012-2016
+,jac,rein,2012-2016
+,jac,smile,2012-2016
+,jac,star cross,2012-2016
+,jac,star taxi,2012-2016
+368,kia,picanto ion,2004-2016
+,jac,street taxi,2012-2016
+369,kia,rio,2000-2016
+,jac,veloce,2012-2016
+,jeep,cherokee,1980-2007
+,jeep,cherokee,2014-2016
+370,kia,sedona,1998-2006
+,jeep,comander,2005-2008
+,jeep,compass,2007-2016
+,jeep,grand cherokee,1999-2006
+371,kia,sedona,2007-2016
+,jeep,liberty,2001-2013
+372,kia,sephia,1995-1998
+,jeep,wrangler,1987-2006
+373,kia,sorento,2002-2009
+,jeep,wrangler,2007-2016
+374,kia,sorento,2010-2016
+,jeep,wrangler unlimited,2009-2016
+375,kia,sorento,2013-2015
+376,kia,soul,2008-2016
+377,kia,soul,2012-2015
+,kia,carens,1999-2006
+378,kia,sportage,2004
+,kia,carens,2007-2016
+379,kia,sportage,2009
+,kia,carens rondo,2006-2016
+380,kia,sportage,2008-2011
+,kia,carnival,1999-2005
+,kia,carnival,2006-2016
+381,kia,sportage,2010-2014
+382,kia,sportage,1993-2003
+,kia,cerato,2003-2007
+,kia,cerato,2008-2016
+383,kia,sportage,2004-2016
+384,kia,sportage,2007-2009
+385,kia,sportage,2007-2010
+386,kia,sportage,2008-2009
+,kia,koup race,2013-2016
+,kia,mohave,2008-2015
+,kia,optima,2000-2005
+387,kia,sportage,2010-2013
+,kia,optima,2006-2016
+,kia,picanto ion,2004-2016
+388,kia,sedona,2007-2016
+389,kia,sephia,1995-1998
+,kia,sportage,2004-2009
+390,kia,stylus,2010-2016
+,kia,sedona,1998-2006
+,,,
+,,,
+391,kia,sportage fq,2013-2016
+392,kia,sportage revolution,2008-2009
+,kia,sorento,2010-2016
+393,land rover,defender,1991-
+394,land rover,discovery,1991-1998
+395,land rover,discovery,1999-2016
+,kia,soul,2008-2016
+396,land rover,freelander,1998-2006
+397,land rover,freelander 2,2007-2012
+398,land rover,range rover,1995-2016
+399,land rover,range rover evoque,2011-2016
+400,land rover,range rover sport,2005-2016
+401,land rover,santana,1959-1989
+402,lexus,gx,2009-2016
+403,lexus,lx,2008-2016
+404,lifan,dura truck,2010-2015
+405,lifan,livan pasajeros,2010-2015
+406,lifan,taxi maxi lifan,2010-2015
+,kia,sportage,2004-2016
+407,lifan,x50,2010-2015
+408,lifan,x60,2010-2015
+409,lincoln,navigator,1997-2002
+410,lincoln,navigator,2003-2014
+411,mahindra,pik up,2012-2015
+412,mahindra,scorpio,2011-2016
+413,mahindra,suv 500,2013-2016
+414,mahindra,xylo,2014-2016
+415,mazda,2,2008
+416,mazda,2,2003-2007
+417,mazda,2,2008-2016
+,kia,stylus,2010-2016
+418,mazda,3,2005
+419,mazda,3,2003-2016
+420,mazda,5,2005-2016
+421,mazda,6,2003
+422,mazda,6,2008
+423,mazda,6,2008-2016
+424,mazda,6,2009-2011
+425,mazda,323,1990-2002
+426,mazda,323,2003-2005
+427,mazda,626,1987-1997
+428,mazda,626,1998-2002
+429,mazda,3 axela,2013-2015
+,land rover,discovery,1999-2016
+430,mazda,3 hatchback,2011
+,land rover,freelander,1998-2006
+431,mazda,6 atenza,2014-2016
+432,mazda,allegro,1990-2004
+433,mazda,b 2200,1985-1993
+,land rover,range rover,1995-2016
+434,mazda,b 2200,1994-2006
+435,mazda,b 2600,1985-1993
+436,mazda,b 2600,1994-2006
+,land rover,range rover sport,2005-2016
+437,mazda,bt 50,2006-2016
+,lexus,gx,2009-2016
+438,mazda,bt 50,2004-2006
+,lexus,lx,2008-2016
+439,mazda,bt 50,2012-2015
+,lifan,dura truck,2010-2015
+440,mazda,bt 50,2006-2008
+,lifan,livan pasajeros,2010-2015
+,lifan,taxi maxi lifan,2010-2015
+,lifan,x50,2010-2015
+441,mazda,cx 5,2011-2016
+,lifan,x60,2010-2015
+442,mazda,cx 7,2006-2013
+443,mazda,cx 9,2007-2016
+444,mazda,cx5,2014-2016
+445,mazda,cx7,2008-2012
+446,mazda,demio,1997-2008
+447,mazda,mx 5,1998-2016
+448,mercedes benz,3,1990-2016
+449,mercedes benz,a170,1990-2016
+450,mercedes benz,a180,1990-2016
+451,mercedes benz,a200,1990-2016
+452,mercedes benz,a250,1990-2016
+,mazda,2,2003-2007
+453,mercedes benz,a45 amg,1990-2016
+,mazda,2,2008-2016
+454,mercedes benz,b160,1990-2016
+455,mercedes benz,b180,1990-2016
+456,mercedes benz,b200,1990-2016
+457,mercedes benz,c,1990-2016
+,mazda,3,2003-2016
+458,mercedes benz,c63 amg,1990-2016
+,mazda,5,2005-2016
+459,mercedes benz,cla,1990-2016
+460,mercedes benz,cls,1990-2016
+461,mercedes benz,cls 63 amg,1990-2016
+462,mercedes benz,e todos,1990-2016
+,mitsubishi,asx,2010-2012
+,mazda,6,2008-2016
+463,mercedes benz,e200,1990-2016
+464,mercedes benz,e250,1990-2016
+465,mercedes benz,gl,1990-2016
+,mazda,323,1990-2002
+466,mercedes benz,gla 200,1990-2016
+467,mercedes benz,gla 45,1990-2016
+,mazda,323,2003-2005
+468,mercedes benz,glk,1990-2016
+,mazda,626,1987-1997
+469,mercedes benz,ml350,1990-2016
+,mazda,626,1998-2002
+470,mercedes benz,s,1990-2016
+471,mercedes benz,s < 1992,1990-2016
+472,mercedes benz,s 500,1990-2016
+473,mercedes benz,slk 200,1990-2016
+474,mg,mg 3,2012-2016
+,mazda,allegro,1990-2004
+475,mg,mg 350,2012-2016
+,mazda,b 2200,1985-1993
+476,mg,mg 550,2012-2016
+,mazda,b 2200,1994-2006
+,mazda,b 2600,1985-1993
+477,mg,mg 6,2012-2016
+,mazda,b 2600,1994-2006
+478,mg,mg 750,2012-2016
+479,mini,mini,2001-2016
+480,mitsubishi,asx,2010-2012
+481,mitsubishi,l200,1996-2012
+,mazda,bt 50,2006-2016
+482,mitsubishi,lancer,2007
+483,mitsubishi,lancer,1991-2006
+484,mitsubishi,lancer,2008-2016
+485,mitsubishi,mirage,1991
+486,mitsubishi,mirage,1992
+487,mitsubishi,mirage,1993-2003
+488,mitsubishi,montero (todos),1990-2016
+,mazda,cx 5,2011-2016
+489,mitsubishi,montero pajero,2011-2015
+,mazda,cx 7,2006-2013
+490,mitsubishi,montero pajero,1992-1998
+,mazda,cx 9,2007-2016
+491,mitsubishi,montero pajero,2000-2012
+492,mitsubishi,nativa,1998-2016
+493,mitsubishi,outlander,2003-2014
+,mazda,demio,1997-2008
+494,mitsubishi,sportero,2006-2015
+,mazda,mx 5,1998-2016
+495,nissan,patrol,2005-2007
+496,nissan,370z,2009-2012
+,mercedes benz,3,1990-2016
+497,nissan,almera,1994-1999
+,mercedes benz,a170,1990-2016
+498,nissan,almera,2000-2006
+,mercedes benz,a180,1990-2016
+499,nissan,frontier,2000-2016
+,mercedes benz,a200,1990-2016
+500,nissan,frontier np 300,2014-2016
+,mercedes benz,a250,1990-2016
+501,nissan,juke,2010-2016
+,mercedes benz,a45 amg,1990-2016
+,mercedes benz,b160,1990-2016
+,mercedes benz,b180,1990-2016
+,mercedes benz,b200,1990-2016
+502,nissan,juke,2011-2015
+503,nissan,march,1989-2016
+,mercedes benz,c63 amg,1990-2016
+,mercedes benz,cla,1990-2016
+,mercedes benz,cls,1990-2016
+504,nissan,march,2010-2015
+,mercedes benz,cls 63 amg,1990-2016
+505,nissan,murano,2002-2016
+,mercedes benz,e todos,1990-2016
+506,nissan,navarra,2005-2012
+507,nissan,navarra,2007-2015
+508,nissan,navarra,2014-2016
+,mercedes benz,e200,1990-2016
+509,nissan,new pathfinder,2006-2016
+510,nissan,note,2005-2016
+511,nissan,pathfinder,1986-2004
+,mercedes benz,gl,1990-2016
+,mercedes benz,gla 200,1990-2016
+512,nissan,pathfinder,2005-2011
+513,nissan,patrol,1997-2012
+514,nissan,patrol,1998-2005
+,mercedes benz,glk,1990-2016
+515,nissan,patrol king,2013-2016
+,mercedes benz,ml350,1990-2016
+516,nissan,qashqai,2007-2016
+517,nissan,sentra,1994-2000
+,mercedes benz,s 500,1990-2016
+,mercedes benz,slk 200,1990-2016
+,mg,mg 3,2012-2016
+,mg,mg 350,2012-2016
+,mg,mg 550,2012-2016
+518,nissan,sentra,2001-2012
+,mg,mg 6,2012-2016
+519,nissan,sentra,2013-2016
+,mg,mg 750,2012-2016
+520,nissan,tiida,2004-2006
+,mini,mini,2001-2016
+521,nissan,tiida,2007-2016
+,mitsubishi,asx,2010-2012
+522,nissan,tiida,2011-2015
+,mitsubishi,l200,1996-2012
+523,nissan,urban nv 350,2010-2016
+,mitsubishi,lancer,2007
+,mitsubishi,lancer,1991-2006
+,mitsubishi,lancer,2008-2016
+524,nissan,versa,2008-2011
+525,nissan,x-trail,2014-2016
+,mitsubishi,mirage,1991
+526,nissan,x-trail,2001-2016
+,mitsubishi,mirage,1992
+527,nissan,navarra,2014-2015
+,mitsubishi,mirage,1993-2003
+528,peugeot,205,1988-1996
+,mitsubishi,montero (todos),1990-2016
+529,peugeot,206,1998-2012
+530,peugeot,207,2009-2016
+531,peugeot,208,2013-2016
+532,peugeot,301,2012-2016
+533,peugeot,306,1994-2003
+534,peugeot,307,2001-2009
+535,peugeot,308,2013-2016
+,mitsubishi,nativa,1998-2016
+536,peugeot,405,1990-1996
+,mitsubishi,outlander,2003-2014
+537,peugeot,508,2010-2015
+538,peugeot,2008,2013-2016
+539,peugeot,3008,2013-2016
+540,porsche,911 sc,1971-2016
+,nissan,370z,2009-2012
+,nissan,almera,1994-1999
+,nissan,almera,2000-2006
+541,porsche,boxster,1996-2016
+542,porsche,cayenne,2002-2014
+543,porsche,cayman,2005-2014
+,nissan,juke,2010-2016
+544,porsche,macan,2014-2016
+545,renault,clio,1990-2016
+,nissan,march,1989-2016
+546,renault,duster,2010-2016
+547,renault,express taxi,2012-2016
+,nissan,murano,2002-2016
+548,renault,fluence,2010-2016
+549,renault,kangoo,1998-2012
+550,renault,kangoo,2013-2016
+,nissan,new pathfinder,2006-2016
+,nissan,note,2005-2016
+551,renault,koleos,2008-2016
+,nissan,pathfinder,1986-2004
+552,renault,koleos,2008-2010
+,nissan,patrol,1997-2012
+553,renault,logan,2004-2016
+554,renault,megane,1996-2008
+555,renault,megane,2009-2016
+556,renault,sandero,2007-2016
+557,renault,scala,2010-2016
+558,renault,scenic,1998-2008
+,nissan,patrol king,2013-2016
+559,renault,scenic,2009-2016
+,nissan,qashqai,2007-2016
+560,renault,simbol,1999-2016
+,nissan,sentra,1994-2000
+561,renault,stepway,2008-2016
+,nissan,sentra,2001-2012
+562,renault,trafic,2014-2016
+,nissan,sentra,2013-2016
+563,renault,twingo,1993-2016
+,nissan,tiida,2004-2006
+564,saangyong,actyon,2006-2010
+,nissan,tiida,2007-2016
+565,saangyong,actyon,2006-2012
+566,saangyong,actyon sports,2005-2011
+567,saangyong,korando,2001-2016
+,nissan,versa,2008-2011
+568,saangyong,kyron,2005-2016
+569,saangyong,kyron,2006-2009
+570,saangyong,musso,2001-2010
+,nissan,x-trail,2001-2016
+571,saangyong,rexton w,2006-2016
+572,saangyong,rodius,2004-2012
+573,saangyong,stavic,2004-2015
+,peugeot,205,1988-1996
+574,saangyong,tivoli,2014-2016
+,peugeot,206,1998-2012
+575,seat,altea,2004-2016
+,peugeot,207,2009-2016
+576,seat,ibiza,1984-1992
+,peugeot,208,2013-2016
+577,seat,ibiza,1993-2002
+,peugeot,301,2012-2016
+578,seat,ibiza,2003-2016
+,peugeot,306,1994-2003
+579,seat,leon style,1999-2004
+580,seat,leon style,2005-2016
+581,seat,toledo,1991-1992
+582,seat,toledo,1993-2004
+,peugeot,308,2013-2016
+583,seat,toledo,2005-2016
+,peugeot,405,1990-1996
+584,skoda,favia,1999-2016
+585,skoda,felicia,1994-2001
+586,skoda,octavia,1996-2003
+,peugeot,2008,2013-2016
+587,skoda,octavia,2004-2016
+,peugeot,3008,2013-2016
+588,skoda,praktik,2003-2016
+589,skoda,rapid,2012-2016
+590,skoda,roomster,2006-2015
+591,skoda,yeti,2009-2016
+592,ssangyong,actyon,2008-2009
+593,ssangyong,actyon,2006
+594,ssangyong,korando,2012-2015
+595,ssangyong,kyron,2006-2009
+596,subaru,forester,1997-2016
+,porsche,macan,2014-2016
+597,subaru,impreza,1992-2005
+,renault,clio,1990-2016
+,renault,duster,2010-2016
+,renault,express taxi,2012-2016
+598,subaru,impreza,2006-2007
+599,subaru,impreza,2008-2016
+,renault,fluence,2010-2016
+600,subaru,legacy,1989-2016
+,renault,kangoo,1998-2012
+601,subaru,outback,1997-2014
+602,subaru,outback,2015-2016
+603,subaru,tribeca,2005-2014
+,renault,koleos,2008-2016
+604,subaru,wrx,2002-2007
+605,subaru,wrx,2008-2014
+606,subaru,xv,2010-2014
+,renault,logan,2004-2016
+607,suzuki,alto,2002-2016
+608,suzuki,celerio,2015-2016
+,renault,megane,1996-2008
+609,suzuki,ciaz,2012-2016
+,renault,megane,2009-2016
+610,suzuki,dzire,2012-2016
+,renault,sandero,2007-2016
+,renault,scala,2010-2016
+611,suzuki,ertiga,2010-2016
+,renault,scenic,1998-2008
+,renault,scenic,2009-2016
+,renault,simbol,1999-2016
+612,suzuki,gran vitara,1992-2016
+,renault,stepway,2008-2016
+613,suzuki,jimny,1987-2011
+,renault,trafic,2014-2016
+614,suzuki,kizashi,2009-2016
+,renault,twingo,1993-2016
+615,suzuki,lj,1977-1984
+616,suzuki,new jimny,2012-2016
+617,suzuki,s-cross,2012-2016
+618,suzuki,sj,1980-1986
+619,suzuki,swift,1994-2003
+620,suzuki,swift live,2004-2016
+621,suzuki,sx4,2006-2016
+622,toyota,4runner,1997-2016
+623,toyota,corolla,1990-2002
+624,toyota,corolla,2003-2016
+625,toyota,fj,1970-1982
+626,toyota,fj cruiser,2007
+627,toyota,fj cruiser,2007-2016
+628,toyota,fj cruiser,2008-2015
+629,toyota,fj cruiser,2006-2008
+630,toyota,fortuner,2010
+631,toyota,fortuner,2004-2016
+,saangyong,korando,2001-2016
+632,toyota,fortuner,2006-2015
+633,toyota,fortuner,2007-2013
+634,toyota,fortuner,2009-2013
+635,toyota,fortuner,2010
+636,toyota,fortuner,2005-2008
+637,toyota,fortuner,2007-2009
+638,toyota,hilux,1989-2016
+639,toyota,hilux,1998
+640,toyota,hilux vigo,2007
+641,toyota,hilux vigo,2009
+642,toyota,hilux vigo,2012
+643,toyota,hilux vigo,1998-2004
+644,toyota,hilux vigo,2005-2008
+645,toyota,hilux vigo,2009-2013
+646,toyota,hilux vigo,2012-2014
+,saangyong,musso,2001-2010
+647,toyota,hilux vigo,2012-2015
+648,toyota,hilux vigo,2014-2016
+649,toyota,hilux vigo,2009
+650,toyota,hilux vigo,2012
+,saangyong,rexton w,2006-2016
+651,toyota,hilux vigo,2005-2006
+652,toyota,land cruiser,2007
+,seat,altea,2004-2016
+653,toyota,land cruiser,1989-1997
+,seat,ibiza,1993-2002
+,seat,ibiza,2003-2016
+,seat,leon style,1999-2004
+,seat,leon style,2005-2016
+,seat,toledo,1991-1992
+,seat,toledo,1993-2004
+,seat,toledo,2005-2016
+,skoda,favia,1999-2016
+,skoda,felicia,1994-2001
+,skoda,octavia,1996-2003
+,skoda,octavia,2004-2016
+654,toyota,land cruiser,1998-2003
+,skoda,rapid,2012-2016
+,skoda,roomster,2006-2015
+,skoda,yeti,2009-2016
+655,toyota,land cruiser,1998-2016
+656,toyota,land cruiser,2004-2006
+657,toyota,land cruiser,2008-2009
+658,toyota,land cruiser,2012-2015
+,subaru,forester,1997-2016
+,subaru,impreza,1992-2005
+,subaru,impreza,2006-2007
+,subaru,impreza,2008-2016
+,subaru,legacy,1989-2016
+,subaru,outback,1997-2014
+,subaru,outback,2015-2016
+,subaru,tribeca,2005-2014
+,mitsubishi,l200,1996-2012
+,subaru,wrx,2002-2007
+,toyota,hilux,1989-2016
+,volkswagen,amarok,2010-2016
+,subaru,wrx,2008-2014
+,subaru,xv,2010-2014
+,suzuki,alto,2002-2016
+,suzuki,celerio,2015-2016
+,suzuki,ciaz,2012-2016
+,suzuki,dzire,2012-2016
+,suzuki,ertiga,2010-2016
+,mazda,3,2005
+,suzuki,gran vitara,1992-2016
+,hyundai,tucson,2004
+,mazda,6,2003
+,mazda,3,2005
+,mazda,6,2003
+,mazda,6,2003
+,hyundai,accent,2006
+,hyundai,verna,2006
+,suzuki,jimny,1987-2011
+,chevrolet,captiva,2007
+,hyundai,accent,2006
+,hyundai,verna,2006
+,kia,sportage,2009
+,mazda,6,2003
+,chevrolet,captiva,2007
+,hyundai,accent,2006
+,hyundai,verna,2006
+,kia,sportage,2009
+,suzuki,kizashi,2009-2016
+,hyundai,accent,2006
+,hyundai,tucson,2004
+,hyundai,tucson,2004
+,hyundai,verna,2006
+,kia,sportage,2009
+,mazda,6,2003
+,hyundai,accent,2006
+,hyundai,verna,2006
+,kia,sportage,2009
+,mazda,3,2005
+,mazda,6,2003
+,hyundai,accent,2006
+,hyundai,verna,2006
+659,toyota,land cruiser,1992-1997
+,suzuki,new jimny,2012-2016
+,suzuki,s-cross,2012-2016
+,suzuki,sj,1980-1986
+,suzuki,swift,1994-2003
+,suzuki,swift live,2004-2016
+,suzuki,sx4,2006-2016
+,toyota,4runner,1997-2016
+,toyota,corolla,1990-2002
+,hyundai,tucson,2004
+,toyota,corolla,2003-2016
+,toyota,fj,1970-1982
+660,toyota,land cruiser,1992-2003
+,toyota,fj cruiser,2007-2016
+661,toyota,land cruiser,1998-2006
+,kia,sportage,2009
+662,toyota,land cruiser,1998-2003
+,toyota,fortuner,2004-2016
+663,toyota,land cruiser fj 100,2003-2008
+664,toyota,land cruiser fj 100,2000-2012
+665,toyota,land cruiser prado fj 120,2003
+666,toyota,land cruiser prado fj 120,2000-2012
+667,toyota,land cruiser prado fj 120,2003-2009
+668,toyota,land cruiser prado fj 120,2004-2006
+,toyota,hilux,1989-2016
+669,toyota,land cruiser prado fj 150,2010-2015
+670,toyota,land cruiser prado fj 80,1992-1997
+671,toyota,land cruiser prado fj 90,2000-2012
+672,toyota,land cruiser prado fj150,2010-2014
+673,toyota,prado,2008
+,chevrolet,captiva,2007
+,hyundai,tucson,2004
+,kia,sportage,2009
+,chevrolet,aveo,2009
+,kia,sportage,2009
+,volkswagen,jetta,2006
+,toyota,hilux vigo,2005-2008
+674,toyota,prado,2014-2016
+,chevrolet,aveo,2009
+,hyundai,accent,2006
+,hyundai,tucson,2004
+,hyundai,verna,2006
+,mazda,3,2005
+,mazda,6,2003
+675,toyota,prado,1992-1997
+676,toyota,prado,1995-2002
+,mazda,3,2005
+677,toyota,prado,2003-2006
+,mazda,6,2003
+678,toyota,prado,2003-2007
+679,toyota,prado,2003-2008
+680,toyota,prado,2003-2016
+,mazda,6,2003
+,chevrolet,captiva,2007
+,hyundai,accent,2006
+,hyundai,tucson,2004
+,hyundai,verna,2006
+,kia,sportage,2009
+,mazda,3,2005
+,volkswagen,jetta,2006
+681,toyota,prado sumo,2000-.2014
+682,toyota,rav 4,2000-2016
+,toyota,land cruiser,1989-1997
+683,toyota,rav4,2013-2015
+,toyota,land cruiser,1998-2016
+684,toyota,rav4,2005-2008
+685,toyota,rav4,2009-2015
+686,toyota,hilux vigo,2012-2015
+687,toyota,land cruiser 200,2013-2016
+688,toyota,prado,2015-2016
+689,volkswagen,amarok,2010-2016
+690,volkswagen,amarok,2010
+691,volkswagen,amarok,2010-2013
+692,volkswagen,beetle,2000-2016
+693,volkswagen,bora,1998-2016
+694,volkswagen,crafter (pasajeros),2006-2016
+695,volkswagen,crossfox,2010-2016
+696,volkswagen,gol,1990-2014
+,toyota,fortuner,2010
+697,volkswagen,golf,1974-1992
+,toyota,fortuner,2007-2009
+698,volkswagen,golf,1993-2003
+699,volkswagen,golf,2004-2016
+700,volkswagen,jetta,2006
+,toyota,hilux vigo,2005-2008
+,toyota,hilux vigo,2005-2008
+701,volkswagen,jetta,1992-1999
+,toyota,hilux vigo,2005-2006
+702,volkswagen,jetta,2000-2005
+703,volkswagen,jetta,2006-2016
+704,volkswagen,jetta,2012-2015
+705,volkswagen,polo,1990-2000
+706,volkswagen,polo,2001-2016
+707,volkswagen,saveiro,2010-2014
+708,volkswagen,tiguan,2007-2016
+709,volkswagen,tovareg,2003-2014
+710,volkswagen,transporter (pasajeros),2005-2014
+,chevrolet,tracker ls,2015-2016
+,toyota,prado,2003-2016
+711,volkswagen,vento,1984-1998
+712,volkswagen,vento,2010-2016
+,toyota,prado sumo,2000-.2014
+,hyundai,tucson,2004-2006
+,toyota,rav 4,2000-2016
+713,volkswagen,voyage,2010-2016
+714,volvo,c30,2007-2013
+,kia,sportage,2007-2009
+715,volvo,s40,1995-2003
+716,volvo,s40,2004-2012
+,toyota,land cruiser,1992-1997
+717,volvo,s60,2000-2016
+718,volvo,s80,1998-2016
+,toyota,land cruiser,1998-2003
+,toyota,hilux vigo,2005-2008
+,toyota,prado,2015-2016
+,chevrolet,tracker ls,2015-2016
+,volkswagen,amarok,2010-2016
+719,volvo,v40,1995-2004
+720,volvo,v40 cross country,2007-2014
+,volkswagen,beetle,2000-2016
+,volkswagen,bora,1998-2016
+721,volvo,xc60,2008-2016
+,volkswagen,crossfox,2010-2016
+722,volvo,xc90,2006-2016
+,hyundai,tucson,2004-2009
+,volkswagen,gol,1990-2014
+,volkswagen,golf,1974-1992
+,hyundai,santafe,2006-2007
+,volkswagen,golf,1993-2003
+,volkswagen,golf,2004-2016
+,volkswagen,jetta,2006
+,volkswagen,jetta,1992-1999
+,volkswagen,jetta,2000-2005
+,volkswagen,jetta,2006-2016
+723,zotye,duna 1.3,2011-2014
+,volkswagen,polo,1990-2000
+,volkswagen,polo,2001-2016
+,kia,sportage,2008-2009
+,volkswagen,saveiro,2010-2014
+,volkswagen,tiguan,2007-2016
+724,zotye,duna 1.8,2011-2013
+,volkswagen,transporter (pasajeros),2005-2014
+,volkswagen,vento,1984-1998
+,volkswagen,vento,2010-2016
+,volkswagen,voyage,2010-2016
+,volvo,c30,2007-2013
+,volvo,s40,1995-2003
+725,zotye,nomada 1.3,2008-2014
+,toyota,fortuner,2010
+,volvo,s60,2000-2016
+,volvo,s80,1998-2016
+,toyota,hilux vigo,2009
+,toyota,hilux vigo,2012
+,volvo,v40,1995-2004
+726,zotye,nomada 1.6,2008-2013
+,toyota,land cruiser,1992-1997
+,volvo,xc60,2008-2016
+,volvo,xc90,2006-2016
+,zotye,duna 1.3,2011-2014
+,volkswagen,amarok,2010
+,zotye,duna 1.8,2011-2013
+727,zotye,Zonora,2013-2016
+,zotye,nomada 1.6,2008-2013
+,zotye,Zonora,2013-2016

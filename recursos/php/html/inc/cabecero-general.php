@@ -6,9 +6,6 @@
 		<?php require_once(_INC.'menu.php') ?>
 
 		<div id="alternador-menu-accesorios" data-toggle="tooltip" data-placement="bottom" title="Mostra u ocultar el menú de accesorios">
-			<span class="flecha">
-				<i class="fa fa-reorder"></i>
-			</span>
 		</div>
 	</div>
 	<?php require_once(_INC.'menu-accesorios.php') ?>

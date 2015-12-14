@@ -91,7 +91,7 @@ st.menu.ini();
 // menu accesorios
 st.menuAccesorios = {
 	// props
-	abierto: false,
+	abierto: true,
 	dur: 300,
 	efe: 'slide',
 	dir: 'left',
@@ -122,7 +122,7 @@ st.menuAccesorios = {
 				t.abierto = true;
 			}
 		});
-		$('#alternador-menu-accesorios .flecha').html('<i class="fa fa-remove"></i>');
+		$('#alternador-menu-accesorios').css('background-image', 'url(recursos/img/bg-menu-accesorios-l.png)');
 		//$('#alternador-menu-accesorios').css('left', '114px');
 	},
 
@@ -137,7 +137,7 @@ st.menuAccesorios = {
 				t.abierto = false;
 			}
 		});
-		$('#alternador-menu-accesorios .flecha').html('<i class="fa fa-reorder"></i>');
+		$('#alternador-menu-accesorios').css('background-image', 'url(recursos/img/bg-menu-accesorios-r.png)');
 		st.catalogoAccesorios.cerrar();
 	},
 

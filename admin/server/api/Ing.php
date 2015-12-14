@@ -178,8 +178,8 @@ function list_varios( $data ){
                 //(read_tires());
 
                 
-                $models = get_all_models();
-                model_in_index($models);
+                //$models = get_all_models();
+                //model_in_index($models);
                 //var_dump($models);
 
                 //$tires_readed = read_tires();
@@ -188,16 +188,16 @@ function list_varios( $data ){
                 //var_dump($tires_readed);
                 //save_tires( $tires_readed );
 
-                $rines_readed = read_rines();
+                //$rines_readed = read_rines();
 
-                associate_tires($rines_readed , $models );//associate products with models
+                //associate_tires($rines_readed , $models );//associate products with models
 
               //  var_dump($rines_readed);
-                save_rines($rines_readed);
+                //save_rines($rines_readed);
 
-                /*$info_to_return['product_types'] = get_all_product_types();
+                $info_to_return['product_types'] = get_all_product_types();
                 $info_to_return['vehicles'] = get_all_vehicles();
-                $info_to_return['status'] = 'LOADED';*/
+                $info_to_return['status'] = 'LOADED';
               break;
               case 'get_models_by_brand':
                 $info_to_return['models'] = get_models_by_brand( $data['brandId']);

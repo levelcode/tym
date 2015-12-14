@@ -14,7 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   if (isset($_POST["a"])) {
 
-
     $a = $_POST["a"];
     switch ($a) {
       case 'login':

@@ -175,6 +175,18 @@ function list_varios( $data ){
               case 'get_base_data':
 
                 //group_models(read_vehicles()); read vehicles from .csv
+                //(read_tires());
+
+                
+                //$models = get_all_models();
+                //model_in_index($models);
+                //var_dump($models);
+
+                //$tires_readed = read_tires();
+                
+                //associate_tires($tires_readed , $models );//associate tires with models
+                //var_dump($tires_readed);
+                //save_tires( $tires_readed );
 
                 $info_to_return['product_types'] = get_all_product_types();
                 $info_to_return['vehicles'] = get_all_vehicles();
@@ -199,6 +211,58 @@ function list_varios( $data ){
     $info_to_return['status'] = 'NO_FROM';
   }
   return json_encode($info_to_return);
+}
+
+function associate_tires( &$tires_data, $models ) {
+//var_dump($tires_data);  
+  foreach ($tires_data as $key => $value) {
+    if( isset($models[$value->model]) ){
+
+        $current_model = $models[$value->model];
+        $tires_data[$key]->model = $current_model['id'];
+        $tires_data[$key]->vehicle_id = $current_model['tym_vehicle_id'];
+
+    }
+  }
+
+}
+
+function save_tires( $tires_to_save ) {
+
+
+  foreach ($tires_to_save as $key1 => $tire) {
+
+      foreach ($tire->tires as $key2 => $options) {      
+//var_dump($options);
+
+        $tire_string = $options[0].'-'.$options[1].'-'.$options[2];
+
+        $vehicle['table'] = "tire";
+        $vehicle['column_id'] = "id";
+
+        $vehicle['name'] = ( isset($tire->name) ) ? $tire->name : 'No definido';
+
+        $vehicle['tire'] = $tire_string;
+        $vehicle['inches'] = $tire->inches;
+        $vehicle['referencie'] = ( isset($tire->ref) ) ? $tire->ref : 'No definido';
+        $vehicle['description'] = ( isset($tire->description) ) ? $tire->description : 'No definido';
+        $vehicle['stock'] = ( isset($tire->stock) ) ? $tire->stock : 0;
+        $vehicle['price_unit'] = ( isset($tire->price) ) ? $tire->price : 0;
+        $vehicle['img_base'] = NULL;
+
+        $vehicle_insert_id = Core\create($vehicle, false, false);
+
+        $vehicle_has_tire['table'] = "vehicle_model_has_tym_tire";
+        $vehicle_has_tire['column_id'] = "id";
+
+        $vehicle_has_tire['tym_vehicle_model_id'] = $tire->model;      
+        $vehicle_has_tire['tym_vehicle_model_tym_vehicle_id'] = $tire->vehicle_id;      
+        $vehicle_has_tire['tym_tire_id'] = $vehicle_insert_id;      
+
+        $vehicle__has_insert_id = Core\create($vehicle_has_tire, false, false);
+      }
+  }
+  
 }
 
 function group_models( $readed ) {
@@ -362,8 +426,6 @@ function associate_vehicle( $vehicle_data, $inserted_tire_id, $type_of_product )
   }
 
   function read_vehicles() {
-  
-    //$CI->load->model('tym_vehicle_model');
     
     //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
     $handle = fopen("../../recursos/csv/vehicles.csv", 'r');
@@ -396,21 +458,64 @@ function associate_vehicle( $vehicle_data, $inserted_tire_id, $type_of_product )
     }
   }
 
-  function save_vechicles( $to_save ) {
+  function read_tires(){
+    $handle = fopen("../../recursos/csv/tires.csv", 'r');
+    
+    if( $handle !== FALSE ) {
+      $vehicles = array();
 
-    //$CI =& get_instance();
-    //$CI->load->model('tym_vehicle_model');
+      $count_aux = 0;
+        
+      while ( ($data = fgetcsv($handle, 350, ',')) !== FALSE  ){
+        $current_row = new \stdClass();
 
-    $rin_types = $CI->tym_vehicle_model->get_rin_types();
+        if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+          //die();
+          $current_row->brand = utf8_encode(trim($data[0]));
+          $current_row->model = utf8_encode(trim($data[1]));
+          $current_row->year = utf8_encode(trim($data[2]));
+          $current_row->tires = format_tires_info(utf8_encode(trim($data[3])));
+          $current_row->inches = utf8_encode(trim($data[4]));
+        }
+            
+        $vehicles[] = $current_row;
+          
+        
+        $count_aux++;
+      }
+      fclose( $handle );
+      
+      return $vehicles;
+        
+    }
+  }
 
-    //var_dump($rin_types);
+  function format_tires_inches( $inches_info ) {
+    /*$by_rin_type = explode('/', $inches);
+    $individual = explode('-', $by);*/
+  }
 
-    //var_dump($to_save);
+  function format_tires_info( $tire_info ) {
+    $by_rin = explode('/', $tire_info);
 
-    //var_dump($this->_search_rin_types( $rin_types, $to_save ));
-    $result = $CI->tym_vehicle_model->insert_vehicles( $this->_search_rin_types( $rin_types, $to_save ) );
+    if( count($by_rin) > 1 ){
+      $tires_types = array();
+      foreach ($by_rin as $key => $value) {
+        $individual = explode('-', $value);  
 
-      return $result;
+        if( count($individual) > 3 )
+          $result = array_chunk($individual, 3);
+        else{
+          $aux[] = $individual;
+          $result = $aux;
+        }
+
+        $tires_types = array_merge( $tires_types, $result );
+      }
+      
+    }
+
+    return $tires_types;
   }
   
   function _search_rin_types( $rin_types, $types_and_inch ) {
@@ -457,8 +562,19 @@ function insert_product_type( $data ) {
   
 }
 
+function model_in_index( &$models ){
+  foreach ($models as $key => $value) {
+    $models[$value['model']] = $value;
+  }
+}
+
 function get_all_vehicles() {
   $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle WHERE status = 1 ORDER BY brand ASC";
+  return Core\query($sql, array());
+}
+
+function get_all_models() {
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE status = 1 ORDER BY model ASC";
   return Core\query($sql, array());
 }
 

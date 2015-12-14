@@ -20,6 +20,8 @@ $cabecero = new html\Cabecero($opciones);
 
 <!-- contenido -->
 		<div id="contenido">
+
+			<?php require_once(_INC.'buscador.php'); ?>
 			<?php require_once(_INC.'slider-intro.php'); ?>
 
 			<section id="promociones-galeria">

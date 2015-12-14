@@ -29,11 +29,11 @@
 					background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .6) 80%, transparent);
 					padding: 8px 24px;
 					.grande{
-						font-size: 50px;
+						font-size: 30px;
 						color: @color3;
 						font-family: @f-f1;
 						font-weight: 500;
-						line-height: 50px;
+						line-height: 30px;
 					}
 				}
 			}
@@ -53,6 +53,22 @@
 			&.fa-3x{
 				margin-top: -30px;
 				margin-left: -10px;
+			}
+		}
+	}
+}
+@media (min-width: 768px){
+	.carousel{
+		.carousel-inner{
+			.item{
+				.carousel-caption{
+					.etiqueta{
+						.grande{
+							font-size: 50px;
+							line-height: 50px;
+						}
+					}
+				}
 			}
 		}
 	}

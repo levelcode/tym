@@ -203,6 +203,7 @@ st.catalogoAccesorios = {
 	cerrar: function(){
 		var t = this;
 		$('#catalogo-accesorios').fadeOut(t.dur);
+		$('#cabecero .menu-accesorios ul li a.activo').removeClass('activo');
 		t.abierto = false;
 		
 	},

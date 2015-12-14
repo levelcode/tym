@@ -12,7 +12,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 	};
 
 	//panel control status
-	$scope.mainMenuSection = false;
+	$scope.homePromotion = false;
 	$scope.universalProductsSection = false;
 
 	//data arrays
@@ -52,16 +52,16 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 	$scope.switchPanelSection = function( sectionToSelect ) {
 
 		switch( sectionToSelect ) {
-			case 'mainMenu':
+			case 'homePromotion':
 				$scope.sectionSelected = false;
 
-				$scope.mainMenuSection = true;
+				$scope.homePromotion = true;
 				$scope.universalProductsSection = false;
 			break;
 			case 'universalSection':
 				$scope.sectionSelected = false;
 
-				$scope.mainMenuSection = false;
+				$scope.homePromotion = false;
 				$scope.universalProductsSection = true;
 			break;
 

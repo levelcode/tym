@@ -17,17 +17,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $a = $_POST["a"];
     switch ($a) {
       case 'login':
-      echo Ing\login($_POST["id"],$_POST["pass"], $_POST["isAdmin"]);
+        echo Ing\login($_POST["id"],$_POST["pass"], $_POST["isAdmin"]);
       break;
       /* LISTAS */
       case 'list_all':
-      echo Ing\list_all($_POST);
+        echo Ing\list_all($_POST);
       break;
       case 'list_one_where':
-      echo Ing\list_one_where($_POST);
+        echo Ing\list_one_where($_POST);
       break;
       case 'list_varios':
-      echo Ing\list_varios($_POST);
+        echo Ing\list_varios($_POST);
       break;
       default :
       return json_encode($salida["error"]= "ERR-00");

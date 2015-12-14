@@ -17,12 +17,11 @@
 #cabecero{
 	@h: 100px;
 	width: 100%;
-	margin-bottom: -@h;
 	height: @h;
 	background-color: fade(@color1, 80%);
 	box-shadow: 0 0 10px rgba(0, 0, 0, .2);
 	position: relative;
-	z-index: 6;
+	z-index: 18;
 	.container{
 		height: @h;
 		position: relative;
@@ -35,6 +34,7 @@
 			left: 0;
 			top: 0;
 			transform-origin: 50% 0;
+			width: 220px;
 			&:hover{
 				animation-name: logo;
 				animation-duration: .4s;
@@ -50,7 +50,7 @@
 			right: 15px;
 			top: 30px;
 			cursor: pointer;
-			z-index: 14;
+			z-index: 20;
 		}
 		.menu{
 			position: absolute;
@@ -58,7 +58,7 @@
 			top: 0;
 			right: 0;
 			background-color: #42bef0;
-			z-index: 13;
+			z-index: 19;
 			box-shadow: 0 0 12px rgba(0, 0, 0, .2);
 			display: none;
 			ul{
@@ -95,53 +95,56 @@
 				}
 			}
 		}
-
-	}
-	#alternador-menu-accesorios{
-		@t: 52px;
-		width: @t;
-		height: @t;
-		//background-color: rgba(255, 255, 255, 0.2);
-		position: absolute;
-		top: 120px;
-		left: 114px;
-		border-radius: 4px;
-		z-index: 12;
-		color: @blanco;
-		text-shadow: rgba(0, 0, 0, 0.5);
-		//line-height: @t;
-		//text-align: center;
-		cursor: pointer;
-		//box-shadow: 0 0 40px rgba(0, 0, 0, .3);
-		transition-property: left, transform;
-		transition-duration: .2s;
-		background-image: url(../img/bg-menu-accesorios.png);
-		&:hover{
-			transform: scale(.96);
-		}
-		.flecha{
-			position: absolute;
-			@t: 20px;
+		#alternador-menu-accesorios{
+			@t: 34px;
 			width: @t;
 			height: @t;
-			text-align: center;
-			line-height: @t;
-			font-size: 12px;
-			right: 0;
-			bottom: 0;
-			background-color: #000;
+			//background-color: rgba(255, 255, 255, 0.2);
+			position: absolute;
+			top: 32px;
+			right: 80px;
+			border-radius: 4px;
+			z-index: 18;
 			color: @blanco;
-			border-radius: (@t / 2);
-			box-shadow: 0 0 10px @color3;
+			text-shadow: rgba(0, 0, 0, 0.5);
+			//line-height: @t;
+			//text-align: center;
+			cursor: pointer;
+			//box-shadow: 0 0 40px rgba(0, 0, 0, .3);
+			transition-property: left, transform;
+			transition-duration: .2s;
+			background-image: url(../img/bg-menu-accesorios-l.png);
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			&:hover{
+				transform: scale(.96);
+			}
+			/*.flecha{
+				position: absolute;
+				@t: 20px;
+				width: @t;
+				height: @t;
+				text-align: center;
+				line-height: @t;
+				font-size: 12px;
+				right: 0;
+				bottom: 0;
+				background-color: #000;
+				color: @blanco;
+				border-radius: (@t / 2);
+				box-shadow: 0 0 10px @color3;
+			}*/
 		}
-	}
+
+	}	
 	.menu-accesorios{
 		width: 105px;
 		position: absolute;
 		left: 0;
 		top: 120px;
 		background-color: lighten(@color1, 10%);
-		z-index: 12;
+		z-index: 18;
 		border-top: 3px solid #222;
 		box-shadow: inset 0 0 40px rgba(0, 0, 0, .3), 0 0 40px rgba(0, 0, 0, .4);
 		ul{
@@ -192,3 +195,15 @@
 		}
 	}
 }
+
+@media (min-width:768px){
+	#cabecero{
+		.container{
+			.logo{
+				width: 320px;
+			}
+		}
+	}
+}
+//@media (min-width:992px){}
+//@media (min-width:1200px){}

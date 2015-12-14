@@ -111,45 +111,15 @@
 		}
 	}
 }
+
+
 .carousel{
 	.carousel-indicators{
-		text-align: right;
-		width: 100%;
-		margin-left: 0;
-		left: 0;
-		padding-right: 40px;
 		li{
 			width: 16px;
 			height: 16px;
-			border-color: @color3;
-			&.active{
-				background-color: @color3;
-			}
 		}
 		/*right: 40px;*/
-	}
-	.carousel-inner{
-		.item{
-			.carousel-caption{
-				left: 40px;
-				right: 40px;
-				bottom: 40px;
-				text-align: right;
-				.etiqueta{
-					display: inline-block;
-					background-color: rgba(0, 0, 0, .5);
-					background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .6) 80%, transparent);
-					padding: 8px 24px;
-					.grande{
-						font-size: 50px;
-						color: @color3;
-						font-family: @f-f1;
-						font-weight: 500;
-						line-height: 50px;
-					}
-				}
-			}
-		}
 	}
 	.carousel-control{
 		&.left, &.right{
@@ -162,7 +132,7 @@
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			&.fa-3x{
+			.fa-3x{
 				margin-top: -30px;
 				margin-left: -10px;
 			}
@@ -183,8 +153,8 @@ body{
 	color: @blanco;
 	font-size: 16px;
 	//background-color: desaturate(@color1, 30%);
-	background-color: @color1;
-	background-image: url(../img/patron-fondo.jpg);
+	background-color: @negro;
+	background-image: url(../img/bg-body.png);
 	background-attachment: fixed;
 }
 a{
@@ -296,6 +266,75 @@ a.st-enlace{
 }
 
 
+/* calificación con estrellas */
+.st-calificacion{
+    display: inline-block;
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-size: 16px;
+    &.valor-0{
+        &:before{
+            color: @color3;
+            content: '';
+        }
+        &:after{
+            content: '\f005\00a0\f005\00a0\f005\00a0\f005\00a0\f005';
+            color: @gris
+        }
+    }
+    &.valor-1{
+        &:before{
+            color: @color3;
+            content: '\f005';
+        }
+        &:after{
+            content: '\00a0\f005\00a0\f005\00a0\f005\00a0\f005';
+            color: @gris
+        }
+    }
+    &.valor-2{
+        &:before{
+            color: @color3;
+            content: '\f005\00a0\f005';
+        }
+        &:after{
+            content: '\00a0\f005\00a0\f005\00a0\f005';
+            color: @gris
+        }
+    }
+    &.valor-3{
+        &:before{
+            color: @color3;
+            content: '\f005\00a0\f005\00a0\f005';
+        }
+        &:after{
+            content: '\00a0\f005\00a0\f005';
+            color: @gris
+        }
+    }
+    &.valor-4{
+        &:before{
+            color: @color3;
+            content: '\f005\00a0\f005\00a0\f005\00a0\f005';
+        }
+        &:after{
+            content: '\00a0\f005';
+            color: @gris
+        }
+    }
+    &.valor-5{
+        &:before{
+            color: @color3;
+            content: '\f005\00a0\f005\00a0\f005\00a0\f005\00a0\f005';
+        }
+        &:after{
+            content: '';
+            color: @gris
+        }
+    }
+}
+
+
 // Crear tamaños de fuente
 .txt-sizes(8, 44);
 
@@ -313,6 +352,7 @@ a.st-enlace{
 .color(color1, @color1);
 .color(color2, @color2);
 .color(color3, @color3);
+.color(color4, @color4);
 
 .no-padding-left{
 	padding-left: 0;
@@ -432,22 +472,21 @@ a.st-enlace{
 
 /* --- contenido --- */
 #contenido{
-	
+	position: relative;
+	min-height: ~"calc(100% - 209px)";
 }
 
 @media (min-width:768px){
 	#contenido{
-		min-height: ~"calc(100% - 532px)";
+		min-height: ~"calc(100% - 175px)";
 	}
 }
 @media (min-width:992px){
-	#contenido{
-		min-height: ~"calc(100% - 415px)";
-	}
+	
 }
 @media (min-width:1200px){
 	#contenido{
-		min-height: ~"calc(100% - 438px)";
+		min-height: ~"calc(100% - 57px)";
 	}
 }
 
@@ -607,15 +646,257 @@ noscript{
 
 /* modal del buscador */
 #buscador{
-	background-color: #5f617c;
+	position: absolute;
+	background-color: fade(@color1, 60%);
 	border: 3px solid @color3;
-	padding-top: 20px;
 	border-radius: 6px;
+	z-index: 10;
+	padding-bottom: 12px;
+	.titulo{
+		color: lighten(@color3, 30%);
+		text-transform: uppercase;
+	}
 	.form-control{
 		background-color: @color1;
 		color: @blanco;
 		border: none;
 		border-radius: 4px;
 		text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+	}
+}
+
+
+
+/* modal de contacto */
+#modal-contacto{
+	padding-top: 60px;
+	//display: block;
+	.contenido{
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: 0;
+		margin-right: 0;
+		display: block;
+		.contacto{
+			.container{
+				background-color: @color1;
+				box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+				border: 6px solid @color2;
+				outline: 2px solid @color3;
+				position: relative;
+				padding-top: 60px;
+				padding-bottom: 20px;
+				.titulo{
+					width: 240px;
+					height: 57px;
+					position: absolute;
+					left: 0px;
+					top: -40px;
+					background-image: url(../img/titulo-contacto.png);
+					background-position: center;
+					background-size: cover;
+					text-align: center;
+					h1{
+						position: absolute;
+						font-size: 18px;
+						top: 6px;
+						left: 40px;						
+						text-shadow: 0 0 30px @color3, 0 0 30px @color3,;
+					}
+				}
+				form{
+					label{
+						color: @blanco;
+						font-style: italic;
+					}
+					.form-control{
+						border-radius: 6px;
+						border: 4px solid fade(#96b0c9, 30%);
+						box-shadow: 0 0 14px rgba(0, 0, 0, .4);
+					}
+				}
+				#mapa{
+					height: 220px;
+					border: 1px solid #ccc;
+				}
+			}
+		}
+	}
+}
+@media (min-width:768px){
+	#modal-contacto{
+		.contenido{
+			display: inline-block;
+			.contacto{
+				.container{
+					.titulo{						
+						width: 428px;
+						height: 101px;
+						top: -60px;
+						h1{
+							top: 14px;
+							left: 100px;
+							font-size: 36px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+/* modal catalogo accesorios */
+#catalogo-accesorios{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	.catalogo{
+		z-index: 15;
+		position: absolute;
+		background-color: @color1;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		border: 6px solid @color2;
+		outline: 2px solid @color3;
+		top: 120px;
+		left: 120px;
+		right: 15px;
+		height: 668px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		box-shadow: 0 0 60px rgba(0, 0, 0, .4);		
+		i.indicador{
+			@t: 24px;
+			display: block;
+			content: '';
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: @t;
+			border-color: transparent @color2 transparent transparent;
+			position: absolute;
+			top: 80px;
+			left: -(@t * 2);
+			transition-property: top;
+			transition-duration: .6s;
+		}
+		.contenido{
+			position: relative;
+			overflow: auto;
+			width: 100%;
+			height: 100%;
+			#accesorio-tipo{
+				h1.titulo{
+					text-shadow: 2px 2px 0 @color3, -2px -2px 0 @color3, -2px 2px 0 @color3, 2px -2px 0 @color3;
+				}
+				.producto{
+					display: block;
+					border-radius: 6px;
+					box-shadow: 3px 3px 8px rgba(0, 0, 0, .4);
+					background-color: @blanco;
+					margin-bottom: 30px;
+					color: @color3;
+					font-weight: 700;
+					padding: 6px 8px;
+					font-size: 22px;
+					transition-property: transform;
+					transition-duration: .2s;
+					&:hover{
+						transform: scale(1.06);
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+#detalle-producto{
+	display: none;
+	position: fixed;
+	overflow: auto;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 20;
+	background-color: rgba(0, 0, 0, 0.8);
+	padding-top: 60px;
+	.container{
+		background-color: #5f627c;
+		position: relative;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+		border: 6px solid @color2;
+		outline: 2px solid @color3;
+		padding-top: 15px;
+		padding-bottom: 15px;
+		box-shadow: 0 0 60px rgba(0, 0, 0, .4);
+		.cerrar{
+			@t: 34px;
+			position: absolute;
+			width: @t;
+			height: @t;
+			border-radius: (@t / 2);
+			background-color: @color2;
+			border: 1px solid @color3;
+			right: -18px;
+			top: -18px;
+			line-height: @t;
+			text-align: center;
+			color: @blanco;
+			cursor: pointer;
+			&::before{
+				content: 'x'
+			}
+		}
+		.producto{
+			.imagen{
+				img{
+					border-radius: 6px;
+					box-shadow: 4px 4px 4px rgba(0, 0, 0, .6);
+				}
+			}
+			.nombre{
+				font-weight: 900;
+				text-shadow: 0 0 20px @color3;
+			}
+			.form-control{
+				background-color: @color1;
+				color: @blanco;
+				border: none;
+				border-radius: 4px;
+				text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+			}
+		}	
+	}
+}
+@media (min-width:768px){
+
+}
+@media (min-width:992px){}
+@media (min-width:1200px){
+	#detalle-producto{
+		.container{
+			.producto{
+				.nombre{
+					font-size: 80px;
+					line-height: 80px;
+				}
+				.unidades{
+					font-size: 18px;
+				}
+			}
+		}
 	}
 }

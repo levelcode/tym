@@ -178,19 +178,26 @@ function list_varios( $data ){
                 //(read_tires());
 
                 
-                //$models = get_all_models();
-                //model_in_index($models);
+                $models = get_all_models();
+                model_in_index($models);
                 //var_dump($models);
 
                 //$tires_readed = read_tires();
                 
-                //associate_tires($tires_readed , $models );//associate tires with models
+                
                 //var_dump($tires_readed);
                 //save_tires( $tires_readed );
 
-                $info_to_return['product_types'] = get_all_product_types();
+                $rines_readed = read_rines();
+
+                associate_tires($rines_readed , $models );//associate products with models
+
+              //  var_dump($rines_readed);
+                save_rines($rines_readed);
+
+                /*$info_to_return['product_types'] = get_all_product_types();
                 $info_to_return['vehicles'] = get_all_vehicles();
-                $info_to_return['status'] = 'LOADED';
+                $info_to_return['status'] = 'LOADED';*/
               break;
               case 'get_models_by_brand':
                 $info_to_return['models'] = get_models_by_brand( $data['brandId']);
@@ -225,6 +232,31 @@ function associate_tires( &$tires_data, $models ) {
     }
   }
 
+}
+
+function save_rines( $rines_to_save ) {
+
+  foreach ($rines_to_save as $key => $value) {
+
+    $rin['table'] = "rin";
+    $rin['column_id'] = "id";
+
+    $rin['inches'] = $value->inch;
+    $rin['pcd'] = $value->pcd;
+    $rin['rin_diameter'] = $value->diameter;
+
+    $rin_insert_id = Core\create($rin, false, false);
+
+    $vehicle_has_rin['table'] = "vehicle_model_has_tym_rin";
+    $vehicle_has_rin['column_id'] = "id";
+
+    $vehicle_has_rin['tym_vehicle_model_id'] = $value->model;      
+    $vehicle_has_rin['tym_vehicle_model_tym_vehicle_id'] = $value->vehicle_id;      
+    $vehicle_has_rin['tym_rin_id'] = $rin_insert_id;      
+
+    $vehicle_has_insert_id = Core\create($vehicle_has_rin, false, false);
+    echo $vehicle_has_insert_id;
+  }
 }
 
 function save_tires( $tires_to_save ) {
@@ -263,6 +295,38 @@ function save_tires( $tires_to_save ) {
       }
   }
   
+}
+
+function read_rines(){
+  $handle = fopen("../../recursos/csv/rin.csv", 'r');
+  
+  if( $handle !== FALSE ) {
+    $vehicles = array();
+
+    $count_aux = 0;
+      
+    while ( ($data = fgetcsv($handle, 350, ',')) !== FALSE  ){
+      $current_row = new \stdClass();
+
+      if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+        //die();
+        $current_row->brand = utf8_encode(trim($data[0]));
+        $current_row->model = utf8_encode(trim($data[1]));
+        $current_row->year = utf8_encode(trim($data[2]));
+        $current_row->pcd = utf8_encode(trim($data[3]));
+        $current_row->diameter = utf8_encode(trim($data[4]));
+        $current_row->inch = utf8_encode(trim($data[5]));
+      }
+          
+      $vehicles[] = $current_row;
+        
+      
+      $count_aux++;
+    }
+    fclose( $handle );
+    
+    return $vehicles; 
+  }
 }
 
 function group_models( $readed ) {
@@ -386,45 +450,7 @@ function associate_vehicle( $vehicle_data, $inserted_tire_id, $type_of_product )
 
 }
 
-  function read_products() {
-    
-    //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
-    $handle = fopen("csv/preciosmnd.csv", 'r');
-    
-    if( $handle !== FALSE ) {
-      $products = array();
-        
-//      $category_id = 1;
-        
-      while ( ($data = fgetcsv($handle, 130, '|')) !== FALSE ){
-        $current_row = new \stdClass();
-    
-        if( (count($data)) >= 6 ){
-            
-//          if ($category_id > 4 )
-//            $category_id = 0;
-            
-          $current_row->PLU = utf8_encode(trim($data[0]));
-          $current_row->barcode = utf8_encode(trim($data[1]));
-          $current_row->name =  utf8_encode( ucfirst( strtolower( trim( str_replace('/', '-', $data[2]))) ));
-        //  $current_row->category_id = utf8_encode($category_id); //WTF ?
-          $current_row->presentation = utf8_encode(trim($data[3]));
-          $current_row->description = utf8_encode(trim($data[3]));
-          $current_row->stock = utf8_encode(trim($data[4]));
-          $current_row->price = utf8_encode(trim($data[5]));
-            
-          $products[] = $current_row;
-            
-//          $category_id++;
-        }
-      }
-      fclose( $handle );
-      
-      return $products;
-        
-    }
-  }
-
+  
   function read_vehicles() {
     
     //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");

@@ -67,9 +67,9 @@
 		<div class="row">
 			<div class="col-sm-4 col-lg-4">
 				<div class="well well-sm">
-					<h4>Tipos de Rines - Pulgadas</h4>
+					<h4>Diametro de Rin - Pulgadas</h4>
 					<ul>
-						<li ng-repeat="(key, type) in rinTypes.data" ng-bind="type.type +' -- '+ type.inches"></li>
+						<li ng-repeat="(key, type) in rinTypes.data" ng-bind="type.rin_diameter +' -- '+ type.inches"></li>
 					</ul>
 				</div>
 			</div>

@@ -5,10 +5,10 @@
 									<a class="producto">
 										<div class="row">
 											<div class="col-xs-6">
-												<img src="recursos/img/foto-silla-01.jpg" alt="" class="img-responsive">
+												<img src="recursos/img/foto-luces-hid-01.jpg" alt="" class="img-responsive">
 											</div>
 											<div class="col-xs-6">
-												MS-101
+												KIT HID
 											</div>
 										</div>
 									</a>
@@ -17,10 +17,10 @@
 									<a class="producto">
 										<div class="row">
 											<div class="col-xs-6">
-												<img src="recursos/img/foto-silla-02.jpg" alt="" class="img-responsive">
+												<img src="recursos/img/foto-luces-hid-02.jpg" alt="" class="img-responsive">
 											</div>
 											<div class="col-xs-6">
-												MS-101
+												KIT HID INSIDE
 											</div>
 										</div>
 									</a>

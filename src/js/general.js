@@ -221,6 +221,50 @@ st.catalogoAccesorios.ini();
 
 
 
+/* detalles de produto */
+st.producto = {
+	// props
+	abierto: false,
+	dur: 800,
+	efe: 'slide',
+	dir: 'left',
+	eas: 'easeOutCirc',
+
+	// metds
+	ini: function(){
+		this.eventos();
+	},
+
+	abrir: function(){
+		var t = this;
+		$('#detalle-producto').fadeIn(t.dur);
+		t.abierto = true;
+	},
+
+	cerrar: function(){
+		var t = this;
+		$('#detalle-producto').fadeOut(t.dur);
+		t.abierto = false;
+		
+	},
+
+	eventos: function(){
+		var t = this;
+		$(document).on('click', '#catalogo-accesorios .catalogo .contenido .producto', function(e){
+			e.preventDefault();
+			t.abrir();
+		});
+
+		$('#detalle-producto .container .cerrar').on('click', function(){
+			t.cerrar();
+		});
+	}
+}
+st.producto.ini();
+
+
+
+
 
 
 /* botonArriba */

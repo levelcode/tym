@@ -28,3 +28,4 @@
 </footer>
 <?php require_once(_MODAL.'contacto.php'); ?>
 <?php require_once(_INC.'catalogo-accesorios.php'); ?>
+<?php require_once(_MODAL.'detalle-producto.php'); ?>

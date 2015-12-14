@@ -15,8 +15,9 @@
 							</div>
 						</section>
 					</div>
-					<div class="col-sm-2">
-						
+					<div class="col-sm-2 text-center">
+						<h5 class="text-uppercase">Te puede interesar</h5>
+						<i class="st-separador"></i>
 					</div>
 				</div>
 			</div>

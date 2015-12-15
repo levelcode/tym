@@ -612,11 +612,11 @@ function model_in_index( &$models ){
     $models[$value['model']] = $value;
   }
 }
-/*
+
 function get_universals( $vehicle_id, $model_id ) {
   $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type WHERE universal = 1 ORDER BY type ASC";
   return Core\query($sql, array());
-}*/
+}
 
 function get_all_vehicles() {
   $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle WHERE status = 1 ORDER BY brand ASC";

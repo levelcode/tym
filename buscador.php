@@ -18,6 +18,7 @@
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/angular.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/ui-bootstrap-tpls-0.13.4.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/angular-cookies.min.js'?>"></script>
+	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/ng-file-upload/ng-file-upload.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/server/js/angularApp/angularApp.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/server/js/angularApp/controllers/searchTest.js'?>"></script>
 	<!-- Latest compiled and minified CSS -->

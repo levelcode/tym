@@ -1,11 +1,11 @@
-<div id="detalle-producto">
+<div id="detalle-producto" ng-controller="productDetailCtrl">
 	<div class="container">
 		<div class="cerrar"></div>
 		<row>
-			<div class="col-sm-10">
+			<div class="col-sm-10" ng-cloak>
 				<div class="row">
 					<div class="col-sm-6">
-						<p class="txt-13"><span class="c-color3">Escogiste:</span> Mazda / 2015 / Mazda 6</p>
+						<p class="txt-13"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
 					</div>
 					<div class="col-sm-6">
 						<p class="txt-13">Valora este artículo: &nbsp;<i class="st-calificacion valor-3"></i> | Votos (32)</p>

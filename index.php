@@ -10,7 +10,12 @@ $opciones = array(
 	'css' => array(
 		'recursos/css/index.css'
 	),
-	'js' => array()
+	'js' => array(	
+		'recursos/js/angular.min.js',
+		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js', 
+		'recursos/js/angular-cookies.min.js',
+		'recursos/js/ng-file-upload/ng-file-upload.min.js'
+	)
 );
 
 $cabecero = new html\Cabecero($opciones);
@@ -113,7 +118,9 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/index.js'
+		'recursos/js/index.js',
+		'server/js/angularApp/angularApp.js',
+		'server/js/angularApp/controllers/searchCtrl.js'
 	)
 );
 

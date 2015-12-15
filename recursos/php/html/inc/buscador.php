@@ -1,4 +1,4 @@
-<div class="container-fluid" id="buscador">
+<div class="container-fluid" id="buscador" ng-controller="searchCtrl">
 	<div class="row">
 		<div class="col-xs-12 text-left">
 			<h3 class="titulo">Elige tu vehículo</h3>

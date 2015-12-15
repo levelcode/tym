@@ -84,6 +84,10 @@
 			</div>
 			<div class="col-sm-4 col-lg-4">
 				<div class="well well-sm">
+				<h4>Universales</h4>
+				<ul>
+					<li ng-repeat="(key, universal) in universals.data" ng-bind="universal.type"></li>
+				</ul>
 				</div>
 			</div>
 		</div>

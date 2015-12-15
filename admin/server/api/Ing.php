@@ -184,6 +184,7 @@ function list_varios( $data ){
               case 'get_products':
                   $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
                   $info_to_return['tires'] = get_tires( $data['vehicleId'], $data['modelId'] );
+                  $info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
                   $info_to_return['status'] = "PRODUCTS_LOADED";
                 break;
               default:
@@ -286,7 +287,6 @@ function save_tires( $tires_to_save ) {
   foreach ($tires_to_save as $key1 => $tire) {
 
       foreach ($tire->tires as $key2 => $options) {      
-//var_dump($options);
 
         $tire_string = $options[0].'-'.$options[1].'-'.$options[2];
 
@@ -472,124 +472,122 @@ function associate_vehicle( $vehicle_data, $inserted_tire_id, $type_of_product )
 }
 
   
-  function read_vehicles() {
-    
-    //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
-    $handle = fopen("../../recursos/csv/vehicles.csv", 'r');
-    
-    if( $handle !== FALSE ) {
-      $vehicles = array();
-
-      $count_aux = 0;
-        
-      while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE  ){
-        $current_row = new \stdClass();
-
-        if ( ($count_aux >= 1) && (count($data) >= 4) ) {
-          //die();
-          $current_row->brand = utf8_encode(trim($data[1]));
-          $current_row->model = utf8_encode(trim($data[2]));
-          $current_row->year = utf8_encode(trim($data[3]));
-        }
-            
-          $vehicles[] = $current_row;
-            
-//          $category_id++;
-        
-        $count_aux++;
-      }
-      fclose( $handle );
-      
-      return $vehicles;
-        
-    }
-  }
-
-  function read_tires(){
-    $handle = fopen("../../recursos/csv/tires.csv", 'r');
-    
-    if( $handle !== FALSE ) {
-      $vehicles = array();
-
-      $count_aux = 0;
-        
-      while ( ($data = fgetcsv($handle, 350, ',')) !== FALSE  ){
-        $current_row = new \stdClass();
-
-        if ( ($count_aux >= 1) && (count($data) >= 4) ) {
-          //die();
-          $current_row->brand = utf8_encode(trim($data[0]));
-          $current_row->model = utf8_encode(trim($data[1]));
-          $current_row->year = utf8_encode(trim($data[2]));
-          $current_row->tires = format_tires_info(utf8_encode(trim($data[3])));
-          $current_row->inches = utf8_encode(trim($data[4]));
-        }
-            
-        $vehicles[] = $current_row;
-          
-        
-        $count_aux++;
-      }
-      fclose( $handle );
-      
-      return $vehicles;
-        
-    }
-  }
-
-  function format_tires_inches( $inches_info ) {
-    /*$by_rin_type = explode('/', $inches);
-    $individual = explode('-', $by);*/
-  }
-
-  function format_tires_info( $tire_info ) {
-    $by_rin = explode('/', $tire_info);
-
-    if( count($by_rin) > 1 ){
-      $tires_types = array();
-      foreach ($by_rin as $key => $value) {
-        $individual = explode('-', $value);  
-
-        if( count($individual) > 3 )
-          $result = array_chunk($individual, 3);
-        else{
-          $aux[] = $individual;
-          $result = $aux;
-        }
-
-        $tires_types = array_merge( $tires_types, $result );
-      }
-      
-    }
-
-    return $tires_types;
-  }
+function read_vehicles() {
   
-  function _search_rin_types( $rin_types, $types_and_inch ) {
+  //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
+  $handle = fopen("../../recursos/csv/vehicles.csv", 'r');
+  
+  if( $handle !== FALSE ) {
+    $vehicles = array();
 
-    $rines = array();
+    $count_aux = 0;
+      
+    while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE  ){
+      $current_row = new \stdClass();
 
-    $data = $types_and_inch;
-
-    $i =0;
-
-    foreach ($rin_types as $key1 => $value1) {
-
-      $current_rin = new \stdClass();
-
-      foreach ($types_and_inch as $key2 => $value2) {
-        
-        if( $key2 == $value1->brand ) {
-          
-          $data[$value1->brand]['id'] = $value1->id;
-
-        }
-        //(var_dump($rines));
+      if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+        //die();
+        $current_row->brand = utf8_encode(trim($data[1]));
+        $current_row->model = utf8_encode(trim($data[2]));
+        $current_row->year = utf8_encode(trim($data[3]));
       }
-    }
+          
+      $vehicles[] = $current_row;
 
-    return $data;
+      $count_aux++;
+    }
+    fclose( $handle );
+    
+    return $vehicles;
+      
   }
+}
+
+function read_tires(){
+  $handle = fopen("../../recursos/csv/tires.csv", 'r');
+  
+  if( $handle !== FALSE ) {
+    $vehicles = array();
+
+    $count_aux = 0;
+      
+    while ( ($data = fgetcsv($handle, 350, ',')) !== FALSE  ){
+      $current_row = new \stdClass();
+
+      if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+        //die();
+        $current_row->brand = utf8_encode(trim($data[0]));
+        $current_row->model = utf8_encode(trim($data[1]));
+        $current_row->year = utf8_encode(trim($data[2]));
+        $current_row->tires = format_tires_info(utf8_encode(trim($data[3])));
+        $current_row->inches = utf8_encode(trim($data[4]));
+      }
+          
+      $vehicles[] = $current_row;
+        
+      
+      $count_aux++;
+    }
+    fclose( $handle );
+    
+    return $vehicles;
+      
+  }
+}
+
+function format_tires_inches( $inches_info ) {
+  /*$by_rin_type = explode('/', $inches);
+  $individual = explode('-', $by);*/
+}
+
+function format_tires_info( $tire_info ) {
+  $by_rin = explode('/', $tire_info);
+
+  if( count($by_rin) > 1 ){
+    $tires_types = array();
+    foreach ($by_rin as $key => $value) {
+      $individual = explode('-', $value);  
+
+      if( count($individual) > 3 )
+        $result = array_chunk($individual, 3);
+      else{
+        $aux[] = $individual;
+        $result = $aux;
+      }
+
+      $tires_types = array_merge( $tires_types, $result );
+    }
+    
+  }
+
+  return $tires_types;
+}
+  
+function _search_rin_types( $rin_types, $types_and_inch ) {
+
+  $rines = array();
+
+  $data = $types_and_inch;
+
+  $i =0;
+
+  foreach ($rin_types as $key1 => $value1) {
+
+    $current_rin = new \stdClass();
+
+    foreach ($types_and_inch as $key2 => $value2) {
+      
+      if( $key2 == $value1->brand ) {
+        
+        $data[$value1->brand]['id'] = $value1->id;
+
+      }
+      //(var_dump($rines));
+    }
+  }
+
+  return $data;
+} 
 
 function insert_product_type( $data ) {
 
@@ -613,6 +611,11 @@ function model_in_index( &$models ){
   foreach ($models as $key => $value) {
     $models[$value['model']] = $value;
   }
+}
+
+function get_universals( $vehicle_id, $model_id ) {
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type WHERE universal = 1 ORDER BY type ASC";
+  return Core\query($sql, array());
 }
 
 function get_all_vehicles() {

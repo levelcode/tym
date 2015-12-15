@@ -8,6 +8,7 @@ tymApp.controller( 'searchTest', [ '$scope', '$http', function( $scope, $http ){
 	$scope.years = {};
 	$scope.rinTypes = {};
 	$scope.tires = {};
+	$scope.universals = {};
 	
 	$scope.loadingData = false;
 	$scope.showOptions = false;
@@ -96,7 +97,9 @@ tymApp.controller( 'searchTest', [ '$scope', '$http', function( $scope, $http ){
 		            	var jsonObject = angular.fromJson(data);
 			            updatetDataToShow( jsonObject['rin_types'], "rin_types" );
 			            updatetDataToShow( jsonObject['tires'], "tires" );
+			            updatetDataToShow( jsonObject['universals'], "universals" );
 			            break;
+
                 }
 
             }).
@@ -165,21 +168,25 @@ tymApp.controller( 'searchTest', [ '$scope', '$http', function( $scope, $http ){
         			$scope.vehicles.empty = false;		
         			break;
     			case 'models':
-    					$scope.models.data = na;
-        				$scope.models.empty = false;
+					$scope.models.data = na;
+    				$scope.models.empty = false;
 					break;
 				case 'years':
-    					$scope.years.data = na;
-        				$scope.years.empty = false;
+					$scope.years.data = na;
+    				$scope.years.empty = false;
 					break;
 				case 'rin_types':
-    					$scope.rinTypes.data = na;
-        				$scope.rinTypes.empty = false;
+					$scope.rinTypes.data = na;
+    				$scope.rinTypes.empty = false;
 					break;
 				case 'tires':
-    					$scope.tires.data = na;
-        				$scope.tires.empty = false;
+					$scope.tires.data = na;
+    				$scope.tires.empty = false;
 					break;
+				case 'universals':
+					$scope.universals.data = na;
+    				$scope.universals.empty = false;
+				break;
         	}
         	
         }else {
@@ -199,6 +206,9 @@ tymApp.controller( 'searchTest', [ '$scope', '$http', function( $scope, $http ){
     			case 'tires':
 	    			$scope.tires.empty = true;	
 	    			break;
+    			case 'universals':
+    				$scope.universals.empty = true;	
+    			break;
 			}
         }
 

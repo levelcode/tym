@@ -1,4 +1,4 @@
-tymApp.controller('productListCtrl', [ '$scope', '$rootScope', function( $scope, $rootScope ){
+tymApp.controller('productListHeader', [ '$scope', '$rootScope', function( $scope, $rootScope ){
 
 	/*
 	listeners

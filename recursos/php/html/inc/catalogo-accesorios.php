@@ -1,4 +1,4 @@
-<div id="catalogo-accesorios" ng-controller="productListCtrl">
+<div id="catalogo-accesorios" ng-controller="productListHeader">
 	<div class="catalogo">
 		<i class="indicador"></i>
 		<div class="contenido">

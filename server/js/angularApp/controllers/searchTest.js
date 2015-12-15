@@ -97,7 +97,7 @@ tymApp.controller( 'searchTest', [ '$scope', '$http', function( $scope, $http ){
 		            	var jsonObject = angular.fromJson(data);
 			            updatetDataToShow( jsonObject['rin_types'], "rin_types" );
 			            updatetDataToShow( jsonObject['tires'], "tires" );
-			            //updatetDataToShow( jsonObject['universals'], "universals" );
+			            updatetDataToShow( jsonObject['universals'], "universals" );
 			            break;
 
                 }

@@ -184,7 +184,7 @@ function list_varios( $data ){
               case 'get_products':
                   $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
                   $info_to_return['tires'] = get_tires( $data['vehicleId'], $data['modelId'] );
-                  //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
+                  $info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
                   $info_to_return['status'] = "PRODUCTS_LOADED";
                 break;
               default:

@@ -1,4 +1,4 @@
-tymApp.controller( 'searchCtrl', [ '$scope', '$http', function( $scope, $http ){
+tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $scope, $http, $rootScope ){
 
 	'use strict';
 
@@ -73,6 +73,8 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', function( $scope, $http ){
 
 	$scope.searchProducts = function( request ) {
 
+		$rootScope.$broadcast('vehicle_chaged', request);
+
 		$scope.request = request;
 		//$scope.showOptions = true;
 		console.log(request);
@@ -111,7 +113,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', function( $scope, $http ){
 			post.from = 'home';
 			post.action = 'load_vehicles';
 
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
                 
                 console.log(data);

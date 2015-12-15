@@ -120,7 +120,8 @@ $opciones = array(
 	'js' => array(
 		'recursos/js/index.js',
 		'server/js/angularApp/angularApp.js',
-		'server/js/angularApp/controllers/searchCtrl.js'
+		'server/js/angularApp/controllers/searchCtrl.js', 
+		'server/js/angularApp/controllers/productListCtrl.js'
 	)
 );
 

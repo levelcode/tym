@@ -170,6 +170,27 @@ function list_varios( $data ){
 
         switch( $data['from'] ) {
 
+          case 'home':
+            switch ( $data['action'] ) {
+              case 'load_vehicles':
+                  $info_to_return['vehicles'] = get_all_vehicles();
+                  $info_to_return['status'] = "VEHICLES_LOADED";
+                break;
+              case 'get_models_by_brand':
+
+                  $info_to_return['models'] = get_models_by_brand( $data['brandId']);
+                  $info_to_return['status'] = "VEHICLE_MODELS_LOADED";
+                break;
+              case 'get_products':
+                  $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
+                  $info_to_return['tires'] = get_tires( $data['vehicleId'], $data['modelId'] );
+                  $info_to_return['status'] = "PRODUCTS_LOADED";
+                break;
+              default:
+                # code...
+                break;
+            }
+          break;
           case 'admin-products':
             switch ( $data['action'] ) {
               case 'get_base_data':
@@ -609,10 +630,9 @@ function get_models_by_brand( $brand_id ) {
   return Core\query($sql, array());
 }
 
-function get_rin_types( $vehicle_id, $model_id ) {
+function get_rines( $vehicle_id, $model_id ) {
   $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model_has_tym_rin vhr"
   ." LEFT JOIN ".$GLOBALS["prefix"]. "rin r ON r.id = vhr.tym_rin_id "
-  ." LEFT JOIN ".$GLOBALS["prefix"]. "rin_type rt ON rt.id = vhr.tym_rin_tym_rin_type_id "
   ." WHERE vhr.tym_vehicle_model_id = ".$model_id." AND vhr.tym_vehicle_model_tym_vehicle_id = ".$vehicle_id;
   return Core\query($sql, array());
 }

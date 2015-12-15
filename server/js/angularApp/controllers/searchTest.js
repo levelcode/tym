@@ -28,7 +28,7 @@ tymApp.controller( 'searchTest', [ '$scope', '$http', function( $scope, $http ){
 			post.action = "get_models_by_brand";
 			post.brandId = selectedVehicleBrand.id;
 
-        $http.post("server/api/Ajax.php", post)
+        $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
                 
                 console.log(data);
@@ -85,7 +85,7 @@ tymApp.controller( 'searchTest', [ '$scope', '$http', function( $scope, $http ){
 			post.vehicleId = request.vehicle.id;
 			post.modelId = request.model.id;
 
-        $http.post("server/api/Ajax.php", post)
+        $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
                 
                 console.log(data);
@@ -112,7 +112,7 @@ tymApp.controller( 'searchTest', [ '$scope', '$http', function( $scope, $http ){
 			post.from = 'home';
 			post.action = 'load_vehicles';
 
-        $http.post("server/api/Ajax.php", post)
+        $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
                 
                 console.log(data);

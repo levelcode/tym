@@ -111,7 +111,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', function( $scope, $http ){
 			post.from = 'home';
 			post.action = 'load_vehicles';
 
-        $http.post("server/api/Ajax.php", post)
+        $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
                 
                 console.log(data);

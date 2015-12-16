@@ -89,11 +89,12 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
                 switch( data['status'] ) {
                 	case 'SUCCESS':
 		            	var jsonObject = angular.fromJson(data);
-			            updatetDataToShow( jsonObject['menu_items'], "menu_items" );
+			            //updatetDataToShow( jsonObject['menu_items'], "menu_items" );
 			            st.ventanaInfo.abrir("Guandado con éxito", "success", 2000);
 		            break;
 		            case 'ERROR':
 		            	st.ventanaInfo.abrir("Intentalo de nuevo", "error", 2000);
+		            	$timeout(function() {$window.location.reload();} , 1000 );
 		            break;
                 }
 

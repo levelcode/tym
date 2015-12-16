@@ -175,8 +175,8 @@ function update_item( $data ) {
                 $updated = update_month_promotion_in_main_page( $data['data'] );
 
                 if( $updated ) {
-                  $to_get_base_data = array('from' => $data['from'], 'action' => 'get_base_data' );
-                  $info_to_return = list_varios( $to_get_base_data );  
+                  //$to_get_base_data = array('from' => $data['from'], 'action' => 'get_base_data' );
+                  //$info_to_return = list_varios( $to_get_base_data );  
                   $info_to_return['status'] = 'SUCCESS';
                 }else {
                   $info_to_return['status'] = 'ERROR';
@@ -200,6 +200,17 @@ function list_varios( $data, $local = false ){
 
           case 'home':
             switch ( $data['action'] ) {
+              case 'get_main_page_promotion':
+                  $promotion = get_month_promotion();
+
+                  if( isset($promotion) && (count($promotion) == 0) ){
+                    $promotion[0]['base_img'] = "recursos/img/img-promociones.png";
+                    $promotion[0]['detail'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+                  }
+                  
+                  $info_to_return['promotion'] = $promotion;
+                  $info_to_return['status'] = "PROMOTION_LOADED";
+                break;
               case 'load_vehicles':
                   $info_to_return['vehicles'] = get_all_vehicles();
                   $info_to_return['status'] = "VEHICLES_LOADED";
@@ -649,13 +660,25 @@ function insert_product_type( $data ) {
 //main page
 function update_month_promotion_in_main_page( $data ) {
 
+  $old_promotion = get_month_promotion();
+
   $item_to_update['table'] = "month_promotion";
   $item_to_update['column_id'] = "id";
 
-  $item_to_update['base_img'] = $data['picFile']['$ngfDataUrl'];
-  $item_to_update['detail'] = $data['itemName'];
+  if( isset($old_promotion) ) {
 
-  //$insert_id = Core\create($item_to_update, false, false);
+    $item_to_update['id'] = $old_promotion[0]['id'];
+    $item_to_update['base_img'] = $data['picFile']['$ngfDataUrl'];
+    $item_to_update['detail'] = $data['promotionDetail'];
+
+    $insert_id = Core\update($item_to_update);
+
+  }else {
+    $item_to_update['base_img'] = $data['picFile']['$ngfDataUrl'];
+    $item_to_update['detail'] = $data['promotionDetail'];
+
+    $insert_id = Core\create($item_to_update, false, false);
+  }  
 
   $completed = false;
 
@@ -670,6 +693,11 @@ function model_in_index( &$models ){
   foreach ($models as $key => $value) {
     $models[$value['model']] = $value;
   }
+}
+
+function get_month_promotion(){
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "month_promotion WHERE id = 1";
+  return Core\query($sql, array());
 }
 
 function get_universals( $vehicle_id, $model_id ) {

@@ -64,7 +64,7 @@ $cabecero = new html\Cabecero($opciones);
 									<br>
 									<img ng-show="monthPromo.file.$valid" ngf-thumbnail="promotion.picFile" class="thumb"> 
 									<input type="file" name="productimage" ngf-select ng-model="promotion.picFile" class="form-control" ng-change="" ngf-resize="{width: 361, height: 182, centerCrop: true}" accept="image/*" ngf-min-height="182" ngf-max-size="1MB" required>
-									<span class="help-text">Las dimensiones de la imagen deben de ser 361px x 182px</span>
+									<span class="help-text">Las dimensiones de la imagen deben de ser 361px x 182px, y un peso de máximo 1MB</span>
 									<!-- {{monthPromo.productimage.$ngfValidations}} -->
 								</div>
 					    	</div>

@@ -35,7 +35,7 @@ class Cabecero extends a_Html
 		ob_start();
 ?>
 <!DOCTYPE html>
-<html lang="es" ng-app="tymApp">
+<html lang="es" ng-app="tymApp" ng-csp>
 	<head>
 		<meta charset="UTF-8" >
 		<meta name="viewport" content="width=device-width, initial-scale=1">

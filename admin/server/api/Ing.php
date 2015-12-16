@@ -165,7 +165,35 @@ function save_item( $data ) {
   return json_encode($info_to_return);
 }    
 
-function list_varios( $data ){
+function update_item( $data ) {
+
+  if ( isset($data['from']) ){
+        switch( $data['from'] ) {
+          case 'admin-main-page':
+            switch ( $data['action'] ) {
+              case 'update_main_page_promotion':
+                $updated = update_month_promotion_in_main_page( $data['data'] );
+
+                if( $updated ) {
+                  $to_get_base_data = array('from' => $data['from'], 'action' => 'get_base_data' );
+                  $info_to_return = list_varios( $to_get_base_data );  
+                  $info_to_return['status'] = 'SUCCESS';
+                }else {
+                  $info_to_return['status'] = 'ERROR';
+                }
+                
+              break;
+            }
+          break;
+        }
+
+  }else{
+    $info_to_return['status'] = 'NO_FROM';
+  }
+  return json_encode($info_to_return);
+}    
+
+function list_varios( $data, $local = false ){
   if ( isset($data['from']) ){
 
         switch( $data['from'] ) {
@@ -228,10 +256,12 @@ function list_varios( $data ){
             }
           break;
           case 'admin-main-page':
-            case 'get_base_data':
-              $info_to_return['menu_items'] = get_all_product_types();
-              $info_to_return['status'] = 'LOADED';
-            break;
+            switch ( $data['action'] ) {
+              case 'get_base_data':
+                $info_to_return['menu_items'] = get_all_product_types();
+                $info_to_return['status'] = 'LOADED';
+              break;
+            }
           break;
 
         }
@@ -239,7 +269,15 @@ function list_varios( $data ){
   }else{
     $info_to_return['status'] = 'NO_FROM';
   }
-  return json_encode($info_to_return);
+
+  if( $local ){
+    $result = $info_to_return;
+    unset($info_to_return['status']);
+  }else{
+    $result = json_encode($info_to_return);
+  }
+
+  return $result;
 }
 
 function associate_tires( &$tires_data, $models ) {
@@ -597,6 +635,27 @@ function insert_product_type( $data ) {
   $product_type_to_save['type'] = $data['itemName'];
 
   $insert_id = Core\create($product_type_to_save, false, false);
+
+  $completed = false;
+
+  if( isset($insert_id) ) 
+    $completed = true;
+
+  return $completed;
+  
+}
+
+//pages
+//main page
+function update_month_promotion_in_main_page( $data ) {
+
+  $item_to_update['table'] = "month_promotion";
+  $item_to_update['column_id'] = "id";
+
+  $item_to_update['base_img'] = $data['picFile']['$ngfDataUrl'];
+  $item_to_update['detail'] = $data['itemName'];
+
+  //$insert_id = Core\create($item_to_update, false, false);
 
   $completed = false;
 

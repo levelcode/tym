@@ -76,7 +76,7 @@ $cabecero = new html\Cabecero($opciones);
 							</div>
 							<div class="col-xs-12 bloque text-right">
 								<button class="btn btn-danger" ng-click="cancelAll()"><i class="fa fa-remove"></i> &nbsp;Cancelar</button>
-								<button id="save_waste_info" class="btn btn-success" ng-click="addProduct( request )" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
+								<button id="save_waste_info" class="btn btn-success" ng-click="updatePromotion( promotion )" ng-disabled="sendingRequest || monthPromo.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
 							</div>
 						</form>				
 					</div>

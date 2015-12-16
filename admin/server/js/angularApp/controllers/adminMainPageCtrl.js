@@ -69,16 +69,16 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 
 	}
 
-	$scope.saveNewItem = function( data ){
+	$scope.updatePromotion = function( data ){
 		$scope.loadingData = true;
 
 		st.ventanaInfo.abrir("Guardando", "success", 4000);
 
 		var post = 	{};
-			post.a = 'save_item';
+			post.a = 'update_item';
 			post.from = 'admin-main-page';
-			post.action = "save_main_menu_item";
-			post.data = {itemName : data.itemName};
+			post.action = "update_main_page_promotion";
+			post.data = data;
 
         $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {

@@ -23,6 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       case 'save_item':
       echo Ing\save_item($_POST);
       break;
+      case 'update_item':
+      echo Ing\update_item($_POST);
+      break;
 
       /* LISTAS */
       case 'list_all':

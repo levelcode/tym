@@ -114,7 +114,7 @@ $cabecero = new html\Cabecero($opciones);
 										</div>
 									</div>
 									<div class="col-xs-12 bloque text-right">
-										<button id="save_waste_info" class="btn btn-success" ng-click="updateInterestSection( firstSection )" ng-disabled="sendingRequest || mayInterestYouFormFirstSection.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Actualizar</button>
+										<button id="save_waste_info" class="btn btn-success" ng-click="updateInterestSection( firstSection, 'f' )" ng-disabled="sendingRequest || mayInterestYouFormFirstSection.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Actualizar</button>
 									</div>
 								</form>
 							</div>				

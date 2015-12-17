@@ -270,6 +270,7 @@ function list_varios( $data, $local = false ){
             switch ( $data['action'] ) {
               case 'get_base_data':
                 $info_to_return['menu_items'] = get_all_product_types();
+                $info_to_return['universals'] = get_universals();
                 $info_to_return['status'] = 'LOADED';
               break;
             }
@@ -700,8 +701,8 @@ function get_month_promotion(){
   return Core\query($sql, array());
 }
 
-function get_universals( $vehicle_id, $model_id ) {
-  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type WHERE universal = 1 ORDER BY type ASC";
+function get_universals( $vehicle_id = NULL, $model_id = NULL ) {
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type pt WHERE pt.universal = '1' ORDER BY type ASC";
   return Core\query($sql, array());
 }
 

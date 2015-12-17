@@ -16,7 +16,8 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 	$scope.universalProductsSection = false;
 
 	//data arrays
-	$scope.menuItems = {};	
+	$scope.menuItems = {};
+	$scope.universalProductsTypes = {};
 
 	angular.element(document).ready(function(){
 		loadData();
@@ -40,6 +41,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
                 	case 'LOADED':
 		            	var jsonObject = angular.fromJson(data);
 			            updatetDataToShow( jsonObject['menu_items'], "menu_items" );
+			            updatetDataToShow( jsonObject['universals'], "universals" );
 			            break;
                 }
 
@@ -89,7 +91,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
                 switch( data['status'] ) {
                 	case 'SUCCESS':
 		            	var jsonObject = angular.fromJson(data);
-			            //updatetDataToShow( jsonObject['menu_items'], "menu_items" );
+			            
 			            st.ventanaInfo.abrir("Guandado con éxito", "success", 2000);
 		            break;
 		            case 'ERROR':
@@ -112,7 +114,11 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
         if ( na.length > 0 ){
 
         	switch( type ) {
-        		case 'menu_items':
+        		case 'universals':
+        			$scope.universalProductsTypes.data = na;
+        			$scope.universalProductsTypes.empty = false;		
+        			break;
+    			case 'menu_items':
         			$scope.menuItems.data = na;
         			$scope.menuItems.empty = false;		
         			break;
@@ -136,6 +142,9 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
         	
         }else {
         	switch( type ) {
+        		case 'universals':
+	    			$scope.universalProductsTypes.empty = true;	
+	    			break;
 	    		case 'menu_items':
 	    			$scope.menuItems.empty = true;	
 	    			break;

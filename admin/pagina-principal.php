@@ -51,7 +51,7 @@ $cabecero = new html\Cabecero($opciones);
 
 		<div class="panel panel-default" ng-if="homePromotion">
 			<div class="panel-heading">
-				<i class="fa fa-file-text"></i> &nbsp; Contenido Promoción del mes
+				<i class="fa fa-file-text"></i> &nbsp; Contenido sección "Promoción del mes"
 			</div>
 			<div class="panel-body">
 				<div class="row">
@@ -85,11 +85,76 @@ $cabecero = new html\Cabecero($opciones);
 		</div>
 		<div class="panel panel-default" ng-if="universalProductsSection">
 			<div class="panel-heading">
-				<i class="fa fa-file-text"></i> &nbsp; Busqueda y edición
+				<i class="fa fa-file-text"></i> &nbsp; Contenido sección "te puede interesar"
 			</div>
 			<div class="panel-body">
 				<div class="row">
-
+					<div class="col-sm-4">
+						<div class="well well-sm">
+							<div class="row">
+								<form id="mayInterestYouFormFirstSection" name="mayInterestYouFormFirstSection" novalidate>
+									<h3>Primera sección</h3>
+							    	<br>
+							    	<div class="col-sm-12 col-lg-12">
+							    		<div class="form-group">
+											<label for="firstSectionImage">Imagen</label>
+											<br>
+											<img ng-show="mayInterestYouFormFirstSection.file.$valid" ngf-thumbnail="firstSection.picFile" class="thumb"> 
+											<input type="file" name="firstSectionImage" ngf-select ng-model="firstSection.picFile" class="form-control" ng-change="" ngf-resize="{width: 361, height: 182, centerCrop: true}" accept="image/*" ngf-min-height="182" ngf-max-size="1MB" required>
+											<span class="help-text">Las dimensiones de la imagen deben de ser 190px x 190px, y un peso de máximo 1MB</span>
+											<!-- {{mayInterestYouFormFirstSection.firstSectionImage.$ngfValidations}} -->
+										</div>
+							    	</div>
+									<div class="col-sm-12 col-lg-12">
+										<div class="form-group">
+											<label for="universalProducttype">Tipo de producto universal</label>
+											<select class="form-control" id="universalProducttype" ng-disabled="loadingData" name="universalProducttype" ng-model="firstSection.universalProducttype" ng-options="productType.type for (key, productType) in universalProductsTypes.data track by productType.id" required>
+												<option disabled value="">Seleccione una opción</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-12 bloque text-right">
+										<button id="save_waste_info" class="btn btn-success" ng-click="updatePromotion( promotion )" ng-disabled="sendingRequest || mayInterestYouFormFirstSection.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Actualizar</button>
+									</div>
+								</form>
+							</div>				
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="well well-sm">
+							<div class="row">
+								<form id="mayInterestYouFormSecondarySection" name="mayInterestYouFormSecondarySection" novalidate>
+									<h3>Segunda sección</h3>
+							    	<br>
+							    	<div class="col-sm-12 col-lg-12">
+							    		<div class="form-group">
+											<label for="firstSectionImage">Imagen</label>
+											<br>
+											<img ng-show="mayInterestYouFormSecondarySection.file.$valid" ngf-thumbnail="firstSection.picFile" class="thumb"> 
+											<input type="file" name="firstSectionImage" ngf-select ng-model="firstSection.picFile" class="form-control" ng-change="" ngf-resize="{width: 361, height: 182, centerCrop: true}" accept="image/*" ngf-min-height="182" ngf-max-size="1MB" required>
+											<span class="help-text">Las dimensiones de la imagen deben de ser 190px x 190px, y un peso de máximo 1MB</span>
+											<!-- {{mayInterestYouFormSecondarySection.firstSectionImage.$ngfValidations}} -->
+										</div>
+							    	</div>
+									<div class="col-sm-12 col-lg-12">
+										<div class="form-group">
+											<label for="universalProducttype">Tipo de producto universal</label>
+											<select class="form-control" id="universalProducttype" ng-disabled="loadingData" name="universalProducttype" ng-model="firstSection.universalProducttype" ng-options="productType.type for (key, productType) in universalProductsTypes.data track by productType.id" required>
+												<option disabled value="">Seleccione una opción</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-xs-12 bloque text-right">
+										<button id="save_waste_info" class="btn btn-success" ng-click="updatePromotion( promotion )" ng-disabled="sendingRequest || mayInterestYouFormFirstSection.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Actualizar</button>
+									</div>
+								</form>
+							</div>							
+						</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="well well-sm">
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -32,7 +32,7 @@
 			<div class="col-sm-2">
 				<button type="button" class="btn form-control bg-color3" ng-click="searchProducts( selectedCar )" style="    background-image: url(recursos/img/boton-busqueda.png);
     width: 193px;
-    height: 192;
+    height: 192px;
     position: absolute;
     border: 0px solid transparent;
     background-color: transparent !important;

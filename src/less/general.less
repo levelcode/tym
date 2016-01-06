@@ -761,15 +761,17 @@ noscript{
 	top: 0;
 	left: 0;
 	.catalogo{
-		z-index: 15;
+		z-index: 18;
 		position: absolute;
-		background-color: @color1;
+		background-color: @color2;
+		//background: radial-gradient(circle, #6485e3 , @color2 50%);
 		box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-		border: 6px solid @color2;
-		outline: 2px solid @color3;
+		border: 2px solid @color3;
+		border-radius: 8px;
 		top: 120px;
 		left: 120px;
 		right: 15px;
+		max-width: 1200px;
 		height: 668px;
 		padding-top: 15px;
 		padding-bottom: 15px;
@@ -815,6 +817,12 @@ noscript{
 					}
 				}
 			}
+		}
+	}
+	.tipo{
+		.cuadro{
+			height: 160px;
+			background-color: @color1;
 		}
 	}
 }

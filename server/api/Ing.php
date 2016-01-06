@@ -8,7 +8,7 @@ require 'App/General.php';
 //require '../../recursos/mail/Mandrill_lib.php';
 
 Use App\General as Core;
-//Use App\WS as Ws;
+
 use \stdClass;
 
 function notificaciones(){
@@ -25,46 +25,12 @@ function olvidar_pass($email){
   return json_encode($salida);
 }
 function init_session($data){
-  /*$_SESSION["id_user"] = $data["id_user"];
-  $_SESSION["nombre"] = $data["nombre"];
-  $_SESSION["email"] = $data["email"];
-  $_SESSION["apellido"] = $data["apellido"];
-  $_SESSION["area_usuario"] = $data["area_usuario"];
-  $_SESSION["cargo_usuario"] = $data["cargo_usuario"];
-  $_SESSION["iniciales"] = $data["iniciales"];*/
 
   foreach($data as $nombre => $valor){
     if($nombre == 'password' || $nombre == 'confirmacion') continue;
     $_SESSION[$nombre] = $valor;
   }
-  /*$_SESSION["perfil"] = $data["perfil"];
 
-  if(isset($data["documento"])){
-    $_SESSION["documento"] = $data["documento"];
-  }
-
-  if(isset($data["fecha_nacimiento"])){
-    $_SESSION["fecha_nacimiento"] = $data["fecha_nacimiento"];
-  }
-  if(isset($data["cargo"])){
-    $_SESSION["cargo"] = $data["cargo"];
-  }
-  $_SESSION["nickname"] = $data["nombre"];
-  //FOTO FILE
-  if($data["foto_file"] == "" or $data["foto_file"] == null){
-    $_SESSION["foto_file"] = "NA";
-  } else {
-    $_SESSION["foto_file"] = $data["foto_file"];
-  }
-  //FIRMA
-  if($data["firma_file"] == "" or $data["firma_file"] == null){
-    $_SESSION["firma_file"] = "NA";
-  } else {
-    $_SESSION["firma_file"] = $data["firma_file"];
-  }
-  $_SESSION["celular"] = $data["celular"];
-  $_SESSION["iniciales"] = $data["iniciales"];
-  $_SESSION["firma_file"] = $data["firma_file"];*/
 }
 
 

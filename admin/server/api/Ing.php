@@ -165,11 +165,72 @@ function save_item( $data ) {
   return json_encode($info_to_return);
 }    
 
-function list_varios( $data ){
+function update_item( $data ) {
+
+  if ( isset($data['from']) ){
+        switch( $data['from'] ) {
+          case 'admin-main-page':
+            switch ( $data['action'] ) {
+              case 'update_main_page_promotion':
+                $updated = update_month_promotion_in_main_page( $data['data'] );
+
+                if( $updated ) {
+                  //$to_get_base_data = array('from' => $data['from'], 'action' => 'get_base_data' );
+                  //$info_to_return = list_varios( $to_get_base_data );  
+                  $info_to_return['status'] = 'SUCCESS';
+                }else {
+                  $info_to_return['status'] = 'ERROR';
+                }
+                
+              break;
+            }
+          break;
+        }
+
+  }else{
+    $info_to_return['status'] = 'NO_FROM';
+  }
+  return json_encode($info_to_return);
+}    
+
+function list_varios( $data, $local = false ){
   if ( isset($data['from']) ){
 
         switch( $data['from'] ) {
 
+          case 'home':
+            switch ( $data['action'] ) {
+              case 'get_main_page_promotion':
+                  $promotion = get_month_promotion();
+
+                  if( isset($promotion) && (count($promotion) == 0) ){
+                    $promotion[0]['base_img'] = "recursos/img/img-promociones.png";
+                    $promotion[0]['detail'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+                  }
+                  
+                  $info_to_return['promotion'] = $promotion;
+                  $info_to_return['status'] = "PROMOTION_LOADED";
+                break;
+              case 'load_vehicles':
+                  $info_to_return['vehicles'] = get_all_vehicles();
+                  $info_to_return['status'] = "VEHICLES_LOADED";
+                break;
+              case 'get_models_by_brand':
+
+                  $info_to_return['models'] = get_models_by_brand( $data['brandId']);
+                  $info_to_return['status'] = "VEHICLE_MODELS_LOADED";
+                break;
+              case 'get_products':
+                  $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
+                  $info_to_return['tires'] = get_tires( $data['vehicleId'], $data['modelId'] );
+                  $info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
+                  $info_to_return['status'] = "PRODUCTS_LOADED";
+                break;
+              default:
+                # code...
+                break;
+            }
+          break;
           case 'admin-products':
             switch ( $data['action'] ) {
               case 'get_base_data':
@@ -206,10 +267,13 @@ function list_varios( $data ){
             }
           break;
           case 'admin-main-page':
-            case 'get_base_data':
-              $info_to_return['menu_items'] = get_all_product_types();
-              $info_to_return['status'] = 'LOADED';
-            break;
+            switch ( $data['action'] ) {
+              case 'get_base_data':
+                $info_to_return['menu_items'] = get_all_product_types();
+                $info_to_return['universals'] = get_universals();
+                $info_to_return['status'] = 'LOADED';
+              break;
+            }
           break;
 
         }
@@ -217,7 +281,15 @@ function list_varios( $data ){
   }else{
     $info_to_return['status'] = 'NO_FROM';
   }
-  return json_encode($info_to_return);
+
+  if( $local ){
+    $result = $info_to_return;
+    unset($info_to_return['status']);
+  }else{
+    $result = json_encode($info_to_return);
+  }
+
+  return $result;
 }
 
 function associate_tires( &$tires_data, $models ) {
@@ -265,7 +337,6 @@ function save_tires( $tires_to_save ) {
   foreach ($tires_to_save as $key1 => $tire) {
 
       foreach ($tire->tires as $key2 => $options) {      
-//var_dump($options);
 
         $tire_string = $options[0].'-'.$options[1].'-'.$options[2];
 
@@ -451,124 +522,122 @@ function associate_vehicle( $vehicle_data, $inserted_tire_id, $type_of_product )
 }
 
   
-  function read_vehicles() {
-    
-    //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
-    $handle = fopen("../../recursos/csv/vehicles.csv", 'r');
-    
-    if( $handle !== FALSE ) {
-      $vehicles = array();
-
-      $count_aux = 0;
-        
-      while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE  ){
-        $current_row = new \stdClass();
-
-        if ( ($count_aux >= 1) && (count($data) >= 4) ) {
-          //die();
-          $current_row->brand = utf8_encode(trim($data[1]));
-          $current_row->model = utf8_encode(trim($data[2]));
-          $current_row->year = utf8_encode(trim($data[3]));
-        }
-            
-          $vehicles[] = $current_row;
-            
-//          $category_id++;
-        
-        $count_aux++;
-      }
-      fclose( $handle );
-      
-      return $vehicles;
-        
-    }
-  }
-
-  function read_tires(){
-    $handle = fopen("../../recursos/csv/tires.csv", 'r');
-    
-    if( $handle !== FALSE ) {
-      $vehicles = array();
-
-      $count_aux = 0;
-        
-      while ( ($data = fgetcsv($handle, 350, ',')) !== FALSE  ){
-        $current_row = new \stdClass();
-
-        if ( ($count_aux >= 1) && (count($data) >= 4) ) {
-          //die();
-          $current_row->brand = utf8_encode(trim($data[0]));
-          $current_row->model = utf8_encode(trim($data[1]));
-          $current_row->year = utf8_encode(trim($data[2]));
-          $current_row->tires = format_tires_info(utf8_encode(trim($data[3])));
-          $current_row->inches = utf8_encode(trim($data[4]));
-        }
-            
-        $vehicles[] = $current_row;
-          
-        
-        $count_aux++;
-      }
-      fclose( $handle );
-      
-      return $vehicles;
-        
-    }
-  }
-
-  function format_tires_inches( $inches_info ) {
-    /*$by_rin_type = explode('/', $inches);
-    $individual = explode('-', $by);*/
-  }
-
-  function format_tires_info( $tire_info ) {
-    $by_rin = explode('/', $tire_info);
-
-    if( count($by_rin) > 1 ){
-      $tires_types = array();
-      foreach ($by_rin as $key => $value) {
-        $individual = explode('-', $value);  
-
-        if( count($individual) > 3 )
-          $result = array_chunk($individual, 3);
-        else{
-          $aux[] = $individual;
-          $result = $aux;
-        }
-
-        $tires_types = array_merge( $tires_types, $result );
-      }
-      
-    }
-
-    return $tires_types;
-  }
+function read_vehicles() {
   
-  function _search_rin_types( $rin_types, $types_and_inch ) {
+  //$handle = fopen("ftp://user:password@example.com/somefile.txt", "w");
+  $handle = fopen("../../recursos/csv/vehicles.csv", 'r');
+  
+  if( $handle !== FALSE ) {
+    $vehicles = array();
 
-    $rines = array();
+    $count_aux = 0;
+      
+    while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE  ){
+      $current_row = new \stdClass();
 
-    $data = $types_and_inch;
-
-    $i =0;
-
-    foreach ($rin_types as $key1 => $value1) {
-
-      $current_rin = new \stdClass();
-
-      foreach ($types_and_inch as $key2 => $value2) {
-        
-        if( $key2 == $value1->brand ) {
-          
-          $data[$value1->brand]['id'] = $value1->id;
-
-        }
-        //(var_dump($rines));
+      if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+        //die();
+        $current_row->brand = utf8_encode(trim($data[1]));
+        $current_row->model = utf8_encode(trim($data[2]));
+        $current_row->year = utf8_encode(trim($data[3]));
       }
-    }
+          
+      $vehicles[] = $current_row;
 
-    return $data;
+      $count_aux++;
+    }
+    fclose( $handle );
+    
+    return $vehicles;
+      
   }
+}
+
+function read_tires(){
+  $handle = fopen("../../recursos/csv/tires.csv", 'r');
+  
+  if( $handle !== FALSE ) {
+    $vehicles = array();
+
+    $count_aux = 0;
+      
+    while ( ($data = fgetcsv($handle, 350, ',')) !== FALSE  ){
+      $current_row = new \stdClass();
+
+      if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+        //die();
+        $current_row->brand = utf8_encode(trim($data[0]));
+        $current_row->model = utf8_encode(trim($data[1]));
+        $current_row->year = utf8_encode(trim($data[2]));
+        $current_row->tires = format_tires_info(utf8_encode(trim($data[3])));
+        $current_row->inches = utf8_encode(trim($data[4]));
+      }
+          
+      $vehicles[] = $current_row;
+        
+      
+      $count_aux++;
+    }
+    fclose( $handle );
+    
+    return $vehicles;
+      
+  }
+}
+
+function format_tires_inches( $inches_info ) {
+  /*$by_rin_type = explode('/', $inches);
+  $individual = explode('-', $by);*/
+}
+
+function format_tires_info( $tire_info ) {
+  $by_rin = explode('/', $tire_info);
+
+  if( count($by_rin) > 1 ){
+    $tires_types = array();
+    foreach ($by_rin as $key => $value) {
+      $individual = explode('-', $value);  
+
+      if( count($individual) > 3 )
+        $result = array_chunk($individual, 3);
+      else{
+        $aux[] = $individual;
+        $result = $aux;
+      }
+
+      $tires_types = array_merge( $tires_types, $result );
+    }
+    
+  }
+
+  return $tires_types;
+}
+  
+function _search_rin_types( $rin_types, $types_and_inch ) {
+
+  $rines = array();
+
+  $data = $types_and_inch;
+
+  $i =0;
+
+  foreach ($rin_types as $key1 => $value1) {
+
+    $current_rin = new \stdClass();
+
+    foreach ($types_and_inch as $key2 => $value2) {
+      
+      if( $key2 == $value1->brand ) {
+        
+        $data[$value1->brand]['id'] = $value1->id;
+
+      }
+      //(var_dump($rines));
+    }
+  }
+
+  return $data;
+} 
 
 function insert_product_type( $data ) {
 
@@ -588,10 +657,53 @@ function insert_product_type( $data ) {
   
 }
 
+//pages
+//main page
+function update_month_promotion_in_main_page( $data ) {
+
+  $old_promotion = get_month_promotion();
+
+  $item_to_update['table'] = "month_promotion";
+  $item_to_update['column_id'] = "id";
+
+  if( isset($old_promotion) ) {
+
+    $item_to_update['id'] = $old_promotion[0]['id'];
+    $item_to_update['base_img'] = $data['picFile']['$ngfDataUrl'];
+    $item_to_update['detail'] = $data['promotionDetail'];
+
+    $insert_id = Core\update($item_to_update);
+
+  }else {
+    $item_to_update['base_img'] = $data['picFile']['$ngfDataUrl'];
+    $item_to_update['detail'] = $data['promotionDetail'];
+
+    $insert_id = Core\create($item_to_update, false, false);
+  }  
+
+  $completed = false;
+
+  if( isset($insert_id) ) 
+    $completed = true;
+
+  return $completed;
+  
+}
+
 function model_in_index( &$models ){
   foreach ($models as $key => $value) {
     $models[$value['model']] = $value;
   }
+}
+
+function get_month_promotion(){
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "month_promotion WHERE id = 1";
+  return Core\query($sql, array());
+}
+
+function get_universals( $vehicle_id = NULL, $model_id = NULL ) {
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type pt WHERE pt.universal = '1' ORDER BY type ASC";
+  return Core\query($sql, array());
 }
 
 function get_all_vehicles() {
@@ -609,10 +721,9 @@ function get_models_by_brand( $brand_id ) {
   return Core\query($sql, array());
 }
 
-function get_rin_types( $vehicle_id, $model_id ) {
+function get_rines( $vehicle_id, $model_id ) {
   $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model_has_tym_rin vhr"
   ." LEFT JOIN ".$GLOBALS["prefix"]. "rin r ON r.id = vhr.tym_rin_id "
-  ." LEFT JOIN ".$GLOBALS["prefix"]. "rin_type rt ON rt.id = vhr.tym_rin_tym_rin_type_id "
   ." WHERE vhr.tym_vehicle_model_id = ".$model_id." AND vhr.tym_vehicle_model_tym_vehicle_id = ".$vehicle_id;
   return Core\query($sql, array());
 }

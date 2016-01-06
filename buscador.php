@@ -18,6 +18,8 @@
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/angular.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/ui-bootstrap-tpls-0.13.4.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/angular-cookies.min.js'?>"></script>
+	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/ng-file-upload/ng-file-upload.min.js'?>"></script>
+	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/recursos/js/angular-sanitize.min.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/server/js/angularApp/angularApp.js'?>"></script>
 	<script type="text/javascript" src="<?= 'http://' . $_SERVER['SERVER_NAME'] . '/server/js/angularApp/controllers/searchTest.js'?>"></script>
 	<!-- Latest compiled and minified CSS -->
@@ -83,6 +85,10 @@
 			</div>
 			<div class="col-sm-4 col-lg-4">
 				<div class="well well-sm">
+				<h4>Universales</h4>
+				<ul>
+					<li ng-repeat="(key, universal) in universals.data" ng-bind="universal.type"></li>
+				</ul>
 				</div>
 			</div>
 		</div>

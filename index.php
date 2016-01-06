@@ -10,7 +10,13 @@ $opciones = array(
 	'css' => array(
 		'recursos/css/index.css'
 	),
-	'js' => array()
+	'js' => array(	
+		'recursos/js/angular.min.js',
+		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js', 
+		'recursos/js/angular-cookies.min.js',
+		'recursos/js/ng-file-upload/ng-file-upload.min.js',
+		'recursos/js/angular-sanitize.min.js'
+	)
 );
 
 $cabecero = new html\Cabecero($opciones);
@@ -27,7 +33,7 @@ $cabecero = new html\Cabecero($opciones);
 			<section id="promociones-galeria">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-7 promociones st-seccion">
+						<div class="col-sm-7 promociones st-seccion" ng-controller="monthPromotionCtrl" ng-cloak>
 							<div class="row">
 								<div class="col-xs-12">
 									
@@ -38,11 +44,11 @@ $cabecero = new html\Cabecero($opciones);
 										<h1>Promoción del mes</h1>
 									</div>
 									<i class="st-separador"></i>
-									<p class="txt-13">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+									<p class="txt-13 ng-cloak" ng-bind="promotion.detail"></p>
 								</div>
 								<div class="col-sm-6">
 									<br>
-									<img src="recursos/img/img-promociones.png" alt="" class="img-responsive">
+									<img ng-src="{{promotion.base_img}}" alt="" class="img-responsive">
 								</div>
 							</div>
 						</div>
@@ -85,7 +91,9 @@ $cabecero = new html\Cabecero($opciones);
 								<a class="col-xs-6 cuadro txt">
 									<i>Tanques</i>
 								</a>
-								<div class="col-xs-6 cuadro bg"></div>
+								<div class="col-xs-6 cuadro no-padding bg">
+									<img src="recursos/img/img-tanques.jpg" class="img-responsive hidden-xs">
+								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
@@ -93,7 +101,9 @@ $cabecero = new html\Cabecero($opciones);
 								<a class="col-xs-6 cuadro txt">
 									<i>Racks</i>
 								</a>
-								<div class="col-xs-6 cuadro bg"></div>
+								<div class="col-xs-6 cuadro no-padding bg">
+									<img src="recursos/img/img-racks.jpg" class="img-responsive hidden-xs">
+								</div>
 							</div>
 						</div>
 						<div class="col-sm-4">
@@ -101,7 +111,9 @@ $cabecero = new html\Cabecero($opciones);
 								<a class="col-xs-6 cuadro txt">
 									<i>Bicicleteros</i>
 								</a>
-								<div class="col-xs-6 cuadro bg"></div>
+								<div class="col-xs-6 cuadro no-padding bg">
+									<img src="recursos/img/img-bicicleteros.jpg" class="img-responsive hidden-xs">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -113,7 +125,13 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/index.js'
+		'recursos/js/index.js',
+		'server/js/angularApp/angularApp.js',
+		'server/js/angularApp/controllers/searchCtrl.js', 
+		'server/js/angularApp/controllers/productListHeaderCtrl.js',
+		'server/js/angularApp/controllers/productListCtrl.js',
+		'server/js/angularApp/controllers/productDetailCtrl.js',
+		'server/js/angularApp/controllers/monthPromotionCtrl.js'
 	)
 );
 

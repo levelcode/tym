@@ -1,11 +1,11 @@
-<div id="catalogo-accesorios">
+<div id="catalogo-accesorios" ng-controller="productListHeader">
 	<div class="catalogo">
 		<i class="indicador"></i>
 		<div class="contenido">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-sm-10">
-						<p class="txt-13 text-right"><span class="c-color3">Escogiste:</span> Mazda / 2015 / Mazda 6</p>
+					<div class="col-sm-10" ng-cloak>
+						<p class="txt-13 text-right"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
 						<section id="accesorio-tipo">
 							<div class="text-center">
 								<br>

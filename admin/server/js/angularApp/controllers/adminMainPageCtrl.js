@@ -12,11 +12,12 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 	};
 
 	//panel control status
-	$scope.mainMenuSection = false;
+	$scope.homePromotion = false;
 	$scope.universalProductsSection = false;
 
 	//data arrays
-	$scope.menuItems = {};	
+	$scope.menuItems = {};
+	$scope.universalProductsTypes = {};
 
 	angular.element(document).ready(function(){
 		loadData();
@@ -40,6 +41,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
                 	case 'LOADED':
 		            	var jsonObject = angular.fromJson(data);
 			            updatetDataToShow( jsonObject['menu_items'], "menu_items" );
+			            updatetDataToShow( jsonObject['universals'], "universals" );
 			            break;
                 }
 
@@ -52,16 +54,16 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 	$scope.switchPanelSection = function( sectionToSelect ) {
 
 		switch( sectionToSelect ) {
-			case 'mainMenu':
+			case 'homePromotion':
 				$scope.sectionSelected = false;
 
-				$scope.mainMenuSection = true;
+				$scope.homePromotion = true;
 				$scope.universalProductsSection = false;
 			break;
 			case 'universalSection':
 				$scope.sectionSelected = false;
 
-				$scope.mainMenuSection = false;
+				$scope.homePromotion = false;
 				$scope.universalProductsSection = true;
 			break;
 
@@ -69,16 +71,16 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 
 	}
 
-	$scope.saveNewItem = function( data ){
+	$scope.updatePromotion = function( data ){
 		$scope.loadingData = true;
 
 		st.ventanaInfo.abrir("Guardando", "success", 4000);
 
 		var post = 	{};
-			post.a = 'save_item';
+			post.a = 'update_item';
 			post.from = 'admin-main-page';
-			post.action = "save_main_menu_item";
-			post.data = {itemName : data.itemName};
+			post.action = "update_main_page_promotion";
+			post.data = data;
 
         $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
@@ -89,11 +91,12 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
                 switch( data['status'] ) {
                 	case 'SUCCESS':
 		            	var jsonObject = angular.fromJson(data);
-			            updatetDataToShow( jsonObject['menu_items'], "menu_items" );
+			            
 			            st.ventanaInfo.abrir("Guandado con éxito", "success", 2000);
 		            break;
 		            case 'ERROR':
 		            	st.ventanaInfo.abrir("Intentalo de nuevo", "error", 2000);
+		            	$timeout(function() {$window.location.reload();} , 1000 );
 		            break;
                 }
 
@@ -111,7 +114,11 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
         if ( na.length > 0 ){
 
         	switch( type ) {
-        		case 'menu_items':
+        		case 'universals':
+        			$scope.universalProductsTypes.data = na;
+        			$scope.universalProductsTypes.empty = false;		
+        			break;
+    			case 'menu_items':
         			$scope.menuItems.data = na;
         			$scope.menuItems.empty = false;		
         			break;
@@ -135,6 +142,9 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
         	
         }else {
         	switch( type ) {
+        		case 'universals':
+	    			$scope.universalProductsTypes.empty = true;	
+	    			break;
 	    		case 'menu_items':
 	    			$scope.menuItems.empty = true;	
 	    			break;

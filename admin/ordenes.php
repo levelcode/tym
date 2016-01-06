@@ -35,9 +35,39 @@ $cabecero = new html\Cabecero($opciones);
 
 		<div class="row">
 			<div class="col-xs-12">
-				<div class="alert alert-info">
-						<strong ng-if="collectRequests.empty">En construcción</strong>
+
+				<div class="alert alert-info" ng-if="loadingRequests || collectRequests.empty">
+						<span ng-if="loadingRequests"><strong>Cargando &nbsp;<i class="fa fa-circle-o-notch fa-spin"></i></strong></span>
+						<strong ng-if="collectRequests.empty">No existen solicitudes de recolección confirmadas</strong>
 				</div>
+				<div class="table-responsive" ng-if="!loadingRequests && !collectRequests.empty">
+					<table class="table" id="myTable">
+						<thead>
+							<tr>
+								<th colspan="12" class="text-center">Ordenes existentes</th>
+							</tr>
+							<tr>
+								<th>N<sup>o</sup> de orden</th>
+								<th>productos</th>
+								<th>N<sup>o</sup> referencia</th>
+								<th>Direccion</th>
+								<th>Notas</th>
+								<th>Valor</th>
+								<th>estado</th>
+							</tr>
+						</thead>
+						<tbody>									
+							<tr ng-if="results.length == 0">
+								<td colspan="7">
+									<div class="alert alert-warning">
+		  								<strong >La busqueda no genera resultados</strong>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
 			</div>	
 
 		</div>

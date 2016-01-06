@@ -177,6 +177,16 @@ $cabecero = new html\Cabecero($opciones);
 			</div>
 			<div class="panel-body">
 				<div class="row">
+					<div class="col-sm-4 st-bloque">
+						<div class="form-group">
+							<label for="productType">Tipo de producto a buscar</label>
+							<select name="productType" id="productType" class="form-control" ng-change="showForm( request.productType )" ng-disabled="loadingData" ng-model="request.productType" ng-options="productType.type for (key, productType) in producTypes.data track by productType.id" required>
+								<option disabled selected value="">-- Selecciona una opción --</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
 					<div class="col-lg-12">
 						<div class="alert alert-info" ng-if="loadingRequests || collectRequests.empty">
   							<span ng-if="loadingRequests"><strong>Cargando &nbsp;<i class="fa fa-circle-o-notch fa-spin"></i></strong></span>
@@ -191,7 +201,6 @@ $cabecero = new html\Cabecero($opciones);
 									<tr>
 										<th>Tipo de producto</th>
 										<th>Nombre</th>
-										<th>Fecha de recolección</th>
 										<th>N<sup>o</sup> referencia</th>
 										<th>Descripción</th>
 										<th>Stock</th>
@@ -201,7 +210,7 @@ $cabecero = new html\Cabecero($opciones);
 								</thead>
 								<tbody>									
 									<tr ng-if="results.length == 0">
-										<td colspan="8">
+										<td colspan="7">
 											<div class="alert alert-warning">
 				  								<strong >La busqueda no genera resultados</strong>
 											</div>

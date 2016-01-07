@@ -50,7 +50,7 @@ st.menu = {
 	abrir: function(){
 		var t = this;
 
-		$('#cabecero .container .menu').show({
+		$('#cabecero .menu').show({
 			duration: t.dur,
 			effect: t.efe,
 			direction: t.dir,
@@ -59,12 +59,15 @@ st.menu = {
 				t.abierto = true;
 			}
 		});
-		$('#alternador-menu').css('background-image', 'url(recursos/img/alternador-menu-cerrar.png)');
+		$('#alternador-menu').css({
+			'background-image': 'url(recursos/img/alternador-menu-cerrar.png)',
+			'background-color': 'transparent',
+		});
 	},
 
 	cerrar: function(){
 		var t = this;
-		$('#cabecero .container .menu').hide({
+		$('#cabecero .menu').hide({
 			duration: t.dur,
 			effect: t.efe,
 			direction: t.dir,
@@ -73,7 +76,10 @@ st.menu = {
 				t.abierto = false;
 			}
 		});
-		$('#alternador-menu').css('background-image', 'url(recursos/img/alternador-menu.png)');
+		$('#alternador-menu').css({
+			'background-image': 'url(recursos/img/alternador-menu.png)',
+			'background-color': 'rgba(0, 0, 0, 0.4)'
+		});
 	},
 
 	eventos: function(){
@@ -179,7 +185,7 @@ st.catalogoAccesorios = {
 
 		$('#cabecero .menu-accesorios ul li a.activo').removeClass('activo');
 		elm.addClass('activo');
-		$('#catalogo-accesorios .catalogo .indicador').css('top', elm.offset().top - 110);
+		$('#catalogo-accesorios .catalogo .indicador').css('top', elm.offset().top - 76);
 		$.ajax({
 			url: 'recursos/php/html/inc/' + elm.attr('data-nombre') + '.php',
 			type: 'get',

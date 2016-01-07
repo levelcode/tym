@@ -9,15 +9,15 @@
 	<?php require_once(_INC.'menu-accesorios.php') ?>
 
 	<div id="usuario" data-toogle="Usuarios registardos" class="txt-12 text-center">
-		<!-- <div class="ingreso">
+		<div class="ingreso" data-modal="ingreso-registro">
 			<img src="recursos/img/icono-usuario.png" alt="usuario">
 			<br>
 			Ingreso&nbsp;·&nbsp;Registro
-		</div> -->
+		</div>
 
-		<div class="registrado text-right">
+		<!-- <div class="registrado text-right">
 			<i class="c-color3">Bienvenido</i>&nbsp;<strong class="text-uppercase">Andrés Beltrán</strong><br>
 			<button class="btn c-blanco bg-color3 txt-12" data-modal="mi-perfil">Ver Perfil</button>
-		</div>
+		</div> -->
 	</div>
 </header>

@@ -563,9 +563,13 @@ a.st-enlace{
 		}
 	}	
 }
+[data-modal]{
+	cursor: pointer; 
+}
 
 /* modal TYM */
 .modal-tym{
+	color: @blanco;
 	.contenido{
 		margin-top: 100px;
 		//max-width: 96%;
@@ -640,6 +644,7 @@ a.st-enlace{
 	.modal-tym{
 		.contenido{
 			display: inline-block;
+			width: auto;
 			.cont{
 				min-width: 600px;
 				padding-top: 70px;
@@ -683,59 +688,6 @@ noscript{
 
 
 
-/* modal de ingreso y registro */
-#modal-ingreso-registro{
-	> .contenido{
-		#seccion-ingreso, #seccion-registro{
-			.formulario{
-				font-weight: 600;
-				color: #444;
-				.form-group{
-					.form-control{
-						height: 52px;
-						border-width: 2px;
-						border-radius: 3px;
-						border-color: #92998e;
-						box-shadow: none;
-					}
-				}
-				button[type="submit"]{
-					width: 100%;
-					height: 52px;
-				}
-			}
-		}
-		#seccion-registro{
-			display: none;
-			position: relative;
-			.btn-atras{
-				@t: 40px;
-				position: absolute;
-				left: 0;
-				top: 0;
-				height: @t;
-				width: @t;
-				line-height: @t;
-				text-align: center;
-				background-color: rgba(0, 0, 0, 0.6);
-				color: @blanco;
-				border-radius: (@t / 2);
-			}
-		}
-	}
-}
-
-@media (min-width:768px){
-	#modal-ingreso-registro{
-		> .contenido{
-			width: 490px;
-			.wrap{
-				padding: 30px;
-				font-size: 18px;
-			}
-		}
-	}
-}
 
 
 /* cabecero */

@@ -8,8 +8,8 @@
 				<div class="row">
 					<div class="col-sm-4">
 						<div class="form-group">
-							<select name="tipo" id="p" class="form-control" ng-disabled="sendingData" ng-model="selectedCar.vehicle" ng-options="vehicle.brand for (key, vehicle) in vehicles.data track by vehicle.id" ng-change="searchByBrand( selectedCar.vehicle )" required>
-								<option disabled selected value=""value="">Seleccione Marca</option>
+							<select name="tipo" id="p" class="form-control" ng-disabled="sendingData" ng-model="selectedCar.vehicle" ng-options="vehicle.brand as ( vehicle.brand | capitalize ) for (key, vehicle) in vehicles.data track by vehicle.id" ng-change="searchByBrand( selectedCar.vehicle )" required>
+								<option style="text-transform: capitalize;" disabled selected value="">Seleccione Marca</option>
 							</select>
 						</div>
 					</div>

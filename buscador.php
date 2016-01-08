@@ -39,7 +39,7 @@
 			<div class="col-sm-3 col-lg-3">
 				<div class="form-group">
 					<label for="tipo">Marca</label>
-					<select name="tipo" id="p" class="form-control" ng-disabled="sendingData" ng-model="request.vehicle" ng-options="vehicle.brand for (key, vehicle) in vehicles.data track by vehicle.id" ng-change="searchByBrand( request.vehicle )" required>
+					<select name="tipo" id="p" class="form-control" ng-disabled="sendingData" ng-model="request.vehicle" ng-options="vehicle.brand as ( vehicle.brand | uppercase ) for (key, vehicle) in vehicles.data track by vehicle.id" ng-change="searchByBrand( request.vehicle )" required>
 						<option disabled selected value="">-- Selecciona una opción --</option>
 					</select>
 				</div>

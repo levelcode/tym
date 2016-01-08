@@ -109,8 +109,9 @@
 
 							<div class="form-group">
 								<label>
-									<span class="c-blanco"><input type="checkbox" name="" id="">
-									He leído los <a href="#">términos de servicio</a> de TYM</span>
+									<span class="c-blanco">
+										<input type="checkbox" name="" id="">
+										He leído los <a href="#">términos de servicio</a> de TYM</span>
 								</label>
 							</div>
 

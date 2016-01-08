@@ -569,7 +569,6 @@ a.st-enlace{
 
 /* modal TYM */
 .modal-tym{
-	color: @blanco;
 	.contenido{
 		margin-top: 100px;
 		//max-width: 96%;
@@ -578,7 +577,7 @@ a.st-enlace{
 			display: block;
 			position: relative;
 			background-color: @color1;
-			padding: 30px;
+			padding: 30px 15px;
 			border: 6px solid @color2;
 			outline: 2px solid @color3;
 			background-image: url(../img/bg-cabecero.png);
@@ -603,6 +602,8 @@ a.st-enlace{
 					padding-top: 16px;
 					padding-left: 44px;
 					text-align: left;
+					font-weight: 500;
+					font-family: @f-f1;
 				}
 			}
 			.subtitulo{
@@ -655,7 +656,8 @@ a.st-enlace{
 					left: 20px;
 					h1{						
 						padding-top: 32px;
-						padding-left: 90px;
+						padding-right: 50px;
+						text-align: center;
 						font-size: 36px;
 					}
 				}
@@ -957,6 +959,22 @@ noscript{
 				.unidades{
 					font-size: 18px;
 				}
+			}
+		}
+	}
+}
+
+
+
+/* estilos para el modal: carrito de compras */
+#modal-carrito-compras{
+	.contenido{
+		.cont{
+			padding-left: 0;
+			padding-right: 0;
+			.registro-compra{
+				padding: 18px;
+				border-radius: 6px;
 			}
 		}
 	}

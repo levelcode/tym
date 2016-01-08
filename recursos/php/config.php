@@ -1,7 +1,8 @@
 <?php  
 
 //error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
-session_start();
+error_reporting(0);
+//session_start();
 
 # constantes
 define('_TITULO', 'TYM Accesorios');

@@ -1,4 +1,4 @@
-<?php 
+<?php
 /*BASE NAMESPACES */
 
 
@@ -9,7 +9,7 @@ use App\Ing as Ing;
 //call_user_func($_POST['a']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
+
   if( empty($_POST) ) {
     $_POST = json_decode(file_get_contents('php://input'), true);
   }
@@ -27,6 +27,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       break;
       case 'update_item':
       echo Ing\update_item($_POST);
+      break;
+      case 'create_item':
+      echo Ing\create_item($_POST);
       break;
 
       /* LISTAS */

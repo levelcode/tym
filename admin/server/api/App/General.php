@@ -188,7 +188,7 @@ function create($data,  $uppercase = true , $json = true, $debug = false){
       $query->errorInfo();
       $salida["error"] = "ERR-MY-".$e->getCode();
       $salida["error-mysql"] = $e->getMessage();
-      
+
       if($debug){
         $salida["SQL"] = $sql;
         $salida["insert"] = $insert;
@@ -270,14 +270,14 @@ function login( $id = "", $pass = "", $json = false, $debug = false, $email = fa
   } else {
     $table_name = $GLOBALS["prefix"]."user_admin";
     $user_colum = "identification";
-    
+
 
     $sql = "SELECT " . $table_name .".*".
       " FROM ".$table_name.
       " WHERE ". $table_name. "." .$user_colum." = :id AND status = 1";
 
     $user = query($sql, array("id" => $id), $con);
-    
+
     if( count($user) == 1 ){
       $salida["user"] = true;
       $user[0]["pass"] = $user[0]["password"];
@@ -293,7 +293,7 @@ function login( $id = "", $pass = "", $json = false, $debug = false, $email = fa
         unset($user[0]["password"]);
 
         $salida["info"] = $user[0];
-        
+
         //SESSION START
         $last_login = date("Y/m/d H:i:s", $_SERVER["REQUEST_TIME"]);
 

@@ -1,11 +1,11 @@
-	<div ng-controller="notificationsCtrl">	
+	<div ng-controller="notificationsCtrl">
 		<!-- Cabecero -->
 		<header>
 			<div class="logo">
 				<a href="./inicio" title="Dirigirse al inicio" data-toggle="tooltip" data-placement="bottom">
 					<img src="recursos/img/logo.png" alt="logotipo">
 				</a>
-			</div>			
+			</div>
 			<!-- alternador menu -->
 			<div class="alternador">
 				<i class="fa fa-reorder"></i>
@@ -20,7 +20,6 @@
 				</div>
 			</a>
 			<input type="hidden" id="id_cliente" name="id_cliente" ng-model="userId" ng-init="userId= <?= $_SESSION['id']?>">
-			<input type="hidden" id="user_type_id" name="user_type_id" ng-model="userTypeId" ng-init="userTypeId=<?= $_SESSION['user_type_id']?>">
 		</header>
 		<div id="cargando-datos">
 		    <img src="recursos/img/preloader-s.gif" alt=""> <span>&nbsp;Cargando datos</span>

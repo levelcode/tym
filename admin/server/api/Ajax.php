@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $a = $_POST["a"];
     switch ($a) {
       case 'login':
-      echo Ing\login($_POST["id"],$_POST["pass"]);
+      echo Ing\login( $_POST["id"], $_POST["pass"], $_POST["userType"] );
       break;
       case 'save_item':
       echo Ing\save_item($_POST);

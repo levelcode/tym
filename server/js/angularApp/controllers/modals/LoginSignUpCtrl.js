@@ -71,10 +71,12 @@ tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http' , function( $scope, $ht
         $scope.buttonLoginText = "Iniciando sesión";
 
         var post = 	{};
-            post.a = 'create_item';
+            post.a = 'login';
             post.from = 'home';
-            post.action = "create_user";
-            post.data = loginData;
+            post.action = "do_login";
+            post.userType = 0;
+            post.id = loginData.user;
+            post.pass = loginData.password;
 
         $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
@@ -82,13 +84,12 @@ tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http' , function( $scope, $ht
                 $scope.sendingData = false;
                 console.log(data);
 
-                /*
                 switch( data['status'] ) {
-                    case 'VEHICLE_MODELS_LOADED':
-                        var jsonObject = angular.fromJson(data);
-                        updatetDataToShow( jsonObject['models'], "models" );
+                    case 'LOGGED':
                         break;
-                }*/
+                    case 'NO_ACCESS':
+                        break;
+                }
 
             }).
             error(function (data, status, headers, config) {

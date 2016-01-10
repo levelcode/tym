@@ -40,11 +40,12 @@ function init_session($data){
 
 }
 
+function login( $id, $pass, $type_of_user ){
 
-function login( $id, $pass ){
-
+    $result = new \stdclass();
     $is_json = true;
-    $resultado = Core\login( $id,$pass, $is_json, false, false );
+
+    $resultado = Core\login( $id, $pass, $is_json, false, false, $type_of_user );
 
     if( $is_json ){
         $resultado = json_decode($resultado);
@@ -53,30 +54,15 @@ function login( $id, $pass ){
 
     if($resultado["response"]){
         $salida["accede"] = true;
+        $result->status = "LOGGED";
 
         init_session($resultado["info"]);
 
     }else{
         $salida["accede"] = false;
+        $result->status = "NO_ACCESS";
     }
-    return json_encode($salida);
-}
-
-function crear_usuario($data){
-    unset($data["a"]);
-    unset($data["pass2"]);
-
-    return Core\new_account($data, true, true, false, true, true );
-}
-function confirmar($key){
-    $resultado = Core\confirmar($key, false);
-    if($resultado["response"]){
-        //INCIAR SESSION
-        init_session($resultado["info"]);
-        return json_encode($resultado);
-    } else {
-        return json_encode($resultado);
-    }
+    return json_encode($result);
 }
 
 function update_client_address( $data ) {
@@ -754,6 +740,7 @@ function insert_user( $data ) {
         $user_to_save['email'] = $data['emailConfirmation'];
         $user_to_save['password'] = crypt($data['passwordConfirmation']);
         $user_to_save['birth_day'] = _format_birth_date( $data['birth'] );
+        $user_to_save['gender'] = $data['gender'];
         $user_to_save['term_and_cond_accepted'] = ($data['termAndCond']) ? '1':'0';
         $user_to_save['tym_user_type_id'] = 1;
 

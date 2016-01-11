@@ -31,15 +31,15 @@
 			                            <td ng-bind="product.name"></td>
 			                            <td class="text-right" ng-bind="product.price | currency : '$' : 0"></td>
 			                            <td>
-			                            	<select name="" id="" class="form-control">
-			                            		<option value="1">1</option>
-			                            		<option value="2">2</option>
-			                            		<option value="3">3</option>
-			                            		<option value="4">4</option>
-			                            		<option value="5">5</option>
-			                            		<option value="6">6</option>
-			                            		<option value="7">7</option>
-			                            		<option value="8">8</option>
+			                            	<select name="quantity" ng-model="product.cant" id="shop-cant" ng-change="recalculateTotals(key, 'newValue', product.cant)" class="form-control">
+			                            		<option ng-value="1">1</option>
+			                            		<option ng-value="2">2</option>
+			                            		<option ng-value="3">3</option>
+			                            		<option ng-value="4">4</option>
+			                            		<option ng-value="5">5</option>
+			                            		<option ng-value="6">6</option>
+			                            		<option ng-value="7">7</option>
+			                            		<option ng-value="8">8</option>
 			                            	</select>
 			                            </td>
 			                            <td class="text-right" ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>

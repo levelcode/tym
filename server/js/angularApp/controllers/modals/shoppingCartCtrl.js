@@ -153,6 +153,61 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
         return shippingCharge;
     }
+    /**
+    *  Update the every shoppingcart values
+    * @param param0 the key of a product to change
+    * @param param1 the type of change ('increase', 'decrease', 'delete') or default
+    */
+   $scope.recalculateTotals = function () {
+       //var regex = /\./;
+
+       if( (arguments != undefined) ) {
+           switch ( arguments[1] ) {
+
+               case 'decrease':
+                   decreaseShoppingCart( arguments[0] );
+                   break;
+               case 'newValue':
+                   increaseShoppingCart( arguments[0], arguments[2] );
+                   break;
+               case 'delete':
+                   deleteShoppingCartProduct( arguments[0] );
+                   break;
+               default:
+                   if( !(angular.isNumber( $scope.shoppingcart.products[ arguments[0] ].cant )) || ($scope.shoppingcart.products[ arguments[0] ].cant < 1) )
+                       $scope.shoppingcart.products[ arguments[0] ].cant = 1;
+           }
+
+           if ($scope.shoppingcart.numOfproductsTotal == 0)
+               $scope.shoppingcart.haveProducts = false;
+       }
+
+       $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart );
+   };
+
+   function decreaseShoppingCart( key ) {
+
+        if ( $scope.order.shoppingcart.products[key].cant > 1 ) {
+            $scope.order.shoppingcart.products[key].cant--;
+            $scope.order.shoppingcart.numOfproductsTotal--;
+        }
+
+    }
+
+    function increaseShoppingCart( key, newQuantity ) {
+
+        $scope.shoppingcart.products[key].cant = newQuantity;
+        $scope.shoppingcart.numOfproductsTotal++;
+
+    }
+
+    function deleteShoppingCartProduct( key ){
+
+        $scope.order.shoppingcart.products.splice( key, 1 );
+        $scope.order.shoppingcart.numOfproductsTotal--;
+        $scope.order.shoppingcart.numOfproductsSubtotal--;
+    }
+
 
     $scope.close = function(){
         st.modal.cerrar();

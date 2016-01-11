@@ -14,6 +14,8 @@
 				<img src="recursos/img/icono-usuario.png" alt="usuario">
 				<br>
 				Ingreso&nbsp;·&nbsp;Registro
+				<br>
+				<button class="btn c-blanco bg-color3 txt-12" data-modal="carrito-compras"><i class="fa fa-shopping-cart"></i>&nbsp;Ver carrito</button>
 			</div>
 		<?php endif;?>
 		<?php if( isset($_SESSION['id']) &&  $_SESSION['tym_user_type_id'] ): ?>

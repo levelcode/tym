@@ -1,5 +1,5 @@
 <!-- modal -->
-<div id="modal-carrito-compras" class="st-modal modal-tym">
+<div id="modal-carrito-compras" class="st-modal modal-tym" ng-controller="shoppingCartCtrl">
     <div class="contenido">
 		<span class="cerrar"><i class="fa fa-remove"></i></span>
 		<div class="cont">
@@ -80,7 +80,7 @@
 
 			            <div class="row">
 	            			<div class="col-xs-12 text-right">
-	            				<button class="btn bg-color3 c-blanco text-uppercase">Volver a la tienda</button>
+	            				<button ng-click="close()" class="btn bg-color3 c-blanco text-uppercase">Volver a la tienda</button>
 	            			</div>
 	            		</div>
 	            		<hr class="visible-xs">

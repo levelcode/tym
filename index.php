@@ -134,7 +134,9 @@ $opciones = array(
 		'server/js/angularApp/controllers/monthPromotionCtrl.js',
 		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
 		'server/js/angularApp/controllers/modals/profileCtrl.js',
-		'server/js/angularApp/controllers/modals/shoppingCartCtrl.js'
+		'server/js/angularApp/controllers/modals/shoppingCartCtrl.js',
+		'server/js/angularApp/services/constantService.js',
+		'server/js/angularApp/services/utilService.js'
 	)
 );
 

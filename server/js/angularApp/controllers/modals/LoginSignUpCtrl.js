@@ -1,4 +1,4 @@
-tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http' , function( $scope, $http ){
+tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http', '$window' , function( $scope, $http, $window ){
 
     $scope.sendingData = false;
     $scope.loadingData = false;
@@ -82,10 +82,12 @@ tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http' , function( $scope, $ht
             .success(function (data, status, headers, config) {
 
                 $scope.sendingData = false;
+                $scope.buttonLoginText = "Iniciar sesión";
                 console.log(data);
 
                 switch( data['status'] ) {
                     case 'LOGGED':
+                            $window.location.reload();
                         break;
                     case 'NO_ACCESS':
                         break;
@@ -101,6 +103,7 @@ tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http' , function( $scope, $ht
 
         $scope.sendingData = true;
         $scope.buttonSignupText = "Enviando";
+        $scope.buttonSignupText ="Regístrarte";
 
         var post = 	{};
             post.a = 'create_item';

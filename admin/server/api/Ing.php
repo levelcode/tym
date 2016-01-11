@@ -34,8 +34,8 @@ function init_session($data){
     $_SESSION["iniciales"] = $data["iniciales"];*/
 
     foreach($data as $nombre => $valor){
-        if($nombre == 'password' || $nombre == 'confirmacion') continue;
-        $_SESSION[$nombre] = $valor;
+        if($nombre == 'password' || $nombre == 'pass') continue;
+            $_SESSION[$nombre] = $valor;
     }
 
 }
@@ -55,6 +55,7 @@ function login( $id, $pass, $type_of_user ){
     if($resultado["response"]){
         $salida["accede"] = true;
         $result->status = "LOGGED";
+        $result->userData = $resultado["info"];
 
         init_session($resultado["info"]);
 

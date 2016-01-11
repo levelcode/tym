@@ -1,5 +1,5 @@
 <!-- modal -->
-<div id="modal-mi-perfil" class="st-modal modal-tym">
+<div id="modal-mi-perfil" class="st-modal modal-tym" ng-controller="profileCtrl">
     <div class="contenido">
 		<span class="cerrar"><i class="fa fa-remove"></i></span>
 		<div class="cont">
@@ -7,14 +7,14 @@
                 <h1>Mi Perfil</h1>
             </div>
             <div class="subtitulo">
-                <h2 class="c-color4">Alexander Rodriguez García</h2>
+                <h2 class="c-color4"><?= $_SESSION['user_name'] ?></h2>
                 <span>Bienvenido a tu perfil</span>
             </div>
 
             <br>
-            <h4 class="text-center">Estos son los productos que has comprado</h4>
+            <h4 class="text-center" ng-bind="mainTitle"></h4>
             <br>
-            <div class="table-responsive">
+            <div ng-if="dataLoaded" class="table-responsive">
                 <table class="tabla text-center">
                     <thead>
                         <tr>
@@ -55,6 +55,7 @@
                     </tbody>
                 </table>
             </div>
+            <!--<button class="btn c-blanco bg-color3 txt-12" data-modal="mi-perfil">Cerrar sessión</button>-->
     	</div>
     </div>
 </div>

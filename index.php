@@ -132,7 +132,8 @@ $opciones = array(
 		'server/js/angularApp/controllers/productListCtrl.js',
 		'server/js/angularApp/controllers/productDetailCtrl.js',
 		'server/js/angularApp/controllers/monthPromotionCtrl.js',
-		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js'
+		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
+		'server/js/angularApp/controllers/modals/profileCtrl.js'
 	)
 );
 

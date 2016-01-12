@@ -1,6 +1,6 @@
 							<h1 class="titulo text-uppercase">Rines 13pulgadas</h1>
 							<hr>
-							<div class="row" ng-controller="productListCtrl">
+							<div class="row" >
 								<div class="col-sm-6 col-md-4">
 									<a class="producto">
 										<div class="row">

@@ -1,5 +1,6 @@
 tymApp.controller('productListCtrl', ['$scope', '$rootScope', function( $scope, $rootScope ){
 
+	$scope.rinesLoaded = false;
 	/*
 	listeners
 	*/
@@ -8,22 +9,28 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', function( $scope, 
 	});
 
 	$rootScope.$on('rin_product_loaded', function( event, data ){
-		$scope.rinProducts = groupByRinType(data);
+		$scope.rinProducts = data;
+		$scope.rinesLoaded = true;
 	});
 
 	$scope.test = "blabla";
 
+
 	function groupByRinType( data ) {
 
 		var na = [];
+			//na.rines = {};
 		angular.forEach(data, function (value, key) {
 
-       		na[value.diameter].rines = value;
+       		na[value.diameter] = value;
    		});
 
 		return na;
 	}
 
+	$scope.sendToProductDetail = function( product ) {
+		$rootScope.$broadcast('view_detail', product);
+	}
 
 }]);
 

@@ -10,6 +10,9 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
     if( shoppingCartInCookie != undefined )
         $scope.shoppingcart = shoppingCartInCookie;
 
+	$rootScope.$on('view_detail', function( event, data ){
+		$scope.selectedProduct = data;
+	});
 
     $scope.addToShoppingCart = function( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax ) {
 

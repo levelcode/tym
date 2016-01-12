@@ -17,6 +17,9 @@ st.index.buscador = {
 		}else if($('#p2').val() == ''){
 			st.ventanaInfo.abrir('Por favor seleccione un año');
 		}else{
+			if(!st.menuAccesorios.abierto){
+				st.menuAccesorios.abrir();
+			}
 			st.catalogoAccesorios.abrir();
 		}
 	},

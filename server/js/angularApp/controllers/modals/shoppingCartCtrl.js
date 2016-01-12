@@ -1,4 +1,4 @@
-tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'ConstantsService', function( $scope, $cookies, $rootScope, ConstantsService ){
+tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'ConstantsService', '$http', function( $scope, $cookies, $rootScope, ConstantsService, $http ){
 
     'use strict';
 
@@ -8,6 +8,24 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
     todayFull.setDate( todayDay + 3 );
 
     var cookiesOptions = { path: "/" , expires: todayFull };
+
+
+    $scope.read = function() {
+        var post = 	{};
+            post.a = 'read';
+
+        $http.post("admin/server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+
+                console.log(data);
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+    }
+
+
 
     $scope.subtotal = 0;
     $scope.tax = 0;

@@ -6,6 +6,7 @@
             <div class="titulo">
                 <h1>Carrito de compras</h1>
             </div>
+            <!--<button ng-click="read()" class="btn c-blanco bg-color3 txt-12" data-modal="carrito-compras"><i class="fa fa-shopping-cart"></i>&nbsp;leer rines</button>-->
             <div class="container">
             	<div class="row">
             		<div class="col-sm-7">

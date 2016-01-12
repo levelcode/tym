@@ -14,5 +14,4 @@ tymApp.controller('productListHeader', [ '$scope', '$rootScope', function( $scop
 		$scope.selectedCar = data;
 	});
 
-
 }]);

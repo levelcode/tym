@@ -258,6 +258,20 @@ function list_varios( $data, $local = false ){
                 break;
                 case 'get_products':
                 $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
+                $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
+
+                switch ( $rin_products_result->status ) {
+                    case 'FOUND':
+                        $info_to_return['rin_products'] = $rin_products_result->data;
+                        break;
+                    case 'EMPTY':
+                        $info_to_return['rin_products'] = array();
+                        break;
+                    default:
+                        $info_to_return['rin_products'] = array();
+                        break;
+                }
+
                 $info_to_return['tires'] = get_tires( $data['vehicleId'], $data['modelId'] );
                 $info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
                 $info_to_return['status'] = "PRODUCTS_LOADED";
@@ -326,6 +340,113 @@ function list_varios( $data, $local = false ){
     }
 
     return $result;
+}
+
+function get_rin_products( $rin_group_types ) {
+
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "rin_product WHERE ";
+    $pcds_array = array();
+    $inches_array = array();
+    $diameters_array = array();
+    $k = 0;
+    $i = 0;
+    $result = new \stdClass();
+
+    foreach ($rin_group_types as $key => $group) {
+
+        $pcds = explode('-', $group['pcd']);
+        $inches = explode('-', $group['inches']);
+        $number_of_pcds = count($pcds) - 1 ;
+
+        foreach ($pcds as $key => $value) {
+            $pcds_array[$value] = $k;
+            $k++;
+        }
+
+        foreach ($inches as $key => $value) {
+            $inches_array[$value] = $i;
+            $i++;
+        }
+
+        $diameters_array[$group['rin_diameter']] = $group['rin_diameter'];
+    }
+
+    $pcds_array = _array_index( $pcds_array );
+
+    foreach ($pcds_array as $key => $value) {
+        if( $key == 0 ){
+            $pcds_sql .= " (pcd = ".'\''.$value.'\'';
+            if ( count($pcds_array) == 1 ) {
+                $pcds_sql.= ')';
+            }
+        }else{
+            if ( $key == (count($pcds_array) - 1) )
+                $pcds_sql .= " OR pcd = ".'\''.$value.'\')';
+            else {
+                $pcds_sql .= " OR pcd = ".'\''.$value.'\'';
+            }
+        }
+    }
+
+    $inches_array = _array_index( $inches_array );
+
+    foreach ($inches_array as $key => $value) {
+        if( $key == 0 ) {
+            $inches_sql .= " (width = ".'\''.$value.'\'';
+
+            if ( count($inches_array) == 1 ) {
+                $inches_sql.= ')';
+            }
+        }else{
+            if ( $key == (count($inches_array) - 1) )
+                $inches_sql .= " OR width = ".'\''.$value.'\')';
+            else
+                $inches_sql .= " OR width = ".'\''.$value.'\'';
+        }
+    }
+
+    $diameters_array = _array_index( $diameters_array );
+
+    foreach ($diameters_array as $key => $value) {
+        if( $key == 0 ) {
+            $diameter_sql .= " (diameter = ".'\''.$value.'\'';
+            if ( count($diameters_array) == 1 ) {
+                $diameter_sql.= ')';
+            }
+        }else {
+            if ( $key == (count($diameters_array) - 1) )
+                $diameter_sql .= " OR diameter = ".'\''.$value.'\')';
+            else {
+                $diameter_sql .= " OR diameter = ".'\''.$value.'\'';
+            }
+        }
+    }
+
+    //pcd . inch . diameter
+
+    $sql .= $pcds_sql." AND".$inches_sql." AND".$diameter_sql;
+
+    $query_result =  Core\query($sql, array());
+
+    if ( count($result) > 0 ) {
+        $result->status = "FOUND";
+        $result->data = $query_result;
+    }else {
+        $result->status = "EMPTY";
+    }
+
+    return $result;
+}
+
+function _array_index( $array_to_index ) {
+    $array_indexed = array();
+    $i = 0;
+    foreach ($array_to_index as $key => $value) {
+        $array_indexed[$i] = $key;
+        $i++;
+    }
+
+    return $array_indexed;
 }
 
 function associate_tires( &$tires_data, $models ) {
@@ -433,6 +554,72 @@ function read_rines(){
         fclose( $handle );
 
         return $vehicles;
+    }
+}
+
+function read_rin_products(){
+    $handle = fopen("../../recursos/csv/rin-products.csv", 'r');
+
+    if( $handle !== FALSE ) {
+        $vehicles = array();
+
+        $count_aux = 0;
+
+        while ( ($data = fgetcsv($handle, 350, ',')) !== FALSE  ){
+            $current_row = new \stdClass();
+
+            if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+                //die();
+                $current_row->img = utf8_encode(trim($data[0]));
+                $current_row->ref = utf8_encode(trim($data[1]));
+                $current_row->brand = utf8_encode(trim($data[2]));
+                $current_row->diameter = utf8_encode(trim($data[3]));
+                $current_row->width = utf8_encode(trim($data[4]));
+                $current_row->holes = utf8_encode(trim($data[5]));
+                $current_row->pcd = utf8_encode(trim($data[6]));
+                $current_row->color = utf8_encode(trim($data[7]));
+                $current_row->material = utf8_encode(trim($data[8]));
+                $current_row->details = trim($data[9]);
+                $current_row->stock_u = utf8_encode(trim($data[10]));
+                $current_row->stock_g = utf8_encode(trim($data[11]));
+                $current_row->price_u = utf8_encode(trim($data[12]));
+            }
+
+            $vehicles[] = $current_row;
+
+
+            $count_aux++;
+        }
+        fclose( $handle );
+        save_rin_products($vehicles);
+        //return $vehicles;
+    }
+}
+
+function save_rin_products( $rines_to_save ) {
+
+    foreach ($rines_to_save as $key => $value) {
+
+        $rin['table'] = "rin_products";
+        $rin['column_id'] = "id";
+
+        $rin['referencie'] = $value->ref;
+        $rin['brand'] = $value->brand;
+        $rin['diameter'] = $value->diameter;
+        $rin['width'] = $value->width;
+        $rin['holes'] = $value->holes;
+        $rin['pcd'] = $value->pcd;
+        $rin['color'] = $value->color;
+        $rin['material'] = $value->material;
+        $rin['details'] = $value->details;
+        $rin['stock_unit'] = $value->stock_u;
+        $rin['stock_group'] = $value->stock_g;
+        $rin['price_client'] = $value->price_u;
+        $rin['img'] = $value->img;
+
+        $rin_insert_id = Core\create($rin, false, false);
+
+        echo $rin_insert_id;
     }
 }
 

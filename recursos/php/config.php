@@ -21,5 +21,4 @@ function cargarClase($clase){
 spl_autoload_register('cargarClase');
 
 
-
 ?>

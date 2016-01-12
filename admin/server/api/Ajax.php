@@ -1,7 +1,10 @@
 <?php
 /*BASE NAMESPACES */
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 0417847f8d0307cf016d0f63d00f622d2517cd0a
 require 'Ing.php';
 //require 'Ing_Users.php';
 use App\Ing as Ing;

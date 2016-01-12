@@ -61,7 +61,7 @@
 								</div>
 							</div>
 							<div class="col-xs-12 text-right">
-								<button class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Comprar producto</button>
+								<button ng-click="addToShoppingCart(1, 'producto 1', 12345, '000000', 1, 'descripcion1', 1, 12000, 0, 0)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -71,6 +71,6 @@
 				<h5 class="text-uppercase">Te puede interesar</h5>
 				<i class="st-separador"></i>
 			</div>
-		</row>		
+		</row>
 	</div>
 </div>

@@ -9,15 +9,21 @@
 	<?php require_once(_INC.'menu-accesorios.php') ?>
 
 	<div id="usuario" data-toogle="Usuarios registardos" class="txt-12 text-center">
-		<div class="ingreso" data-modal="ingreso-registro">
-			<img src="recursos/img/icono-usuario.png" alt="usuario">
-			<br>
-			Ingreso&nbsp;·&nbsp;Registro
-		</div>
-
-		<!-- <div class="registrado text-right">
-			<i class="c-color3">Bienvenido</i>&nbsp;<strong class="text-uppercase">Andrés Beltrán</strong><br>
-			<button class="btn c-blanco bg-color3 txt-12" data-modal="mi-perfil">Ver Perfil</button>
-		</div> -->
+		<?php if( !isset($_SESSION['id']) ): ?>
+			<div class="ingreso" data-modal="ingreso-registro">
+				<img src="recursos/img/icono-usuario.png" alt="usuario">
+				<br>
+				Ingreso&nbsp;·&nbsp;Registro
+				<br>
+				<button class="btn c-blanco bg-color3 txt-12" data-modal="carrito-compras"><i class="fa fa-shopping-cart"></i>&nbsp;Ver carrito</button>
+			</div>
+		<?php endif;?>
+		<?php if( isset($_SESSION['id']) &&  $_SESSION['tym_user_type_id'] ): ?>
+			<div class="registrado text-right">
+				<i class="c-color3">Bienvenido</i>&nbsp;<strong class="text-uppercase"><?= $_SESSION['user_name']?></strong><br>
+				<button class="btn c-blanco bg-color3 txt-12" data-modal="mi-perfil">Ver Perfil</button>
+				<button class="btn c-blanco bg-color3 txt-12" data-modal="carrito-compras"><i class="fa fa-shopping-cart"></i>&nbsp;Ver carrito</button>
+			</div>
+		<?php endif;?>
 	</div>
 </header>

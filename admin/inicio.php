@@ -11,11 +11,11 @@ $opciones = array(
 	'descripcion' => 'TYM Accesorios es una empresa de ',
 	'autor' => 'prograCOL - http://progracol.com',
 	'css' => array(
-		'recursos/css/inicio.css', 
+		'recursos/css/inicio.css',
 		'recursos/css/clientes.css'),
-	'js' => array(	
+	'js' => array(
 		'recursos/js/angular.min.js',
-		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js', 
+		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js',
 		'recursos/js/angular-cookies.min.js',
 		'recursos/js/ng-file-upload/ng-file-upload.min.js'
 	)
@@ -48,23 +48,20 @@ $cabecero = new html\Cabecero($opciones);
 								<b>Fecha Hora Actual:</b> <span id="clock"></span>
 							</div>
 						</div>
-						<input type="hidden" id="id_cliente_for_jq" name="id_cliente_for_jq" value="<?= $_SESSION['id']?>">
-						<input type="hidden" id="user_type_id_for_jq" name="user_type_id_for_jq" value="<?= $_SESSION['user_type_id']?>">
 						<input type="hidden" id="id_cliente" name="id_cliente" ng-model="userId" ng-init="userId=<?= $_SESSION['id']?>" value="1">
-						<input type="hidden" id="user_type_id" name="user_type_id" ng-model="userTypeId" ng-init="userTypeId=<?= $_SESSION['user_type_id']?>">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-sm-7">
-						
+
 					</div>
 					<div class="col-sm-5">
 
 					</div>
 				</div>
 
-				
+
 			</div>
 		</div>
 <!-- Pie de página -->
@@ -73,7 +70,7 @@ $cabecero = new html\Cabecero($opciones);
 $opciones = array(
 	'js' => array(
 		'https://www.google.com/jsapi',
-		'recursos/js/inicio.js', 
+		'recursos/js/inicio.js',
 		'recursos/js/clock.js',
 		'server/js/angularApp/angularApp.js',
 		'server/js/angularApp/controllers/startCtrl.js',

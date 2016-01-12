@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace html;
 
 
@@ -15,8 +15,8 @@ class Cabecero extends a_Html
 
 		$this->cabecero = isset($opciones['cabecero']) && gettype($opciones['cabecero']) == 'string' ? $opciones['cabecero'] : 'cabecero-general';
 
-		$this->no_cabecero = (isset($opciones['cabecero']) && (gettype($opciones['cabecero']) == 'string' && ($opciones['cabecero'] == 'no-cabecero'))) ? true : false;		
-		
+		$this->no_cabecero = (isset($opciones['cabecero']) && (gettype($opciones['cabecero']) == 'string' && ($opciones['cabecero'] == 'no-cabecero'))) ? true : false;
+
 		$this->is_admin = ( isset($opciones['is_admin']) && $opciones['is_admin'] )  ? $this->is_admin = $opciones['is_admin'] : false;
 
 		if(isset($opciones['css']) && gettype($opciones['css']) == 'array') $this->ConstruirCss($opciones['css']);
@@ -48,6 +48,7 @@ class Cabecero extends a_Html
 			<link rel="stylesheet" href="recursos/css/admin/general.css">
 		<?php endif;?>
 		<link rel="stylesheet" href="recursos/css/general.css">
+		<link rel="stylesheet" href="recursos/css/tooltip.css">
 		<?php $this->obtener('css') ?>
 		<script src="recursos/js/jquery.js"></script>
 		<?php $this->obtener('js') ?>
@@ -76,16 +77,16 @@ class Cabecero extends a_Html
 				</div>
 			</div>
 		</noscript>
-<?php	
+<?php
 		if( !$this->no_cabecero ){
 			if( $this->is_admin ) {
-				require_once(_INC_ADMIN."{$this->cabecero}.php");	
+				require_once(_INC_ADMIN."{$this->cabecero}.php");
 			}else {
-				require_once(_INC."{$this->cabecero}.php");		
+				require_once(_INC."{$this->cabecero}.php");
 			}
-			
+
 		}
-		
+
 		$this->html = ob_get_contents();
 		ob_clean();
 	}

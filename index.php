@@ -10,9 +10,9 @@ $opciones = array(
 	'css' => array(
 		'recursos/css/index.css'
 	),
-	'js' => array(	
+	'js' => array(
 		'recursos/js/angular.min.js',
-		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js', 
+		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js',
 		'recursos/js/angular-cookies.min.js',
 		'recursos/js/ng-file-upload/ng-file-upload.min.js',
 		'recursos/js/angular-sanitize.min.js'
@@ -36,7 +36,7 @@ $cabecero = new html\Cabecero($opciones);
 						<div class="col-sm-7 promociones st-seccion" ng-controller="monthPromotionCtrl" ng-cloak>
 							<div class="row">
 								<div class="col-xs-12">
-									
+
 								</div>
 								<div class="col-sm-6">
 									<div class="st-titulo">
@@ -67,8 +67,8 @@ $cabecero = new html\Cabecero($opciones);
 									</a>
 								</div>
 							</div>
-							
-							
+
+
 						</div>
 					</div>
 				</div>
@@ -127,11 +127,16 @@ $opciones = array(
 	'js' => array(
 		'recursos/js/index.js',
 		'server/js/angularApp/angularApp.js',
-		'server/js/angularApp/controllers/searchCtrl.js', 
+		'server/js/angularApp/controllers/searchCtrl.js',
 		'server/js/angularApp/controllers/productListHeaderCtrl.js',
 		'server/js/angularApp/controllers/productListCtrl.js',
 		'server/js/angularApp/controllers/productDetailCtrl.js',
-		'server/js/angularApp/controllers/monthPromotionCtrl.js'
+		'server/js/angularApp/controllers/monthPromotionCtrl.js',
+		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
+		'server/js/angularApp/controllers/modals/profileCtrl.js',
+		'server/js/angularApp/controllers/modals/shoppingCartCtrl.js',
+		'server/js/angularApp/services/constantService.js',
+		'server/js/angularApp/services/utilService.js'
 	)
 );
 

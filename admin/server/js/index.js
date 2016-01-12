@@ -21,21 +21,21 @@ var do_login = function(){
 
   if(pass != '' && user != ''){
 
-      st.ventanaInfo.abrir("Cargando...", "succes", 3000);  
-      
+      st.ventanaInfo.abrir("Cargando...", "succes", 3000);
+
       $.ajax({
-        data : 'a=login&pass='+pass+'&id='+user,
+        data : 'a=login&pass='+pass+'&id='+user+'&userType=1',
         complete: function(response, status){
           //console.log(response, ' - ', status);
           console.log(response);
-          if(status == 'success'){
+          if(status == 'LOGGED'){
               //console.log(response);
               if(response.responseJSON.accede){
                 window.location = 'inicio';
-                
-                st.ventanaInfo.abrir("Bienvenido al CMS de TYM", "succes");  
+
+                st.ventanaInfo.abrir("Bienvenido al CMS de TYM", "succes");
               } else {
-                 st.ventanaInfo.abrir("Datos incorrectos", "error");              
+                 st.ventanaInfo.abrir("Datos incorrectos", "error");
               }
           } else {
             alert(status);

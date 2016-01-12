@@ -6,8 +6,9 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 	$scope.models = {};
 	$scope.years = {};
 	$scope.rinTypes = {};
+	$scope.rinProducts = {};
 	$scope.tires = {};
-	
+
 	$scope.loadingData = false;
 	$scope.showOptions = false;
 
@@ -16,7 +17,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
 		loadHomeData();
 	});
-	
+
 	$scope.searchByBrand = function( selectedVehicleBrand ) {
 		console.log( selectedVehicleBrand );
 		$scope.loadingData = true;
@@ -29,7 +30,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
         $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
@@ -52,7 +53,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 		var years = [];
 
 		if( modelSelected.year.search( "-" ) != -1 ) {
-			var yearsArray = modelSelected.year.split("-");	
+			var yearsArray = modelSelected.year.split("-");
 
 			var yearsDifference = yearsArray[1] - yearsArray[0];
 
@@ -65,7 +66,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 		}else {
 			years[0] = modelSelected.year;
 		}
-		
+
 		console.log(years);
 		updatetDataToShow( years, "years" );
 
@@ -88,13 +89,14 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
         $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
                 switch( data['status'] ) {
                 	case 'PRODUCTS_LOADED':
 		            	var jsonObject = angular.fromJson(data);
+						updatetDataToShow( jsonObject['rin_products'], "rin_products" );
 			            updatetDataToShow( jsonObject['rin_types'], "rin_types" );
 			            updatetDataToShow( jsonObject['tires'], "tires" );
 			            break;
@@ -115,7 +117,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
         $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
@@ -124,7 +126,6 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
                 		var jsonObject = angular.fromJson(data);
 	                	updatetDataToShow( jsonObject['vehicles'], "vehicles" );
-
                 		break;
                 }
 
@@ -163,7 +164,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
         	switch( type ) {
         		case 'vehicles':
         			$scope.vehicles.data = na;
-        			$scope.vehicles.empty = false;		
+        			$scope.vehicles.empty = false;
         			break;
     			case 'models':
     					$scope.models.data = na;
@@ -177,28 +178,36 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
     					$scope.rinTypes.data = na;
         				$scope.rinTypes.empty = false;
 					break;
+				case 'rin_products':
+						$scope.rinProducts.data = na;
+						$scope.rinProducts.empty = false;
+						$rootScope.$broadcast('rin_product_loaded', na);
+					break;
 				case 'tires':
     					$scope.tires.data = na;
         				$scope.tires.empty = false;
 					break;
         	}
-        	
+
         }else {
         	switch( type ) {
 	    		case 'vehicles':
-	    			$scope.vehicles.empty = true;	
+	    			$scope.vehicles.empty = true;
 	    			break;
     			case 'models':
-	    			$scope.models.empty = true;	
+	    			$scope.models.empty = true;
 	    			break;
     			case 'years':
-	    			$scope.years.empty = true;	
+	    			$scope.years.empty = true;
 	    			break;
     			case 'rin_types':
-	    			$scope.rinTypes.empty = true;	
+	    			$scope.rinTypes.empty = true;
 	    			break;
+				case 'rin_products':
+					$scope.rinProducts.empty = true;
+					break;
     			case 'tires':
-	    			$scope.tires.empty = true;	
+	    			$scope.tires.empty = true;
 	    			break;
 			}
         }

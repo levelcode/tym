@@ -186,7 +186,7 @@
 									<div class="form-group">
                                         <select name="gender" ng-model="signUp.gender" id="sign-up-gender" class="form-control" required>
 											<option selected disabled value="">Genero</option>
-											<option value="M">Maculino</option>
+											<option value="M">Masculino</option>
 											<option value="F">Femenino</option>
 										</select>
                                         <!-- tooltip -->

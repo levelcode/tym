@@ -1,10 +1,7 @@
 <?php
 /*BASE NAMESPACES */
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 0417847f8d0307cf016d0f63d00f622d2517cd0a
 require 'Ing.php';
 //require 'Ing_Users.php';
 use App\Ing as Ing;
@@ -21,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         $a = $_POST["a"];
-        switch ($a) {
+        switch ($a) {/**/
             case 'login':
             echo Ing\login( $_POST["id"], $_POST["pass"], $_POST["userType"] );
             break;

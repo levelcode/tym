@@ -148,9 +148,29 @@ st.menuAccesorios = {
 	},
 
 	eventos: function(){
-		var t = this;
+		var t = this,
+			bp = 768;
 		$('#alternador-menu-accesorios').on('click', function(){
 			t.analizar();
+		});
+
+		$(window).on({
+			load: function(){
+				if($(this).width() < bp){
+					t.cerrar();
+				}
+			},
+			resize: function(){
+				if($(this).width() < bp){
+					if(!t.abierto) return;
+					t.cerrar();
+					console.log('cerrar');
+				}else{
+					if(t.abierto) return;
+					t.abrir();
+					console.log('abrir');
+				}
+			}
 		});
 	}
 }

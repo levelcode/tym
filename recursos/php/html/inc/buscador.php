@@ -30,15 +30,7 @@
 				</div>
 			</div>
 			<div class="col-sm-2">
-				<button type="button" class="btn form-control bg-color3" ng-click="searchProducts( selectedCar )" style="    background-image: url(recursos/img/boton-busqueda.png);
-    width: 193px;
-    height: 192px;
-    position: absolute;
-    border: 0px solid transparent;
-    background-color: transparent !important;
-    margin-top: -93px;
-    box-shadow: none;
-    text-shadow: none;"> </button>
+				<button type="button" id="boton-busqueda-vehiculo" class="btn form-control bg-color3" ng-click="searchProducts( selectedCar )"><span><i class="fa fa-search"></i>&nbsp;&nbsp;Buscar</span></button>
 			</div>
 		</div>
 	</form>

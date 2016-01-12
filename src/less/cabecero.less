@@ -32,7 +32,11 @@
 		left: 0;
 		top: 0;
 		transform-origin: 50% 0;
-		width: 220px;
+		width: 182px;
+		height: 84px;
+		background-image: url(../img/logo-xs.png);
+		background-position: center;
+		background-repeat: no-repeat;
 		&:hover{
 			animation-name: logo;
 			animation-duration: .4s;
@@ -41,8 +45,8 @@
 	}
 	#alternador-menu{
 		display: block;
-		width: @alto-cabecero;
-		height: @alto-cabecero;
+		width: (@alto-cabecero / 2);
+		height: (@alto-cabecero / 2);
 		background-image: url(../img/alternador-menu.png);
 		position: absolute;
 		background-repeat: no-repeat;
@@ -99,11 +103,11 @@
 	}	
 	#alternador-menu-accesorios{
 		background-color: rgba(0, 0, 0, 0.4);
-		width: @alto-cabecero;
-		height: @alto-cabecero;
+		width: (@alto-cabecero / 2);
+		height: (@alto-cabecero / 2);
 		position: absolute;
-		top: 0px;
-		right: 85px;
+		top: (@alto-cabecero / 2);
+		right: 0;
 		border-radius: 4px;
 		z-index: 18;
 		color: @blanco;
@@ -112,7 +116,6 @@
 		transition-property: left, transform;
 		transition-duration: .2s;
 		background-image: url(../img/bg-menu-accesorios-l.png);
-		
 		background-position: center;
 		background-repeat: no-repeat;
 	}
@@ -126,8 +129,8 @@
 		border-top: 3px solid #222;
 		box-shadow: inset 0 0 40px rgba(0, 0, 0, .3), 0 0 40px rgba(0, 0, 0, .4);
 		ul{
-			list-style-type: none;
 			.no-pm;
+			list-style-type: none;
 			font-family: @f-f1;
 			font-weight: 600;
 			padding-left: 6px;
@@ -175,7 +178,7 @@
 
 	#usuario{
 		position: absolute;
-		right: 169px;
+		right: (@alto-cabecero / 2);
 		top: 0;
 		padding-right: 10px;
 		height: @alto-cabecero;
@@ -201,7 +204,9 @@
 @media (min-width:768px){
 	#cabecero{
 		.logo{
-			width: 320px;
+			width: 300px;
+			height: 84px;
+			background-image: url(../img/logo.png);
 		}
 	}
 }

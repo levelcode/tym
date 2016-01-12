@@ -1,6 +1,6 @@
 <header id="cabecero">
 	<a href="./" class="logo" data-toggle="tooltip" data-placement="bottom" title="Inicio">
-		<img src="recursos/img/logo.png" class="img-responsive" alt="">
+		
 	</a>
 	<?php require_once(_INC.'menu.php') ?>
 

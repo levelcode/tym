@@ -10,7 +10,13 @@ $opciones = array(
 	'css' => array(
 		'recursos/css/videos.css'
 	),
-	'js' => array()
+	'js' => array(
+		'recursos/js/angular.min.js',
+		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js',
+		'recursos/js/angular-cookies.min.js',
+		'recursos/js/ng-file-upload/ng-file-upload.min.js',
+		'recursos/js/angular-sanitize.min.js'
+	)
 );
 
 $cabecero = new html\Cabecero($opciones);
@@ -30,12 +36,12 @@ $cabecero = new html\Cabecero($opciones);
 						<div class="col-xs-12">
 							<!-- slider inicio -->
 							<div id="rotabanner" class="carousel slide" data-ride="carousel" data-interval="false">
-								<!-- Wrapper for slides --> 
+								<!-- Wrapper for slides -->
 								<div class="carousel-inner" role="listbox">
 									<div class="item active text-center sld-1">
 										<div class="embed-responsive embed-responsive-16by9">
-											<iframe  src="https://www.youtube.com/embed/hjFPpU9XcFA" frameborder="0" allowfullscreen class="embed-responsive-item"></iframe>						
-										</div>				
+											<iframe  src="https://www.youtube.com/embed/hjFPpU9XcFA" frameborder="0" allowfullscreen class="embed-responsive-item"></iframe>
+										</div>
 									</div>
 
 									<div class="item text-center sld-2">
@@ -56,7 +62,7 @@ $cabecero = new html\Cabecero($opciones);
 									<li data-target="#rotabanner" data-slide-to="1"></li>
 									<li data-target="#rotabanner" data-slide-to="2"></li>
 								</ol>
-								<!-- Controls 
+								<!-- Controls
 								<a class="left carousel-control" href="#rotabanner" role="button" data-slide="prev">
 									<div class="flecha">
 										<span class="fa fa-angle-left fa-3x"></span>
@@ -78,7 +84,18 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/videos.js'
+		'recursos/js/videos.js',
+		'server/js/angularApp/angularApp.js',
+		'server/js/angularApp/controllers/productListHeaderCtrl.js',
+		'server/js/angularApp/controllers/productListCtrl.js',
+		'server/js/angularApp/controllers/productDetailCtrl.js',
+		'server/js/angularApp/controllers/monthPromotionCtrl.js',
+		'server/js/angularApp/controllers/shoppingCartAxuCtrl.js',
+		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
+		'server/js/angularApp/controllers/modals/profileCtrl.js',
+		'server/js/angularApp/controllers/modals/shoppingCartCtrl.js',
+		'server/js/angularApp/services/constantService.js',
+		'server/js/angularApp/services/utilService.js'
 	)
 );
 

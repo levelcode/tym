@@ -11,7 +11,13 @@ $opciones = array(
 		'recursos/css/galerias.css',
 		'recursos/css/lightslider.css',
 	),
-	'js' => array()
+	'js' => array(
+		'recursos/js/angular.min.js',
+		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js',
+		'recursos/js/angular-cookies.min.js',
+		'recursos/js/ng-file-upload/ng-file-upload.min.js',
+		'recursos/js/angular-sanitize.min.js'
+	)
 );
 
 $cabecero = new html\Cabecero($opciones);
@@ -35,34 +41,34 @@ $cabecero = new html\Cabecero($opciones);
 						<div class="col-xs-12">
 							<div class="clearfix" class="text-center">
 								<ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-				                    <li data-thumb="recursos/img/thumb/foto-carro-01.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-01.jpg">
 				                        <img src="recursos/img/foto-carro-01.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-02.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-02.jpg">
 				                        <img src="recursos/img/foto-carro-02.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-03.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-03.jpg">
 				                        <img src="recursos/img/foto-carro-03.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-04.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-04.jpg">
 				                        <img src="recursos/img/foto-carro-04.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-05.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-05.jpg">
 				                        <img src="recursos/img/foto-carro-05.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-06.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-06.jpg">
 				                        <img src="recursos/img/foto-carro-06.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-07.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-07.jpg">
 				                        <img src="recursos/img/foto-carro-07.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-08.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-08.jpg">
 				                        <img src="recursos/img/foto-carro-08.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-09.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-09.jpg">
 				                        <img src="recursos/img/foto-carro-09.jpg" class="img-responsive">
 				                    </li>
-				                    <li data-thumb="recursos/img/thumb/foto-carro-10.jpg"> 
+				                    <li data-thumb="recursos/img/thumb/foto-carro-10.jpg">
 				                        <img src="recursos/img/foto-carro-10.jpg" class="img-responsive">
 				                    </li>
 				                </ul>
@@ -84,7 +90,18 @@ $cabecero = new html\Cabecero($opciones);
 $opciones = array(
 	'js' => array(
 		'recursos/js/lightslider.js',
-		'recursos/js/galerias.js'
+		'recursos/js/galerias.js',
+		'server/js/angularApp/angularApp.js',
+		'server/js/angularApp/controllers/productListHeaderCtrl.js',
+		'server/js/angularApp/controllers/productListCtrl.js',
+		'server/js/angularApp/controllers/productDetailCtrl.js',
+		'server/js/angularApp/controllers/monthPromotionCtrl.js',
+		'server/js/angularApp/controllers/shoppingCartAxuCtrl.js',
+		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
+		'server/js/angularApp/controllers/modals/profileCtrl.js',
+		'server/js/angularApp/controllers/modals/shoppingCartCtrl.js',
+		'server/js/angularApp/services/constantService.js',
+		'server/js/angularApp/services/utilService.js'
 	)
 );
 

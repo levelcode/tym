@@ -10,7 +10,13 @@ $opciones = array(
 	'css' => array(
 		'recursos/css/empresas-aliadas.css'
 	),
-	'js' => array()
+	'js' => array(
+		'recursos/js/angular.min.js',
+		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js',
+		'recursos/js/angular-cookies.min.js',
+		'recursos/js/ng-file-upload/ng-file-upload.min.js',
+		'recursos/js/angular-sanitize.min.js'
+	)
 );
 
 $cabecero = new html\Cabecero($opciones);
@@ -29,7 +35,7 @@ $cabecero = new html\Cabecero($opciones);
 					<div class="row">
 						<div class="col-xs-12">
 							<div id="rotabanner" class="carousel slide" data-ride="carousel">
-							<!-- Wrapper for slides --> 
+							<!-- Wrapper for slides -->
 							<div class="carousel-inner" role="listbox">
 								<div class="item active sld-1">
 									<div class="container-fluid">
@@ -63,13 +69,13 @@ $cabecero = new html\Cabecero($opciones);
 														<h3><a href="http://www.easyimports.com.co">www.easyimports.com.co</a></h3>
 
 														<p>Es una empresa dedicada a la importación distribución y venta de cámaras de seguridad en todo el territorio colombiano, nuestro compromiso es de atender con esmero y buen servicio, un mercado masivo de productos para seguridad. </p>
- 
+
 														<p>De esta manera, poder suministrar nuestra amplia gama de productos, para cubrir así todas las necesidades en la relación sistemas de seguridad.</p>
 													</div>
 												</div>
 											</div>
 										</div>
-									</div>	
+									</div>
 								</div>
 								<div class="item sld-3">
 									<div class="container-fluid">
@@ -84,7 +90,7 @@ $cabecero = new html\Cabecero($opciones);
 														<h3><a href="http://www.femm.com.co">www.femm.com.co</a></h3>
 
 														<p>Diseña, fabrica e importa equipos para movimiento como son:</p>
- 
+
 														<i>Ascensores de Pasajeros,</i> hospitalarios, carga, montacoches, de obra, montaplatos, para discapacitados.<br>
 														<i>Sillas Salva Escaleras</i> para tramos curvos o rectos (Discapacitados)<br>
 														<i>Plataformas Salva Escaleras</i> para tramos curvos o rectos (Discapacitados)<br>
@@ -96,7 +102,7 @@ $cabecero = new html\Cabecero($opciones);
 													</div>
 												</div>
 											</div>
-										</div>	
+										</div>
 									</div>
 								</div>
 								<div class="item sld-4">
@@ -115,8 +121,8 @@ $cabecero = new html\Cabecero($opciones);
 													</div>
 												</div>
 											</div>
-										</div>	
-									</div>		
+										</div>
+									</div>
 								</div>
 								<div class="item sld-5">
 									<div class="container-fluid">
@@ -134,7 +140,7 @@ $cabecero = new html\Cabecero($opciones);
 													</div>
 												</div>
 											</div>
-										</div>	
+										</div>
 									</div>
 								</div>
 							</div>
@@ -169,7 +175,18 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/empresas-aliadas.js'
+		'recursos/js/empresas-aliadas.js',
+		'server/js/angularApp/angularApp.js',
+		'server/js/angularApp/controllers/productListHeaderCtrl.js',
+		'server/js/angularApp/controllers/productListCtrl.js',
+		'server/js/angularApp/controllers/productDetailCtrl.js',
+		'server/js/angularApp/controllers/monthPromotionCtrl.js',
+		'server/js/angularApp/controllers/shoppingCartAxuCtrl.js',
+		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
+		'server/js/angularApp/controllers/modals/profileCtrl.js',
+		'server/js/angularApp/controllers/modals/shoppingCartCtrl.js',
+		'server/js/angularApp/services/constantService.js',
+		'server/js/angularApp/services/utilService.js'
 	)
 );
 

@@ -26,6 +26,16 @@
 		</div>
 	</div>
 </footer>
+<div id="ventana-info">
+	<div class="cerrar">
+		<span>x</span>
+	</div>
+	<div class="contenido">
+		<p class="text-success">¡Contacto guardado con éxito!</p>
+	</div>
+</div>
+
+
 <?php require_once(_MODAL.'contacto.php'); ?>
 <?php require_once(_INC.'catalogo-accesorios.php'); ?>
 <?php require_once(_MODAL.'detalle-producto.php'); ?>

@@ -492,6 +492,43 @@ a.st-enlace{
 
 
 
+/* ventana info */
+#ventana-info{
+	position: fixed;
+	width: 240px !important;
+	min-height: 100px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	right: 24px;
+	bottom: 24px;
+	background-color: @color1;
+	background: linear-gradient(to right, @color1, lighten(@color1, 16%), @color1);
+	z-index: 26;
+	display: none;
+	border: 1px solid @negro;
+	max-height: 300px !important;
+	overflow: auto;
+	font-size: 12px;
+	.cerrar{
+		@h: 24px;
+		position: absolute;
+		right: 0;
+		background-color: #ddd;
+		color: #333;
+		width: @h;
+		height: @h;
+		line-height: @h;
+		text-align: center;
+		top: 0;
+		cursor: pointer;
+	}
+	.contenido{
+		padding: 16px;
+		padding-top: 34px;
+	}
+}
+
+
+
 
 /* boton de subir */
 #boton-arriba{
@@ -691,9 +728,6 @@ noscript{
 
 
 
-
-/* cabecero */
-@import (less) "pie.less";
 
 
 

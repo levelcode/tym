@@ -25,6 +25,92 @@ initMap();
 /* variable global para el sitio */
 var st = {};
 
+
+
+/* ventanaInfo */
+st.ventanaInfo = {
+    /* Porps */
+    tempo: 400,
+	efecto: 'drop',
+	easing: 'easeInOutQuart',
+	timeout: null,
+	duracionVentana: 10000,
+	direction: 'right',
+
+    /* Methods */
+    ini: function(){
+        this.ponerEventos();
+    },
+
+    abrir: function(txt){
+    	var t = this;
+
+        if(typeof txt == 'string'){
+        	t.abierto = true;
+            $('#ventana-info .contenido').html(txt);
+
+            $('#ventana-info').show({
+				effect: t.efecto,
+				duration: t.tempo,
+				easing: t.easing,
+				direction: t.direction
+			});
+
+			clearTimeout(t.timeout);
+
+            t.timeout = setTimeout(function(){
+            	t.cerrar();
+            }, t.duracionVentana);
+            
+        }else{
+            console.error('Debe pasarse un string a la función');
+        }
+    },
+
+    cerrar: function(){
+    	var t = this;
+    	clearTimeout(this.timeout);
+        $('#ventana-info').hide({
+			effect: this.efecto,
+			duration: this.tempo,
+			easing: this.easing,
+			direction: this.direction
+		});
+		
+    }, 
+
+    ponerEventos: function(){
+        var t = this;
+
+        $('#ventana-info .cerrar').click(function(){
+            t.cerrar();
+        });
+
+        $('[data-ventana-info]').on('click', function(e){
+        	e.preventDefault();
+        	clearTimeout(t.timeout);
+        	t.abrir($(this).attr('data-ventana-info'));
+        });
+
+        $('#ventana-info').on('mouseenter', function(){
+        	clearTimeout(t.timeout);
+        })
+
+        $(document).on('keypress', function(e){
+        	if(e.keyCode == 27){
+        		t.cerrar();
+        	}
+        });
+    }
+}
+
+st.ventanaInfo.ini();
+
+
+
+
+
+
 // menu
 st.menu = {
 	// props

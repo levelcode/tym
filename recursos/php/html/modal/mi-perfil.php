@@ -55,7 +55,7 @@
                     </tbody>
                 </table>
             </div>
-            <!--<button class="btn c-blanco bg-color3 txt-12" data-modal="mi-perfil">Cerrar sessión</button>-->
+            <button class="btn c-blanco bg-color3 txt-12" ng-click="closeSession()">Cerrar sessión</button>
     	</div>
     </div>
 </div>

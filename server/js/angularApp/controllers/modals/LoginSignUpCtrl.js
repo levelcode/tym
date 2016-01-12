@@ -1,7 +1,9 @@
-tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http', '$window' , function( $scope, $http, $window ){
+tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http', '$window', '$timeout', function( $scope, $http, $window, $timeout ){
 
     $scope.sendingData = false;
     $scope.loadingData = false;
+    $scope.showLoginError = false;
+    $scope.showSignUpError = false;
 
     angular.element(document).ready(function(){
 		createYears();
@@ -90,6 +92,10 @@ tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http', '$window' , function( 
                             $window.location.reload();
                         break;
                     case 'NO_ACCESS':
+                        $scope.showLoginError = true;
+                        $timeout( function(){
+                            $scope.showLoginError = false;
+                        }, 5000 );
                         break;
                 }
 

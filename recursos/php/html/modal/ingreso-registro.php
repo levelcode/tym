@@ -56,6 +56,13 @@
 						<br>
 						<div class="form-group text-center">
 							<button type="button" ng-disabled="loginForm.$invalid" ng-click="doLogin( login )" class="bg-color3 btn c-blanco txt-18"><i ng-if="sendingData" class="fa fa-circle-o-notch fa-spin"></i>&nbsp;{{buttonLoginText}}</button>
+                            <!-- tooltip -->
+                            <div ng-if="showLoginError">
+                                <div class="farma-tooltip-error">
+                                    <span>Datos incorrectos!</span>
+                                </div>
+                            </div>
+                            <!-- tooltip -->
 						</div>
 	                </form>
 	            </div>

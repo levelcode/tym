@@ -25,6 +25,9 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
                 $scope.shoppingcart.products = [{}];
                 $scope.shoppingcart.subtotal = 0;
                 $scope.shoppingcart.shippingCharge = 0;
+				$scope.shoppingcart.shippingChargeAndInstalation = 0;
+				$scope.shoppingcart.addDelivery = false;
+				$scope.shoppingcart.addDeliveryAndinstalation = false;
                 $scope.shoppingcart.tax = 0;
                 $scope.shoppingcart.total = 0;
                 $scope.shoppingcart.numOfproductsSubtotal = 0;

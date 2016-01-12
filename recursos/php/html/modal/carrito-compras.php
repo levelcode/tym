@@ -31,7 +31,7 @@
 			                            <td ng-bind="product.name"></td>
 			                            <td class="text-right" ng-bind="product.price | currency : '$' : 0"></td>
 			                            <td>
-			                            	<select name="quantity" ng-model="product.cant" id="shop-cant" ng-change="recalculateTotals(key, 'newValue', product.cant)" class="form-control">
+			                            	<select name="quantity" ng-model="quantity" id="shop-cant" ng-change="recalculateTotals(key, 'newValue', quantity)" class="form-control">
 			                            		<option ng-value="1">1</option>
 			                            		<option ng-value="2">2</option>
 			                            		<option ng-value="3">3</option>
@@ -56,6 +56,21 @@
 			                </table>
 			            </div>
 			            <hr>
+
+                        <div class="row" ng-if="shoppingcart != undefined">
+							<div class="col-xs-12 text-uppercase text-left" ng-if="!deliveryAndInstalation">
+								<label>
+									<input type="checkbox" name="delivery" ng-model="delivery" ng-checked="shoppingcart.shippingFree != undefined && shoppingcart.addDelivery" ng-click="recalculateTotals( 0, 'addDelivery' )" id="checkout-delivery">
+									Envío
+								</label>
+							</div>
+                            <div class="col-xs-12 text-uppercase text-left">
+								<label>
+									<input type="checkbox" name="delivery-and-instalation" ng-model="deliveryAndInstalation" ng-click="recalculateTotals( 0, 'addDeliveryAndinstalation' )" id="checkout-delivery-and-instalation">
+									Envío e instalación
+								</label>
+							</div>
+						</div>
 
 			            <div class="alert alert-info bg-color4">
 			            	<i>Despachos sin costo a ciudades principales mayor información sobre envíos especiales via e-mail o contacte nuestro asesor en línea.</i>

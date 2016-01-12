@@ -118,6 +118,7 @@ tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http', '$window' , function( 
 
                 $scope.sendingData = false;
                 console.log(data);
+                st.modal.cerrar();
 
             }).
             error(function (data, status, headers, config) {

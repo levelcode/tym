@@ -42,19 +42,20 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
                 auxSubtotal += $scope.shoppingcart.pointsDoDiscount;
             }
 
-            var shippingCharge = getShippingCharge(auxSubtotal);
+            var shippingCharge = getShippingCharge(auxSubtotal, $scope.shoppingcart.instalationUsed, $scope.shoppingcart.deliveryUsed, $scope.shoppingcart.addDeliveryAndinstalation );
 
             console.info($scope.shoppingcart);
 
             $scope.shoppingcart.shippingCharge = shippingCharge;
 
-            if (angular.isString(shippingCharge)) {
-                $scope.shoppingcart.total = $scope.shoppingcart.subtotal;
-                $scope.shoppingcart.shippingFree = true;
-            } else {
-                //$scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.shippingCharge;
-                $scope.shoppingcart.total = $scope.shoppingcart.subtotal;
+            if ( $scope.shoppingcart.addDelivery || $scope.shoppingcart.addDeliveryAndinstalation ) {
+                $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.shippingCharge;
                 $scope.shoppingcart.shippingFree = false;
+            } else if ( $scope.shoppingcart.shippingFree != undefined && !$scope.shoppingcart.addDeliveryAndinstalation){
+                $scope.shoppingcart.total = $scope.shoppingcart.total - $scope.shoppingcart.shippingCharge ;
+                $scope.shoppingcart.shippingFree = true;
+            }else {
+                $scope.shoppingcart.total = $scope.shoppingcart.subtotal;
             }
 
 
@@ -142,14 +143,26 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
     };
 
-    function getShippingCharge ( subtotal ) {
+    function getShippingCharge ( subtotal, instalationUsed, deliveryUsed, useInstalation  ) {
 
         var shippingCharge;
 
-        if ( subtotal >= ConstantsService.LIMIT_FOR_FREE_SHIPPING )
-            shippingCharge = "Sin costo";
-        else
-            shippingCharge = ConstantsService.SHIPPING_CHARGE;
+        if ( useInstalation || instalationUsed ) {
+            shippingCharge = subtotal * ConstantsService.DELIVERY_INSTALATION_PERCENT;
+            if ( instalationUsed ) {
+                $scope.shoppingcart.instalationUsed = false;
+            }else {
+                $scope.shoppingcart.instalationUsed = true;
+            }
+        }else {
+            shippingCharge = subtotal * ConstantsService.DELIVERY_PERCENT;
+            
+            if ( deliveryUsed ) {
+                $scope.shoppingcart.deliveryUsed = false;
+            }else {
+                $scope.shoppingcart.deliveryUsed = true;
+            }
+        }
 
         return shippingCharge;
     }
@@ -163,7 +176,13 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
        if( (arguments != undefined) ) {
            switch ( arguments[1] ) {
-
+               case 'addDelivery':
+                   addDelivery();
+                   break;
+               case 'addDeliveryAndinstalation':
+                   addDeliveryAndinstalation();
+                   break;
+                   case 'newValue':
                case 'decrease':
                    decreaseShoppingCart( arguments[0] );
                    break;
@@ -185,6 +204,23 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart );
    };
 
+   function addDeliveryAndinstalation(){
+
+       if ( $scope.shoppingcart.addDeliveryAndinstalation ){
+            $scope.shoppingcart.addDeliveryAndinstalation = false;
+        }else{
+            $scope.shoppingcart.addDeliveryAndinstalation = true;
+            $scope.shoppingcart.addDelivery = false;
+        }
+   }
+
+   function addDelivery(){
+       if ( $scope.shoppingcart.addDelivery )
+            $scope.shoppingcart.addDelivery = false;
+        else
+            $scope.shoppingcart.addDelivery = true;
+   }
+
    function decreaseShoppingCart( key ) {
 
         if ( $scope.order.shoppingcart.products[key].cant > 1 ) {
@@ -196,9 +232,15 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
     function increaseShoppingCart( key, newQuantity ) {
 
-        $scope.shoppingcart.products[key].cant = newQuantity;
-        $scope.shoppingcart.numOfproductsTotal++;
+        if ( newQuantity >= $scope.shoppingcart.products[key].cant ){
+            var aux = newQuantity - $scope.shoppingcart.products[key].cant;
+            $scope.shoppingcart.numOfproductsTotal += aux;
+        }else{
+            var aux = $scope.shoppingcart.products[key].cant - newQuantity;
+            $scope.shoppingcart.numOfproductsTotal -= aux;
+        }
 
+        $scope.shoppingcart.products[key].cant = newQuantity;
     }
 
     function deleteShoppingCartProduct( key ){

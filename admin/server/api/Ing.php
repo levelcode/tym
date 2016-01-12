@@ -263,7 +263,7 @@ function list_varios( $data, $local = false ){
 
                 switch ( $rin_products_result->status ) {
                     case 'FOUND':
-                        $info_to_return['rin_products'] = $rin_products_result->data;
+                        $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
                         break;
                     case 'EMPTY':
                         $info_to_return['rin_products'] = array();
@@ -341,6 +341,16 @@ function list_varios( $data, $local = false ){
     }
 
     return $result;
+}
+
+function _group_rines_by_diameter( $data ) {
+    $new_array = array();
+
+    foreach ($data as $key => $product) {
+        $new_array[$product['diameter']]['rines'][] = $product;
+    }
+
+    return $new_array;
 }
 
 function get_rin_products( $rin_group_types ) {

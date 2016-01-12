@@ -9,46 +9,30 @@
 						<section id="accesorio" ng-controller="productListCtrl">
 							<div class="text-center" ng-if="!rinesLoaded">
 								<br>
-								<p class="txt-24">Selecciona tu vehiculo</p>
+								<p class="txt-24">Productos no disponibles</p>
 								<br>
 								<!--<img src="recursos/img/preloader-productos.gif" alt="">-->
 							</div>
 							<div ng-if="rinProducts" >
-								<h1 class="titulo text-uppercase">Rines</h1>
-								<hr>
-								<div class="row" >
-									<div ng-repeat="value in rinProducts" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( value )">
-											<div class="row">
-												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/rin-products/{{value.img}}.gif" alt="" class="img-responsive">
+								<div ng-repeat="(key, value) in rinProducts">
+									<h1 class="titulo text-uppercase">Rines {{key}} pulgadas</h1>
+									<hr>
+									<div class="row">
+										<div ng-repeat="(key1, product) in value.rines" class="col-sm-6 col-md-4">
+											<a class="producto" ng-click="sendToProductDetail( product )">
+												<div class="row">
+													<div class="col-xs-6">
+														<img ng-src="admin/recursos/img/rin-products/{{product.img}}.gif" alt="" class="img-responsive">
+													</div>
+													<div class="col-xs-6">
+														{{product.brand}}<br>
+														<i class="txt-12 c-color1" ng-bind="product.brand+' '+product.referencie"></i>
+													</div>
 												</div>
-												<div class="col-xs-6">
-													{{value.brand}}<br>
-													<i class="txt-12 c-color1" ng-bind="value.brand+' '+value.referencie"></i>
-												</div>
-											</div>
-										</a>
+											</a>
+										</div>
 									</div>
 								</div>
-
-								<!--<h1 class="titulo text-uppercase">Rines 14pulgadas</h1>
-								<hr>
-								<div class="row">
-									<div class="col-sm-6 col-md-4">
-										<a class="producto">
-											<div class="row">
-												<div class="col-xs-6">
-													<img src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive">
-												</div>
-												<div class="col-xs-6">
-													MS-101<br>
-													<i class="txt-12 c-color1">Yueling 7618 B-P</i>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>-->
 							</div>
 						</section>
 					</div>

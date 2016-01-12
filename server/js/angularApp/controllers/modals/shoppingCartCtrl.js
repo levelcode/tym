@@ -200,7 +200,6 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
                case 'addDeliveryAndinstalation':
                    addDeliveryAndinstalation();
                    break;
-                   case 'newValue':
                case 'decrease':
                    decreaseShoppingCart( arguments[0] );
                    break;

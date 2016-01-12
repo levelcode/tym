@@ -1,6 +1,7 @@
 tymApp.controller('productListCtrl', ['$scope', '$rootScope', function( $scope, $rootScope ){
 
 	$scope.rinesLoaded = false;
+	$scope.rinesEmpty = false;
 	/*
 	listeners
 	*/
@@ -11,6 +12,10 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', function( $scope, 
 	$rootScope.$on('rin_product_loaded', function( event, data ){
 		$scope.rinProducts = data;
 		$scope.rinesLoaded = true;
+
+		if ( !(data.length > 0) )
+			$scope.rinesEmpty = true;
+
 	});
 
 	$scope.test = "blabla";

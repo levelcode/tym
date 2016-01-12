@@ -96,7 +96,8 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
                 switch( data['status'] ) {
                 	case 'PRODUCTS_LOADED':
 		            	var jsonObject = angular.fromJson(data);
-						updatetDataToShow( jsonObject['rin_products'], "rin_products" );
+
+						$rootScope.$broadcast('rin_product_loaded', jsonObject['rin_products']);
 			            updatetDataToShow( jsonObject['rin_types'], "rin_types" );
 			            updatetDataToShow( jsonObject['tires'], "tires" );
 			            break;
@@ -178,11 +179,6 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
     					$scope.rinTypes.data = na;
         				$scope.rinTypes.empty = false;
 					break;
-				case 'rin_products':
-						$scope.rinProducts.data = na;
-						$scope.rinProducts.empty = false;
-						$rootScope.$broadcast('rin_product_loaded', na);
-					break;
 				case 'tires':
     					$scope.tires.data = na;
         				$scope.tires.empty = false;
@@ -203,9 +199,6 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
     			case 'rin_types':
 	    			$scope.rinTypes.empty = true;
 	    			break;
-				case 'rin_products':
-					$scope.rinProducts.empty = true;
-					break;
     			case 'tires':
 	    			$scope.tires.empty = true;
 	    			break;

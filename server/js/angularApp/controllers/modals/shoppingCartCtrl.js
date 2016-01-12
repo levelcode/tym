@@ -156,7 +156,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
             }
         }else {
             shippingCharge = subtotal * ConstantsService.DELIVERY_PERCENT;
-            
+
             if ( deliveryUsed ) {
                 $scope.shoppingcart.deliveryUsed = false;
             }else {

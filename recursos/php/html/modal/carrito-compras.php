@@ -79,43 +79,44 @@
 			            <div class="row">
 	            			<div class="col-xs-12 text-right">
 	            				<button ng-click="close()" class="btn bg-color3 c-blanco text-uppercase">Volver a la tienda</button>
-                                <button ng-click="close()" ng-disabled="shoppingcart == undefined" class="btn bg-color3 c-blanco text-uppercase">Pagar</button>
 	            			</div>
 	            		</div>
 	            		<hr class="visible-xs">
             		</div>
-                    <?php if( !(isset($_SESSION['tym_user_type_id']) && ( $_SESSION['tym_user_type_id'] == '1' )) ): ?>
-                		<div class="col-sm-5">
-                			<div class="registro-compra bg-color3 text-left">
-                				<h3 class="text-uppercase">Registra tu compra</h3>
+            		<div class="col-sm-5" ng-if="shoppingcart.addDelivery || shoppingcart.addDeliveryAndinstalation">
+            			<div class="registro-compra bg-color3 text-left">
+            				<h3 class="text-uppercase">Registra tu compra</h3>
 
-                				<form action="">
-                					<div class="form-group">
-                						<label for="">Nombre:</label>
-                						<input type="text" name="" id="" class="form-control">
-                					</div>
-                					<div class="form-group">
-                						<label for="">E-Mail:</label>
-                						<input type="text" name="" id="" class="form-control">
-                					</div>
-                					<div class="form-group">
-                						<label for="">Celular:</label>
-                						<input type="text" name="" id="" class="form-control">
-                					</div>
-                					<div class="form-group">
-                						<label for="">Teléfono fijo:</label>
-                						<input type="text" name="" id="" class="form-control">
-                					</div>
-                				</form>
-                			</div>
-    						<br>
-                			<div class="row">
-    	            			<div class="col-xs-12 text-right">
-    	            				<button class="btn bg-color2 c-blanco text-uppercase">Continuar</button>
-    	            			</div>
-    	            		</div>
-                		</div>
-                    <?php endif;?>
+            				<form>
+            					<div class="form-group">
+            						<label for="">Nombre:</label>
+            						<input type="text" name="userName" ng-model="order.userName" ng-init="order.userName = '<?= $_SESSION['user_name']?>'" id="order-user-name" class="form-control">
+            					</div>
+            					<div class="form-group">
+            						<label for="">E-Mail:</label>
+            						<input type="text" name="email" ng-model="order.email" ng-init="order.email = '<?= $_SESSION['email']?>'" id="order-email" class="form-control">
+            					</div>
+            					<div class="form-group">
+            						<label for="">Celular:</label>
+            						<input type="text" name="" id="" class="form-control">
+            					</div>
+                                <div class="form-group">
+            						<label for="">Dirección de envío:</label>
+            						<input type="text" name="" id="" class="form-control">
+            					</div>
+            					<div class="form-group">
+            						<label for="">Teléfono fijo:</label>
+            						<input type="text" name="" id="" class="form-control">
+            					</div>
+            				</form>
+            			</div>
+						<br>
+            			<div class="row">
+	            			<div class="col-xs-12 text-right">
+                                <button ng-disabled="shoppingcart == undefined" class="btn bg-color2 c-blanco text-uppercase">Pagar</button>
+	            			</div>
+	            		</div>
+            		</div>
             	</div>
             </div>
     	</div>

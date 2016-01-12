@@ -1,6 +1,7 @@
 <?php
 namespace App\Ing;
 
+error_reporting(0);
 session_start();
 date_default_timezone_set("America/Bogota");
 

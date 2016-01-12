@@ -1,7 +1,6 @@
 <?php 
 /*BASE NAMESPACES */
 
-set_error_handler(0);
 require 'Ing.php';
 //require 'Ing_Users.php';
 use App\Ing as Ing;

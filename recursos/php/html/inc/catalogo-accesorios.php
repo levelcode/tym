@@ -6,12 +6,49 @@
 				<div class="row">
 					<div class="col-sm-10" ng-cloak>
 						<p class="txt-13 text-right"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
-						<section id="accesorio-tipo">
-							<div class="text-center">
+						<section id="accesorio" ng-controller="productListCtrl">
+							<div class="text-center" ng-if="!rinesLoaded">
 								<br>
-								<p class="txt-11">Cargando accesorios...</p>
+								<p class="txt-24">Selecciona tu vehiculo</p>
 								<br>
-								<img src="recursos/img/preloader-productos.gif" alt="">
+								<!--<img src="recursos/img/preloader-productos.gif" alt="">-->
+							</div>
+							<div ng-if="rinProducts" >
+								<h1 class="titulo text-uppercase">Rines</h1>
+								<hr>
+								<div class="row" >
+									<div ng-repeat="value in rinProducts" class="col-sm-6 col-md-4">
+										<a class="producto" ng-click="sendToProductDetail( value )">
+											<div class="row">
+												<div class="col-xs-6">
+													<img ng-src="admin/recursos/img/rin-products/{{value.img}}.gif" alt="" class="img-responsive">
+												</div>
+												<div class="col-xs-6">
+													{{value.brand}}<br>
+													<i class="txt-12 c-color1" ng-bind="value.brand+' '+value.referencie"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+
+								<!--<h1 class="titulo text-uppercase">Rines 14pulgadas</h1>
+								<hr>
+								<div class="row">
+									<div class="col-sm-6 col-md-4">
+										<a class="producto">
+											<div class="row">
+												<div class="col-xs-6">
+													<img src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive">
+												</div>
+												<div class="col-xs-6">
+													MS-101<br>
+													<i class="txt-12 c-color1">Yueling 7618 B-P</i>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>-->
 							</div>
 						</section>
 					</div>

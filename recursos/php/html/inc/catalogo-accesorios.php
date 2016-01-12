@@ -1,5 +1,6 @@
 <div id="catalogo-accesorios" ng-controller="productListHeader">
 	<div class="catalogo">
+		<span class="cerrar">x</span>
 		<i class="indicador"></i>
 		<div class="contenido">
 			<div class="container-fluid">

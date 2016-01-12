@@ -20,6 +20,7 @@ st.index.buscador = {
 			if(!st.menuAccesorios.abierto){
 				st.menuAccesorios.abrir();
 			}
+			$('#catalogo-accesorios .catalogo .indicador').css('top', '14px');
 			st.catalogoAccesorios.abrir();
 		}
 	},

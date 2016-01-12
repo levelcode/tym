@@ -512,8 +512,8 @@ a.st-enlace{
 		@h: 24px;
 		position: absolute;
 		right: 0;
-		background-color: #ddd;
-		color: #333;
+		background-color: @negro;
+		color: @blanco;
 		width: @h;
 		height: @h;
 		line-height: @h;
@@ -864,7 +864,21 @@ noscript{
 		height: 668px;
 		padding-top: 15px;
 		padding-bottom: 15px;
-		box-shadow: 0 0 60px rgba(0, 0, 0, .4);		
+		box-shadow: 0 0 60px rgba(0, 0, 0, .4);	
+		> .cerrar{
+			@t: 30px;
+			background-color: @blanco;
+			position: absolute;
+			width: @t;
+			height: @t;
+			color: @negro;
+			text-align: center;
+			line-height: @t;
+			right: -(@t / 2);
+			top: -(@t / 2);
+			border-radius: (@t / 2);
+			cursor: pointer;
+		}	
 		i.indicador{
 			@t: 24px;
 			display: block;

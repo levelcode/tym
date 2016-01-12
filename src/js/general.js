@@ -271,9 +271,9 @@ st.catalogoAccesorios = {
 	// props
 	abierto: false,
 	dur: 800,
-	efe: 'slide',
+	efe: 'fold',
 	dir: 'left',
-	eas: 'easeOutCirc',
+	eas: 'linear',
 
 	// metds
 	ini: function(){
@@ -308,13 +308,25 @@ st.catalogoAccesorios = {
 
 	abrir: function(){
 		var t = this;
-		$('#catalogo-accesorios').fadeIn(t.dur);
+		//$('#catalogo-accesorios').fadeIn(t.dur);
+		$('#catalogo-accesorios').show({
+			effect: t.efe,
+			duration: t.dur,
+			direction: t.dir,
+			easing: t.eas
+		})
 		t.abierto = true;
 	},
 
 	cerrar: function(){
 		var t = this;
-		$('#catalogo-accesorios').fadeOut(t.dur);
+		//$('#catalogo-accesorios').fadeOut(t.dur);
+		$('#catalogo-accesorios').hide({
+			effect: t.efe,
+			duration: t.dur,
+			direction: t.dir,
+			easing: t.eas
+		})
 		$('#cabecero .menu-accesorios ul li a.activo').removeClass('activo');
 		t.abierto = false;
 		
@@ -325,6 +337,10 @@ st.catalogoAccesorios = {
 		$('#cabecero .menu-accesorios ul li a').on('click', function(e){
 			e.preventDefault();
 			t.analizar($(this));
+		});
+
+		$('#catalogo-accesorios .catalogo > .cerrar').on('click', function(){
+			t.cerrar();
 		});
 	}
 }

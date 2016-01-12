@@ -124,7 +124,7 @@ tymApp.controller( 'LoginSignUpCtrl', ['$scope', '$http', '$window', '$timeout',
 
                 $scope.sendingData = false;
                 console.log(data);
-                st.modal.cerrar();
+                $window.location.reload();
 
             }).
             error(function (data, status, headers, config) {

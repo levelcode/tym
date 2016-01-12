@@ -932,12 +932,16 @@ function insert_user( $data ) {
         $user_to_save['gender'] = $data['gender'];
         $user_to_save['term_and_cond_accepted'] = ($data['termAndCond']) ? '1':'0';
         $user_to_save['tym_user_type_id'] = 1;
+        $user_to_save['tym_user_status_id'] = 1;
 
         $insert_id = Core\create($user_to_save, false, false);
 
         if( $insert_id > 0 ){
             $result->status = 'INSERTED';
             $result->data = $insert_id;
+
+            $user = get_user_by_id($insert_id);
+            init_session($user[0]);
             // do login
         }else {
             $result->status = 'ERROR';
@@ -966,6 +970,11 @@ function model_in_index( &$models ){
 function get_user_by_email( $email ){
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "user WHERE email = ". '\''. $email. '\'';
     return Core\query($sql, array());
+}
+
+function get_user_by_id( $id ){
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "user WHERE id = :id";
+    return Core\query($sql, array('id'=>$id));
 }
 
 function get_month_promotion(){

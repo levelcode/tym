@@ -202,11 +202,23 @@
 }
 
 @media (min-width:768px){
+	@alto-cabecero: 84px;
 	#cabecero{
 		.logo{
 			width: 300px;
 			height: 84px;
 			background-image: url(../img/logo.png);
+		}
+		#alternador-menu, #alternador-menu-accesorios{
+			width: @alto-cabecero;
+			height: @alto-cabecero;
+		}
+		#alternador-menu-accesorios{
+			right: @alto-cabecero;
+			top: 0;
+		}
+		#usuario{
+			right: @alto-cabecero * 2;
 		}
 	}
 }

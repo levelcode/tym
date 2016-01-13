@@ -48,7 +48,7 @@
 							<div class="foto">
 								<img src="recursos/img/img-tanques.jpg" alt="" class="img-responsive">
 							</div>
-							<a href="" class="btn text-uppercase btn-info c-blanco">Comprar<br>Ahora</a>
+							<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 						</div>
 						<div class="tipo">
 							<div class="cuadro">
@@ -57,7 +57,7 @@
 							<div class="foto">
 								<img src="recursos/img/img-racks.jpg" alt="" class="img-responsive">
 							</div>
-							<a href="" class="btn text-uppercase btn-info c-blanco">Comprar<br>Ahora</a>
+							<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 						</div>
 						<div class="tipo">
 							<div class="cuadro">
@@ -66,7 +66,7 @@
 							<div class="foto">
 								<img src="recursos/img/img-bicicleteros.jpg" alt="" class="img-responsive">
 							</div>
-							<a href="" class="btn text-uppercase btn-info c-blanco">Comprar<br>Ahora</a>
+							<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 						</div>
 					</div>
 				</div>

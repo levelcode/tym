@@ -10,9 +10,9 @@
 						<section id="accesorio" ng-controller="productListCtrl">
 							<div class="text-center" ng-if="!rinesLoaded">
 								<br>
-								<p class="txt-24">Productos no disponibles</p>
+								<p class="txt-16">cargando...</p>
 								<br>
-								<!--<img src="recursos/img/preloader-productos.gif" alt="">-->
+								<img src="recursos/img/preloader-productos.gif" alt="">
 							</div>
 							<div ng-if="rinProducts" >
 								<div ng-repeat="(key, value) in rinProducts">

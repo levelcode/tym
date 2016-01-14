@@ -86,7 +86,7 @@
             		</div>
             		<div class="col-sm-5" ng-if="shoppingcart.addDelivery || shoppingcart.addDeliveryAndinstalation">
             			<div class="registro-compra bg-color3 text-left">
-            				<h3 class="text-uppercase">Registra tu compra</h3>
+            				<h3 class="text-uppercase">Datos de envío</h3>
 
             				<form>
             					<div class="form-group">

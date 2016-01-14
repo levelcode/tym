@@ -571,6 +571,42 @@ st.modal.ini();
 
 
 
+st.registroIngreo = {
+	// props
+
+	// metds
+	ini: function(){
+		this.eventos();
+	},
+
+	fInscripcion: function(){
+		$('#formulario-ingreso').slideUp(500);
+		$('#formulario-registro').slideDown(500);
+	},
+
+	fRegistro: function(){
+		$('#formulario-ingreso').slideDown(500);
+		$('#formulario-registro').slideUp(500);
+	},
+
+
+	eventos: function(){
+		var t = this;
+		$('#registro-tym').on('click', function(e){
+			e.preventDefault();
+			t.fInscripcion();
+		});
+
+		$('#btn-atras-ingreso').on('click', function(){
+			t.fRegistro();
+		});
+	}
+}
+st.registroIngreo.ini();
+
+
+
+
 /* inicializar slider de productos compatibles en catalogo-productos/detalle */
 /*$("#slide-productos-compatibles").lightSlider({
 	loop:true,

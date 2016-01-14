@@ -496,29 +496,31 @@ a.st-enlace{
 	position: fixed;
 	width: 240px !important;
 	min-height: 100px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 0 32px rgba(0, 0, 0, 0.4);
 	right: 24px;
 	bottom: 24px;
-	background-color: @color1;
-	background: linear-gradient(to right, @color1, lighten(@color1, 16%), @color1);
+	background-color: @blanco;
+	color: @gris;
+	border-radius: 8px;
+	/*background: linear-gradient(to right, @color1, lighten(@color1, 16%), @color1);*/
 	z-index: 26;
 	display: none;
-	border: 1px solid @negro;
 	max-height: 300px !important;
 	overflow: auto;
 	font-size: 12px;
 	.cerrar{
 		@h: 24px;
 		position: absolute;
-		right: 0;
-		background-color: @negro;
-		color: @blanco;
+		right: 4px;
+		background-color: #ccc;
+		color: @gris;
 		width: @h;
 		height: @h;
 		line-height: @h;
 		text-align: center;
-		top: 0;
+		top: 4px;
 		cursor: pointer;
+		border-radius: (@h / 2);
 	}
 	.contenido{
 		padding: 16px;
@@ -858,7 +860,7 @@ noscript{
 		outline: 2px solid @color3;
 		//border-radius: 8px;
 		top: 88px;
-		left: 120px;
+		left: 90px;
 		right: 15px;
 		max-width: 1200px;
 		height: 668px;
@@ -920,6 +922,14 @@ noscript{
 					}
 				}
 			}
+		}
+	}
+}
+
+@media (min-width:768px){
+	#catalogo-accesorios{
+		.catalogo{
+			left: 120px;
 		}
 	}
 }
@@ -1075,7 +1085,33 @@ noscript{
 			.registro-compra{
 				padding: 18px;
 				border-radius: 6px;
+
 			}
+		}
+	}
+}
+
+
+
+
+
+
+
+/* modal de registro e ingreso */
+
+#modal-ingreso-registro{
+	#formulario-registro{
+		display: none;
+		#btn-atras-ingreso{
+			@t: 32px;
+			display: inline-block;
+			width: @t;
+			height: @t;
+			text-align: center;
+			background-color: @color3;
+			line-height: @t;
+			border-radius: (@t / 2);
+			cursor: pointer;
 		}
 	}
 }

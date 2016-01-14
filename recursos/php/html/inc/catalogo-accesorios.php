@@ -8,7 +8,7 @@
 					<div class="col-sm-10" ng-cloak>
 						<p class="txt-13 text-right text-uppercase"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
 						<section id="accesorio" ng-controller="productListCtrl">
-							<div class="text-center" ng-if="rinesLoaded">
+							<div class="text-center" ng-if="!rinesLoaded">
 								<br>
 								<p class="txt-16">cargando...</p>
 								<br>

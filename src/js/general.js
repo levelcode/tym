@@ -250,17 +250,75 @@ st.menuAccesorios = {
 				if($(this).width() < bp){
 					if(!t.abierto) return;
 					t.cerrar();
-					console.log('cerrar');
 				}else{
 					if(t.abierto) return;
 					t.abrir();
-					console.log('abrir');
 				}
 			}
 		});
 	}
 }
 st.menuAccesorios.ini();
+
+
+
+
+
+
+// menu accesorios
+st.btnCarroCompra = {
+	// props
+	btnGrande: true,
+
+	// metds
+	ini: function(){
+		this.eventos();
+	},
+
+
+	grande: function(){
+		var t = this;
+		$('#btn-carro-compras').css({
+			right: '-8px',
+			'font-size': '12px'
+		});
+		t.btnGrande = true;
+		console.log('grande');
+	},
+
+	pequeno: function(){
+		var t = this;
+		$('#btn-carro-compras').css({
+			right: '-136px',
+			'font-size': '18px'
+		});
+		t.btnGrande = false;
+		console.log('pequeño');
+	},
+
+	eventos: function(){
+		var t = this,
+			bp = 768;
+
+		$(window).on({
+			load: function(){
+				if($(this).width() < bp){
+					t.pequeno();
+				}
+			},
+			resize: function(){
+				if($(this).width() < bp){
+					if(!t.btnGrande) return;
+					t.pequeno();
+				}else{
+					if(t.btnGrande) return;
+					t.grande();
+				}
+			}
+		});
+	}
+}
+st.btnCarroCompra.ini();
 
 
 
@@ -509,3 +567,12 @@ st.modal = {
 	}
 }
 st.modal.ini();
+
+
+
+
+/* inicializar slider de productos compatibles en catalogo-productos/detalle */
+/*$("#slide-productos-compatibles").lightSlider({
+	loop:true,
+	keyPress:true
+});*/

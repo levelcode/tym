@@ -89,7 +89,6 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/lightslider.js',
 		'recursos/js/galerias.js',
 		'server/js/angularApp/angularApp.js',
 		'server/js/angularApp/controllers/productListHeaderCtrl.js',

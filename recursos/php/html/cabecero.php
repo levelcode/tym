@@ -43,6 +43,7 @@ class Cabecero extends a_Html
 		<link rel="icon" href="recursos/img/favicon.png">
 		<link rel="stylesheet" href="recursos/css/bootstrap.css">
 		<link rel="stylesheet" href="recursos/css/font-awesome.css">
+		<link rel="stylesheet" href="recursos/css/lightslider.css">
 		<!-- <link rel="stylesheet" href="recursos/css/eventi-iconos.css">  -->
 		<?php if( $this->is_admin ): ?>
 			<link rel="stylesheet" href="recursos/css/admin/general.css">

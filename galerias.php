@@ -8,8 +8,7 @@ $opciones = array(
 	'autor' => 'prograCOL - http://progracol.com',
 	'titulo' => 'Galerías - '._TITULO,
 	'css' => array(
-		'recursos/css/galerias.css',
-		'recursos/css/lightslider.css',
+		'recursos/css/galerias.css'
 	),
 	'js' => array(
 		'recursos/js/angular.min.js',

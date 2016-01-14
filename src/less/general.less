@@ -851,11 +851,12 @@ noscript{
 	.catalogo{
 		z-index: 18;
 		position: absolute;
-		background-color: @color2;
+		background-color: #77799B;
 		//background: radial-gradient(circle, #6485e3 , @color2 50%);
 		box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-		border: 2px solid @color3;
-		border-radius: 8px;
+		border: 6px solid @color2;
+		outline: 2px solid @color3;
+		//border-radius: 8px;
 		top: 88px;
 		left: 120px;
 		right: 15px;
@@ -865,16 +866,16 @@ noscript{
 		padding-bottom: 15px;
 		box-shadow: 0 0 60px rgba(0, 0, 0, .4);	
 		> .cerrar{
-			@t: 30px;
-			background-color: @blanco;
+			@t: 34px;
+			background-color: @color2;
 			position: absolute;
 			width: @t;
 			height: @t;
-			color: @negro;
+			color: @blanco;
 			text-align: center;
 			line-height: @t;
-			right: -(@t / 2);
-			top: -(@t / 2);
+			right: -(@t / 1.6);
+			top: -(@t / 1.6);
 			border-radius: (@t / 2);
 			cursor: pointer;
 		}	
@@ -886,7 +887,7 @@ noscript{
 			height: 0;
 			border-style: solid;
 			border-width: @t;
-			border-color: transparent @color2 transparent transparent;
+			border-color: transparent #77799B transparent transparent;
 			position: absolute;
 			top: 14px;
 			left: -(@t * 2);
@@ -921,17 +922,67 @@ noscript{
 			}
 		}
 	}
-	.tipo{
-		max-width: 90px;
-		margin: 0 auto;
-		.cuadro{
-			height: 90px;
-			background-color: @color1;
-		}
-	}
 }
 
 
+
+.te-puede-interesar{
+	.tipo{
+		margin: 0 auto;
+		max-width: 90px;
+		.cuadro{
+			padding-top: 20px;
+			background-color: @color1;
+			height: 100px;
+			font-size: 12px;
+			position: relative;
+			overflow: hidden;
+			color: @color4;
+			&::after{
+				@t: 30px;
+				content: '';
+				width: @t;
+				height: @t;
+				background-color: @color3;
+				position: absolute;
+				right: -(@t / 2);
+				bottom: -(@t / 2);
+				transform: rotate(45deg);
+			}
+			&::before{
+				content: '';
+				display: block;
+				width: 9px;
+				height: 60px;
+				border-left: 1px dotted @blanco;
+				position: absolute;
+				bottom: 0;
+				left: 36px;
+				border-top: 3px solid @blanco;
+			}
+		}
+		.foto{
+			height: 100px;
+			background-color: #ccc;
+			background-position: center;
+			background-size: cover;
+			padding-top: 46px;
+			&.img1{
+				background-image: url(../img/img-tanques.jpg);
+			}
+			&.img2{
+				background-image: url(../img/img-racks.jpg);
+			}
+			&.img3{
+				background-image: url(../img/img-bicicleteros.jpg);
+			}
+		}
+		.btn{
+			padding: 2px 4px !important;
+			box-shadow: 0 0 12px rgba(0, 0, 0, 0.4);
+		}
+	}
+}
 
 
 #detalle-producto{
@@ -962,8 +1013,8 @@ noscript{
 			border-radius: (@t / 2);
 			background-color: @color2;
 			border: 1px solid @color3;
-			right: -18px;
-			top: -18px;
+			right: 0;
+			top: -48px;
 			line-height: @t;
 			text-align: center;
 			color: @blanco;

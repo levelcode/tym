@@ -66,10 +66,41 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="row productos-compatibles">
+					<div class="col-xs-12">
+						
+					</div>
+				</div>
 			</div>
-			<div class="col-sm-2 text-center">
-				<h5 class="text-uppercase">Te puede interesar</h5>
+			<div class="col-sm-2 text-center te-puede-interesar">
+				<h5 class="text-uppercase txt-18 c-color4">Te puede interesar</h5>
 				<i class="st-separador"></i>
+
+				<div class="tipo">
+					<div class="cuadro">
+						<span>Tanques</span>
+					</div>
+					<div class="foto img1">
+						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+					</div>
+				</div>
+				<div class="tipo">
+					<div class="cuadro">
+						<span>Racks</span>
+					</div>
+					<div class="foto img2">
+						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+					</div>
+				</div>
+				<div class="tipo">
+					<div class="cuadro">
+						<span>Bicicleteros</span>
+					</div>
+					<div class="foto img3">
+						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+					</div>
+				</div>
 			</div>
 		</row>
 	</div>

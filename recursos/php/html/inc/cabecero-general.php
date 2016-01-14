@@ -25,5 +25,5 @@
 		<?php endif;?>
 	</div>
 
-	<button id="btn-carro-compras" class="btn c-blanco txt-12" data-modal="carrito-compras" ng-controller="ShoppingCartAxuCtrl"><i class="fa fa-shopping-cart"></i>&nbsp;Ver carrito <span class="badge" ng-bind="numOfProducts"></span></button>
+	<button id="btn-carro-compras" class="btn c-blanco" data-modal="carrito-compras" ng-controller="ShoppingCartAxuCtrl"><i class="fa fa-shopping-cart"></i>&nbsp;&nbsp;Ver carrito <span class="badge" ng-bind="numOfProducts"></span></button>
 </header>

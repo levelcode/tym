@@ -31,6 +31,7 @@ class Pie extends a_Html
 		<script src="recursos/js/jquery-ui.js"></script>
 		<script src="recursos/js/bootstrap.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js"></script>
+		<script src="recursos/js/lightslider.js"></script>
 		<script src="recursos/js/general.js"></script>
 		<?php $this->obtener('js') ?>
 	</body>

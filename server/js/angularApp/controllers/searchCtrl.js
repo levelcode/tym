@@ -12,15 +12,18 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 	$scope.loadingData = false;
 	$scope.showOptions = false;
 
+	$scope.defaultValueBrand = "Seleccione Marca";
+	$scope.defaultValueModel = "Selecciona Modelo";
+
 	angular.element(document).ready(function(){
 		$scope.loadingData = true;
-
 		loadHomeData();
 	});
 
 	$scope.searchByBrand = function( selectedVehicleBrand ) {
 		console.log( selectedVehicleBrand );
 		$scope.loadingData = true;
+		$scope.defaultValueModel = "Cargando";
 
 		var post = 	{};
 			post.a = 'list_varios';
@@ -33,6 +36,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
                 console.log(data);
                 $scope.loadingData = false;
+				$scope.defaultValueModel = "Selecciona Modelo";
 
                 switch( data['status'] ) {
                 	case 'VEHICLE_MODELS_LOADED':
@@ -111,6 +115,9 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
 	function loadHomeData() {
 
+		$scope.defaultValueBrand = "Cargando";
+		$scope.loadingData = true;
+
 		var post = 	{};
 			post.a = 'list_varios';
 			post.from = 'home';
@@ -121,6 +128,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
                 console.log(data);
                 $scope.loadingData = false;
+				$scope.defaultValueBrand = "Seleccione Marca";
 
                 switch( data['status'] ) {
                 	case 'VEHICLES_LOADED':

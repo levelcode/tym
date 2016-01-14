@@ -120,7 +120,7 @@
 		background-repeat: no-repeat;
 	}
 	.menu-accesorios{
-		width: 105px;
+		width: 80px;
 		position: absolute;
 		left: 0;
 		top: 88px;
@@ -149,11 +149,11 @@
 				a{
 					position: relative;
 					display: block;
-					padding-top: 26px;
-					padding-bottom: 26px;
+					padding-top: 20px;
+					padding-bottom: 20px;
 					border-top: 2px solid @color1;
 					border-bottom: 2px solid lighten(@color1, 20%);
-					font-size: 20px;
+					font-size: 14px;
 					color: #bce7ff;
 					text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
 					&:hover, &.activo{
@@ -163,12 +163,14 @@
 						&::after{
 							content: '';
 							display: block;
-							width: 74px;
-							height: 37px;
+							width: 50px;
+							height: 25px;
 							position: absolute;
 							bottom: 0;
-							left: 10px;
+							left: 8px;
 							background-image: url(../img/menu-accesorios-activo.png);
+							background-position: center;
+							background-size: cover;
 						}
 					}
 				}
@@ -211,6 +213,25 @@
 			width: 300px;
 			height: 84px;
 			background-image: url(../img/logo.png);
+		}
+		.menu-accesorios{
+			width: 105px;
+			ul{
+				li{
+					a{
+						font-size: 20px;
+						padding-top: 26px;
+						padding-bottom: 26px;
+						&.activo{
+							&::after{
+								width: 74px;
+								height: 37px;
+								left: 10px;
+							}
+						}
+					}
+				}
+			}
 		}
 		#alternador-menu, #alternador-menu-accesorios{
 			width: @alto-cabecero;

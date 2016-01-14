@@ -62,14 +62,19 @@
                                     <span>Datos incorrectos!</span>
                                 </div>
                             </div>
-                            <!-- tooltip -->
 						</div>
+                        <div class="row">
+                            <div class="col-xs-12 text-right">
+                                <a href="" id="registro-tym" class="c-color3">Registrarme en TYM</a>
+                            </div>
+                        </div>
 	                </form>
 	            </div>
 
-
                 <div id="formulario-registro">
                 	<form name="signUpForm" novalidate>
+                        <i class="fa fa-arrow-left" id="btn-atras-ingreso"></i>
+
                 		<h3 class="txt-40 text-uppercase c-color3 text-center">Registro</h3>
 
                 		<div class="form-group">
@@ -181,50 +186,51 @@
                                 </div>
                             </div>
                             <!-- tooltip -->
-							<div class="row">
-								<div class="col-xs-6">
-									<div class="form-group">
-                                        <select name="gender" ng-model="signUp.gender" id="sign-up-gender" class="form-control" required>
-											<option selected disabled value="">Genero</option>
-											<option value="M">Masculino</option>
-											<option value="F">Femenino</option>
-										</select>
-                                        <!-- tooltip -->
-                                        <div ng-if="signUpForm.gender.$invalid && signUpForm.$submitted">
-                                            <div class="arrow-up-error">
-                                            </div>
-                                            <div class="farma-tooltip-error">
-                                                <span>Seleciona un genero!</span>
-                                            </div>
+                        </div>
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="form-group">
+                                    <select name="gender" ng-model="signUp.gender" id="sign-up-gender" class="form-control" required>
+										<option selected disabled value="">Genero</option>
+										<option value="M">Masculino</option>
+										<option value="F">Femenino</option>
+									</select>
+                                    <!-- tooltip -->
+                                    <div ng-if="signUpForm.gender.$invalid && signUpForm.$submitted">
+                                        <div class="arrow-up-error">
                                         </div>
-                                        <!-- tooltip -->
-									</div>
+                                        <div class="farma-tooltip-error">
+                                            <span>Seleciona un genero!</span>
+                                        </div>
+                                    </div>
+                                    <!-- tooltip -->
 								</div>
 							</div>
+						</div>
 
-							<div class="form-group">
-								<label>
-									<span class="c-blanco">
-										<input type="checkbox" name="acceptTermAndCond" ng-model="signUp.termAndCond" id="sign-up-term-and-cond" required>
-										He leído los <a href="#">términos de servicio</a> de TYM</span>
-								</label>
-                                <!-- tooltip -->
-                                <div ng-if="signUpForm.acceptTermAndCond.$invalid && signUpForm.$submitted">
-                                    <div class="arrow-up-error">
-                                    </div>
-                                    <div class="farma-tooltip-error">
-                                        <span>Acepta los términos y condiciones!</span>
-                                    </div>
+						<div class="form-group">
+							<label>
+								<span class="c-blanco">
+									<input type="checkbox" name="acceptTermAndCond" ng-model="signUp.termAndCond" id="sign-up-term-and-cond" required>
+									He leído los <a href="#">términos de servicio</a> de TYM</span>
+							</label>
+                            <!-- tooltip -->
+                            <div ng-if="signUpForm.acceptTermAndCond.$invalid && signUpForm.$submitted">
+                                <div class="arrow-up-error">
                                 </div>
-                                <!-- tooltip -->
-							</div>
+                                <div class="farma-tooltip-error">
+                                    <span>Acepta los términos y condiciones!</span>
+                                </div>
+                            </div>
+                            <!-- tooltip -->
+						</div>
 
-							<div class="form-group text-center">
-								<button type="submit" ng-click="doSignup( signUp )" ng-disabled="sendingData || signUpForm.$invalid" class="bg-color3 btn c-blanco txt-18"><i ng-if="sendingData" class="fa fa-circle-o-notch fa-spin"></i>&nbsp;{{buttonSignupText}}</button>
-							</div>
+						<div class="form-group text-center">
+							<button type="submit" ng-click="doSignup( signUp )" ng-disabled="sendingData || signUpForm.$invalid" class="bg-color3 btn c-blanco txt-18"><i ng-if="sendingData" class="fa fa-circle-o-notch fa-spin"></i>&nbsp;{{buttonSignupText}}</button>
 						</div>
                 	</form>
                 </div>
+
         	</div>
     	</div>
     </div>

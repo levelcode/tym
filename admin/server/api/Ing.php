@@ -368,18 +368,9 @@ function get_tire_by_diamater( $rines ) {
     $tires_type_sql = "";
 
     foreach ( $rines as $key => $rin ) {
-        if( $key == 0 ){
-            $tires_type_sql .= " (type = ".'\''.$rin['diameter'].'\'';
-            if ( count($rines) == 1 ) {
-                $tires_type_sql.= ')';
-            }
-        }else{
-            if ( $key == (count($rines) - 1) )
-                $tires_type_sql .= " OR type = ".'\''.$rin['diameter'].'\')';
-            else {
-                $tires_type_sql .= " OR type = ".'\''.$rin['diameter'].'\'';
-            }
-        }
+        
+        $tires_type_sql .= " type = ".'\''.$rin['diameter'].'\'';    
+        
     }
 
     $sql .= $tires_type_sql;

@@ -13,16 +13,16 @@
 			<a href="./luces-hid" class="luces-hid" ng-click="openProductType('light_hid')" data-nombre="accesorios-luces-hid">Luces HID</a>
 		</li>
 		<li>
-			<a href="./racks" class="racks" data-nombre="accesorios-racks">Racks</a>
+			<a href="./racks" class="racks" ng-click="openProductType('rack')" data-nombre="accesorios-racks">Racks</a>
 		</li>
 		<li>
-			<a href="./tanques" class="tanques" data-nombre="accesorios-tanques">Tanques</a>
+			<a href="./tanques" class="tanques" ng-click="openProductType('tank')" data-nombre="accesorios-tanques">Tanques</a>
 		</li>
 		<li>
-			<a href="./peras" class="peras" data-nombre="accesorios-peras">Peras</a>
+			<a href="./peras" class="peras" ng-click="openProductType('pera')" data-nombre="accesorios-peras">Peras</a>
 		</li>
 		<li>
-			<a href="./accesorios" class="accesorios" data-nombre="accesorios-accesorios">Accesorios</a>
+			<a href="./accesorios" class="accesorios"  ng-click="openProductType('accesorie')" data-nombre="accesorios-accesorios">Accesorios</a>
 		</li>
 	</ul>
 </nav>

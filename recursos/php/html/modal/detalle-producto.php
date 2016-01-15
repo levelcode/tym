@@ -5,7 +5,7 @@
 			<div class="col-sm-10" ng-cloak>
 				<div class="row">
 					<div class="col-sm-6">
-						<p class="txt-13"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
+						<p class="txt-13 text-uppercase"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
 					</div>
 					<div class="col-sm-6">
 						<p class="txt-13">Valora este artículo: &nbsp;<i class="st-calificacion valor-0"></i> | Votos (0)</p>
@@ -139,7 +139,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-8">
-								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
+								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock"></b></span>
 								<br>
 								<br>
 								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
@@ -174,7 +174,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-8">
-								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
+								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock"></b></span>
 								<br>
 								<br>
 								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
@@ -195,10 +195,47 @@
 					</div>
 				</div>
 				<!-- light -->
+				<!-- tank -->
+				<div ng-if="selectedProductType == 'tank'" class="row producto">
+					<div class="col-sm-6">
+						<div class="imagen">
+							<!-- <img ng-src="admin/recursos/img/tank-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive"> -->
+							<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<span class="nombre" ng-bind="selectedProduct.brand"></span><br>
+						<span class="descripcion" ng-bind="selectedProduct.brand+' '+selectedProduct.referencie"></span>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col-xs-8">
+								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock"></b></span>
+								<br>
+								<br>
+								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
+								<span class="c-color4">Color:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.color}}</b><br>
+							</div>
+							<div class="col-xs-4 text-right">
+								<br>
+								<br>
+								<span class="c-color3 text-uppercase">Precio por rin</span><br>
+								<b class="precio txt-24" ng-bind="(selectedProduct.price) | currency : '$' : 0"></b><br>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-xs-12 text-right">
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tank')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- tank -->
 
 				<div class="row productos-compatibles">
 					<div class="col-xs-12">
-
+						
 					</div>
 				</div>
 			</div>

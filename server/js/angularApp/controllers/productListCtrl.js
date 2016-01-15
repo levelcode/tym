@@ -9,6 +9,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.tireEmpty = false;
 	$scope.seatEmpty = false;
 	$scope.lightEmpty = false;
+	$scope.tankEmpty = false;
 	/*
 	listeners
 	*/
@@ -28,7 +29,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 			switch ( key ) {
 				case 'rin_products':
 					$scope.rinProducts = value;
-					if ( value == null ){
+					if ( value.length == 0){
 						$scope.rinEmpty = true;
 					}
 					break;
@@ -49,6 +50,11 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 					if ( !(value.length > 0) ){
 						$scope.lightEmpty = true;
 					}
+				case 'tank_products':
+					$scope.tankProducts = value;
+					if ( !(value.length > 0) ){
+						$scope.tankEmpty = true;
+					}
 					break;
 				default:
 			}
@@ -65,21 +71,32 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.seatProductsSelected = false;
 				$scope.tireProductsSelected = false;
 				$scope.lightProductsSelected = false;
+				$scope.tankProductsSelected = false;
 				break;
 			case 'tire':
 				$scope.tireProductsSelected = true;
 				$scope.seatProductsSelected = false;
 				$scope.rinProductsSelected = false;
 				$scope.lightProductsSelected = false;
+				$scope.tankProductsSelected = false;
 				break;
 			case 'seat':
 				$scope.seatProductsSelected = true;
 				$scope.tireProductsSelected = false;
 				$scope.rinProductsSelected = false;
 				$scope.lightProductsSelected = false;
+				$scope.tankProductsSelected = false;
 				break;
 			case 'light_hid':
 				$scope.lightProductsSelected = true;
+				$scope.seatProductsSelected = false;
+				$scope.tireProductsSelected = false;
+				$scope.rinProductsSelected = false;
+				$scope.tankProductsSelected = false;
+				break;
+			case 'tank':
+				$scope.tankProductsSelected = true;
+				$scope.lightProductsSelected = false;
 				$scope.seatProductsSelected = false;
 				$scope.tireProductsSelected = false;
 				$scope.rinProductsSelected = false;

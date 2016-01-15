@@ -261,8 +261,10 @@ function list_varios( $data, $local = false ){
                 $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
                 $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
 
+
                 switch ( $rin_products_result->status ) {
                     case 'FOUND':
+                        //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
                         $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
                         break;
                     case 'EMPTY':
@@ -288,6 +290,7 @@ function list_varios( $data, $local = false ){
                 }
                 $info_to_return['seat_products'] = get_seat_all_products();
                 $info_to_return['light_hid_products'] = get_lights_hd_all_products();
+                $info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
                 //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
 
                 $info_to_return['status'] = "PRODUCTS_LOADED";
@@ -353,6 +356,41 @@ function list_varios( $data, $local = false ){
         unset($info_to_return['status']);
     }else{
         $result = json_encode($info_to_return);
+    }
+
+    return $result;
+}
+
+function get_tire_by_diamater( $rines ) {
+    $result = new \stdClass();
+
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire_product WHERE ";
+    $tires_type_sql = "";
+
+    foreach ( $rines as $key => $rin ) {
+        if( $key == 0 ){
+            $tires_type_sql .= " (type = ".'\''.$rin['diameter'].'\'';
+            if ( count($rines) == 1 ) {
+                $tires_type_sql.= ')';
+            }
+        }else{
+            if ( $key == (count($rines) - 1) )
+                $tires_type_sql .= " OR type = ".'\''.$rin['diameter'].'\')';
+            else {
+                $tires_type_sql .= " OR type = ".'\''.$rin['diameter'].'\'';
+            }
+        }
+    }
+
+    $sql .= $tires_type_sql;
+
+    $query_result =  Core\query($sql, array());
+
+    if ( count($query_result) > 0 ) {
+        $result->status = "FOUND";
+        $result->data = $query_result;
+    }else {
+        $result->status = "EMPTY";
     }
 
     return $result;
@@ -1146,6 +1184,13 @@ function get_rines( $vehicle_id, $model_id ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model_has_tym_rin vhr"
     ." LEFT JOIN ".$GLOBALS["prefix"]. "rin r ON r.id = vhr.tym_rin_id "
     ." WHERE vhr.tym_vehicle_model_id = ".$model_id." AND vhr.tym_vehicle_model_tym_vehicle_id = ".$vehicle_id;
+    return Core\query($sql, array());
+}
+
+function get_tanks( $vehicle_id, $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tanks_has_tym_vehicle_model vht"
+    ." LEFT JOIN ".$GLOBALS["prefix"]. "tank t ON t.id = vht.tym_tanks_id "
+    ." WHERE vht.tym_vehicle_model_id = ".$model_id." AND vht.tym_vehicle_model_tym_vehicle_id = ".$vehicle_id;
     return Core\query($sql, array());
 }
 

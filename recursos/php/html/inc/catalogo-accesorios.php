@@ -75,7 +75,7 @@
 							<div ng-if="seatProductsSelected" >
 								<h1 class="titulo text-uppercase">Sillas</h1>
 								<hr>
-								<div class="row" ng-if="seatEmpty">
+								<div ng-if="seatEmpty">
 									<div class="alert alert-info bg-color4">
 						            	<i>Productos no disponibles</i>
 						            </div>
@@ -101,7 +101,7 @@
 							<div ng-if="lightProductsSelected" >
 								<h1 class="titulo text-uppercase">Luces HID</h1>
 								<hr>
-								<div class="row" ng-if="lightEmpty">
+								<div ng-if="lightEmpty">
 									<div class="alert alert-info bg-color4">
 						            	<i>Productos no disponibles</i>
 						            </div>
@@ -123,6 +123,33 @@
 								</div>
 							</div>
 							<!-- product of type light -->
+							<!-- product of type tank -->
+							<div ng-if="tankProductsSelected" >
+								<h1 class="titulo text-uppercase">Tanques</h1>
+								<hr>
+								<div ng-if="tankEmpty">
+									<div class="alert alert-info bg-color4">
+										<i>Productos no disponibles</i>
+									</div>
+								</div>
+								<div class="row" ng-if="!tankEmpty">
+									<div ng-repeat="(key, product) in tankProducts" class="col-sm-6 col-md-4">
+										<a class="producto" ng-click="sendToProductDetail( product, 'tank' )">
+											<div class="row">
+												<div class="col-xs-6">
+													<!-- <img ng-src="admin/recursos/img/tank-products/{{product.img}}.gif" alt="" class="img-responsive"> -->
+													<img ng-src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive">
+												</div>
+												<div class="col-xs-6">
+													{{product.brand}}<br>
+													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- product of type tank -->
 						</section>
 					</div>
 					<div class="col-sm-2 text-center te-puede-interesar">

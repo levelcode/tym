@@ -71,7 +71,7 @@
 								</div>
 							</div>
 							<!-- product of type tire -->
-							<!-- product of type tire -->
+							<!-- product of type seat -->
 							<div ng-if="seatProductsSelected" >
 								<h1 class="titulo text-uppercase">Sillas</h1>
 								<hr>
@@ -96,7 +96,33 @@
 									</div>
 								</div>
 							</div>
-							<!-- product of type tire -->
+							<!-- product of type seat -->
+							<!-- product of type light -->
+							<div ng-if="lightProductsSelected" >
+								<h1 class="titulo text-uppercase">Luces HID</h1>
+								<hr>
+								<div class="row" ng-if="lightEmpty">
+									<div class="alert alert-info bg-color4">
+						            	<i>Productos no disponibles</i>
+						            </div>
+								</div>
+								<div class="row" ng-if="!lightEmpty">
+									<div ng-repeat="(key, product) in lightProducts" class="col-sm-6 col-md-4">
+										<a class="producto" ng-click="sendToProductDetail( product, 'light' )">
+											<div class="row">
+												<div class="col-xs-6">
+													<img ng-src="admin/recursos/img/light-hid-products/{{product.img}}.gif" alt="" class="img-responsive">
+												</div>
+												<div class="col-xs-6">
+													{{product.brand}}<br>
+													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- product of type light -->
 						</section>
 					</div>
 					<div class="col-sm-2 text-center te-puede-interesar">

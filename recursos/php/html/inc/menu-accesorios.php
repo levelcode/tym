@@ -10,7 +10,7 @@
 			<a href="./sillas" class="sillas" ng-click="openProductType('seat')" data-nombre="accesorios-sillas">Sillas</a>
 		</li>
 		<li>
-			<a href="./luces-hid" class="luces-hid" data-nombre="accesorios-luces-hid">Luces HID</a>
+			<a href="./luces-hid" class="luces-hid" ng-click="openProductType('light')" data-nombre="accesorios-luces-hid">Luces HID</a>
 		</li>
 		<li>
 			<a href="./racks" class="racks" data-nombre="accesorios-racks">Racks</a>

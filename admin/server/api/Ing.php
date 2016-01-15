@@ -261,8 +261,10 @@ function list_varios( $data, $local = false ){
                 $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
                 $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
 
+
                 switch ( $rin_products_result->status ) {
                     case 'FOUND':
+                        //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
                         $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
                         break;
                     case 'EMPTY':
@@ -272,9 +274,25 @@ function list_varios( $data, $local = false ){
                         $info_to_return['rin_products'] = array();
                         break;
                 }
-
                 $info_to_return['tires'] = get_tires( $data['vehicleId'], $data['modelId'] );
-                $info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
+                $tires_products_result = get_tire_products($info_to_return['tires']);
+
+                switch ( $tires_products_result->status ) {
+                    case 'FOUND':
+                        $info_to_return['tire_products'] = $tires_products_result->data;
+                        break;
+                    case 'EMPTY':
+                        $info_to_return['tire_products'] = array();
+                        break;
+                    default:
+                        $info_to_return['tire_products'] = array();
+                        break;
+                }
+                $info_to_return['seat_products'] = get_seat_all_products();
+                $info_to_return['light_hid_products'] = get_lights_hd_all_products();
+                $info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
+                //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
+
                 $info_to_return['status'] = "PRODUCTS_LOADED";
                 break;
                 default:
@@ -343,6 +361,41 @@ function list_varios( $data, $local = false ){
     return $result;
 }
 
+function get_tire_by_diamater( $rines ) {
+    $result = new \stdClass();
+
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire_product WHERE ";
+    $tires_type_sql = "";
+
+    foreach ( $rines as $key => $rin ) {
+        if( $key == 0 ){
+            $tires_type_sql .= " (type = ".'\''.$rin['diameter'].'\'';
+            if ( count($rines) == 1 ) {
+                $tires_type_sql.= ')';
+            }
+        }else{
+            if ( $key == (count($rines) - 1) )
+                $tires_type_sql .= " OR type = ".'\''.$rin['diameter'].'\')';
+            else {
+                $tires_type_sql .= " OR type = ".'\''.$rin['diameter'].'\'';
+            }
+        }
+    }
+
+    $sql .= $tires_type_sql;
+
+    $query_result =  Core\query($sql, array());
+
+    if ( count($query_result) > 0 ) {
+        $result->status = "FOUND";
+        $result->data = $query_result;
+    }else {
+        $result->status = "EMPTY";
+    }
+
+    return $result;
+}
+
 function _group_rines_by_diameter( $data ) {
     $new_array = array();
 
@@ -351,6 +404,42 @@ function _group_rines_by_diameter( $data ) {
     }
 
     return $new_array;
+}
+
+function get_tire_products( $type_of_tires ) {
+
+    $result = new \stdClass();
+
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire_product WHERE ";
+    $tires_type_sql = "";
+
+    foreach ( $type_of_tires as $key => $type ) {
+        if( $key == 0 ){
+            $tires_type_sql .= " (type = ".'\''.$type['tire'].'\'';
+            if ( count($type_of_tires) == 1 ) {
+                $tires_type_sql.= ')';
+            }
+        }else{
+            if ( $key == (count($type_of_tires) - 1) )
+                $tires_type_sql .= " OR type = ".'\''.$type['tire'].'\')';
+            else {
+                $tires_type_sql .= " OR type = ".'\''.$type['tire'].'\'';
+            }
+        }
+    }
+
+    $sql .= $tires_type_sql;
+
+    $query_result =  Core\query($sql, array());
+
+    if ( count($query_result) > 0 ) {
+        $result->status = "FOUND";
+        $result->data = $query_result;
+    }else {
+        $result->status = "EMPTY";
+    }
+
+    return $result;
 }
 
 function get_rin_products( $rin_group_types ) {
@@ -568,6 +657,46 @@ function read_rines(){
     }
 }
 
+function read_tires_products() {
+
+    $handle = fopen("../../recursos/csv/tire-products.csv", 'r');
+
+    if( $handle !== FALSE ) {
+        $vehicles = array();
+
+        $count_aux = 0;
+
+        while ( ($data = fgetcsv($handle, 350, ',')) !== FALSE  ){
+            $current_row = new \stdClass();
+
+            if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+                //die();
+                $current_row->name = trim($data[1]);
+                $current_row->referencie = trim($data[2]);
+                $current_row->brand = trim($data[3]);
+                $current_row->model = trim($data[4]);
+                $current_row->speed_rate  = trim($data[5]);
+                $current_row->weigth_rate = trim($data[6]);
+                $current_row->stock_u = trim($data[7]);
+                $current_row->stock_g = trim($data[8]);
+                $current_row->price_u = trim($data[9]);
+                $current_row->price_g = trim($data[10]);
+                $current_row->img = trim($data[0]);
+            }
+
+            $vehicles[] = $current_row;
+
+            $count_aux++;
+        }
+        fclose( $handle );
+
+        //var_dump($vehicles);
+        save_tire_products($vehicles);
+        //return $vehicles;
+    }
+
+}
+
 function read_rin_products(){
     $handle = fopen("../../recursos/csv/rin-products.csv", 'r');
 
@@ -602,6 +731,7 @@ function read_rin_products(){
             $count_aux++;
         }
         fclose( $handle );
+
         save_rin_products($vehicles);
         //return $vehicles;
     }
@@ -611,7 +741,7 @@ function save_rin_products( $rines_to_save ) {
 
     foreach ($rines_to_save as $key => $value) {
 
-        $rin['table'] = "rin_products";
+        $rin['table'] = "rin_product";
         $rin['column_id'] = "id";
 
         $rin['referencie'] = $value->ref;
@@ -632,6 +762,34 @@ function save_rin_products( $rines_to_save ) {
 
         echo $rin_insert_id;
     }
+}
+
+function save_tire_products( $tires_to_save ) {
+
+    unset($tires_to_save[0]);
+
+    foreach ($tires_to_save as $key => $value) {
+
+        $rin['table'] = "tire_product";
+        $rin['column_id'] = "id";
+
+        $rin['name'] = $value->name;
+        $rin['referencie'] = $value->referencie;
+        $rin['brand'] = $value->brand;
+        $rin['model'] = $value->model;
+        $rin['speed_rate'] = $value->speed_rate;
+        $rin['weigth_rate'] = $value->weigth_rate;
+        $rin['stock_unit'] = $value->stock_u;
+        $rin['stock_group'] = $value->stock_g;
+        $rin['price'] = ($value->price_u == 'sin determinar') ? 0 : $value->price_u;
+        $rin['price_group'] = ($value->price_g == 'sin determinar') ? 0 : $value->price_g;
+        $rin['img'] = $value->img;
+
+        $rin_insert_id = Core\create($rin, false, false);
+
+        echo $rin_insert_id;
+    }
+
 }
 
 function group_models( $readed ) {
@@ -677,6 +835,16 @@ function save_vehicles_and_models( $grouped_vehicles ){
         }
     }
     return $insert_id;
+}
+
+function get_seat_all_products() {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "seat_product";
+    return Core\query($sql, array());
+}
+
+function get_lights_hd_all_products() {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "light_hd_product";
+    return Core\query($sql, array());
 }
 
 function get_all_product_types() {
@@ -1016,6 +1184,13 @@ function get_rines( $vehicle_id, $model_id ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model_has_tym_rin vhr"
     ." LEFT JOIN ".$GLOBALS["prefix"]. "rin r ON r.id = vhr.tym_rin_id "
     ." WHERE vhr.tym_vehicle_model_id = ".$model_id." AND vhr.tym_vehicle_model_tym_vehicle_id = ".$vehicle_id;
+    return Core\query($sql, array());
+}
+
+function get_tanks( $vehicle_id, $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tanks_has_tym_vehicle_model vht"
+    ." LEFT JOIN ".$GLOBALS["prefix"]. "tank t ON t.id = vht.tym_tanks_id "
+    ." WHERE vht.tym_vehicle_model_id = ".$model_id." AND vht.tym_vehicle_model_tym_vehicle_id = ".$vehicle_id;
     return Core\query($sql, array());
 }
 

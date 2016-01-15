@@ -27,7 +27,7 @@
 			                    <tbody>
 			                        <tr ng-repeat="(key, product) in shoppingcart.products">
 			                            <td>
-			                                <img src="recursos/img/muestra-item-llanta.jpg" alt="imagen de producto">
+			                                <img style="width:50px;height:auto;" ng-src="admin/recursos/img/{{product.type}}-products/{{product.img}}.gif" alt="imagen de producto">
 			                            </td>
 			                            <td ng-bind="product.name"></td>
 			                            <td class="text-right" ng-bind="product.price | currency : '$' : 0"></td>
@@ -86,7 +86,7 @@
             		</div>
             		<div class="col-sm-5" ng-if="shoppingcart.addDelivery || shoppingcart.addDeliveryAndinstalation">
             			<div class="registro-compra bg-color3 text-left">
-            				<h3 class="text-uppercase">Registra tu compra</h3>
+            				<h3 class="text-uppercase">Datos de envío</h3>
 
             				<form>
             					<div class="form-group">

@@ -49,6 +49,7 @@ class Cabecero extends a_Html
 			<link rel="stylesheet" href="recursos/css/admin/general.css">
 		<?php endif;?>
 		<link rel="stylesheet" href="recursos/css/general.css">
+		<link rel="stylesheet" href="recursos/css/extra.css">
 		<link rel="stylesheet" href="recursos/css/tooltip.css">
 		<?php $this->obtener('css') ?>
 		<script src="recursos/js/jquery.js"></script>

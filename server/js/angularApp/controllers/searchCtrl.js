@@ -1,4 +1,4 @@
-tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $scope, $http, $rootScope ){
+tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsService', function( $scope, $http, $rootScope, ConstantsService ){
 
 	'use strict';
 
@@ -12,15 +12,33 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 	$scope.loadingData = false;
 	$scope.showOptions = false;
 
+	$scope.defaultValueBrand = "Seleccione Marca";
+	$scope.defaultValueModel = "Selecciona Modelo";
+
 	angular.element(document).ready(function(){
 		$scope.loadingData = true;
-
 		loadHomeData();
 	});
+
+	$scope.read = function () {
+		var post = 	{};
+			post.a = 'read';
+
+        $http.post("admin/server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+
+                console.log(data);
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+	};
 
 	$scope.searchByBrand = function( selectedVehicleBrand ) {
 		console.log( selectedVehicleBrand );
 		$scope.loadingData = true;
+		$scope.defaultValueModel = "Cargando";
 
 		var post = 	{};
 			post.a = 'list_varios';
@@ -33,6 +51,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
                 console.log(data);
                 $scope.loadingData = false;
+				$scope.defaultValueModel = "Selecciona Modelo";
 
                 switch( data['status'] ) {
                 	case 'VEHICLE_MODELS_LOADED':
@@ -96,8 +115,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
                 switch( data['status'] ) {
                 	case 'PRODUCTS_LOADED':
 		            	var jsonObject = angular.fromJson(data);
-
-						$rootScope.$broadcast('rin_product_loaded', jsonObject['rin_products']);
+						$rootScope.$broadcast( ConstantsService.PRODUCTS_CHARGED, jsonObject);
 			            updatetDataToShow( jsonObject['rin_types'], "rin_types" );
 			            updatetDataToShow( jsonObject['tires'], "tires" );
 			            break;
@@ -111,6 +129,9 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
 	function loadHomeData() {
 
+		$scope.defaultValueBrand = "Cargando";
+		$scope.loadingData = true;
+
 		var post = 	{};
 			post.a = 'list_varios';
 			post.from = 'home';
@@ -121,6 +142,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 
                 console.log(data);
                 $scope.loadingData = false;
+				$scope.defaultValueBrand = "Seleccione Marca";
 
                 switch( data['status'] ) {
                 	case 'VEHICLES_LOADED':

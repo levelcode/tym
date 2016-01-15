@@ -415,6 +415,7 @@ st.producto = {
 	efe: 'slide',
 	dir: 'left',
 	eas: 'easeOutCirc',
+	slider: false,
 
 	// metds
 	ini: function(){
@@ -423,7 +424,22 @@ st.producto = {
 
 	abrir: function(){
 		var t = this;
-		$('#detalle-producto').fadeIn(t.dur);
+
+		$('#detalle-producto').fadeIn({
+			duration: t.dur,
+			complete: function(){
+			}
+		});
+		if(!t.slider){
+			console.log('entró');
+			$("#slide-productos-compatibles").lightSlider({
+				loop:true,
+				keyPress:true,
+				item: 5
+			});
+			t.slider = true;
+		}
+
 		t.abierto = true;
 	},
 
@@ -431,7 +447,6 @@ st.producto = {
 		var t = this;
 		$('#detalle-producto').fadeOut(t.dur);
 		t.abierto = false;
-		
 	},
 
 	eventos: function(){

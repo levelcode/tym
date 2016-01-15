@@ -233,9 +233,48 @@
 				</div>
 				<!-- tank -->
 
+				<hr>
+
 				<div class="row productos-compatibles">
-					<div class="col-xs-12">
-						
+					<div class="col-xs-12 text-center">
+						<ul id="slide-productos-compatibles">
+							<li>
+								<a href="#">
+									<img src="recursos/img/foto-rin-01.jpg" alt=""><br>
+									<span>Hankook - ventus V4</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="recursos/img/foto-rin-01.jpg" alt=""><br>
+									<span>Hankook - ventus V4</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="recursos/img/foto-rin-01.jpg" alt=""><br>
+									<span>Hankook - ventus V4</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="recursos/img/foto-rin-01.jpg" alt=""><br>
+									<span>Hankook - ventus V4</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="recursos/img/foto-rin-01.jpg" alt=""><br>
+									<span>Hankook - ventus V4</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img src="recursos/img/foto-rin-01.jpg" alt=""><br>
+									<span>Hankook - ventus V4</span>
+								</a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>

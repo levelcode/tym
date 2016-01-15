@@ -1,23 +1,14 @@
 tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService', function( $scope, $rootScope, ConstantsService ){
 
 	$scope.productsLoaded = false;
-	 
 	$scope.rinProductsSelected = false;
-	 
-	$scope.seatProductsSelected = false;
-	 
+	$scope.seatProductsSelected = false;	 
 	$scope.lightProductsSelected = false;
 	 
-
-	 
 	$scope.rinEmpty = false;
-	 
 	$scope.tireEmpty = false;
-	 
 	$scope.seatEmpty = false;
-	 
 	$scope.lightEmpty = false;
-	 
 	$scope.tankEmpty = false;
 	 
 	/*
@@ -35,8 +26,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 	 
 	$rootScope.$on( ConstantsService.CHANGE_PRODUCTS, function( event, data ) {
-	 		chooseProductsToShow( data );
-	 
+ 		chooseProductsToShow( data );
 	});
 	 
 
@@ -61,6 +51,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.rinEmpty = true;
  
 					}
+					$scope.rinEmpty = false;
 	 
 					break;
 	 
@@ -73,6 +64,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.tireEmpty = true;
 	 
 					}
+					$scope.tireEmpty = false;
 	 
 					break;
 	 
@@ -85,6 +77,8 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.seatEmpty = true;
 	 
 					}
+
+					$scope.seatEmpty = false;
 	 
 					break;
 	 
@@ -97,6 +91,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.lightEmpty = true;
 	 
 					}
+					$scope.lightEmpty = false;
 	 
 				case 'tank_products':
 	 
@@ -107,6 +102,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.tankEmpty = true;
 	 
 					}
+					$scope.tankEmpty = false;
 	 
 					break;
 	 
@@ -131,73 +127,43 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 		switch ( productTypeToShow ) {
 	 
 			case 'rin':
-	 
 				$scope.rinProductsSelected = true;
-	 
 				$scope.seatProductsSelected = false;
-	 
 				$scope.tireProductsSelected = false;
-	 
 				$scope.lightProductsSelected = false;
-	 
 				$scope.tankProductsSelected = false;
-	 
 				break;
 	 
 			case 'tire':
-	 
 				$scope.tireProductsSelected = true;
-	 
 				$scope.seatProductsSelected = false;
-	 
 				$scope.rinProductsSelected = false;
-	 
 				$scope.lightProductsSelected = false;
-	 
 				$scope.tankProductsSelected = false;
-	 
 				break;
 	 
 			case 'seat':
-	 
 				$scope.seatProductsSelected = true;
-	 
 				$scope.tireProductsSelected = false;
-	 
 				$scope.rinProductsSelected = false;
-	 
 				$scope.lightProductsSelected = false;
-	 
 				$scope.tankProductsSelected = false;
-	 
 				break;
 	 
 			case 'light_hid':
-	 
 				$scope.lightProductsSelected = true;
-	 
 				$scope.seatProductsSelected = false;
-	 
 				$scope.tireProductsSelected = false;
-	 
 				$scope.rinProductsSelected = false;
-	 
 				$scope.tankProductsSelected = false;
-	 
 				break;
 	 
 			case 'tank':
-	 
 				$scope.tankProductsSelected = true;
-	 
 				$scope.lightProductsSelected = false;
- 
 				$scope.seatProductsSelected = false;
-	 
 				$scope.tireProductsSelected = false;
-	 
 				$scope.rinProductsSelected = false;
-	 
 				break;
 	 
 			default:
@@ -213,23 +179,17 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 	 
 	function groupByRinType( data ) {
-	 
-
  
 		var na = [];
 	 
 			//na.rines = {};
  
 		angular.forEach(data, function (value, key) {
-	 
-
 
        		na[value.diameter] = value;
 	 
   		});
-	 
-
-	 
+	 	 
 		return na;
 	 
 	}

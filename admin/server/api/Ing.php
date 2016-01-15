@@ -286,8 +286,9 @@ function list_varios( $data, $local = false ){
                         $info_to_return['tire_products'] = array();
                         break;
                 }
+                $info_to_return['seat_products'] = get_seat_all_products();
+                //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
 
-                $info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
                 $info_to_return['status'] = "PRODUCTS_LOADED";
                 break;
                 default:
@@ -795,6 +796,11 @@ function save_vehicles_and_models( $grouped_vehicles ){
         }
     }
     return $insert_id;
+}
+
+function get_seat_all_products() {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "seat_product";
+    return Core\query($sql, array());
 }
 
 function get_all_product_types() {

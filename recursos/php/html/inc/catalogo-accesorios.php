@@ -16,7 +16,14 @@
 							</div>
 							<!-- product of type rin -->
 							<div ng-if="rinProductsSelected" >
-								<div ng-repeat="(key, value) in rinProducts">
+								<div ng-if="rinEmpty">
+									<h1 class="titulo text-uppercase">Rines</h1>
+									<hr>
+									<div class="alert alert-info bg-color4">
+						            	<i>Productos no disponibles</i>
+						            </div>
+								</div>
+								<div ng-if="!rinEmpty" ng-repeat="(key, value) in rinProducts">
 									<h1 class="titulo text-uppercase">Rines {{key}} pulgadas</h1>
 									<hr>
 									<div class="row">
@@ -41,13 +48,44 @@
 							<div ng-if="tireProductsSelected" >
 								<h1 class="titulo text-uppercase">Llantas</h1>
 								<hr>
-								<div class="row">
+								<div class="row" ng-if="tireEmpty">
+									<div class="alert alert-info bg-color4">
+						            	<i>Productos no disponibles</i>
+						            </div>
+								</div>
+								<div class="row" ng-if="!tireEmpty">
 									<div ng-repeat="(key, product) in tireProducts" class="col-sm-6 col-md-4">
 										<a class="producto" ng-click="sendToProductDetail( product, 'tire' )">
 											<div class="row">
 												<div class="col-xs-6">
 													<!-- <img ng-src="admin/recursos/img/tire-products/{{product.img}}.gif" alt="" class="img-responsive"> -->
 													<img ng-src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive">
+												</div>
+												<div class="col-xs-6">
+													{{product.brand}}<br>
+													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- product of type tire -->
+							<!-- product of type tire -->
+							<div ng-if="seatProductsSelected" >
+								<h1 class="titulo text-uppercase">Sillas</h1>
+								<hr>
+								<div class="row" ng-if="seatEmpty">
+									<div class="alert alert-info bg-color4">
+						            	<i>Productos no disponibles</i>
+						            </div>
+								</div>
+								<div class="row" ng-if="!seatEmpty">
+									<div ng-repeat="(key, product) in seatProducts" class="col-sm-6 col-md-4">
+										<a class="producto" ng-click="sendToProductDetail( product, 'seat' )">
+											<div class="row">
+												<div class="col-xs-6">
+													<img ng-src="admin/recursos/img/seat-products/{{product.img}}.gif" alt="" class="img-responsive">
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>

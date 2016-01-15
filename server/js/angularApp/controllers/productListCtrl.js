@@ -2,10 +2,11 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 	$scope.productsLoaded = false;
 	$scope.rinProductsSelected = false;
+	$scope.seatProductsSelected = false;
 
-
-	$scope.rinesEmpty = false;
-	$scope.tiresEmpty = false;
+	$scope.rinEmpty = false;
+	$scope.tireEmpty = false;
+	$scope.seatEmpty = false;
 	/*
 	listeners
 	*/
@@ -26,13 +27,19 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				case 'rin_products':
 					$scope.rinProducts = value;
 					if ( !(value.length > 0) ){
-						$scope.rinesEmpty = true;
+						$scope.rinEmpty = true;
 					}
 					break;
 				case 'tire_products':
 					$scope.tireProducts = value;
 					if ( !(value.length > 0) ){
-						$scope.tiresEmpty = true;
+						$scope.tireEmpty = true;
+					}
+					break;
+				case 'seat_products':
+					$scope.seatProducts = value;
+					if ( !(value.length > 0) ){
+						$scope.seatEmpty = true;
 					}
 					break;
 				default:
@@ -43,13 +50,21 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	});
 
 	function chooseProductsToShow( productTypeToShow ) {
+		$scope.productsLoaded = true;
 		switch ( productTypeToShow ) {
 			case 'rin':
 				$scope.rinProductsSelected = true;
+				$scope.seatProductsSelected = false;
 				$scope.tireProductsSelected = false;
 				break;
 			case 'tire':
 				$scope.tireProductsSelected = true;
+				$scope.seatProductsSelected = false;
+				$scope.rinProductsSelected = false;
+				break;
+			case 'seat':
+				$scope.seatProductsSelected = true;
+				$scope.tireProductsSelected = false;
 				$scope.rinProductsSelected = false;
 				break;
 			default:

@@ -7,7 +7,7 @@
 			<a href="./llantas" class="llantas" ng-click="openProductType('tire')" data-nombre="accesorios-llantas">Llantas</a>
 		</li>
 		<li>
-			<a href="./sillas" class="sillas" data-nombre="accesorios-sillas">Sillas</a>
+			<a href="./sillas" class="sillas" ng-click="openProductType('seat')" data-nombre="accesorios-sillas">Sillas</a>
 		</li>
 		<li>
 			<a href="./luces-hid" class="luces-hid" data-nombre="accesorios-luces-hid">Luces HID</a>

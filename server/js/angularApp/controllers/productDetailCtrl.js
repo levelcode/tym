@@ -11,7 +11,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
     if( shoppingCartInCookie != undefined )
         $scope.shoppingcart = shoppingCartInCookie;
 
-    $scope.addToShoppingCart = function( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax ) {
+    $scope.addToShoppingCart = function( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax, img, type ) {
 
         var isNumber = UtilService.isInteger( cant );
 
@@ -37,7 +37,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
                 $scope.shoppingcart.hasDiscount = false;
                 $scope.shoppingcart.sended = false;
 
-                var firtsProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax);
+                var firtsProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax, img, type);
 
                 $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = firtsProduct;
                 $scope.shoppingcart.numOfproductsSubtotal++;
@@ -47,7 +47,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
             } else {
                 if (($scope.shoppingcart != undefined) && ($scope.shoppingcart.products != undefined)) {
 
-                    var currentProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax);
+                    var currentProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax, img, type);
 
                     var products = $scope.shoppingcart.products;
                     var quantityProductIncreased = false;
@@ -79,7 +79,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
     };
 
-    function _chargeProductObject( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax ) {
+    function _chargeProductObject( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax, img, type ) {
 
         var priceUnit =  parseFloat( price );
         var discount = parseInt( discount );
@@ -92,6 +92,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
         currentProduct.name = name;
         currentProduct.barcode = barcode;
         currentProduct.categoryId = categoryId;
+		currentProduct.img = img;
+		currentProduct.type = type;
         currentProduct.presentation = presentation;
         currentProduct.cant = cant;
         currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;

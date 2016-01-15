@@ -287,7 +287,7 @@ function list_varios( $data, $local = false ){
                         break;
                 }
                 $info_to_return['seat_products'] = get_seat_all_products();
-                $info_to_return['lights_hd_products'] = get_lights_hd_all_products();
+                $info_to_return['light_hid_products'] = get_lights_hd_all_products();
                 //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
 
                 $info_to_return['status'] = "PRODUCTS_LOADED";

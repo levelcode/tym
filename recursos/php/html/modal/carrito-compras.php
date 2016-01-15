@@ -27,7 +27,7 @@
 			                    <tbody>
 			                        <tr ng-repeat="(key, product) in shoppingcart.products">
 			                            <td>
-			                                <img style="width:50px;height:auto;" src="recursos/img/muestra-item-llanta.jpg" alt="imagen de producto">
+			                                <img style="width:50px;height:auto;" ng-src="admin/recursos/img/{{product.type}}-products/{{product.img}}.gif" alt="imagen de producto">
 			                            </td>
 			                            <td ng-bind="product.name"></td>
 			                            <td class="text-right" ng-bind="product.price | currency : '$' : 0"></td>

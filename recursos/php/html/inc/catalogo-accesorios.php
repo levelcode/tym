@@ -108,7 +108,7 @@
 								</div>
 								<div class="row" ng-if="!lightEmpty">
 									<div ng-repeat="(key, product) in lightProducts" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'light' )">
+										<a class="producto" ng-click="sendToProductDetail( product, 'light_hid' )">
 											<div class="row">
 												<div class="col-xs-6">
 													<img ng-src="admin/recursos/img/light-hid-products/{{product.img}}.gif" alt="" class="img-responsive">

@@ -44,7 +44,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.seatEmpty = true;
 					}
 					break;
-				case 'lights_hd_products':
+				case 'light_hid_products':
 					$scope.lightProducts = value;
 					if ( !(value.length > 0) ){
 						$scope.lightEmpty = true;
@@ -78,7 +78,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.rinProductsSelected = false;
 				$scope.lightProductsSelected = false;
 				break;
-			case 'light':
+			case 'light_hid':
 				$scope.lightProductsSelected = true;
 				$scope.seatProductsSelected = false;
 				$scope.tireProductsSelected = false;

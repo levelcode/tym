@@ -1,4 +1,5 @@
 tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$rootScope', '$log', 'UtilService', 'ConstantsService', function( $scope, $rootScope, $cookies, $rootScope, $log, UtilService, ConstantsService ){
+
 	var vehicle = { brand : 'ninguno' };
 	var model = { model : 'ninguno' };
 	var year = 'ninguno';
@@ -9,10 +10,6 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
     if( shoppingCartInCookie != undefined )
         $scope.shoppingcart = shoppingCartInCookie;
-
-	$rootScope.$on('view_detail', function( event, data ){
-		$scope.selectedProduct = data;
-	});
 
     $scope.addToShoppingCart = function( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax ) {
 
@@ -132,5 +129,10 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	*/
 	$rootScope.$on('vehicle_chaged', function( event, data ){
 		$scope.selectedCar = data;
+	});
+
+	$rootScope.$on( ConstantsService.VIEW_DETAIL, function( event, data ){
+		$scope.selectedProductType = data.type;
+		$scope.selectedProduct = data.info;
 	});
 }]);

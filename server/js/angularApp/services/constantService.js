@@ -12,8 +12,10 @@ tymApp.factory( 'ConstantsService', function(){ // no inject $scope dependency,
         SALE_CHANGED : "SALE_CHANGED",
         POINTS_BASE : 0.02,
         PRODUCTS_CHARGED : 'PRODUCTS_CHARGED',
+        CHANGE_PRODUCTS : 'CHANGE_PRODUCTS',
         DELIVERY_PERCENT : 0.02,
-        DELIVERY_INSTALATION_PERCENT : 0.05
+        DELIVERY_INSTALATION_PERCENT : 0.05,
+        VIEW_DETAIL : 'VIEW_DETAIL'
     };
 
     return constantService;

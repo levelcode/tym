@@ -1,10 +1,10 @@
-<nav class="menu-accesorios">
+<nav class="menu-accesorios" ng-controller="menuProductCtrl">
 	<ul class="text-uppercase text-center">
 		<li>
-			<a href="./rines" class="rines" data-nombre="accesorios-rines">Rines</a>
+			<a href="./rines" class="rines" ng-click="openProductType('rin')" data-nombre="accesorios-rines">Rines</a>
 		</li>
 		<li>
-			<a href="./llantas" class="llantas" data-nombre="accesorios-llantas">Llantas</a>
+			<a href="./llantas" class="llantas" ng-click="openProductType('tire')" data-nombre="accesorios-llantas">Llantas</a>
 		</li>
 		<li>
 			<a href="./sillas" class="sillas" data-nombre="accesorios-sillas">Sillas</a>

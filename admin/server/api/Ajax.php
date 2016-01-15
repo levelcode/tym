@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo Ing\login( $_POST["id"], $_POST["pass"], $_POST["userType"] );
             break;
             case 'read':
-            echo Ing\read_rin_products();
+                echo Ing\read_tires_products();
             break;
             case 'save_item':
             echo Ing\save_item($_POST);

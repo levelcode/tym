@@ -1,4 +1,4 @@
-tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $scope, $http, $rootScope ){
+tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsService', function( $scope, $http, $rootScope, ConstantsService ){
 
 	'use strict';
 
@@ -19,6 +19,21 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
 		$scope.loadingData = true;
 		loadHomeData();
 	});
+
+	$scope.read = function () {
+		var post = 	{};
+			post.a = 'read';
+
+        $http.post("admin/server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+
+                console.log(data);
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+	};
 
 	$scope.searchByBrand = function( selectedVehicleBrand ) {
 		console.log( selectedVehicleBrand );
@@ -100,8 +115,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', function( $s
                 switch( data['status'] ) {
                 	case 'PRODUCTS_LOADED':
 		            	var jsonObject = angular.fromJson(data);
-
-						$rootScope.$broadcast('rin_product_loaded', jsonObject['rin_products']);
+						$rootScope.$broadcast( ConstantsService.PRODUCTS_CHARGED, jsonObject);
 			            updatetDataToShow( jsonObject['rin_types'], "rin_types" );
 			            updatetDataToShow( jsonObject['tires'], "tires" );
 			            break;

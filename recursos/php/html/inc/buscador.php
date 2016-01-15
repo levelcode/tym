@@ -25,6 +25,7 @@
 							<select name="tipo1" id="p2" class="form-control" ng-disabled="sendingselectedCar" ng-model="selectedCar.year" ng-options="year for (key, year) in years.data" required>
 								<option selected value="">Selecciona Año</option>
 							</select>
+							<button type="button" class="btn form-control bg-color3" ng-click="read( )">read</button>
 						</div>
 					</div>
 				</div>

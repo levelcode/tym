@@ -432,10 +432,37 @@ st.producto = {
 		});
 		if(!t.slider){
 			console.log('entró');
-			$("#slide-productos-compatibles").lightSlider({
+			$("#slider-productos-compatibles").lightSlider({
 				loop:true,
 				keyPress:true,
-				item: 5
+				item: 5,
+				autowidth: false,
+				responsive: [
+					{
+						breakpoint: 1200,
+						settings: {
+							item: 4,
+							slideMove: 1,
+							slideMargin: 4
+						}
+					},
+					{
+						breakpoint: 992,
+						settings: {
+							item: 3,
+							slideMove: 1,
+							slideMargin: 2
+						}
+					},
+					{
+						breakpoint: 768,
+						settings: {
+							item: 2,
+							slideMove: 1,
+							slideMargin: 2
+						}
+					}
+				]
 			});
 			t.slider = true;
 		}

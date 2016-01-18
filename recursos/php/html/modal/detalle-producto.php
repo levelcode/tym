@@ -237,6 +237,7 @@
 
 				<div class="row productos-compatibles">
 					<div class="col-xs-12 text-center">
+						<h3 class="c-color4 text-left">Llantas compatibles para tu vehículo</h3>
 						<div class="text-center" ng-if="loadingCompatibles && (tiresCompatible != undefined)">
 							<br>
 							<p class="txt-16">cargando...</p>
@@ -246,12 +247,42 @@
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
-						<ul id="slide-productos-compatibles">
-							<li ng-repeat="tire in tiresCompatible">
+						<ul id="slider-productos-compatibles">
+							<!--<li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
-									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
-									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> 
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
+								</a>
+							</li>-->
+							<li>
+								<a href="#">
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
+									<span>La llanta</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
+									<span>La llanta</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
+									<span>La llanta</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
+									<span>La llanta</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
+									<span>La llanta</span>
 								</a>
 							</li>
 						</ul>

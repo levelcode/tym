@@ -247,12 +247,64 @@
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
+<<<<<<< HEAD
 						<ul id="slider-productos-compatibles">
 							<!--<li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> 
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
+=======
+						<div >
+						<ul id="slide-productos-compatibles">
+							<!-- <li ng-repeat="tire in tiresCompatible"> -->
+							<li>
+								<a ng-click="sendToProductDetail( tire, 'tire' )">
+									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+									<!-- <span>{{tire.brand}} - {{tire.referencie}}</span> -->
+									<span>HANKOOK - Ventus</span>
+								</a>
+							</li>
+							<li>
+								<a ng-click="sendToProductDetail( tire, 'tire' )">
+									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+									<!-- <span>{{tire.brand}} - {{tire.referencie}}</span> -->
+									<span>HANKOOK - Ventus</span>
+								</a>
+							</li>
+							<li>
+								<a ng-click="sendToProductDetail( tire, 'tire' )">
+									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+									<!-- <span>{{tire.brand}} - {{tire.referencie}}</span> -->
+									<span>HANKOOK - Ventus</span>
+								</a>
+							</li>
+							<li>
+								<a ng-click="sendToProductDetail( tire, 'tire' )">
+									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+									<!-- <span>{{tire.brand}} - {{tire.referencie}}</span> -->
+									<span>HANKOOK - Ventus</span>
+								</a>
+							</li>
+							<li>
+								<a ng-click="sendToProductDetail( tire, 'tire' )">
+									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+									<!-- <span>{{tire.brand}} - {{tire.referencie}}</span> -->
+									<span>HANKOOK - Ventus</span>
+								</a>
+							</li>
+							<li>
+								<a ng-click="sendToProductDetail( tire, 'tire' )">
+									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+									<!-- <span>{{tire.brand}} - {{tire.referencie}}</span> -->
+									<span>HANKOOK - Ventus</span>
+>>>>>>> d7497e958bd3aecf904e5eadc7a0fcb2743a0426
 								</a>
 							</li>-->
 							<li>
@@ -286,6 +338,7 @@
 								</a>
 							</li>
 						</ul>
+						</div>
 					</div>
 				</div>
 			</div>

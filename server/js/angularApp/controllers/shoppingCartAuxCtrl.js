@@ -1,6 +1,13 @@
 
 tymApp.controller('ShoppingCartAxuCtrl', ['$scope', '$window', '$log', '$rootScope', 'ConstantsService', '$cookies', function( $scope, $window, $log, $rootScope, ConstantsService, $cookies ){
 
+    var todayFull = new Date();
+    var todayDay = todayFull.getDate();
+
+    todayFull.setDate( todayDay + 3 );
+
+    var cookiesOptions = { path: "/" , expires: todayFull };
+
     $scope.numOfProducts = 0;
 
     var shoppingCartInCookie = $cookies.getObject( 'shoppingcart' );

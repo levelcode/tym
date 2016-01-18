@@ -42,6 +42,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
         if ( !$scope.shoppingcart.haveProducts ) {
 
             $cookies.remove('shoppingcart', cookiesOptions);
+            $scope.shoppingcart = undefined;
 
         }else {
 

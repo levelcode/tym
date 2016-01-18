@@ -22,6 +22,7 @@
 			                            <th>PRECIO</th>
 			                            <th>CANTIDAD</th>
 			                            <th>SUBTOTAL</th>
+                                        <th></th>
 			                        </tr>
 			                    </thead>
 			                    <tbody>
@@ -44,6 +45,7 @@
 			                            	</select>
 			                            </td>
 			                            <td class="text-right" ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
+                                        <td><i style="cursor: pointer;" ng-click="removeProduct( key )" class="fa fa-trash-o"></i></td>
 			                        </tr>
 			                        <tr class="text-right">
 			                            <td colspan="4">
@@ -85,38 +87,53 @@
 	            		<hr class="visible-xs">
             		</div>
             		<div class="col-sm-5" ng-if="shoppingcart.addDelivery || shoppingcart.addDeliveryAndinstalation">
-            			<div class="registro-compra bg-color3 text-left">
-            				<h3 class="text-uppercase">Datos de envío</h3>
+                        <form name="paymentForm" method="post" action="https://stg.gateway.payulatam.com/ppp-web-gateway/">
+                			<div class="registro-compra bg-color3 text-left">
+                				<h3 class="text-uppercase">Datos de envío</h3>
 
-            				<form>
-            					<div class="form-group">
-            						<label for="">Nombre:</label>
-            						<input type="text" name="userName" ng-model="order.userName" ng-init="order.userName = '<?= $_SESSION['user_name']?>'" id="order-user-name" class="form-control">
-            					</div>
-            					<div class="form-group">
-            						<label for="">E-Mail:</label>
-            						<input type="text" name="email" ng-model="order.email" ng-init="order.email = '<?= $_SESSION['email']?>'" id="order-email" class="form-control">
-            					</div>
-            					<div class="form-group">
-            						<label for="">Celular:</label>
-            						<input type="text" name="" id="" class="form-control">
-            					</div>
-                                <div class="form-group">
-            						<label for="">Dirección de envío:</label>
-            						<input type="text" name="" id="" class="form-control">
-            					</div>
-            					<div class="form-group">
-            						<label for="">Teléfono fijo:</label>
-            						<input type="text" name="" id="" class="form-control">
-            					</div>
-            				</form>
-            			</div>
-						<br>
-            			<div class="row">
-	            			<div class="col-xs-12 text-right">
-                                <button ng-disabled="shoppingcart == undefined" class="btn bg-color2 c-blanco text-uppercase">Pagar</button>
-	            			</div>
-	            		</div>
+
+                					<div class="form-group">
+                						<label for="">Nombre:</label>
+                						<input type="text" name="userName" ng-model="order.userName" ng-init="order.userName = '<?= $_SESSION['user_name']?>'" id="order-user-name" class="form-control" required>
+                					</div>
+                					<div class="form-group">
+                						<label for="">E-Mail:</label>
+                						<input type="text" name="email" ng-model="order.email" ng-init="order.email = '<?= $_SESSION['email']?>'" id="order-email" class="form-control" required>
+                					</div>
+                					<div class="form-group">
+                						<label for="">Celular:</label>
+                						<input type="text" name="" id="" class="form-control" required>
+                					</div>
+                                    <div class="form-group">
+                						<label for="">Dirección de envío:</label>
+                						<input type="text" name="" id="" class="form-control" required>
+                					</div>
+                					<div class="form-group">
+                						<label for="">Teléfono fijo:</label>
+                						<input type="text" name="" id="" class="form-control" required>
+                					</div>
+                                    <input name="merchantId"    type="hidden"  value="500238"   >
+                                    <input name="accountId"     type="hidden"  value="500538" >
+                                    <input name="description"   type="hidden"  value="Test PAYU"  >
+                                    <input name="referenceCode" type="hidden"  value="454545454" >
+                                    <input name="amount"        type="hidden"  value="3"   >
+                                    <input name="tax"           type="hidden"  value="0"  >
+                                    <input name="taxReturnBase" type="hidden"  value="0" >
+                                    <input name="currency"      type="hidden"  value="USD" >
+                                    <input name="signature"     type="hidden"  value="be2f083cb3391c84fdf5fd6176801278"  >
+                                    <input name="test"          type="hidden"  value="1" >
+                                    <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+                                    <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
+                                    <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
+
+                			</div>
+    						<br>
+                			<div class="row">
+    	            			<div class="col-xs-12 text-right">
+                                    <button name="Submit" type="submit" value="Enviar" ng-disabled="(shoppingcart == undefined) || paymentForm.$invalid" class="btn bg-color2 c-blanco text-uppercase">Pagar</button>
+    	            			</div>
+    	            		</div>
+                        </form>
             		</div>
             	</div>
             </div>

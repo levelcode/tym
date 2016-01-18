@@ -250,12 +250,18 @@
 						<ul id="slider-productos-compatibles">
 							<!--<li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
-									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> 
+									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</li>-->
 
-							<li>
+							<li ng-repeat="tire in tiresCompatible |limitTo:tiresCompatible.length">
+								<a href="#">
+									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
+									<span>{{tire.brand}} - {{tire.referencie}}</span>
+								</a>
+							</li>
+							<!-- <li>
 								<a href="#">
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>La llanta</span>
@@ -278,13 +284,7 @@
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>La llanta</span>
 								</a>
-							</li>
-							<li>
-								<a href="#">
-									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
-									<span>La llanta</span>
-								</a>
-							</li>
+							</li> -->
 						</ul>
 					</div>
 				</div>

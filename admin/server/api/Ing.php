@@ -295,6 +295,27 @@ function list_varios( $data, $local = false ){
 
                 $info_to_return['status'] = "PRODUCTS_LOADED";
                 break;
+                case 'get_compatible_tires_with_rin';
+                    $tires_types = get_compatible_tires_with_rin( $data['diameter'], $data['width'] );
+
+                    if ( count($tires_types) > 1 ){
+                        $filtered = filter_tires( $tires_types );
+
+                        $tire_products = get_tire_by_tire( $filtered );
+
+                        if ( $tire_products->status == "FOUND" ) {
+                            $info_to_return['tires_compatibles'] = $tire_products;
+                            $info_to_return['status'] = 'PRODUCTS_LOADED';
+                        }else {
+                            $info_to_return['tires_compatibles'] = array();
+                            $info_to_return['status'] = 'EMPTY';
+                        }
+                    }else{
+                        $info_to_return['tires_compatibles'] = array();
+                        $info_to_return['status'] = 'EMPTY';
+                    }
+
+                    break;
                 default:
                 # code...
                 break;
@@ -361,6 +382,69 @@ function list_varios( $data, $local = false ){
     return $result;
 }
 
+function filter_tires( $tires ){
+    $tires_filtered = array();
+
+    foreach ($tires as $key => $tire) {
+        $tires_filtered[$tire['tire']] = $tire;
+    }
+
+    return _index($tires_filtered);
+}
+
+function _index( $hash_map ) {
+    $cont = 0;
+    $indexed = array();
+    foreach ($hash_map as $key => $item) {
+        $indexed[$cont] = $item;
+        $cont++;
+    }
+
+    return $indexed;
+}
+
+function get_compatible_tires_with_rin( $diameter, $width ){
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire WHERE tire LIKE ". '\'%R'. $diameter. '%\'' . "AND inches LIKE " . '\'%'.$width.'\'';
+    return Core\query($sql, array());
+}
+
+function get_tire_by_tire( $tires_types ){
+    $result = new \stdClass();
+
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire_product WHERE ";
+    $tires_type_sql = "";
+
+    foreach ( $tires_types as $key => $tire ) {
+
+        if( $key == 0 ){
+            $tires_type_sql .= " (type LIKE ".'\''.$tire['tire'].'\'';
+            if ( count($tires_types) == 1 ) {
+                $tires_type_sql.= ')';
+            }
+        }else{
+            if ( $key == (count($tires_types) - 1) )
+                $tires_type_sql .= " OR type LIKE ".'\''.$tire['tire'].'\')';
+            else {
+                $tires_type_sql .= " OR type LIKE ".'\''.$tire['tire'].'\'';
+            }
+        }
+
+    }
+
+    $sql .= $tires_type_sql;
+
+    $query_result =  Core\query($sql, array());
+
+    if ( count($query_result) > 0 ) {
+        $result->status = "FOUND";
+        $result->data = $query_result;
+    }else {
+        $result->status = "EMPTY";
+    }
+
+    return $result;
+}
+
 function get_tire_by_diamater( $rines ) {
     $result = new \stdClass();
 
@@ -368,9 +452,9 @@ function get_tire_by_diamater( $rines ) {
     $tires_type_sql = "";
 
     foreach ( $rines as $key => $rin ) {
-        
-        $tires_type_sql .= " type = ".'\''.$rin['diameter'].'\'';    
-        
+
+        $tires_type_sql .= " type = ".'\''.$rin['diameter'].'\'';
+
     }
 
     $sql .= $tires_type_sql;

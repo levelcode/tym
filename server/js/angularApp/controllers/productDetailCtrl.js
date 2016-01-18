@@ -1,8 +1,9 @@
-tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$rootScope', '$log', 'UtilService', 'ConstantsService', function( $scope, $rootScope, $cookies, $rootScope, $log, UtilService, ConstantsService ){
+tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$rootScope', '$log', 'UtilService', 'ConstantsService', '$http', function( $scope, $rootScope, $cookies, $rootScope, $log, UtilService, ConstantsService, $http ){
 
 	var vehicle = { brand : 'ninguno' };
 	var model = { model : 'ninguno' };
 	var year = 'ninguno';
+	$scope.loadingCompatibles = true;
 
 	$scope.selectedCar = { vehicle, model, year};
 
@@ -136,5 +137,40 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	$rootScope.$on( ConstantsService.VIEW_DETAIL, function( event, data ){
 		$scope.selectedProductType = data.type;
 		$scope.selectedProduct = data.info;
+
+		if( data.type == 'rin' ){
+			searchCompatibleTires( data.info.diameter, data.info.width );
+		}
 	});
+
+	function searchCompatibleTires( diameter, width ) {
+		console.log( diameter + '-' + width );
+
+		$scope.loadingCompatibles = true;
+
+		var post = 	{};
+			post.a = 'list_varios';
+			post.from = 'home';
+			post.action = "get_compatible_tires_with_rin";
+			post.diameter = diameter;
+			post.width = width;
+
+        $http.post("admin/server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+
+                console.log(data);
+                $scope.loadingCompatibles = false;
+
+                switch( data['status'] ) {
+                	case 'PRODUCTS_LOADED':
+		            	var jsonObject = angular.fromJson(data);
+							$scope.tiresCompatible = jsonObject['tires_compatibles']['data'];
+			            break;
+                }
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+	}
 }]);

@@ -173,4 +173,12 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
                 console.info(data + ":(");
             });
 	}
+
+	$scope.sendToProductDetail = function( product, productType ) {
+
+		var data = { info: product, type: productType };
+
+		$rootScope.$broadcast( ConstantsService.VIEW_DETAIL, data);
+
+	}
 }]);

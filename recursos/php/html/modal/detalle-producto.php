@@ -237,18 +237,18 @@
 
 				<div class="row productos-compatibles">
 					<div class="col-xs-12 text-center">
-						<div class="text-center" ng-if="loadingCompatibles">
+						<div class="text-center" ng-if="loadingCompatibles && (tiresCompatible != undefined)">
 							<br>
 							<p class="txt-16">cargando...</p>
 							<br>
 							<img src="recursos/img/preloader-productos.gif" alt="">
 						</div>
-						<div ng-if="tiresCompatible == undefined" class="alert alert-info bg-color4">
-			            	<i>Sin productos</i>
+						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
+			            	<i>Sin productos Compatibles</i>
 			            </div>
-						<ul id="slide-productos-compatibles" ng-if="tiresCompatible.length > 0">
+						<ul id="slide-productos-compatibles">
 							<li ng-repeat="tire in tiresCompatible">
-								<a href="#">
+								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>

@@ -170,7 +170,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 							$scope.tiresCompatible = tiresCompatible;
 							var test = '';
 							for ( var i = 0 ; i < tiresCompatible.length ; i++ ) {
-								test += '<li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>'+ tiresCompatible[i].brand +'-'+ tiresCompatible[i].referencie +'</span></a></li>';
+								var itemJson = angular.toJson( tiresCompatible[i] );
+								test += '<li><a ng-click="sendToProductDetail()"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>'+ tiresCompatible[i].brand +'-'+ tiresCompatible[i].referencie +'</span></a></li>';
 							}
 							$scope.testHtml = $sce.trustAsHtml(test);
 			            break;
@@ -183,6 +184,9 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	}
 
 	$scope.sendToProductDetail = function( product, productType ) {
+
+		if( angular.isString(product) );
+			product = angular.fromJson();
 
 		var data = { info: product, type: productType };
 

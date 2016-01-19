@@ -244,7 +244,6 @@
 							<br>
 							<img src="recursos/img/preloader-productos.gif" alt="">
 						</div>
-						<span>aaaaaa</span>
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>

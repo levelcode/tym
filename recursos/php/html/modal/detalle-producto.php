@@ -255,7 +255,7 @@
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</li>-->
 
-							<li ng-repeat="tire in tiresCompatible | limitTo:tiresCompatible.length	track by $index">
+							<li ng-repeat="tire in tiresCompatible | limitTo:5	track by $index">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">

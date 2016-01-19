@@ -247,7 +247,7 @@
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
-						<ul id="slider-productos-compatibles">
+						<ul id="slider-productos-compatibles" ng-if="showComptariblesProducts" ng-bind-html="testHtml">
 							<!--<li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
@@ -255,20 +255,20 @@
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</li>-->
 
-							<li ng-repeat="tire in tiresCompatible | limitTo:5	track by $index">
+							<!-- <li ng-repeat="tire in tiresCompatible | limitTo:5	track by $index">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
-									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
+									<img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</a>
-							</li>
+							</li> -->
 							<!-- <li>
 								<a href="#">
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>La llanta</span>
 								</a>
-							</li>
-							<li>
+							</li> -->
+							<!-- <li>
 								<a href="#">
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>La llanta</span>

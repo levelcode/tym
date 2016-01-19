@@ -244,6 +244,7 @@
 							<br>
 							<img src="recursos/img/preloader-productos.gif" alt="">
 						</div>
+						<span>aaaaaa</span>
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
@@ -255,8 +256,9 @@
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</li>-->
 
-							<li ng-repeat="tire in tiresCompatible |limitTo:tiresCompatible.length">
-								<a href="#">
+							<li ng-repeat="tire in tiresCompatible | limitTo:tiresCompatible.length	track by $index">
+								<a ng-click="sendToProductDetail( tire, 'tire' )">
+									<!-- <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br> -->
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</a>

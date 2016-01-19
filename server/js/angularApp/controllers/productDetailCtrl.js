@@ -173,7 +173,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 								var itemJson = angular.toJson( tiresCompatible[i] );
 								test += '<li><a ng-click="sendToProductDetail()"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>'+ tiresCompatible[i].brand +'-'+ tiresCompatible[i].referencie +'</span></a></li>';
 							}
-							$scope.testHtml = $sce.trustAsHtml(test);
+							//$scope.testHtml = $sce.trustAsHtml(test);
+							//$( "#slider-productos-compatibles" ).append( test );
 			            break;
                 }
 

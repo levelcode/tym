@@ -1,4 +1,4 @@
-							<h1 class="titulo text-uppercase">Sillas</h1>
+							<h1 class="titulo text-uppercase">Portaequipajes</h1>
 							<hr>
 							<div class="row">
 								<div class="col-sm-6 col-md-4">

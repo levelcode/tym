@@ -89,7 +89,7 @@ $cabecero = new html\Cabecero($opciones);
 						<div class="col-sm-4">
 							<div class="row tanques">
 								<a class="col-xs-6 cuadro txt">
-									<i>Tanques</i>
+									<i>Tapete maletero</i>
 								</a>
 								<div class="col-xs-6 cuadro no-padding bg">
 									<!-- <img src="recursos/img/img-tanques.jpg" class="img-responsive hidden-xs"> -->
@@ -99,7 +99,7 @@ $cabecero = new html\Cabecero($opciones);
 						<div class="col-sm-4">
 							<div class="row racks">
 								<a class="col-xs-6 cuadro txt">
-									<i>Racks</i>
+									<i>Pijamas para vehículos</i>
 								</a>
 								<div class="col-xs-6 cuadro no-padding bg">
 									<!-- <img src="recursos/img/img-racks.jpg" class="img-responsive hidden-xs"> -->
@@ -109,7 +109,7 @@ $cabecero = new html\Cabecero($opciones);
 						<div class="col-sm-4">
 							<div class="row bicicleteros">
 								<a class="col-xs-6 cuadro txt">
-									<i>Bicicleteros</i>
+									<i>Plumillas</i>
 								</a>
 								<div class="col-xs-6 cuadro no-padding bg">
 									<!-- <img src="recursos/img/img-bicicleteros.jpg" class="img-responsive hidden-xs"> -->

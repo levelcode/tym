@@ -74,6 +74,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
             }
 
             $rootScope.$broadcast(ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart);
+			st.ventanaInfo.abrir('<p class="txt-20">Producto añadido al<span class="c-color text-uppercase" > Carrito de compras </span></p>')
         }else {
 
         }

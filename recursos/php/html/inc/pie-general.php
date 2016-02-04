@@ -14,11 +14,11 @@
 					</div>
 					<div class="col-lg-6">
 						<a href=""><i class="fa fa-facebook-square txt-28"></i></a>
-						
+
 						<a href=""><i class="fa fa-twitter-square txt-28"></i></a>
-						
+
 						<a href=""><i class="fa fa-instagram txt-28"></i></a>
-						
+
 						<a href=""><i class="fa fa-youtube-square txt-28"></i></a>
 					</div>
 				</div>
@@ -27,6 +27,7 @@
 	</div>
 </footer>
 <div id="ventana-info">
+	<!-- <img src=""> -->
 	<div class="cerrar">
 		<span>x</span>
 	</div>

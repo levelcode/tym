@@ -7,7 +7,7 @@
 			<a href="./llantas" class="llantas" ng-click="openProductType('tire')" data-nombre="accesorios-llantas">Llantas</a>
 		</li>
 		<li>
-			<a href="./portaequipajes" class="portaequipajes" ng-click="openProductType('portaequipajes')" data-nombre="accesorios-portaequipajes">Portaequipajes</a>
+			<a href="./portaequipajes" style="font-size: 18px !important;" class="portaequipajes" ng-click="openProductType('portaequipajes')" data-nombre="accesorios-portaequipajes">Portaequipajes</a>
 		</li>
 		<li>
 			<a href="./racks" class="racks" ng-click="openProductType('barrastecho')" data-nombre="accesorios-racks">Barras de Techo</a>

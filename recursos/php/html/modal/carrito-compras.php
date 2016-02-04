@@ -46,10 +46,11 @@
 			                            	</select>
 			                            </td>
 			                            <td class="text-right" ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
-                                        <td><i style="cursor: pointer;" ng-click="removeProduct( key )" class="fa fa-trash-o"></i></td>
                                         <td>
                                             <input type="checkbox" name="instalation" ng-model="instalation" id="checkout-instalation">
                                         </td>
+                                        <td><i style="cursor: pointer;" ng-click="removeProduct( key )" class="fa fa-trash-o"></i></td>
+
 			                        </tr>
 			                        <tr class="text-right">
 			                            <td colspan="4">

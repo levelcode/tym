@@ -27,7 +27,6 @@
 	</div>
 </footer>
 <div id="ventana-info">
-	<!-- <img src=""> -->
 	<div class="cerrar">
 		<span>x</span>
 	</div>

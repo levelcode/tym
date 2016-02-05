@@ -242,23 +242,32 @@ function list_varios( $data, $local = false ){
                 // var_dump($models);
                 //(read_tires());
 
+                //
+                // $rines_readed = read_rines();
+                // $models = get_all_models();
+                // model_in_index($models);
+                //
+                // associate_tires($rines_readed , $models );//associate products with models
+                //var_dump($rines_readed);
 
-                //$models = get_all_models();
-                //model_in_index($models);
+                // save_rines($rines_readed);
+                //save_tires( $tires_readed );
+
+
                 //var_dump($models);
 
                 //$tires_readed = read_tires();
 
 
                 //var_dump($tires_readed);
-                //save_tires( $tires_readed );
 
 
-                $rines_readed = read_rines();
-                //associate_tires($rines_readed , $models );//associate products with models
+                //read_rin_products();
+
+
 
                 //  var_dump($rines_readed);
-                //save_rines($rines_readed);
+
                 $promotion = get_month_promotion();
 
                 if( isset($promotion) && (count($promotion) == 0) ){
@@ -285,39 +294,46 @@ function list_varios( $data, $local = false ){
                 $info_to_return['status'] = "VEHICLE_MODEL_YEARS_LOADED";
                 break;
                 case 'get_products':
-                $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
-                $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
+                    $model_by_name = search_model_by_name( $data['modelName'] );
+                    $model_id = NULL;
+                    if ( count($model_by_name) > 1 ){
+                        $model_id = select_model_id( $model_by_name, $data['year'] );
+                    }else{
+                        $model_id = $model_by_name[0]['id'];
+                    }
+                    $info_to_return['rin_types'] = get_rines( $model_id );
 
+                    $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
 
-                switch ( $rin_products_result->status ) {
-                    case 'FOUND':
-                        //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
-                        $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
-                        break;
-                    case 'EMPTY':
-                        $info_to_return['rin_products'] = array();
-                        break;
-                    default:
-                        $info_to_return['rin_products'] = array();
-                        break;
+                    switch ( $rin_products_result->status ) {
+                        case 'FOUND':
+                            //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
+                            $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
+                            break;
+                        case 'EMPTY':
+                            $info_to_return['rin_products'] = array();
+                            break;
+                        default:
+                            $info_to_return['rin_products'] = array();
+                            break;
                 }
-                $info_to_return['tires'] = get_tires( $data['vehicleId'], $data['modelId'] );
-                $tires_products_result = get_tire_products($info_to_return['tires']);
-
-                switch ( $tires_products_result->status ) {
-                    case 'FOUND':
-                        $info_to_return['tire_products'] = $tires_products_result->data;
-                        break;
-                    case 'EMPTY':
-                        $info_to_return['tire_products'] = array();
-                        break;
-                    default:
-                        $info_to_return['tire_products'] = array();
-                        break;
-                }
-                $info_to_return['seat_products'] = get_seat_all_products();
-                $info_to_return['light_hid_products'] = get_lights_hd_all_products();
-                $info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
+                    // $info_to_return['tires'] = get_tires( $data['vehicleId'], $data['modelId'] );
+                    // $tires_products_result = get_tire_products($info_to_return['tires']);
+                    //
+                    // switch ( $tires_products_result->status ) {
+                    //     case 'FOUND':
+                    //         $info_to_return['tire_products'] = $tires_products_result->data;
+                    //         break;
+                    //     case 'EMPTY':
+                    //         $info_to_return['tire_products'] = array();
+                    //         break;
+                    //     default:
+                    //         $info_to_return['tire_products'] = array();
+                    //         break;
+                    // }
+                    // $info_to_return['seat_products'] = get_seat_all_products();
+                    // $info_to_return['light_hid_products'] = get_lights_hd_all_products();
+                    // $info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
                 //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
 
                 $info_to_return['status'] = "PRODUCTS_LOADED";
@@ -407,6 +423,33 @@ function _index( $hash_map ) {
     }
 
     return $indexed;
+}
+
+function select_model_id( $models, $year ) {
+    $model_id = NULL;
+    foreach ( $models as $key => $model ) {
+        $range = explode('-', $model['year']);
+        $values = _generate_range($range[0], $range[1]);
+
+        foreach ($values as $key => $value) {
+            if ( $value == $year ) {
+                $model_id = $model['id'];
+                break;
+            }
+        }
+    }
+
+    return $model_id;
+}
+
+function search_model_by_name( $name ){
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE model LIKE ". '\''. $name. '\'';
+    return Core\query($sql, array());
+}
+
+function get_model_by_id( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE id = ".$model_id;
+    return Core\query($sql, array());
 }
 
 function get_compatible_tires_with_rin( $diameter, $width ){
@@ -526,90 +569,39 @@ function get_tire_products( $type_of_tires ) {
 function get_rin_products( $rin_group_types ) {
 
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "rin_product WHERE ";
-    $pcds_array = array();
-    $inches_array = array();
-    $diameters_array = array();
-    $k = 0;
-    $i = 0;
     $result = new \stdClass();
+    $sql_aux = '';
 
-    foreach ($rin_group_types as $key => $group) {
+    foreach ($rin_group_types as $key_main => $group) {
 
-        $pcds = explode('-', $group['pcd']);
         $inches = explode('-', $group['inches']);
-        $number_of_pcds = count($pcds) - 1 ;
-
-        foreach ($pcds as $key => $value) {
-            $pcds_array[$value] = $k;
-            $k++;
-        }
+        $sql_inch = '';
 
         foreach ($inches as $key => $value) {
-            $inches_array[$value] = $i;
-            $i++;
-        }
-
-        $diameters_array[$group['rin_diameter']] = $group['rin_diameter'];
-    }
-
-    $pcds_array = _array_index( $pcds_array );
-
-    foreach ($pcds_array as $key => $value) {
-        if( $key == 0 ){
-            $pcds_sql .= " (pcd = ".'\''.$value.'\'';
-            if ( count($pcds_array) == 1 ) {
-                $pcds_sql.= ')';
-            }
-        }else{
-            if ( $key == (count($pcds_array) - 1) )
-                $pcds_sql .= " OR pcd = ".'\''.$value.'\')';
-            else {
-                $pcds_sql .= " OR pcd = ".'\''.$value.'\'';
+            if( $key == 0 ) {
+                $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\') OR ';
+                if ( count($inches) == 1 ) {
+                    $sql_aux .= ' ) OR ';
+                }
+            }else {
+                if ( $key == (count($inches) - 1) ){
+                    if ( $key_main == (count($rin_group_types) - 1) ){
+                        $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\')';
+                    }else{
+                        $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\') OR ';
+                    }
+                }else {
+                    $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\') OR ';
+                }
             }
         }
     }
 
-    $inches_array = _array_index( $inches_array );
-
-    foreach ($inches_array as $key => $value) {
-        if( $key == 0 ) {
-            $inches_sql .= " (width = ".'\''.$value.'\'';
-
-            if ( count($inches_array) == 1 ) {
-                $inches_sql.= ')';
-            }
-        }else{
-            if ( $key == (count($inches_array) - 1) )
-                $inches_sql .= " OR width = ".'\''.$value.'\')';
-            else
-                $inches_sql .= " OR width = ".'\''.$value.'\'';
-        }
-    }
-
-    $diameters_array = _array_index( $diameters_array );
-
-    foreach ($diameters_array as $key => $value) {
-        if( $key == 0 ) {
-            $diameter_sql .= " (diameter = ".'\''.$value.'\'';
-            if ( count($diameters_array) == 1 ) {
-                $diameter_sql.= ')';
-            }
-        }else {
-            if ( $key == (count($diameters_array) - 1) )
-                $diameter_sql .= " OR diameter = ".'\''.$value.'\')';
-            else {
-                $diameter_sql .= " OR diameter = ".'\''.$value.'\'';
-            }
-        }
-    }
-
-    //pcd . inch . diameter
-
-    $sql .= $pcds_sql." AND".$inches_sql." AND".$diameter_sql;
+    $sql .= $sql_aux;
 
     $query_result =  Core\query($sql, array());
 
-    if ( count($result) > 0 ) {
+    if ( count($query_result) > 0 ) {
         $result->status = "FOUND";
         $result->data = $query_result;
     }else {
@@ -631,14 +623,12 @@ function _array_index( $array_to_index ) {
 }
 
 function associate_tires( &$tires_data, $models ) {
-    //var_dump($tires_data);
+    //var_dump($models);
     foreach ($tires_data as $key => $value) {
-        if( isset($models[$value->model]) ){
-
-            $current_model = $models[$value->model];
-            $tires_data[$key]->model = $current_model['id'];
-            $tires_data[$key]->vehicle_id = $current_model['tym_vehicle_id'];
-
+        if( isset($models[$value->model.$value->year]) ){
+            //echo $models[$value->model]['model'] . '=' . $value->model. '<br>' . '-----' .$models[$value->year]['year']. ' == ' .$value->year.'end--->';
+            $current_model = $models[$value->model.$value->year];
+            $tires_data[$key]->model_id = $current_model['id'];
         }
     }
 
@@ -648,24 +638,17 @@ function save_rines( $rines_to_save ) {
 
     foreach ($rines_to_save as $key => $value) {
 
-        $rin['table'] = "rin";
-        $rin['column_id'] = "id";
-
-        $rin['inches'] = $value->inch;
-        $rin['pcd'] = $value->pcd;
-        $rin['rin_diameter'] = $value->diameter;
-
-        $rin_insert_id = Core\create($rin, false, false);
-
-        $vehicle_has_rin['table'] = "vehicle_model_has_tym_rin";
+        $vehicle_has_rin['table'] = "rin";
         $vehicle_has_rin['column_id'] = "id";
 
-        $vehicle_has_rin['tym_vehicle_model_id'] = $value->model;
-        $vehicle_has_rin['tym_vehicle_model_tym_vehicle_id'] = $value->vehicle_id;
-        $vehicle_has_rin['tym_rin_id'] = $rin_insert_id;
+        $vehicle_has_rin['vehicle_model_id'] = $value->model_id;
+        $vehicle_has_rin['pcd'] = $value->pcd;
+        $vehicle_has_rin['rin_diameter'] = $value->diameter;
+        $vehicle_has_rin['inches'] = $value->inch;
 
-        $vehicle_has_insert_id = Core\create($vehicle_has_rin, false, false);
-        echo $vehicle_has_insert_id;
+        $rin_insert_id = Core\create($vehicle_has_rin, false, false);
+
+        echo $rin_insert_id;
     }
 }
 
@@ -719,12 +702,12 @@ function read_rines(){
 
             if ( ($count_aux >= 1) && (count($data) >= 4) ) {
                 //die();
-                $current_row->brand = utf8_encode(trim($data[0]));
-                $current_row->model = utf8_encode(trim($data[1]));
-                $current_row->year = utf8_encode(trim($data[2]));
-                $current_row->pcd = utf8_encode(trim($data[3]));
-                $current_row->diameter = utf8_encode(trim($data[4]));
-                $current_row->inch = utf8_encode(trim($data[5]));
+                $current_row->brand = strtolower(utf8_encode(trim($data[0])));
+                $current_row->model = strtolower(utf8_encode(trim($data[1])));
+                $current_row->year = strtolower(utf8_encode(trim($data[2])));
+                $current_row->pcd = strtolower(utf8_encode(trim($data[3])));
+                $current_row->diameter = strtolower(utf8_encode(trim($data[4])));
+                $current_row->inch = strtolower(utf8_encode(trim($data[5])));
             }
 
             $vehicles[] = $current_row;
@@ -733,7 +716,7 @@ function read_rines(){
             $count_aux++;
         }
         fclose( $handle );
-
+        unset($vehicles[0]);
         return $vehicles;
     }
 }
@@ -791,19 +774,24 @@ function read_rin_products(){
 
             if ( ($count_aux >= 1) && (count($data) >= 4) ) {
                 //die();
-                $current_row->img = utf8_encode(trim($data[0]));
-                $current_row->ref = utf8_encode(trim($data[1]));
-                $current_row->brand = utf8_encode(trim($data[2]));
-                $current_row->diameter = utf8_encode(trim($data[3]));
-                $current_row->width = utf8_encode(trim($data[4]));
-                $current_row->holes = utf8_encode(trim($data[5]));
-                $current_row->pcd = utf8_encode(trim($data[6]));
-                $current_row->color = utf8_encode(trim($data[7]));
-                $current_row->material = utf8_encode(trim($data[8]));
-                $current_row->details = trim($data[9]);
-                $current_row->stock_u = utf8_encode(trim($data[10]));
-                $current_row->stock_g = utf8_encode(trim($data[11]));
-                $current_row->price_u = utf8_encode(trim($data[12]));
+                $current_row->img = strtolower(utf8_encode(trim($data[0])));
+                $current_row->ref = strtolower(utf8_encode(trim($data[1])));
+                $current_row->brand = strtolower(utf8_encode(trim($data[2])));
+                $current_row->diameter = strtolower(utf8_encode(trim($data[3])));
+                $current_row->width = strtolower(utf8_encode(trim($data[4])));
+                $current_row->holes = strtolower(utf8_encode(trim($data[5])));
+                $current_row->pcd = strtolower(utf8_encode(trim($data[6])));
+                $current_row->color = strtolower(utf8_encode(trim($data[7])));
+                $current_row->material = strtolower(utf8_encode(trim($data[8])));
+                $current_row->type = strtolower(utf8_encode(trim($data[9])));
+                $current_row->details = trim($data[10]);
+                $current_row->stock_u = strtolower(utf8_encode(trim($data[11])));
+                $current_row->stock_g = strtolower(utf8_encode(trim($data[12])));
+                $current_row->price_u = strtolower(utf8_encode(trim($data[13])));
+                $current_row->size = strtolower(utf8_encode(trim($data[14])));
+                $current_row->instalation_price = strtolower(utf8_encode(trim($data[15])));
+                $current_row->has_instructivo = strtolower(utf8_encode(trim($data[16])));
+
             }
 
             $vehicles[] = $current_row;
@@ -838,6 +826,9 @@ function save_rin_products( $rines_to_save ) {
         $rin['stock_group'] = $value->stock_g;
         $rin['price_client'] = $value->price_u;
         $rin['img'] = $value->img;
+        $rin['size'] = $value->size;
+        $rin['instalation_price'] = $value->instalation_price;
+        $rin['has_instructivo'] = $value->has_instructivo;
 
         $rin_insert_id = Core\create($rin, false, false);
 
@@ -875,18 +866,15 @@ function save_tire_products( $tires_to_save ) {
 
 function group_models( $readed ) {
     $vehicles = array();
-
+    //var_dump($readed);
     foreach ($readed as $key => $value) {
         $model = new \stdClass();
 
         $model->model = $value->model;
         $model->year = $value->year;
 
-        $vehicles[$value->brand][] = $model;
+        $vehicles[$value->brand][$model->model.$model->year] = $model;
     }
-
-    var_dump($vehicles);
-
     save_vehicles_and_models($vehicles);
 
 }
@@ -1022,9 +1010,9 @@ function read_vehicles() {
             // var_dump($data);
             if ( ($count_aux >= 1) && (count($data) >= 3) ) {
                 //die();
-                $current_row->brand = utf8_encode(trim($data[0]));
-                $current_row->model = utf8_encode(trim($data[1]));
-                $current_row->year = utf8_encode(trim($data[2]));
+                $current_row->brand = strtolower(utf8_encode(trim($data[0])));
+                $current_row->model = strtolower(utf8_encode(trim($data[1])));
+                $current_row->year = strtolower(utf8_encode(trim($data[2])));
             }
 
             $vehicles[] = $current_row;
@@ -1132,6 +1120,16 @@ function filter_years( $to_filter ) {
 
         }
 
+    }else {
+        $current = explode('-', $to_filter[0]['year']);
+
+        if( count($current) > 1 ){
+            $range = _generate_range($current[0], $current[1]);
+            $current = $range;
+            $years[] = $current;
+        }else {
+            $years[] = $current[0];
+        }
     }
     if ( count($years) > 1 ) {
         foreach ($years as $key => $list) {
@@ -1280,7 +1278,7 @@ function _format_birth_date( $data ){
 
 function model_in_index( &$models ){
     foreach ($models as $key => $value) {
-        $models[$value['model']] = $value;
+        $models[$value['model'].$value['year']] = $value;
     }
 }
 
@@ -1324,10 +1322,9 @@ function get_years_by_model_by_name( $model_name ) {
     return Core\query($sql, array());
 }
 
-function get_rines( $vehicle_id, $model_id ) {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model_has_tym_rin vhr"
-    ." LEFT JOIN ".$GLOBALS["prefix"]. "rin r ON r.id = vhr.tym_rin_id "
-    ." WHERE vhr.tym_vehicle_model_id = ".$model_id." AND vhr.tym_vehicle_model_tym_vehicle_id = ".$vehicle_id;
+function get_rines( $vehicle_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "rin r"
+    ." WHERE vehicle_model_id = ".$vehicle_id;
     return Core\query($sql, array());
 }
 

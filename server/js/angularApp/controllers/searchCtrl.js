@@ -136,7 +136,8 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 			post.from = 'home';
 			post.action = "get_products";
 			post.vehicleId = request.vehicle.id;
-			post.modelId = request.model.id;
+			post.modelName = request.model.model;
+			post.year = request.year;
 
         $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {

@@ -456,7 +456,7 @@ function get_model_by_id( $model_id ) {
 }
 
 function get_compatible_tires_with_rin( $diameter, $width ){
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire WHERE tire LIKE ". '\'%R'. $diameter. '%\'' . "AND inches LIKE " . '\'%'.$width.'\'';
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire_product WHERE diameter LIKE ". '\''. $diameter. '\'' . "AND inches LIKE " . '\'%'.$width.'\'';
     return Core\query($sql, array());
 }
 

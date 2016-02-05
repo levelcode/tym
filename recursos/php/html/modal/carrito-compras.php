@@ -50,7 +50,6 @@
                                             <input type="checkbox" name="instalation" ng-model="instalation" id="checkout-instalation">
                                         </td>
                                         <td><i style="cursor: pointer;" ng-click="removeProduct( key )" class="fa fa-trash-o"></i></td>
-
 			                        </tr>
 			                        <tr class="text-right">
 			                            <td colspan="4">

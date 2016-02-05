@@ -14,6 +14,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 
 	$scope.defaultValueBrand = "Seleccione Marca";
 	$scope.defaultValueModel = "Selecciona Modelo";
+	$scope.defaultValueYear = "Selecciona Año";
 
 	angular.element(document).ready(function(){
 		$scope.loadingData = true;
@@ -67,27 +68,58 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 	}
 
 	$scope.loadYear = function( modelSelected ) {
+		if( modelSelected != undefined) {
 		console.log(modelSelected);
 
-		var years = [];
+		console.log( modelSelected );
+		$scope.loadingData = true;
+		$scope.defaultValueYear = "Cargando";
 
-		if( modelSelected.year.search( "-" ) != -1 ) {
-			var yearsArray = modelSelected.year.split("-");
+		var post = 	{};
+			post.a = 'list_varios';
+			post.from = 'home';
+			post.action = "get_years_by_model";
+			post.modelName = modelSelected.model;
 
-			var yearsDifference = yearsArray[1] - yearsArray[0];
+        $http.post("admin/server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
 
-			for (var i = 0; i <= yearsDifference; i++) {
-				if( i==0 )
-					years[i] = parseInt(yearsArray[0]);
-				else
-					years[i] = parseInt(yearsArray[0]) + i;
-			};
-		}else {
-			years[0] = modelSelected.year;
+                console.log(data);
+                $scope.loadingData = false;
+				$scope.defaultValueYear = "Selecciona Año";
+
+                switch( data['status'] ) {
+                	case 'VEHICLE_MODEL_YEARS_LOADED':
+		            	var jsonObject = angular.fromJson(data);
+			            updatetDataToShow( jsonObject['years'], "years" );
+			            break;
+                }
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
 		}
 
-		console.log(years);
-		updatetDataToShow( years, "years" );
+		// var years = [];
+		//
+		// if( modelSelected.year.search( "-" ) != -1 ) {
+		// 	var yearsArray = modelSelected.year.split("-");
+		//
+		// 	var yearsDifference = yearsArray[1] - yearsArray[0];
+		//
+		// 	for (var i = 0; i <= yearsDifference; i++) {
+		// 		if( i==0 )
+		// 			years[i] = parseInt(yearsArray[0]);
+		// 		else
+		// 			years[i] = parseInt(yearsArray[0]) + i;
+		// 	};
+		// }else {
+		// 	years[0] = modelSelected.year;
+		// }
+		//
+		// console.log(years);
+		// updatetDataToShow( years, "years" );
 
 	}
 

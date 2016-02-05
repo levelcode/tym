@@ -238,6 +238,27 @@ function list_varios( $data, $local = false ){
             case 'home':
             switch ( $data['action'] ) {
                 case 'get_main_page_promotion':
+                // $models = group_models(read_vehicles()); //read vehicles from .csv
+                // var_dump($models);
+                //(read_tires());
+
+
+                //$models = get_all_models();
+                //model_in_index($models);
+                //var_dump($models);
+
+                //$tires_readed = read_tires();
+
+
+                //var_dump($tires_readed);
+                //save_tires( $tires_readed );
+
+
+                $rines_readed = read_rines();
+                //associate_tires($rines_readed , $models );//associate products with models
+
+                //  var_dump($rines_readed);
+                //save_rines($rines_readed);
                 $promotion = get_month_promotion();
 
                 if( isset($promotion) && (count($promotion) == 0) ){
@@ -256,6 +277,12 @@ function list_varios( $data, $local = false ){
 
                 $info_to_return['models'] = get_models_by_brand( $data['brandId']);
                 $info_to_return['status'] = "VEHICLE_MODELS_LOADED";
+                break;
+                case 'get_years_by_model';
+                $years = get_years_by_model_by_name( $data['modelName'] );
+                $years_filtered = filter_years( $years );
+                $info_to_return['years'] = $years_filtered;
+                $info_to_return['status'] = "VEHICLE_MODEL_YEARS_LOADED";
                 break;
                 case 'get_products':
                 $info_to_return['rin_types'] = get_rines( $data['vehicleId'], $data['modelId'] );
@@ -324,27 +351,6 @@ function list_varios( $data, $local = false ){
             case 'admin-products':
             switch ( $data['action'] ) {
                 case 'get_base_data':
-
-                //group_models(read_vehicles()); read vehicles from .csv
-                //(read_tires());
-
-
-                //$models = get_all_models();
-                //model_in_index($models);
-                //var_dump($models);
-
-                //$tires_readed = read_tires();
-
-
-                //var_dump($tires_readed);
-                //save_tires( $tires_readed );
-
-                //$rines_readed = read_rines();
-
-                //associate_tires($rines_readed , $models );//associate products with models
-
-                //  var_dump($rines_readed);
-                //save_rines($rines_readed);
 
                 $info_to_return['product_types'] = get_all_product_types();
                 $info_to_return['vehicles'] = get_all_vehicles();
@@ -876,8 +882,10 @@ function group_models( $readed ) {
         $model->model = $value->model;
         $model->year = $value->year;
 
-        $vehicles[$value->brand][$value->model] = $model;
+        $vehicles[$value->brand][] = $model;
     }
+
+    var_dump($vehicles);
 
     save_vehicles_and_models($vehicles);
 
@@ -1011,12 +1019,12 @@ function read_vehicles() {
 
         while ( ($data = fgetcsv($handle, 150, ',')) !== FALSE  ){
             $current_row = new \stdClass();
-
-            if ( ($count_aux >= 1) && (count($data) >= 4) ) {
+            // var_dump($data);
+            if ( ($count_aux >= 1) && (count($data) >= 3) ) {
                 //die();
-                $current_row->brand = utf8_encode(trim($data[1]));
-                $current_row->model = utf8_encode(trim($data[2]));
-                $current_row->year = utf8_encode(trim($data[3]));
+                $current_row->brand = utf8_encode(trim($data[0]));
+                $current_row->model = utf8_encode(trim($data[1]));
+                $current_row->year = utf8_encode(trim($data[2]));
             }
 
             $vehicles[] = $current_row;
@@ -1025,6 +1033,9 @@ function read_vehicles() {
         }
         fclose( $handle );
 
+        unset($vehicles[0]);
+        // var_dump($vehicles);
+        // die();
         return $vehicles;
 
     }
@@ -1088,6 +1099,59 @@ function format_tires_info( $tire_info ) {
     }
 
     return $tires_types;
+}
+
+function _generate_range( $begin, $end ){
+    $range = array();
+    for ($i=$begin; $i <= $end ; $i++) {
+        $range[] = (string)$i;
+    }
+    return $range;
+}
+
+function filter_years( $to_filter ) {
+    $hashed = array();
+    $years = array();
+    $result = array();
+    $to_send = NULL;
+    if ( count($to_filter) > 1 ){
+        foreach ($to_filter as $key => $value) {
+            $hashed[$value['year']] = $value;
+        }
+
+        foreach ($hashed as $key => $value) {
+            $current = explode('-', $value['year']);
+
+            if( count($current) > 1 ){
+                $range = _generate_range($current[0], $current[1]);
+                $current = $range;
+                $years[] = $current;
+            }else {
+                $years[] = $current[0];
+            }
+
+        }
+
+    }
+    if ( count($years) > 1 ) {
+        foreach ($years as $key => $list) {
+            foreach ($list as $key => $value) {
+                $result[$value] = $value;
+            }
+        }
+        $sorted = array();
+        foreach ($result as $key => $value) {
+            $sorted[] = (string)$key;
+        }
+        sort($sorted);
+        $to_send = $sorted;
+    }else {
+        $to_send = $years[0];
+    }
+    // echo "---------------";
+    // var_dump($to_send);
+
+    return $to_send;
 }
 
 function _search_rin_types( $rin_types, $types_and_inch ) {
@@ -1251,7 +1315,12 @@ function get_all_models() {
 }
 
 function get_models_by_brand( $brand_id ) {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE ".$GLOBALS["prefix"]. "vehicle_id = ". $brand_id ." AND status = 1 ORDER BY model ASC";
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE ".$GLOBALS["prefix"]. "vehicle_id = ". $brand_id ." AND status = 1 GROUP BY model ORDER BY model ASC";
+    return Core\query($sql, array());
+}
+
+function get_years_by_model_by_name( $model_name ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE model LIKE ".'\''.$model_name.'\''." AND status = 1";
     return Core\query($sql, array());
 }
 

@@ -23,7 +23,7 @@
 					<div class="col-sm-4">
 						<div class="form-group">
 							<select name="tipo1" id="p2" class="form-control" ng-disabled="sendingselectedCar" ng-model="selectedCar.year" ng-options="year for (key, year) in years.data" required>
-								<option selected value="">Selecciona Año</option>
+								<option selected value="">{{defaultValueYear}}</option>
 							</select>
 							<!-- <button type="button" class="btn form-control bg-color3" ng-click="read( )">read</button> -->
 						</div>

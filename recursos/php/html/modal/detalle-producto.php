@@ -254,7 +254,7 @@
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
-						<ul id="slider-productos-compatibles" ng-show="showComptariblesProducts && tiresCompatible != undefined">
+						<ul id="slider-productos-compatibles" ng-show="showComptariblesProducts && tiresCompatible.length > 0">
 							<!--<li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
@@ -321,7 +321,7 @@
 
 				<div class="tipo">
 					<div class="cuadro">
-						<span>Tanques</span>
+						<span>Tapate maletero</span>
 					</div>
 					<div class="foto img1">
 						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
@@ -329,7 +329,7 @@
 				</div>
 				<div class="tipo">
 					<div class="cuadro">
-						<span>Racks</span>
+						<span>Pijamas</span>
 					</div>
 					<div class="foto img2">
 						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
@@ -337,7 +337,7 @@
 				</div>
 				<div class="tipo">
 					<div class="cuadro">
-						<span>Bicicleteros</span>
+						<span>Plumillas</span>
 					</div>
 					<div class="foto img3">
 						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>

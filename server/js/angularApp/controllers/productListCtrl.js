@@ -5,11 +5,16 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.seatProductsSelected = false;
 	$scope.lightProductsSelected = false;
 
-	$scope.rinEmpty = false;
-	$scope.tireEmpty = false;
-	$scope.seatEmpty = false;
-	$scope.lightEmpty = false;
-	$scope.tankEmpty = false;
+	$scope.rinEmpty = true;
+	$scope.tireEmpty = true;
+	$scope.portaequipajesEmpty = true;
+	$scope.barrastechoEmpty = true;
+	$scope.bicicleterosEmpty = true;
+	$scope.parrillastechoEmpty = true;
+	$scope.acccesorios4x4Empty = true;
+	$scope.seatEmpty = true;
+	$scope.lightEmpty = true;
+	$scope.tankEmpty = true;
 
 	/*
     listeners
@@ -49,7 +54,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 				case 'tire_products':
 					$scope.tireProducts = value;
-					if ( !(value.length > 0) ){
+					if ( value.length == 0 || value == undefined  ){
 						$scope.tireEmpty = true;
 					}else {
 						$scope.tireEmpty = false;

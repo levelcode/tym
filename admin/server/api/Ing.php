@@ -325,7 +325,7 @@ function list_varios( $data, $local = false ){
 
                     switch ( $tires_products_result->status ) {
                         case 'FOUND':
-                            $info_to_return['tire_products'] = $tires_products_result->data;
+                            $info_to_return['tire_products'] = _group_tires_by_diameter($tires_products_result->data);
                             break;
                         case 'EMPTY':
                             $info_to_return['tire_products'] = array();
@@ -528,6 +528,16 @@ function _group_rines_by_diameter( $data ) {
 
     foreach ($data as $key => $product) {
         $new_array[$product['diameter']]['rines'][] = $product;
+    }
+
+    return $new_array;
+}
+
+function _group_tires_by_diameter( $data ) {
+    $new_array = array();
+
+    foreach ($data as $key => $product) {
+        $new_array[$product['diameter']]['tires'][] = $product;
     }
 
     return $new_array;
@@ -1162,13 +1172,14 @@ function filter_years( $to_filter ) {
             }
         }
     }else {
-        $current = explode('-', $to_filter[0]['year']);
+
         if( count($current) > 1 ){
+            $current = explode('-', $to_filter[0]['year']);
             $range = _generate_range($current[0], $current[1]);
             $current = $range;
             $years[] = $current;
         }else {
-            $years[] = $current[0];
+            $years[] = $to_filter[0]['year'];
         }
     }
     if ( count($years) > 1 ) {

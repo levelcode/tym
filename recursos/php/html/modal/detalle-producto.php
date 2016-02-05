@@ -133,10 +133,10 @@
 				</div>
 				<!-- tire -->
 				<!-- seat -->
-				<div ng-if="selectedProductType == 'seat'" class="row producto">
+				<div ng-if="selectedProductType == 'portaequipaje'" class="row producto">
 					<div class="col-sm-6">
 						<div class="imagen">
-							<img ng-src="admin/recursos/img/seat-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
+							<img ng-src="admin/recursos/img/portaequipajes-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -146,22 +146,22 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-8">
-								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock"></b></span>
+								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
 								<br>
 								<br>
-								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
+								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.details}}</b><br>
 							</div>
 							<div class="col-xs-4 text-right">
 								<br>
 								<br>
-								<span class="c-color3 text-uppercase">Precio por rin</span><br>
+								<span class="c-color3 text-uppercase">Precio por articulo</span><br>
 								<b class="precio txt-24" ng-bind="(selectedProduct.price) | currency : '$' : 0"></b><br>
 							</div>
 						</div>
 						<br>
 						<div class="row">
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'seat')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'portaequipaje')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>

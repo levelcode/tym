@@ -334,8 +334,9 @@ function list_varios( $data, $local = false ){
                             $info_to_return['tire_products'] = array();
                             break;
                     }
-                    // $info_to_return['seat_products'] = get_seat_all_products();
-                    // $info_to_return['light_hid_products'] = get_lights_hd_all_products();
+                    $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
+                    $info_to_return['head_products'] = get_seat_all_products();
+                    $info_to_return['light_hid_products'] = get_lights_hd_all_products();
                     // $info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
                 //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
 
@@ -967,6 +968,10 @@ function get_seat_all_products() {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "seat_product";
     return Core\query($sql, array());
 }
+function get_portaequipajes_all_products() {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "portaequipaje";
+    return Core\query($sql, array());
+}
 
 function get_lights_hd_all_products() {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "light_hd_product";
@@ -1172,14 +1177,13 @@ function filter_years( $to_filter ) {
             }
         }
     }else {
-
+        $current = explode('-', $to_filter[0]['year']);
         if( count($current) > 1 ){
-            $current = explode('-', $to_filter[0]['year']);
             $range = _generate_range($current[0], $current[1]);
             $current = $range;
             $years[] = $current;
         }else {
-            $years[] = $to_filter[0]['year'];
+            $years[] = $current[0];
         }
     }
     if ( count($years) > 1 ) {

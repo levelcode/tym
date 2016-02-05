@@ -39,29 +39,21 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 			switch ( key ) {
 
 				case 'rin_products':
-
 					$scope.rinProducts = value;
-
-					if ( value.length == 0){
-
+					if ( value.length == 0 || value == undefined ){
 						$scope.rinEmpty = true;
-
+					}else {
+						$scope.rinEmpty = false;
 					}
-					$scope.rinEmpty = false;
-
 					break;
 
 				case 'tire_products':
-
 					$scope.tireProducts = value;
-
 					if ( !(value.length > 0) ){
-
 						$scope.tireEmpty = true;
-
+					}else {
+						$scope.tireEmpty = false;
 					}
-					$scope.tireEmpty = false;
-
 					break;
 
 				case 'seat_products':
@@ -107,7 +99,6 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 			}
 
 		});
-
 
 
 		chooseProductsToShow( 'rin' );

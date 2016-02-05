@@ -254,7 +254,7 @@
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
-						<ul id="slider-productos-compatibles" ng-if="showComptariblesProducts">
+						<ul id="slider-productos-compatibles" ng-show="showComptariblesProducts && tiresCompatible != undefined">
 							<!--<li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>

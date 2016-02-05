@@ -12,15 +12,11 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.tankEmpty = false;
 
 	/*
-
     listeners
-
 	*/
 
 	$rootScope.$on('vehicle_chaged', function( event, data ){
-
 		$scope.selectedCar = data;
-
 	});
 
 

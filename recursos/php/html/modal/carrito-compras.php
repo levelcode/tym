@@ -112,6 +112,18 @@
                 						<label for="">Dirección de envío:</label>
                 						<input type="text" name="" id="" class="form-control" required>
                 					</div>
+                                    <div class="form-group">
+    									<select name="" id="" class="form-control">
+    										<option value="">Seleccione una ciudad</option>
+    										<option value="">Bogotá</option>
+    										<option value="">Cota</option>
+    										<option value="">Chía</option>
+    										<option value="">Zipaquirá</option>
+    										<option value="">Soacha</option>
+    										<option value="">Zipaquirá</option>
+                                            <option value="">Cajicá</option>
+    									</select>
+    								</div>
                 					<div class="form-group">
                 						<label for="">Teléfono fijo:</label>
                 						<input type="text" name="" id="" class="form-control" required>

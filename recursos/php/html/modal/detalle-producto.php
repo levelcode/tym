@@ -45,7 +45,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-12">
-								<span class="c-color3 text-uppercase">Precio por rin</span><br>
+								<span class="c-color3 text-uppercase">Descripción:</span><br>
 								<b class="precio txt-24" ng-bind="selectedProduct.details"></b><br>
 								<!-- <span class="c-color3 text-uppercase">Compatible con los siguientes modelos</span> -->
 								<br>
@@ -75,8 +75,8 @@
 				<div ng-if="selectedProductType == 'tire'" class="row producto">
 					<div class="col-sm-6">
 						<div class="imagen">
-							<!-- <img ng-src="admin/recursos/img/tire-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive"> -->
-							<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+							<img ng-src="admin/recursos/img/tire-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
+							<!-- <img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive"> -->
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -98,7 +98,7 @@
 							<div class="col-xs-5 text-right">
 								<br>
 								<br>
-								<span class="c-color3 text-uppercase">Precio por rin</span><br>
+								<span class="c-color3 text-uppercase">Precio por llanta</span><br>
 								<b class="precio txt-24" ng-bind="(selectedProduct.price) | currency : '$' : 0"></b><br>
 								<span class="c-color3 text-uppercase">Set x 4:</span><br>
 								<b class="precio txt-20" ng-bind="(selectedProduct.price_group) | currency : '$' : 0"></b>
@@ -107,7 +107,10 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-12">
-								<span class="c-color3 text-uppercase">Compatible con los siguientes modelos</span>
+								<br>
+								<br>
+								<br>
+								<!-- <span class="c-color3 text-uppercase">Compatible con los siguientes modelos</span>
 								<br>
 								<div class="form-group">
 									<select name="" id="" class="form-control">
@@ -120,7 +123,7 @@
 										<option value="">Mercedes</option>
 										<option value="">Ford</option>
 									</select>
-								</div>
+								</div> -->
 							</div>
 							<div class="col-xs-12 text-right">
 								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
@@ -239,7 +242,7 @@
 
 				<hr>
 
-				<div class="row productos-compatibles">
+				<div class="row productos-compatibles" ng-if="selectedProductType == 'rin'">
 					<div class="col-xs-12 text-center">
 						<h3 class="c-color4 text-left">Llantas compatibles para tu vehículo</h3>
 						<div class="text-center" ng-if="loadingCompatibles && (tiresCompatible != undefined)">

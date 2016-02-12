@@ -11,7 +11,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.barrastechoEmpty = true;
 	$scope.bicicleterosEmpty = true;
 	$scope.parrillastechoEmpty = true;
-	$scope.accesorios4x4Empty = true;
+	$scope.accesoriosEmpty = true;
 	$scope.seatEmpty = true;
 	$scope.lightEmpty = true;
 	$scope.tankEmpty = true;
@@ -123,9 +123,9 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.tankProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bicicleterosProductsSelected = false;
+				$scope.bomberstribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
-				$scope.accesorios4x4ProductsSelected = false;
+				$scope.accesoriosProductsSelected = false;
 				break;
 
 			case 'tire':
@@ -136,11 +136,22 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.tankProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bicicleterosProductsSelected = false;
+				$scope.bomberstribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
-				$scope.accesorios4x4ProductsSelected = false;
+				$scope.accesoriosProductsSelected = false;
 				break;
 
+			case 'bomberestribos':
+				$scope.bomberstribosProductsSelected = true;
+				$scope.tireProductsSelected = false;
+				$scope.seatProductsSelected = false;
+				$scope.rinProductsSelected = false;
+				$scope.lightProductsSelected = false;
+				$scope.tankProductsSelected = false;
+				$scope.portaequipajesProductsSelected = false;
+				$scope.barrasTechoProductsSelected = false;
+				$scope.parrillastechoProductsSelected = false;
+				break;
 			case 'portaequipajes':
 				$scope.portaequipajesProductsSelected = true;
 				$scope.seatProductsSelected = false;
@@ -149,9 +160,9 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.lightProductsSelected = false;
 				$scope.tankProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bicicleterosProductsSelected = false;
+				$scope.bomberstribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
-				$scope.accesorios4x4ProductsSelected = false;
+				$scope.accesoriosProductsSelected = false;
 				break;
 
 			case 'barrastecho':
@@ -162,23 +173,14 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.rinProductsSelected = false;
 				$scope.tankProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
-				$scope.bicicleterosProductsSelected = false;
+				$scope.bomberstribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
-				$scope.accesorios4x4ProductsSelected = false;
+				$scope.accesoriosProductsSelected = false;
 				break;
 
-			case 'bicicleteros':
-				$scope.bicicleterosProductsSelected = true;
-				$scope.tankProductsSelected = false;
-				$scope.lightProductsSelected = false;
-				$scope.seatProductsSelected = false;
-				$scope.tireProductsSelected = false;
-				$scope.rinProductsSelected = false;
-				$scope.portaequipajesProductsSelected = false;
-				$scope.barrasTechoProductsSelected = false;
-				break;
 			case 'parrillastecho':
 				$scope.parrillastechoProductsSelected = true;
+				$scope.bomberstribosProductsSelected = false;
 				$scope.tankProductsSelected = false;
 				$scope.lightProductsSelected = false;
 				$scope.seatProductsSelected = false;
@@ -186,11 +188,9 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.rinProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bicicleterosProductsSelected = false;
-				$scope.accesorios4x4ProductsSelected = false;
 				break;
-			case 'accesorios4x4':
-				$scope.accesorios4x4ProductsSelected = true;
+			case 'accesorios':
+				$scope.accesoriosProductsSelected = true;
 				$scope.tankProductsSelected = false;
 				$scope.lightProductsSelected = false;
 				$scope.seatProductsSelected = false;
@@ -198,7 +198,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.rinProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bicicleterosProductsSelected = false;
+				$scope.bomberstribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
 				break;
 			default:

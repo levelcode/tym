@@ -30,8 +30,8 @@
 								<br>
 								<span class="c-color4">Tamaño:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.diameter}}" {{selectedProduct.width}}</b><br>
 								<span class="c-color4">PCD:</span> <b class="pcd c-blanco txt-18">{{selectedProduct.pcd}}</b><br>
-								<!--<span class="c-color4">ET:</span> <b class="et c-blanco txt-18">35</b><br>
-								<span class="c-color4">CB:</span> <b class="cb c-blanco txt-18">73.1</b>-->
+								<span class="c-color4">Color:</span> <b class="et c-blanco txt-18" ng-bind="selectedProduct.color">35</b><br>
+								<!--<span class="c-color4">CB:</span> <b class="cb c-blanco txt-18">73.1</b>-->
 							</div>
 							<div class="col-xs-6 text-right">
 								<br>

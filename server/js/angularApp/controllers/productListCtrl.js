@@ -178,7 +178,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.accesoriosProductsSelected = false;
 				break;
 
-			case 'parrillastecho':
+			case 'parrillastecho|':
 				$scope.parrillastechoProductsSelected = true;
 				$scope.bomberstribosProductsSelected = false;
 				$scope.tankProductsSelected = false;

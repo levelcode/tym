@@ -43,7 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             echo Ing\list_one_where($_POST);
             break;
             case 'list_varios':
-            echo Ing\list_varios($_POST);
+            $data = Ing\list_varios($_POST);
+            $dataPage = json_decode($data);
+            echo $data;
             break;
             //create products
             case 'create_product':

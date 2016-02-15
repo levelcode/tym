@@ -1,4 +1,5 @@
 <div id="catalogo-accesorios" ng-controller="productListHeader">
+	<?= var_dump($dataPage);?>
 	<div class="catalogo">
 		<span class="cerrar">x</span>
 		<i class="indicador"></i>

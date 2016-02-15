@@ -26,9 +26,9 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
                 $scope.shoppingcart.products = [{}];
                 $scope.shoppingcart.subtotal = 0;
                 $scope.shoppingcart.shippingCharge = 0;
-				$scope.shoppingcart.shippingChargeAndInstalation = 0;
-				$scope.shoppingcart.addDelivery = false;
-				$scope.shoppingcart.addDeliveryAndinstalation = false;
+					$scope.shoppingcart.shippingChargeAndInstalation = 0;
+					$scope.shoppingcart.addDelivery = false;
+					$scope.shoppingcart.addDeliveryAndinstalation = false;
                 $scope.shoppingcart.tax = 0;
                 $scope.shoppingcart.total = 0;
                 $scope.shoppingcart.numOfproductsSubtotal = 0;
@@ -141,7 +141,6 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 		$scope.selectedProduct = data.info;
 
 		if( data.type == 'rin' ){
-			$scope.showComptariblesProducts = true;
 			searchCompatibleTires( data.info.diameter, data.info.width );
 		}
 	});
@@ -166,16 +165,17 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
                 switch( data['status'] ) {
                 	case 'PRODUCTS_LOADED':
-		            	var jsonObject = angular.fromJson(data);
-							var tiresCompatible = jsonObject['tires_compatibles']['data'];
-							$scope.tiresCompatible = tiresCompatible;
-							var test = '';
-							for ( var i = 0 ; i < tiresCompatible.length ; i++ ) {
-								var itemJson = angular.toJson( tiresCompatible[i] );
-								test += '<li><a ng-click="sendToProductDetail()"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>'+ tiresCompatible[i].brand +'-'+ tiresCompatible[i].referencie +'</span></a></li>';
-							}
-							//$scope.testHtml = $sce.trustAsHtml(test);
-							//$( "#slider-productos-compatibles" ).append( test );
+										$scope.showCompatiblesProducts = true;
+			            	var jsonObject = angular.fromJson(data);
+										var tiresCompatible = jsonObject['tires_compatibles'];
+										$scope.tiresCompatible = tiresCompatible;
+										var str = '<li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>205-50-R15</span></a></li><li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>185-55-R15</span></a></li><li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>195-50-R15</span></a></li><li>';
+										var realStr = '';
+										for( var i = 0 ; i < tiresCompatible.length; i++ ){
+											realStr += '<li><a ng-click="sendToProductDetail( \''+tiresCompatible[i].id+'\', \'tire\' )"><img src="admin/recursos/img/tire-products/' + tiresCompatible[i].img + '.gif" alt="" class="img-responsive" width="200"><span>'+ tiresCompatible[i].type +'</span></a></li>';
+										}
+										$('#slider-productos-compatibles').html(realStr);
+
 			            break;
                 }
 

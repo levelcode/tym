@@ -295,6 +295,7 @@ function list_varios( $data, $local = false ){
                 $info_to_return['status'] = "VEHICLE_MODEL_YEARS_LOADED";
                 break;
                 case 'get_products':
+
                     $model_by_name = search_model_by_name( $data['modelName'] );
                     $model_id = NULL;
                     if ( count($model_by_name) > 1 ){
@@ -303,21 +304,22 @@ function list_varios( $data, $local = false ){
                         $model_id = $model_by_name[0]['id'];
                     }
 
-
                     $info_to_return['rin_types'] = get_rines( $model_id );
-                    $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
+                    if( !empty($info_to_return['rin_types']) ) {
+                      $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
 
-                    switch ( $rin_products_result->status ) {
-                        case 'FOUND':
-                            //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
-                            $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
-                            break;
-                        case 'EMPTY':
-                            $info_to_return['rin_products'] = array();
-                            break;
-                        default:
-                            $info_to_return['rin_products'] = array();
-                            break;
+                      switch ( $rin_products_result->status ) {
+                          case 'FOUND':
+                              //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
+                              $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
+                              break;
+                          case 'EMPTY':
+                              $info_to_return['rin_products'] = array();
+                              break;
+                          default:
+                              $info_to_return['rin_products'] = array();
+                              break;
+                      }
                     }
                     $info_to_return['tires'] = get_tires( $model_id );
 
@@ -343,20 +345,11 @@ function list_varios( $data, $local = false ){
                 $info_to_return['status'] = "PRODUCTS_LOADED";
                 break;
                 case 'get_compatible_tires_with_rin';
-                    $tires_types = get_compatible_tires_with_rin( $data['diameter'], $data['width'] );
+                    $tire_products = get_compatible_tires_with_rin( $data['diameter'], $data['width'] );
 
-                    if ( count($tires_types) > 1 ){
-                        $filtered = filter_tires( $tires_types );
-
-                        $tire_products = get_tire_by_tire( $filtered );
-
-                        if ( $tire_products->status == "FOUND" ) {
-                            $info_to_return['tires_compatibles'] = $tire_products;
-                            $info_to_return['status'] = 'PRODUCTS_LOADED';
-                        }else {
-                            $info_to_return['tires_compatibles'] = array();
-                            $info_to_return['status'] = 'EMPTY';
-                        }
+                    if ( count($tire_products) > 1 ){
+                      $info_to_return['tires_compatibles'] = $tire_products;
+                      $info_to_return['status'] = 'PRODUCTS_LOADED';
                     }else{
                         $info_to_return['tires_compatibles'] = array();
                         $info_to_return['status'] = 'EMPTY';
@@ -457,7 +450,7 @@ function get_model_by_id( $model_id ) {
 }
 
 function get_compatible_tires_with_rin( $diameter, $width ){
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire_product WHERE diameter LIKE ". '\''. $diameter. '\'' . "AND inches LIKE " . '\'%'.$width.'\'';
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire_product WHERE diameter LIKE ". '\''. $diameter. '\'' . " AND inches LIKE " . '\'%'.$width.'%\'';
     return Core\query($sql, array());
 }
 
@@ -560,11 +553,12 @@ function get_tire_products( $type_of_tires ) {
 
         foreach ($tires as $key => $value) {
             $currents_parts = explode('-', $value);
-
             if ( count($currents_parts) > 3) {
                 $array_chunked = array_chunk($currents_parts, 3);
                 foreach ($array_chunked as $key => $part) {
+                  if( count($part) > 1 ){
                     $tires_individual[] = $part[0].'-'.$part[1].'-'.$part[2];
+                  }
                 }
             }else{
                 $tires_individual[] = $value;
@@ -607,7 +601,7 @@ function get_tire_products( $type_of_tires ) {
     }
     //var_dump($sql_aux);
      $sql .= $sql_aux;
-    //
+     //var_dump($sql);
      $query_result =  Core\query($sql, array());
 
     if ( count($query_result) > 0 ) {

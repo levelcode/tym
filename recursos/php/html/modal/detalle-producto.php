@@ -30,8 +30,8 @@
 								<br>
 								<span class="c-color4">Tamaño:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.diameter}}" {{selectedProduct.width}}</b><br>
 								<span class="c-color4">PCD:</span> <b class="pcd c-blanco txt-18">{{selectedProduct.pcd}}</b><br>
-								<span class="c-color4">Color:</span> <b class="et c-blanco txt-18" ng-bind="selectedProduct.color">35</b><br>
-								<!--<span class="c-color4">CB:</span> <b class="cb c-blanco txt-18">73.1</b>-->
+								<span class="c-color4">Color:</span> <b class="et c-blanco txt-18" ng-bind="selectedProduct.color"></b><br>
+								<span class="c-color4">Tipo:</span> <b class="cb c-blanco txt-18" ng-bind="selectedProduct.type">73.1</b>
 							</div>
 							<div class="col-xs-6 text-right">
 								<br>
@@ -51,18 +51,6 @@
 								<br>
 								<br>
 								<br>
-								<!-- <div class="form-group">
-									<select name="" id="" class="form-control">
-										<option value="">Seleccione Marca</option>
-										<option value="">Chevrolet</option>
-										<option value="">Hyundai</option>
-										<option value="">Mazda</option>
-										<option value="">Renault</option>
-										<option value="">BMW</option>
-										<option value="">Mercedes</option>
-										<option value="">Ford</option>
-									</select>
-								</div> -->
 							</div>
 							<div class="col-xs-12 text-right">
 								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.details, 1, selectedProduct.price_client, 0, 0, selectedProduct.img, 'rin')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
@@ -161,7 +149,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'portaequipaje')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'portaequipajes')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -254,22 +242,22 @@
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
-						<ul id="slider-productos-compatibles" ng-show="showComptariblesProducts && tiresCompatible.length > 0">
-							<!--<li ng-repeat="tire in tiresCompatible">
+						<ul id="slider-productos-compatibles" ng-show="showCompatiblesProducts && tiresCompatible.length > 0">
+							<!-- <li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
-								</li>-->
+								</li> -->
 
-							<!-- <li ng-repeat="tire in tiresCompatible | limitTo:5	track by $index">
+							<!-- <li ng-repeat="(key, tire) in tiresCompatible | limitTo:5	track by $index">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									<img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</a>
 							</li> -->
-							<li>
+							<!-- <li>
 								<a href="#">
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>205-50-R15</span>
@@ -281,6 +269,7 @@
 									<span>185-55-R15</span>
 								</a>
 							</li>
+							-->
 							<li>
 								<a href="#">
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">

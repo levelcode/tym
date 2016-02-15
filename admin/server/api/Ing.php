@@ -322,7 +322,7 @@ function list_varios( $data, $local = false ){
                       }
                     }
                     $info_to_return['tires'] = get_tires( $model_id );
-
+                    var_dump($model_id);
                     $tires_products_result = get_tire_products($info_to_return['tires']);
 
                     switch ( $tires_products_result->status ) {
@@ -348,7 +348,8 @@ function list_varios( $data, $local = false ){
                     $tire_products = get_compatible_tires_with_rin( $data['diameter'], $data['width'] );
 
                     if ( count($tire_products) > 1 ){
-                      $info_to_return['tires_compatibles'] = $tire_products;
+
+                      $info_to_return['tires_compatibles'] = ( count($tire_products) > 5 ) ? array_slice($tire_products, 0,5) : $tire_products;
                       $info_to_return['status'] = 'PRODUCTS_LOADED';
                     }else{
                         $info_to_return['tires_compatibles'] = array();
@@ -574,7 +575,7 @@ function get_tire_products( $type_of_tires ) {
         }
 
         $to_search = array_combine($tires_individual, $inches_individual);
-
+        //var_dump($to_search);
         $sql_aux = '';
         $index_aux = 0;
         foreach ($to_search as $key => $value) {
@@ -601,7 +602,7 @@ function get_tire_products( $type_of_tires ) {
     }
     //var_dump($sql_aux);
      $sql .= $sql_aux;
-     //var_dump($sql);
+  //   var_dump($sql);
      $query_result =  Core\query($sql, array());
 
     if ( count($query_result) > 0 ) {

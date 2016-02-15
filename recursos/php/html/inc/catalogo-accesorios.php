@@ -1,5 +1,4 @@
 <div id="catalogo-accesorios" ng-controller="productListHeader">
-	<?= var_dump($dataPage);?>
 	<div class="catalogo">
 		<span class="cerrar">x</span>
 		<i class="indicador"></i>
@@ -48,7 +47,6 @@
 							<!-- product of type rin -->
 							<!-- product of type tire -->
 							<div ng-if="tireProductsSelected" >
-								<hr>
 								<div ng-if="tireEmpty">
 									<h1 class="titulo text-uppercase">Llantas</h1>
 									<hr>
@@ -95,6 +93,30 @@
 								</div> -->
 							</div>
 							<!-- product of type tire -->
+							<div ng-if="bomperestribosProductsSelected" >
+								<h1 class="titulo text-uppercase">Bomper y estribos</h1>
+								<hr>
+								<div ng-if="bomperestribosEmpty">
+									<div class="alert alert-info bg-color4">
+						            	<i>Productos no disponibles</i>
+						            </div>
+								</div>
+								<div class="row" ng-if="!bomperestribosEmpty">
+									<div ng-repeat="(key, product) in bomberestribosProducts" class="col-sm-6 col-md-4">
+										<a class="producto" ng-click="sendToProductDetail( product, 'bomperestribos' )">
+											<div class="row">
+												<div class="col-xs-6">
+													<img ng-src="admin/recursos/img/bomperestribos-products/{{product.img}}.gif" alt="" class="img-responsive">
+												</div>
+												<div class="col-xs-6">
+													{{product.brand}}<br>
+													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+												</div>
+											</div>
+										</a>
+									</div>
+								</div>
+							</div>
 							<!-- product of type seat -->
 							<div ng-if="portaequipajesProductsSelected" >
 								<h1 class="titulo text-uppercase">Portaequipajes</h1>

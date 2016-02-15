@@ -322,7 +322,6 @@ function list_varios( $data, $local = false ){
                       }
                     }
                     $info_to_return['tires'] = get_tires( $model_id );
-                    var_dump($model_id);
                     $tires_products_result = get_tire_products($info_to_return['tires']);
 
                     switch ( $tires_products_result->status ) {

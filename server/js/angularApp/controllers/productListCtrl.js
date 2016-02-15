@@ -8,6 +8,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.rinEmpty = true;
 	$scope.tireEmpty = true;
 	$scope.portaequipajesEmpty = true;
+	$scope.bomperestribosEmpty = true;
 	$scope.barrastechoEmpty = true;
 	$scope.bicicleterosEmpty = true;
 	$scope.parrillastechoEmpty = true;
@@ -60,7 +61,14 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.tireEmpty = false;
 					}
 					break;
-
+					case 'bomberestribos_products':
+						$scope.bomperestribosProducts = value;
+						if ( value.length == 0 || value == undefined  ){
+							$scope.bomperestribosEmpty = true;
+						}else {
+							$scope.bomperestribosEmpty = false;
+						}
+						break;
 				case 'portaequipajes_products':
 
 					$scope.portaequipajesProducts = value;
@@ -123,7 +131,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.tankProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bomberstribosProductsSelected = false;
+				$scope.bomperestribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
 				$scope.accesoriosProductsSelected = false;
 				break;
@@ -136,13 +144,13 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.tankProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bomberstribosProductsSelected = false;
+				$scope.bomperestribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
 				$scope.accesoriosProductsSelected = false;
 				break;
 
 			case 'bomberestribos':
-				$scope.bomberstribosProductsSelected = true;
+				$scope.bomperestribosProductsSelected = true;
 				$scope.tireProductsSelected = false;
 				$scope.seatProductsSelected = false;
 				$scope.rinProductsSelected = false;
@@ -160,7 +168,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.lightProductsSelected = false;
 				$scope.tankProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bomberstribosProductsSelected = false;
+				$scope.bomperestribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
 				$scope.accesoriosProductsSelected = false;
 				break;
@@ -173,14 +181,14 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.rinProductsSelected = false;
 				$scope.tankProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
-				$scope.bomberstribosProductsSelected = false;
+				$scope.bomperestribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
 				$scope.accesoriosProductsSelected = false;
 				break;
 
-			case 'parrillastecho|':
+			case 'parrillastecho':
 				$scope.parrillastechoProductsSelected = true;
-				$scope.bomberstribosProductsSelected = false;
+				$scope.bomperestribosProductsSelected = false;
 				$scope.tankProductsSelected = false;
 				$scope.lightProductsSelected = false;
 				$scope.seatProductsSelected = false;
@@ -198,7 +206,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.rinProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
-				$scope.bomberstribosProductsSelected = false;
+				$scope.bomperestribosProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
 				break;
 			default:

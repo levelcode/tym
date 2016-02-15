@@ -61,7 +61,7 @@ st.ventanaInfo = {
             t.timeout = setTimeout(function(){
             	t.cerrar();
             }, t.duracionVentana);
-            
+
         }else{
             console.error('Debe pasarse un string a la función');
         }
@@ -76,8 +76,8 @@ st.ventanaInfo = {
 			easing: this.easing,
 			direction: this.direction
 		});
-		
-    }, 
+
+    },
 
     ponerEventos: function(){
         var t = this;
@@ -387,12 +387,12 @@ st.catalogoAccesorios = {
 		})
 		$('#cabecero .menu-accesorios ul li a.activo').removeClass('activo');
 		t.abierto = false;
-		
+
 	},
 
 	eventos: function(){
 		var t = this;
-		$('#cabecero .menu-accesorios ul li a').on('click', function(e){
+		$('#cabecero .menu-accesorios ul li a, #te-puede-interesar .etiquetas a').on('click', function(e){
 			e.preventDefault();
 			t.analizar($(this));
 		});

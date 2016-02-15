@@ -242,7 +242,7 @@
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
-						<ul id="slider-productos-compatibles" ng-show="showCompatiblesProducts && tiresCompatible.length > 0">
+						<ul id="slider-productos-compatibles" style="height: 180px !important;" ng-show="showCompatiblesProducts && tiresCompatible.length > 0">
 							<!-- <li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
@@ -270,7 +270,7 @@
 								</a>
 							</li>
 							-->
-							<li>
+							<!-- <li>
 								<a href="#">
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>195-50-R15</span>
@@ -300,7 +300,7 @@
 									<span>195-50-R15</span>
 								</a>
 							</li>
-						</ul>
+						</ul> -->
 					</div>
 				</div>
 			</div>

@@ -320,21 +320,50 @@ function list_varios( $data, $local = false ){
                               $info_to_return['rin_products'] = array();
                               break;
                       }
+                    }else{
+                      $info_to_return['rin_products'] = array();
                     }
-                    $info_to_return['tires'] = get_tires( $model_id );
-                    $tires_products_result = get_tire_products($info_to_return['tires']);
 
-                    switch ( $tires_products_result->status ) {
-                        case 'FOUND':
-                            $info_to_return['tire_products'] = _group_tires_by_diameter($tires_products_result->data);
-                            break;
-                        case 'EMPTY':
-                            $info_to_return['tire_products'] = array();
-                            break;
-                        default:
-                            $info_to_return['tire_products'] = array();
-                            break;
+                    $info_to_return['tires'] = get_tires( $model_id );
+                    if( !empty($info_to_return['tires']) ) {
+                      $tires_products_result = get_tire_products($info_to_return['tires']);
+
+                      switch ( $tires_products_result->status ) {
+                          case 'FOUND':
+                              $info_to_return['tire_products'] = _group_tires_by_diameter($tires_products_result->data);
+                              break;
+                          case 'EMPTY':
+                              $info_to_return['tire_products'] = array();
+                              break;
+                          default:
+                              $info_to_return['tire_products'] = array();
+                              break;
+                      }
+                    }else {
+                      $info_to_return['tire_products'] = array();
                     }
+
+                    // $info_to_return['bomper_estribos'] = get_bomber_delantero( $model_id );
+                    // var_dump($info_to_return['bomper_estribos']);
+                    // if( !empty($info_to_return['bomper_estribos']) ) {
+                    //   $tires_products_result = get_tire_products($info_to_return['tires']);
+                    //
+                    //   switch ( $tires_products_result->status ) {
+                    //       case 'FOUND':
+                    //           $info_to_return['bomper_products'] = _group_tires_by_diameter($tires_products_result->data);
+                    //           break;
+                    //       case 'EMPTY':
+                    //           $info_to_return['bomper_products'] = array();
+                    //           break;
+                    //       default:
+                    //           $info_to_return['bomper_products'] = array();
+                    //           break;
+                    //   }
+                    // }else {
+                    //   $info_to_return['bomper_products'] = array();
+                    // }
+
+
                     $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
                     $info_to_return['head_products'] = get_seat_all_products();
                     $info_to_return['light_hid_products'] = get_lights_hd_all_products();
@@ -1387,6 +1416,12 @@ function get_tanks( $vehicle_id, $model_id ) {
 function get_tires( $model_id ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tire t"
     ." WHERE vehicle_model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_bomber_delantero( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomber_delantero bd"
+    ." WHERE model_id = ".$model_id;
     return Core\query($sql, array());
 }
 

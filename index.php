@@ -2,8 +2,6 @@
 <?php
 require_once('recursos/php/config.php');
 
-require_once('admin/server/api/Ajax.php');
-
 $opciones = array(
 	'responsivo' => true,
 	'descripcion' => 'Progracol es una empresa de ',

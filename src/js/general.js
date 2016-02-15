@@ -392,7 +392,7 @@ st.catalogoAccesorios = {
 
 	eventos: function(){
 		var t = this;
-		$('#cabecero .menu-accesorios ul li a, #te-puede-interesar .etiquetas a').on('click', function(e){
+		$('#cabecero .menu-accesorios ul li a, #te-puede-interesar .etiquetas a, .te-puede-interesar .tipo a').on('click', function(e){
 			e.preventDefault();
 			t.analizar($(this));
 		});

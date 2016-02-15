@@ -313,7 +313,7 @@
 						<span>Tapate maletero</span>
 					</div>
 					<div class="foto img1">
-						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+						<a data-nombre="accesorios-accesorios" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 					</div>
 				</div>
 				<div class="tipo">
@@ -321,7 +321,7 @@
 						<span>Pijamas</span>
 					</div>
 					<div class="foto img2">
-						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+						<a data-nombre="accesorios-accesorios" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 					</div>
 				</div>
 				<div class="tipo">
@@ -329,7 +329,7 @@
 						<span>Plumillas</span>
 					</div>
 					<div class="foto img3">
-						<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+						<a data-nombre="accesorios-accesorios" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 					</div>
 				</div>
 			</div>

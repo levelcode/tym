@@ -343,26 +343,7 @@ function list_varios( $data, $local = false ){
                       $info_to_return['tire_products'] = array();
                     }
 
-                    // $info_to_return['bomper_estribos'] = get_bomber_delantero( $model_id );
-                    // var_dump($info_to_return['bomper_estribos']);
-                    // if( !empty($info_to_return['bomper_estribos']) ) {
-                    //   $tires_products_result = get_tire_products($info_to_return['tires']);
-                    //
-                    //   switch ( $tires_products_result->status ) {
-                    //       case 'FOUND':
-                    //           $info_to_return['bomper_products'] = _group_tires_by_diameter($tires_products_result->data);
-                    //           break;
-                    //       case 'EMPTY':
-                    //           $info_to_return['bomper_products'] = array();
-                    //           break;
-                    //       default:
-                    //           $info_to_return['bomper_products'] = array();
-                    //           break;
-                    //   }
-                    // }else {
-                    //   $info_to_return['bomper_products'] = array();
-                    // }
-
+                    $info_to_return['bomberestribos_products']['delantero'] = get_bomber_delantero_products_by_model_id( $model_id );
 
                     $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
                     $info_to_return['head_products'] = get_seat_all_products();
@@ -1420,9 +1401,15 @@ function get_tires( $model_id ) {
 }
 
 function get_bomber_delantero( $model_id ) {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomber_delantero bd"
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomper_delantero"
     ." WHERE model_id = ".$model_id;
     return Core\query($sql, array());
+}
+
+function get_bomber_delantero_products_by_model_id( $model_id ) {
+  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomper_delantero_product"
+  ." WHERE model_id = ".$model_id;
+  return Core\query($sql, array());
 }
 
 function list_all($data){

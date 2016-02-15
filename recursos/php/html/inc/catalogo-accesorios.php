@@ -74,27 +74,10 @@
 										</div>
 									</div>
 								</div>
-
-								<!-- <div class="row" ng-if="!tireEmpty">
-									<div ng-repeat="(key, product) in tireProducts" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'tire' )">
-											<div class="row">
-												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/tire-products/{{product.img}}.gif" alt="" class="img-responsive">
-													<img ng-src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive">
-												</div>
-												<div class="col-xs-6">
-													{{product.brand}}<br>
-													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div> -->
 							</div>
 							<!-- product of type tire -->
-							<div ng-if="bomperestribosProductsSelected" >
-								<h1 class="titulo text-uppercase">Bomper y estribos</h1>
+							<div ng-if="bomperestribosProductsSelected" ng-repeat="(key, productGroup) in bomperestribosProducts">
+								<h1 class="titulo text-uppercase">Bomper {{key}}</h1>
 								<hr>
 								<div ng-if="bomperestribosEmpty">
 									<div class="alert alert-info bg-color4">
@@ -102,7 +85,7 @@
 						            </div>
 								</div>
 								<div class="row" ng-if="!bomperestribosEmpty">
-									<div ng-repeat="(key, product) in bomberestribosProducts" class="col-sm-6 col-md-4">
+									<div ng-repeat="(key1, product) in productGroup" class="col-sm-6 col-md-4">
 										<a class="producto" ng-click="sendToProductDetail( product, 'bomperestribos' )">
 											<div class="row">
 												<div class="col-xs-6">

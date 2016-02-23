@@ -295,8 +295,9 @@ function list_varios( $data, $local = false ){
                 $info_to_return['status'] = "VEHICLE_MODEL_YEARS_LOADED";
                 break;
                 case 'get_products':
-
+                    //var_dump($data);
                     $model_by_name = search_model_by_name( $data['modelName'] );
+                  //  var_dump($model_by_name);
                     $model_id = NULL;
                     if ( count($model_by_name) > 1 ){
                         $model_id = select_model_id( $model_by_name, $data['year'] );
@@ -305,8 +306,12 @@ function list_varios( $data, $local = false ){
                     }
 
                     $info_to_return['rin_types'] = get_rines( $model_id );
+                    //var_dump($info_to_return['rin_types']);
+
                     if( !empty($info_to_return['rin_types']) ) {
                       $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
+
+                      //var_dump($rin_products_result);
 
                       switch ( $rin_products_result->status ) {
                           case 'FOUND':
@@ -325,8 +330,12 @@ function list_varios( $data, $local = false ){
                     }
 
                     $info_to_return['tires'] = get_tires( $model_id );
+
+                    //var_dump($info_to_return['tires']);
                     if( !empty($info_to_return['tires']) ) {
                       $tires_products_result = get_tire_products($info_to_return['tires']);
+
+                    //  var_dump($tires_products_result);
 
                       switch ( $tires_products_result->status ) {
                           case 'FOUND':
@@ -611,7 +620,7 @@ function get_tire_products( $type_of_tires ) {
     }
     //var_dump($sql_aux);
      $sql .= $sql_aux;
-  //   var_dump($sql);
+
      $query_result =  Core\query($sql, array());
 
     if ( count($query_result) > 0 ) {
@@ -656,6 +665,8 @@ function get_rin_products( $rin_group_types ) {
     }
 
     $sql .= $sql_aux;
+
+    //var_dump($sql);
 
     $query_result =  Core\query($sql, array());
 

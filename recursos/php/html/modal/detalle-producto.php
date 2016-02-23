@@ -73,7 +73,7 @@
 						<br>
 						<br>
 						<div class="row">
-							<div class="col-xs-7">
+							<div class="col-xs-8">
 								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
 								<br>
 								<br>
@@ -81,9 +81,10 @@
 								<span class="c-color4">Marca:</span> <b class="pcd c-blanco txt-18">{{selectedProduct.brand}}</b><br>
 								<span class="c-color4">Modelo:</span> <b class="et c-blanco txt-18">{{selectedProduct.model}}</b><br>
 								<span class="c-color4">Indice de velocidad:</span> <b class="cb c-blanco txt-18">{{selectedProduct.speed_rate + '(Km/h)'}}</b><br>
-								<span class="c-color4">Indice de carga:</span> <b class="cb c-blanco txt-18">{{selectedProduct.weigth_rate + '(Kg)'}}</b>
+								<span class="c-color4">Indice de carga:</span> <b class="cb c-blanco txt-18">{{selectedProduct.weigth_rate + '(Kg)'}}</b><br>
+								<span class="c-color4">Para rines de ancho:</span> <b class="cb c-blanco txt-18">{{selectedProduct.inches + '\"'}}</b>
 							</div>
-							<div class="col-xs-5 text-right">
+							<div class="col-xs-4 text-right">
 								<br>
 								<br>
 								<span class="c-color3 text-uppercase">Precio por llanta</span><br>

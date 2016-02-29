@@ -209,12 +209,7 @@
 							<!-- product of type tank -->
 							<div ng-if="accesoriosProductsSelected" ng-repeat="(key, productGroup) in universalProducts" >
 								<h1 class="titulo text-uppercase">Accesorios {{key}}</h1>
-								<hr>
-								<div ng-if="accesoriosProductsSelected">
-									<div class="alert alert-info bg-color4">
-										<i>En este momento no contamos con este producto para tu vehiculo, pero encuentra otros productos haciendo click en otras categorias.</i>
-									</div>
-								</div>
+								<hr>								
 								<div class="row" ng-if="!accesorios4x4Empty">
 									<div ng-repeat="(key, product) in productGroup" class="col-sm-6 col-md-4">
 										<a class="producto" ng-click="sendToProductDetail( product, 'tank' )">

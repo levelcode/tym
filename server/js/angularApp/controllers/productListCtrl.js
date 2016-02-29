@@ -63,7 +63,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 					break;
 					case 'bomberestribos_products':
 						$scope.bomperestribosProducts = value;
-						if ( value.length == 0 || value == undefined  ){
+						if ( value.delantero.length == 0 || value == undefined  ){
 							$scope.bomperestribosEmpty = true;
 						}else {
 							$scope.bomperestribosEmpty = false;

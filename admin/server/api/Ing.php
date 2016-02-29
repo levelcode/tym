@@ -357,7 +357,7 @@ function list_varios( $data, $local = false ){
                     $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
                     $info_to_return['head_products'] = get_seat_all_products();
                     $info_to_return['light_hid_products'] = get_lights_hd_all_products();
-                    // $info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
+                    //$info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
                 //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
 
                 $info_to_return['status'] = "PRODUCTS_LOADED";

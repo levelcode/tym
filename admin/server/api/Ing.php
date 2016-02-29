@@ -358,9 +358,8 @@ function list_varios( $data, $local = false ){
                     $info_to_return['head_products'] = get_seat_all_products();
                     $info_to_return['light_hid_products'] = get_lights_hd_all_products();
                     //$info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
-                //$info_to_return['universals'] = get_universals( $data['vehicleId'], $data['modelId'] );
-
-                $info_to_return['status'] = "PRODUCTS_LOADED";
+                    $info_to_return['universals'] = _index_universals(get_universals());
+                    $info_to_return['status'] = "PRODUCTS_LOADED";
                 break;
                 case 'get_compatible_tires_with_rin';
                     $tire_products = get_compatible_tires_with_rin( $data['diameter'], $data['width'] );
@@ -428,6 +427,15 @@ function filter_tires( $tires ){
     }
 
     return _index($tires_filtered);
+}
+
+function _index_universals( $universal_products ){
+  $new_array = array();
+  foreach ($universal_products as $key => $value) {
+    $new_array[$value['name']][] = $value;
+  }
+
+  return $new_array;
 }
 
 function _index( $hash_map ) {
@@ -1368,7 +1376,7 @@ function get_month_promotion(){
 }
 
 function get_universals( $vehicle_id = NULL, $model_id = NULL ) {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type pt WHERE pt.universal = '1' ORDER BY type ASC";
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "universal ORDER BY name ASC";
     return Core\query($sql, array());
 }
 

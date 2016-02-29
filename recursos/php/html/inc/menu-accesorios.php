@@ -19,7 +19,7 @@
 			<a href="./parrilas-para-techo" class="parrilas-para-techo" ng-click="openProductType('parrillastecho')" data-nombre="accesorios-parrilas-para-techo">Parrillas para Techo</a>
 		</li>
 		<li>
-			<a href="./accesorios" class="accesorios"  data-nombre="accesorios-accesorios">Accesorios</a>
+			<a href="./accesorios" class="accesorios" ng-click="openProductType('accesorios')" data-nombre="accesorios-accesorios">Accesorios</a>
 		</li>
 	</ul>
 </nav>

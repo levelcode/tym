@@ -208,8 +208,8 @@
 							<!-- product of type tank -->
 							<!-- product of type tank -->
 							<div ng-if="accesoriosProductsSelected" ng-repeat="(key, productGroup) in universalProducts" >
-								<h1 class="titulo text-uppercase">Accesorios {{key}}</h1>
-								<hr>								
+								<h1 class="titulo text-uppercase" id="{{key}}">Accesorios {{key}}</h1>
+								<hr>
 								<div class="row" ng-if="!accesorios4x4Empty">
 									<div ng-repeat="(key, product) in productGroup" class="col-sm-6 col-md-4">
 										<a class="producto" ng-click="sendToProductDetail( product, 'tank' )">
@@ -235,10 +235,10 @@
 
 						<div class="tipo">
 							<div class="cuadro">
-								<span><a data-nombre="accesorios-accesorios" class="accesorios">Tapete maletero</a></span>
+								<span><a class="accesorios">Tapete maletero</a></span>
 							</div>
 							<div class="foto img1">
-								<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<a href="#plumillas" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 						</div>
 						<div class="tipo">
@@ -254,7 +254,7 @@
 								<span>Plumillas</span>
 							</div>
 							<div class="foto img3">
-								<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<a href="#plumillas" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 						</div>
 					</div>

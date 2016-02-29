@@ -223,8 +223,8 @@
 				<div ng-if="selectedProductType == 'tank'" class="row producto">
 					<div class="col-sm-6">
 						<div class="imagen">
-							<!-- <img ng-src="admin/recursos/img/tank-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive"> -->
-							<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive">
+							<img ng-src="admin/recursos/img/accesorios/universales/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
+							<!-- <img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive"> -->
 						</div>
 					</div>
 					<div class="col-sm-6">
@@ -238,7 +238,7 @@
 								<br>
 								<br>
 								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
-								<span class="c-color4">Color:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.color}}</b><br>
+
 							</div>
 							<div class="col-xs-4 text-right">
 								<br>
@@ -250,7 +250,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tank')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'accesorios/universales')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>

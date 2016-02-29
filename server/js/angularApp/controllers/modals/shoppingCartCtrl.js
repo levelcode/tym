@@ -144,15 +144,11 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
     $scope.removeProduct = function ( key ) {
 
-        if ( $scope.shoppingcart.products[key].cant > 1 ) {
-            $scope.shoppingcart.products[key].cant--;
-            $scope.shoppingcart.numOfproductsTotal--;
-        }else {
-            $scope.shoppingcart.products.splice( key, 1 );
-            $scope.shoppingcart.numOfproductsTotal--;
-            $scope.shoppingcart.numOfproductsSubtotal--;
-        }
 
+        $scope.shoppingcart.products.splice( key, 1 );
+        $scope.shoppingcart.numOfproductsTotal--;
+        $scope.shoppingcart.numOfproductsSubtotal--;
+  
         if ( $scope.shoppingcart.numOfproductsTotal == 0 ){
             $scope.shoppingcart.haveProducts = false;
 

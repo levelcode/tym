@@ -22,7 +22,7 @@
 			                            <th>PRECIO</th>
 			                            <th>CANTIDAD</th>
 			                            <th>SUBTOTAL</th>
-                                        <th>INSTALACIÓN</th>
+                                        <!-- <th>INSTALACIÓN</th> -->
                                         <th></th>
 			                        </tr>
 			                    </thead>
@@ -46,9 +46,9 @@
 			                            	</select>
 			                            </td>
 			                            <td class="text-right" ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
-                                        <td>
+                                        <!-- <td>
                                             <input type="checkbox" name="instalation" ng-model="instalation" id="checkout-instalation">
-                                        </td>
+                                        </td> -->
                                         <td><i style="cursor: pointer;" ng-click="removeProduct( key )" class="fa fa-trash-o"></i></td>
 			                        </tr>
 			                        <tr class="text-right">
@@ -71,12 +71,12 @@
 									Envío
 								</label>
 							</div>
-                            <div class="col-xs-12 text-uppercase text-left">
+                            <!-- <div class="col-xs-12 text-uppercase text-left">
 								<label>
 									<input type="checkbox" name="delivery-and-instalation" ng-model="deliveryAndInstalation" ng-click="recalculateTotals( 0, 'addDeliveryAndinstalation' )" id="checkout-delivery-and-instalation">
 									Envío e instalación
 								</label>
-							</div>
+							</div> -->
 						</div>
 
 			            <div class="alert alert-info bg-color4">
@@ -119,8 +119,7 @@
     										<option value="">Cota</option>
     										<option value="">Chía</option>
     										<option value="">Zipaquirá</option>
-    										<option value="">Soacha</option>
-    										<option value="">Zipaquirá</option>
+    										<option value="">Soacha</option>    									
                                             <option value="">Cajicá</option>
     									</select>
     								</div>

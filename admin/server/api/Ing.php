@@ -304,9 +304,9 @@ function list_varios( $data, $local = false ){
                     }else{
                         $model_id = $model_by_name[0]['id'];
                     }
-
+                    var_dump($model_by_name);
                     $info_to_return['rin_types'] = get_rines( $model_id );
-                    //var_dump($info_to_return['rin_types']);
+                    var_dump($info_to_return['rin_types']);
 
                     if( !empty($info_to_return['rin_types']) ) {
                       $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
@@ -648,6 +648,15 @@ function get_rin_products( $rin_group_types ) {
     $sql_aux = '';
 
     foreach ($rin_group_types as $key_main => $group) {
+      if( $group['pcd'] == '4x100' || $group['pcd'] == '4x114,3'){
+        $new_group = array('pcd'=>'8x100-8x114,3', 'rin_diameter'=>$group['rin_diameter'], 'inches'=>$group['inches']);
+        $rin_group_types[] = $new_group;
+      }
+    }
+
+    //var_dump($rin_group_types);
+
+    foreach ($rin_group_types as $key_main => $group) {
 
         $inches = explode('-', $group['inches']);
         $sql_inch = '';
@@ -655,6 +664,7 @@ function get_rin_products( $rin_group_types ) {
         foreach ($inches as $key => $value) {
             if( $key == 0 ) {
                 $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\') OR ';
+
                 if ( count($inches) == 1 ) {
                     $sql_aux .= ' ) OR ';
                 }
@@ -674,7 +684,7 @@ function get_rin_products( $rin_group_types ) {
 
     $sql .= $sql_aux;
 
-    //var_dump($sql);
+  //  var_dump($sql);
 
     $query_result =  Core\query($sql, array());
 

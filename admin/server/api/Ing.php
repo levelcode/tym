@@ -304,9 +304,9 @@ function list_varios( $data, $local = false ){
                     }else{
                         $model_id = $model_by_name[0]['id'];
                     }
-                    var_dump($model_by_name);
+                    //var_dump($model_by_name);
                     $info_to_return['rin_types'] = get_rines( $model_id );
-                    var_dump($info_to_return['rin_types']);
+                    //var_dump($info_to_return['rin_types']);
 
                     if( !empty($info_to_return['rin_types']) ) {
                       $rin_products_result = get_rin_products( $info_to_return['rin_types'] );

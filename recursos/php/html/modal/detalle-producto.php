@@ -8,7 +8,7 @@
 						<p class="txt-13 text-uppercase"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
 					</div>
 					<div class="col-sm-6">
-						<p class="txt-13">Valora este artículo: &nbsp;<i class="st-calificacion valor-0"></i> | Votos (0)</p>
+						<!-- <p class="txt-13">Valora este artículo: &nbsp;<i class="st-calificacion valor-0"></i> | Votos (0)</p> -->
 					</div>
 				</div>
 				<!-- rin -->
@@ -19,8 +19,8 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
-						<span class="nombre" ng-bind="selectedProduct.brand"></span><br>
-						<span class="descripcion" ng-bind="selectedProduct.brand+' '+selectedProduct.referencie"></span>
+						<span class="nombre" style="text-transform: uppercase;"ng-bind="selectedProduct.brand"></span><br>
+						<span class="descripcion" ng-bind="selectedProduct.referencie"></span>
 						<br>
 						<br>
 						<div class="row">
@@ -279,13 +279,13 @@
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</li> -->
 
-							<!-- <li ng-repeat="(key, tire) in tiresCompatible | limitTo:5	track by $index">
+							<li ng-repeat="(key, tire) in tiresCompatible | limitTo:5	track by $index">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									<img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</a>
-							</li> -->
+							</li>
 							<!-- <li>
 								<a href="#">
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">

@@ -77,7 +77,7 @@
 							</div>
 							<!-- product of type tire -->
 							<div ng-if="bomperestribosProductsSelected" ng-repeat="(key, productGroup) in bomperestribosProducts">
-								<h1 class="titulo text-uppercase">Bomper {{key}}</h1>
+								<h1 class="titulo text-uppercase"><span ng-if="key == 'delantero' || key == 'trasero'">Bomper</span> {{key}}</h1>
 								<hr>
 								<div ng-if="bomperestribosEmpty">
 									<div class="alert alert-info bg-color4">
@@ -236,25 +236,26 @@
 						<div class="tipo">
 							<div class="cuadro">
 								<span><a class="accesorios">Tapete maletero</a></span>
+								<a href="#plumillas" data-nombre="accesorios-accesorios" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img1">
-								<a href="#plumillas" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+
 							</div>
 						</div>
 						<div class="tipo">
 							<div class="cuadro">
 								<span>Pijamas para vehiculos</span>
+								<a href="" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img2">
-								<a href="" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 						</div>
 						<div class="tipo">
 							<div class="cuadro">
-								<span>Plumillas</span>
+								<span>Plumillas universales</span>
+								<a href="#plumillas" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img3">
-								<a href="#plumillas" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 						</div>
 					</div>

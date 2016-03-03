@@ -169,12 +169,12 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 			            	var jsonObject = angular.fromJson(data);
 										var tiresCompatible = jsonObject['tires_compatibles'];
 										$scope.tiresCompatible = tiresCompatible;
-										var str = '<li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>205-50-R15</span></a></li><li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>185-55-R15</span></a></li><li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>195-50-R15</span></a></li><li>';
-										var realStr = '';
-										for( var i = 0 ; i < tiresCompatible.length; i++ ){
-											realStr += '<li><a ng-click="sendToProductDetail( \''+tiresCompatible[i].id+'\', \'tire\' )"><img src="admin/recursos/img/tire-products/' + tiresCompatible[i].img + '.gif" alt="" class="img-responsive" width="200"><span>'+ tiresCompatible[i].type +'</span></a></li>';
-										}
-										$('#slider-productos-compatibles').html(realStr);
+										// var str = '<li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>205-50-R15</span></a></li><li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>185-55-R15</span></a></li><li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>195-50-R15</span></a></li><li>';
+										// var realStr = '';
+										// for( var i = 0 ; i < tiresCompatible.length; i++ ){
+										// 	realStr += '<li><a ng-click="sendToProductDetail( \''+tiresCompatible[i].id+'\', \'tire\' )"><img src="admin/recursos/img/tire-products/' + tiresCompatible[i].img + '.gif" alt="" class="img-responsive" width="200"><span>'+ tiresCompatible[i].type +'</span></a></li>';
+										// }
+										// $('#slider-productos-compatibles').html(realStr);
 
 			            break;
                 }
@@ -187,7 +187,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
 	$scope.sendToProductDetail = function( product, productType ) {
 
-		if( angular.isString(product) );
+		if( angular.isString(product) )
 			product = angular.fromJson();
 
 		var data = { info: product, type: productType };

@@ -207,15 +207,15 @@
 							</div>
 							<!-- product of type tank -->
 							<!-- product of type tank -->
-							<div ng-if="accesoriosProductsSelected" ng-repeat="(key, productGroup) in universalProducts" >
-								<h1 class="titulo text-uppercase" id="{{key}}">Accesorios {{key}}</h1>
+							<div ng-if="accesoriosProductsSelected" ng-repeat="(keyMain, productGroup) in universalProducts" >
+								<h1 class="titulo text-uppercase" id="{{keyMain}}">Accesorios {{keyMain}}</h1>
 								<hr>
 								<div class="row" ng-if="!accesorios4x4Empty">
 									<div ng-repeat="(key, product) in productGroup" class="col-sm-6 col-md-4">
 										<a class="producto" ng-click="sendToProductDetail( product, 'tank' )">
 											<div class="row">
 												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/accesorios/universales/{{product.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="admin/recursos/img/accesorios/{{keyMain}}-products/{{product.img}}.gif" alt="" class="img-responsive">
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>

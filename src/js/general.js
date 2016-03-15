@@ -392,7 +392,7 @@ st.catalogoAccesorios = {
 
 	eventos: function(){
 		var t = this;
-		$('#cabecero .menu-accesorios ul li a, #te-puede-interesar .etiquetas a, .te-puede-interesar .tipo a').on('click', function(e){
+		$('#cabecero .menu-accesorios ul li a').on('click', function(e){
 			e.preventDefault();
 			t.analizar($(this));
 		});
@@ -404,7 +404,81 @@ st.catalogoAccesorios = {
 }
 st.catalogoAccesorios.ini();
 
+/* catálogo de accesorios */
+st.catalogoAccesoriosAux = {
+	// props
+	abierto: false,
+	dur: 800,
+	efe: 'fold',
+	dir: 'left',
+	eas: 'linear',
 
+	// metds
+	ini: function(){
+		this.eventos();
+	},
+
+	analizar: function(elm){
+		if(elm.hasClass('activo')){
+			elm.removeClass('activo');
+			this.cerrar();
+			return;
+		}
+
+		$('#accesorio-tipo').html('<div class="text-center"> <br> <p class="txt-11">Cargando accesorios...</p> <br> <img src="recursos/img/preloader-productos.gif" alt=""> </div>');
+
+		$('#cabecero .menu-accesorios ul li a.activo').removeClass('activo');
+		elm.addClass('activo');
+		$('#catalogo-accesorios .catalogo .indicador').css('top', elm.offset().top - 76);
+		$.ajax({
+			url: 'recursos/php/html/inc/' + elm.attr('data-nombre') + '.php',
+			type: 'get',
+			dataType: 'html',
+			complete: function(d){
+				console.log(d);
+				setTimeout(function(){
+					$('#accesorio-tipo').html(d.responseText);
+				},1200);
+			}
+		});
+		this.abrir();
+	},
+
+	abrir: function(){
+		var t = this;
+		//$('#catalogo-accesorios').fadeIn(t.dur);
+		$('#catalogo-accesorios').show({
+			effect: t.efe,
+			duration: t.dur,
+			direction: t.dir,
+			easing: t.eas
+		})
+		t.abierto = true;
+	},
+
+	cerrar: function(){
+		var t = this;
+		//$('#catalogo-accesorios').fadeOut(t.dur);
+		$('#catalogo-accesorios').hide({
+			effect: t.efe,
+			duration: t.dur,
+			direction: t.dir,
+			easing: t.eas
+		})
+		$('#cabecero .menu-accesorios ul li a.activo').removeClass('activo');
+		t.abierto = false;
+
+	},
+
+	eventos: function(){
+		var t = this;
+		$('.te-puede-interesar .tipo a').on('click', function(e){
+			e.preventDefault();
+			t.analizar($('#cabecero .menu-accesorios ul li a.accesorios'));
+		});
+	}
+}
+st.catalogoAccesoriosAux.ini();
 
 
 /* detalles de produto */

@@ -54,7 +54,7 @@ function login( $id, $pass, $type_of_user ){
     }
 
     if($resultado["response"]){
-        $salida["accede"] = true;
+        $result->accede = true;
         $result->status = "LOGGED";
         $result->userData = $resultado["info"];
 
@@ -329,7 +329,7 @@ function list_varios( $data, $local = false ){
                     }
                     //var_dump($model_by_name);
 
-                // var_dump($info_to_return['rin_types']);
+                    //var_dump($info_to_return['rin_types']);
 
                     if( !empty($info_to_return['rin_types']) ) {
                       $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
@@ -368,7 +368,7 @@ function list_varios( $data, $local = false ){
 
                     }
 
-                    //var_dump($info_to_return['tires']);
+                    // var_dump($info_to_return['tires']);
                     if( !empty($info_to_return['tires']) ) {
                       $tires_products_result = get_tire_products($info_to_return['tires']);
 
@@ -391,9 +391,17 @@ function list_varios( $data, $local = false ){
 
                     if( count($model_id) > 1 ){
                         foreach( $model_id as $value ){
+
+
                             $delantero = get_bomber_delantero_products_by_model_id( $value );
                             $estribo = get_estribo_products_by_model_id( $value );
                             $barra_antivolco = get_estribo_products_by_model_id( $value );
+                            $tapetes = get_tapete_maletero_products( $value );
+                            //var_dump($tapetes);
+
+                            if( !empty($tapetes) ){
+                                $info_to_return['tapete_maletero'] = $tapetes;
+                            }
 
                             if( !empty($delantero) ){
                                 $info_to_return['bomberestribos_products']['delantero'][] = $delantero[0];
@@ -408,7 +416,11 @@ function list_varios( $data, $local = false ){
                     }else{
                         $info_to_return['bomberestribos_products']['delantero'] = get_bomber_delantero_products_by_model_id( $model_id[0] );
                         $info_to_return['bomberestribos_products']['estribo'] = get_estribo_products_by_model_id( $model_id[0] );
+                        $model_id = (is_array($model_id)) ? $model_id[0] : $model_id;
+                        $info_to_return['tapete_maletero'] = get_tapete_maletero_products( $model_id );
+
                     }
+
 
                     $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
                     $info_to_return['head_products'] = get_seat_all_products();
@@ -1066,6 +1078,14 @@ function get_seat_all_products() {
 }
 function get_portaequipajes_all_products() {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "portaequipaje";
+    return Core\query($sql, array());
+}
+
+function get_tapete_maletero_products( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tapete_maletero tm"
+    ." LEFT JOIN ".$GLOBALS["prefix"]. "tapete_maletero_product t ON t.id = tm.product_id "
+    ." WHERE tm.model_id = ".$model_id;
+
     return Core\query($sql, array());
 }
 

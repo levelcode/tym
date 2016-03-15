@@ -149,6 +149,48 @@
 					</div>
 				</div>
 				<!-- bomper -->
+				<!-- univesales -->
+				<div ng-if="selectedProductType == 'plumillas'" class="row producto">
+					<div class="col-sm-6">
+						<div class="imagen">
+							<img ng-src="admin/recursos/img/accesorios/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
+							<!-- <img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive"> -->
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<span class="nombre" ng-bind="selectedProduct.brand"></span><br>
+						<span class="descripcion" ng-bind="selectedProduct.brand+' '+selectedProduct.referencie"></span>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col-xs-7">
+								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock"></b></span>
+								<br>
+								<br>
+								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
+								<span class="c-color4" ng-if="selectedProduct.instructivo == 'si'">Instructivo:</span> <a href="admin/recursos/documents/instructivos/bomper/bompers.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
+							</div>
+							<div class="col-xs-5 text-right">
+								<br>
+								<br>
+								<span class="c-color3 text-uppercase">Precio</span><br>
+								<b class="precio txt-24" ng-bind="(selectedProduct.price) | currency : '$' : 0"></b><br>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-xs-12">
+								<br>
+								<br>
+								<br>
+							</div>
+							<div class="col-xs-12 text-right">
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- universales -->
 				<!-- seat -->
 				<div ng-if="selectedProductType == 'portaequipaje'" class="row producto">
 					<div class="col-sm-6">

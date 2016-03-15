@@ -212,7 +212,7 @@
 								<hr>
 								<div class="row" ng-if="!accesorios4x4Empty">
 									<div ng-repeat="(key, product) in productGroup" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'tank' )">
+										<a class="producto" ng-click="sendToProductDetail( product, keyMain )">
 											<div class="row">
 												<div class="col-xs-6">
 													<img ng-src="admin/recursos/img/accesorios/{{keyMain}}-products/{{product.img}}.gif" alt="" class="img-responsive">

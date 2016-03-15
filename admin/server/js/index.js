@@ -28,7 +28,7 @@ var do_login = function(){
         complete: function(response, status){
           //console.log(response, ' - ', status);
           console.log(response);
-          if(status == 'LOGGED'){
+          if(response.responseJSON.status == 'LOGGED'){
               //console.log(response);
               if(response.responseJSON.accede){
                 window.location = 'inicio';

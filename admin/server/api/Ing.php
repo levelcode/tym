@@ -413,7 +413,7 @@ function list_varios( $data, $local = false ){
                             $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
                         }
                         if( !empty($barra_antivolco) ){
-                            $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
+                            //$info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
                         }
                     }
                 }else{

@@ -21,8 +21,9 @@ st.catalogoAccesoriosAux = {
 		}
 
 		$('#accesorio-tipo').html('<div class="text-center"> <br> <p class="txt-11">Cargando accesorios...</p> <br> <img src="recursos/img/preloader-productos.gif" alt=""> </div>');
-		elm.addClass('activo');
+
 		$('#catalogo-accesorios .catalogo .indicador').css('top', elm.offset().top - 76);
+		elm.addClass('activo');
         console.log(elm.attr('data-nombre'));
 		$.ajax({
 			url: 'recursos/php/html/inc/' + elm.attr('data-nombre') + '.php',
@@ -40,7 +41,7 @@ st.catalogoAccesoriosAux = {
 
 	abrir: function(){
 		var t = this;
-		//$('#catalogo-accesorios').fadeIn(t.dur);
+		$('#catalogo-accesorios').fadeIn(t.dur);
 		$('#catalogo-accesorios').show({
 			effect: t.efe,
 			duration: t.dur,

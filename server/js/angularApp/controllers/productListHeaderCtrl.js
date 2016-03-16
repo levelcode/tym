@@ -1,4 +1,4 @@
-tymApp.controller('productListHeader', [ '$scope', '$rootScope', function( $scope, $rootScope ){
+tymApp.controller('productListHeader', [ '$scope', '$rootScope', 'ConstantsService', function( $scope, $rootScope, ConstantsService ){
 
 	var vehicle = { brand : 'ninguno' };
 
@@ -13,5 +13,11 @@ tymApp.controller('productListHeader', [ '$scope', '$rootScope', function( $scop
 	$rootScope.$on('vehicle_chaged', function( event, data ){
 		$scope.selectedCar = data;
 	});
+
+	$scope.openProductType = function( productType ) {
+
+        $rootScope.$broadcast( ConstantsService.CHANGE_PRODUCTS, productType );
+
+    }
 
 }]);

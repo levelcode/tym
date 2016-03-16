@@ -236,7 +236,7 @@
 						<div class="tipo">
 							<div class="cuadro">
 								<span><a class="accesorios">Tapete maletero</a></span>
-								<a href="#plumillas" data-nombre="accesorios-accesorios" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<a href="#plumillas" data-nombre="accesorios-accesorios" ng-click="openProductType('accesorios')" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img1">
 
@@ -245,7 +245,7 @@
 						<div class="tipo">
 							<div class="cuadro">
 								<span>Pijamas para vehiculos</span>
-								<a href="" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<a href="" style="margin-top: 10px;" ng-click="openProductType('accesorios')" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img2">
 							</div>
@@ -253,7 +253,7 @@
 						<div class="tipo">
 							<div class="cuadro">
 								<span>Plumillas universales</span>
-								<a href="#plumillas" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<a href="#plumillas" style="margin-top: 10px;" ng-click="openProductType('accesorios')" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img3">
 							</div>

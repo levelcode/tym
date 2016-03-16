@@ -36,7 +36,7 @@ function init_session($data){
 
     foreach($data as $nombre => $valor){
         if($nombre == 'password' || $nombre == 'pass') continue;
-            $_SESSION[$nombre] = $valor;
+        $_SESSION[$nombre] = $valor;
     }
 
 }
@@ -186,42 +186,42 @@ function create_item( $data ) {
     if ( isset($data['from']) ){
         switch( $data['from'] ) {
             case 'home':
-                switch ( $data['action'] ) {
-                    case 'create_user':
-                        $insert_result = insert_user( $data['data'] );
+            switch ( $data['action'] ) {
+                case 'create_user':
+                $insert_result = insert_user( $data['data'] );
 
-                        $info_to_return['data'] = ( isset($insert_result) ) ? $insert_result : 'no-data';
+                $info_to_return['data'] = ( isset($insert_result) ) ? $insert_result : 'no-data';
 
-                        switch( $insert_result->status ){
-                            case 'INSERTED':
-                                $info_to_return['status'] = 'SUCCESS';
-                                break;
-                            case 'USER_EXIST':
-                                $info_to_return['status'] = 'EXIST';
-                                break;
-                            default:
-                                $info_to_return['status'] = 'ERROR';
-                                $info_to_return['data'] = error_get_last();
-                                break;
-                        }
-                        break;
-                }
-                break;
-            case 'admin-main-page':
-                switch ( $data['action'] ) {
-                    case 'update_main_page_promotion':
-                    $updated = update_month_promotion_in_main_page( $data['data'] );
-
-                    if( $updated ) {
-                        //$to_get_base_data = array('from' => $data['from'], 'action' => 'get_base_data' );
-                        //$info_to_return = list_varios( $to_get_base_data );
-                        $info_to_return['status'] = 'SUCCESS';
-                    }else {
-                        $info_to_return['status'] = 'ERROR';
-                    }
+                switch( $insert_result->status ){
+                    case 'INSERTED':
+                    $info_to_return['status'] = 'SUCCESS';
+                    break;
+                    case 'USER_EXIST':
+                    $info_to_return['status'] = 'EXIST';
+                    break;
+                    default:
+                    $info_to_return['status'] = 'ERROR';
+                    $info_to_return['data'] = error_get_last();
                     break;
                 }
                 break;
+            }
+            break;
+            case 'admin-main-page':
+            switch ( $data['action'] ) {
+                case 'update_main_page_promotion':
+                $updated = update_month_promotion_in_main_page( $data['data'] );
+
+                if( $updated ) {
+                    //$to_get_base_data = array('from' => $data['from'], 'action' => 'get_base_data' );
+                    //$info_to_return = list_varios( $to_get_base_data );
+                    $info_to_return['status'] = 'SUCCESS';
+                }else {
+                    $info_to_return['status'] = 'ERROR';
+                }
+                break;
+            }
+            break;
         }
 
     }else{
@@ -295,154 +295,157 @@ function list_varios( $data, $local = false ){
                 $info_to_return['status'] = "VEHICLE_MODEL_YEARS_LOADED";
                 break;
                 case 'get_products':
-                    //var_dump($data);
-                    $model_by_name = search_model_by_name( $data['modelName'], $data['vehicleId'] );
-                    //var_dump($model_by_name);
-                    $model_id = NULL;
-                    if ( count($model_by_name) > 1 ){
-                        $model_id = select_model_id( $model_by_name, $data['year'] );
-                    }else{
-                        $model_id = $model_by_name[0]['id'];
-                    }
-                    //var_dump($model_id);
-                    if( count($model_id) > 1 ){
-                        foreach($model_id as $value){
-                            $types = get_rines( $value );
+                //var_dump($data);
+                $model_by_name = search_model_by_name( $data['modelName'], $data['vehicleId'] );
+                //var_dump($model_by_name);
+                $model_id = NULL;
+                if ( count($model_by_name) > 1 ){
+                    $model_id = select_model_id( $model_by_name, $data['year'] );
+                }else{
+                    $model_id = $model_by_name[0]['id'];
+                }
+                //var_dump($model_id);
+                if( count($model_id) > 1 ){
+                    foreach($model_id as $value){
+                        $types = get_rines( $value );
 
-                            if( !empty($types) ){
-                                if(count($types) > 1 ){
-                                    foreach ($types as $key => $type) {
-                                        $info_to_return['rin_types'][] = $type;
-                                    }
-                                }else{
-                                    $info_to_return['rin_types'][] = $types[0];
+                        if( !empty($types) ){
+                            if(count($types) > 1 ){
+                                foreach ($types as $key => $type) {
+                                    $info_to_return['rin_types'][] = $type;
                                 }
+                            }else{
+                                $info_to_return['rin_types'][] = $types[0];
                             }
                         }
-                    }else{
-                        if(is_array($model_id)){
-                            $info_to_return['rin_types'] = get_rines( $model_id[0] );
-                        }else{
-                            $info_to_return['rin_types'] = get_rines( $model_id );
-                        }
-
                     }
-                    //var_dump($model_by_name);
-
-                    //var_dump($info_to_return['rin_types']);
-
-                    if( !empty($info_to_return['rin_types']) ) {
-                      $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
-
-                     //var_dump($rin_products_result);
-
-                      switch ( $rin_products_result->status ) {
-                          case 'FOUND':
-                              //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
-                              $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
-                              break;
-                          case 'EMPTY':
-                              $info_to_return['rin_products'] = array();
-                              break;
-                          default:
-                              $info_to_return['rin_products'] = array();
-                              break;
-                      }
+                }else{
+                    if(is_array($model_id)){
+                        $info_to_return['rin_types'] = get_rines( $model_id[0] );
                     }else{
-                      $info_to_return['rin_products'] = array();
-                    }
-                    //echo $model_id;
-                    if( count($model_id) > 1 ){
-                        foreach($model_id as $value){
-                            $types = get_tires( $value );
-                            if( !empty($types) ){
-                                $info_to_return['tires'][] = $types[0];
-                            }
-                        }
-                    }else{
-                        if(is_array($model_id)){
-                            $info_to_return['tires'] = get_tires( $model_id[0] );
-                        }else{
-                            $info_to_return['tires'] = get_tires( $model_id );
-                        }
-
+                        $info_to_return['rin_types'] = get_rines( $model_id );
                     }
 
-                    // var_dump($info_to_return['tires']);
-                    if( !empty($info_to_return['tires']) ) {
-                      $tires_products_result = get_tire_products($info_to_return['tires']);
+                }
+                //var_dump($model_by_name);
+
+                //var_dump($info_to_return['rin_types']);
+
+                if( !empty($info_to_return['rin_types']) ) {
+                    $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
+
+                    //var_dump($rin_products_result);
+
+                    switch ( $rin_products_result->status ) {
+                        case 'FOUND':
+                        //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
+                        $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
+                        $rines_ciegos = get_rines_ciegos();
+                        $info_to_return['rin_products']['rines ciegos']['rines'] = $rines_ciegos;
+                        break;
+                        case 'EMPTY':
+                        $rines_ciegos = get_rines_ciegos();
+                        $info_to_return['rin_products'] = $rines_ciegos;
+                        break;
+                        default:
+                        $info_to_return['rin_products'] = array();
+                        break;
+                    }
+                }else{
+                    $info_to_return['rin_products'] = array();
+                }
+                //echo $model_id;
+                if( count($model_id) > 1 ){
+                    foreach($model_id as $value){
+                        $types = get_tires( $value );
+                        if( !empty($types) ){
+                            $info_to_return['tires'][] = $types[0];
+                        }
+                    }
+                }else{
+                    if(is_array($model_id)){
+                        $info_to_return['tires'] = get_tires( $model_id[0] );
+                    }else{
+                        $info_to_return['tires'] = get_tires( $model_id );
+                    }
+
+                }
+
+                // var_dump($info_to_return['tires']);
+                if( !empty($info_to_return['tires']) ) {
+                    $tires_products_result = get_tire_products($info_to_return['tires']);
 
                     //var_dump($tires_products_result);
 
-                      switch ( $tires_products_result->status ) {
-                          case 'FOUND':
-                              $info_to_return['tire_products'] = _group_tires_by_diameter($tires_products_result->data);
-                              break;
-                          case 'EMPTY':
-                              $info_to_return['tire_products'] = array();
-                              break;
-                          default:
-                              $info_to_return['tire_products'] = array();
-                              break;
-                      }
-                    }else {
-                      $info_to_return['tire_products'] = array();
+                    switch ( $tires_products_result->status ) {
+                        case 'FOUND':
+                        $info_to_return['tire_products'] = _group_tires_by_diameter($tires_products_result->data);
+                        break;
+                        case 'EMPTY':
+                        $info_to_return['tire_products'] = array();
+                        break;
+                        default:
+                        $info_to_return['tire_products'] = array();
+                        break;
                     }
+                }else {
+                    $info_to_return['tire_products'] = array();
+                }
 
-                    if( count($model_id) > 1 ){
-                        foreach( $model_id as $value ){
+                if( count($model_id) > 1 ){
+                    foreach( $model_id as $value ){
 
 
-                            $delantero = get_bomber_delantero_products_by_model_id( $value );
-                            $estribo = get_estribo_products_by_model_id( $value );
-                            $barra_antivolco = get_estribo_products_by_model_id( $value );
-                            $tapetes = get_tapete_maletero_products( $value );
-                            //var_dump($tapetes);
+                        $delantero = get_bomber_delantero_products_by_model_id( $value );
+                        $estribo = get_estribo_products_by_model_id( $value );
+                        $barra_antivolco = get_estribo_products_by_model_id( $value );
+                        $tapetes = get_tapete_maletero_products( $value );
+                        //var_dump($tapetes);
 
-                            if( !empty($tapetes) ){
-                                $info_to_return['tapete_maletero'] = $tapetes;
-                            }
-
-                            if( !empty($delantero) ){
-                                $info_to_return['bomberestribos_products']['delantero'][] = $delantero[0];
-                            }
-                            if( !empty($estribo) ){
-                                $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
-                            }
-                            if( !empty($barra_antivolco) ){
-                                $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
-                            }
+                        if( !empty($tapetes) ){
+                            $info_to_return['tapete_maletero'] = $tapetes;
                         }
-                    }else{
-                        $info_to_return['bomberestribos_products']['delantero'] = get_bomber_delantero_products_by_model_id( $model_id[0] );
-                        $info_to_return['bomberestribos_products']['estribo'] = get_estribo_products_by_model_id( $model_id[0] );
-                        $model_id = (is_array($model_id)) ? $model_id[0] : $model_id;
-                        $info_to_return['tapete_maletero'] = get_tapete_maletero_products( $model_id );
 
+                        if( !empty($delantero) ){
+                            $info_to_return['bomberestribos_products']['delantero'][] = $delantero[0];
+                        }
+                        if( !empty($estribo) ){
+                            $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
+                        }
+                        if( !empty($barra_antivolco) ){
+                            $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
+                        }
                     }
+                }else{
+                    $info_to_return['bomberestribos_products']['delantero'] = get_bomber_delantero_products_by_model_id( $model_id[0] );
+                    $info_to_return['bomberestribos_products']['estribo'] = get_estribo_products_by_model_id( $model_id[0] );
+                    $model_id = (is_array($model_id)) ? $model_id[0] : $model_id;
+                    $info_to_return['tapete_maletero'] = get_tapete_maletero_products( $model_id );
+
+                }
 
 
-                    $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
-                    $info_to_return['head_products'] = get_seat_all_products();
-                    $info_to_return['light_hid_products'] = get_lights_hd_all_products();
-                    //$info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
-                    $info_to_return['universals'] = _index_universals(get_universals());
-                    $info_to_return['status'] = "PRODUCTS_LOADED";
-                    //var_dump(error_get_last());
+                $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
+                $info_to_return['head_products'] = get_seat_all_products();
+                $info_to_return['light_hid_products'] = get_lights_hd_all_products();
+                //$info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
+                $info_to_return['accesorios'] = _index_universals(get_universals());
+                $info_to_return['status'] = "PRODUCTS_LOADED";
+                //var_dump(error_get_last());
                 break;
                 case 'get_compatible_tires_with_rin';
-                    $tire_products = get_compatible_tires_with_rin( $data['diameter'], $data['width'] );
+                $tire_products = get_compatible_tires_with_rin( $data['diameter'], $data['width'] );
 
-                    if ( count($tire_products) > 1 ){
+                if ( count($tire_products) > 1 ){
 
-                      $info_to_return['tires_compatibles'] = ( count($tire_products) > 5 ) ? array_slice($tire_products, 0,5) : $tire_products;
-                      $info_to_return['status'] = 'PRODUCTS_LOADED';
-                    }else{
-                        $info_to_return['tires_compatibles'] = array();
-                        $info_to_return['status'] = 'EMPTY';
-                    }
+                    $info_to_return['tires_compatibles'] = ( count($tire_products) > 5 ) ? array_slice($tire_products, 0,5) : $tire_products;
+                    $info_to_return['status'] = 'PRODUCTS_LOADED';
+                }else{
+                    $info_to_return['tires_compatibles'] = array();
+                    $info_to_return['status'] = 'EMPTY';
+                }
 
-                    break;
+                break;
                 default:
                 # code...
                 break;
@@ -499,12 +502,12 @@ function filter_tires( $tires ){
 }
 
 function _index_universals( $universal_products ){
-  $new_array = array();
-  foreach ($universal_products as $key => $value) {
-    $new_array[$value['name']][] = $value;
-  }
+    $new_array = array();
+    foreach ($universal_products as $key => $value) {
+        $new_array[$value['name']][] = $value;
+    }
 
-  return $new_array;
+    return $new_array;
 }
 
 function _index( $hash_map ) {
@@ -571,7 +574,7 @@ function get_tire_by_tire( $tires_types ){
             }
         }else{
             if ( $key == (count($tires_types) - 1) )
-                $tires_type_sql .= " OR type LIKE ".'\''.$tire['tire'].'\')';
+            $tires_type_sql .= " OR type LIKE ".'\''.$tire['tire'].'\')';
             else {
                 $tires_type_sql .= " OR type LIKE ".'\''.$tire['tire'].'\'';
             }
@@ -658,9 +661,9 @@ function get_tire_products( $type_of_tires ) {
             if ( count($currents_parts) > 3) {
                 $array_chunked = array_chunk($currents_parts, 3);
                 foreach ($array_chunked as $key => $part) {
-                  if( count($part) > 1 ){
-                    $tires_individual[] = $part[0].'-'.$part[1].'-'.$part[2];
-                  }
+                    if( count($part) > 1 ){
+                        $tires_individual[] = $part[0].'-'.$part[1].'-'.$part[2];
+                    }
                 }
             }else{
                 $tires_individual[] = $value;
@@ -702,9 +705,9 @@ function get_tire_products( $type_of_tires ) {
         }
     }
     //var_dump($sql_aux);
-     $sql .= $sql_aux;
+    $sql .= $sql_aux;
 
-     $query_result =  Core\query($sql, array());
+    $query_result =  Core\query($sql, array());
 
     if ( count($query_result) > 0 ) {
         $result->status = "FOUND";
@@ -716,6 +719,12 @@ function get_tire_products( $type_of_tires ) {
     return $result;
 }
 
+function get_rines_ciegos() {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "universal".
+    " WHERE name LIKE 'rines ciegos'";
+    return Core\query($sql, array());
+}
+
 function get_rin_products( $rin_group_types ) {
 
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "rin_product WHERE ";
@@ -723,10 +732,10 @@ function get_rin_products( $rin_group_types ) {
     $sql_aux = '';
 
     foreach ($rin_group_types as $key_main => $group) {
-      if( $group['pcd'] == '4x100' || $group['pcd'] == '4x114,3'){
-        $new_group = array('pcd'=>'8x100-8x114,3', 'rin_diameter'=>$group['rin_diameter'], 'inches'=>$group['inches']);
-        $rin_group_types[] = $new_group;
-      }
+        if( $group['pcd'] == '4x100' || $group['pcd'] == '4x114,3'){
+            $new_group = array('pcd'=>'8x100-8x114,3', 'rin_diameter'=>$group['rin_diameter'], 'inches'=>$group['inches']);
+            $rin_group_types[] = $new_group;
+        }
     }
 
     //var_dump($rin_group_types);
@@ -759,7 +768,7 @@ function get_rin_products( $rin_group_types ) {
 
     $sql .= $sql_aux;
 
-  //  var_dump($sql);
+    //  var_dump($sql);
 
     $query_result =  Core\query($sql, array());
 
@@ -1361,7 +1370,7 @@ function insert_product_type( $data ) {
     $completed = false;
 
     if( isset($insert_id) )
-        $completed = true;
+    $completed = true;
 
     return $completed;
 
@@ -1519,21 +1528,21 @@ function get_bomber_delantero( $model_id ) {
 }
 
 function get_bomber_delantero_products_by_model_id( $model_id ) {
-  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomper_delantero_product"
-  ." WHERE model_id = ".$model_id;
-  return Core\query($sql, array());
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomper_delantero_product"
+    ." WHERE model_id = ".$model_id;
+    return Core\query($sql, array());
 }
 
 function get_estribo_products_by_model_id( $model_id ) {
-  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "estribo_product"
-  ." WHERE model_id = ".$model_id;
-  return Core\query($sql, array());
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "estribo_product"
+    ." WHERE model_id = ".$model_id;
+    return Core\query($sql, array());
 }
 
 function get_barra_antivolco_products_by_model_id( $model_id ) {
-  $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "barra_antivolco_product"
-  ." WHERE model_id = ".$model_id;
-  return Core\query($sql, array());
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "barra_antivolco_product"
+    ." WHERE model_id = ".$model_id;
+    return Core\query($sql, array());
 }
 
 function list_all($data){

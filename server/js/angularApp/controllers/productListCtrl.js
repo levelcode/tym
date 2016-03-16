@@ -103,7 +103,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 					$scope.tankEmpty = false;
 
 					break;
-					case 'universals':
+					case 'accesorios':
 
 						$scope.universalProducts = value;
 

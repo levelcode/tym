@@ -24,16 +24,18 @@
 						<br>
 						<br>
 						<div class="row">
-							<div class="col-xs-6">
+							<div class="col-xs-7">
 								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
 								<br>
 								<br>
 								<span class="c-color4">Tamaño:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.diameter}}" {{selectedProduct.width}}</b><br>
 								<span class="c-color4">PCD:</span> <b class="pcd c-blanco txt-18">{{selectedProduct.pcd}}</b><br>
 								<span class="c-color4">Color:</span> <b class="et c-blanco txt-18" ng-bind="selectedProduct.color"></b><br>
-								<span class="c-color4">Tipo:</span> <b class="cb c-blanco txt-18" ng-bind="selectedProduct.type">73.1</b>
+								<span class="c-color4">Tipo:</span> <b class="cb c-blanco txt-18" ng-bind="selectedProduct.type"></b><br>
+								<span class="c-color4">Material:</span> <b class="cb c-blanco txt-18" ng-bind="selectedProduct.material"></b><br>
+								<span class="c-color4" ng-if="selectedProduct.has_instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.has_instructivo == 'si'" href="admin/recursos/documents/instructivos/{{selectedProductType}}.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
 							</div>
-							<div class="col-xs-6 text-right">
+							<div class="col-xs-5 text-right">
 								<br>
 								<br>
 								<span class="c-color3 text-uppercase">Precio por rin</span><br>
@@ -107,6 +109,49 @@
 					</div>
 				</div>
 				<!-- tire -->
+				<!-- parrillas -->
+				<div ng-if="selectedProductType == 'parrillas'" class="row producto">
+					<div class="col-sm-6">
+						<div class="imagen">
+							<img ng-src="admin/recursos/img/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
+							<!-- <img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive"> -->
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<span class="nombre" ng-bind="selectedProduct.brand"></span><br>
+						<span class="descripcion" ng-bind="selectedProduct.brand+' '+selectedProduct.referencie"></span>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col-xs-7">
+								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
+								<br>
+								<br>
+								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.details}}</b><br>
+								<span class="c-color4">Color:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.color}}</b><br>
+								<span class="c-color4" ng-if="selectedProduct.has_instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.has_instructivo == 'si'" href="admin/recursos/documents/instructivos/porta_equipaje.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
+							</div>
+							<div class="col-xs-5 text-right">
+								<br>
+								<br>
+								<span class="c-color3 text-uppercase">Precio</span><br>
+								<b class="precio txt-24" ng-bind="(selectedProduct.price) | currency : '$' : 0"></b><br>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-xs-12">
+								<br>
+								<br>
+								<br>
+							</div>
+							<div class="col-xs-12 text-right">
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- parrillas -->
 				<!-- bomper -->
 				<div ng-if="selectedProductType == 'bomperestribos'" class="row producto">
 					<div class="col-sm-6">
@@ -150,7 +195,7 @@
 				</div>
 				<!-- bomper -->
 				<!-- univesales -->
-				<div ng-if="selectedProductType == 'plumillas'" class="row producto">
+				<div ng-if="selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'bicicletero' || selectedProductType == 'bicicletero de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
 					<div class="col-sm-6">
 						<div class="imagen">
 							<img ng-src="admin/recursos/img/accesorios/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
@@ -168,7 +213,7 @@
 								<br>
 								<br>
 								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
-								<span class="c-color4" ng-if="selectedProduct.instructivo == 'si'">Instructivo:</span> <a href="admin/recursos/documents/instructivos/bomper/bompers.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
+								<span class="c-color4" ng-if="selectedProduct.instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.instructivo == 'si'" href="admin/recursos/documents/instructivos/{{selectedProductType}}.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
 							</div>
 							<div class="col-xs-5 text-right">
 								<br>
@@ -185,7 +230,7 @@
 								<br>
 							</div>
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -313,7 +358,7 @@
 						<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 			            	<i>Sin productos Compatibles</i>
 			            </div>
-						<ul id="slider-productos-compatibles" style="height: 180px !important;" ng-show="showCompatiblesProducts && tiresCompatible.length > 0">
+						<div style="height: 180px !important;" ng-show="showCompatiblesProducts && tiresCompatible.length > 0">
 							<!-- <li ng-repeat="tire in tiresCompatible">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
 									 <img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
@@ -321,13 +366,12 @@
 									<span>{{tire.brand}} - {{tire.referencie}}</span>
 								</li> -->
 
-							<li ng-repeat="(key, tire) in tiresCompatible | limitTo:5	track by $index">
+							<div ng-repeat="(key, tire) in tiresCompatible | limitTo:5	track by $index" style="float: left; background-color: #FFF;padding: 5px;width: 171px;margin: 0 0 0 5px;">
 								<a ng-click="sendToProductDetail( tire, 'tire' )">
-									<img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt=""><br>
-									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
-									<span>{{tire.brand}} - {{tire.referencie}}</span>
+									<img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt="" style="width: 157px;"><br>
+									<span style="font-size: 10px;">{{tire.brand}} - {{tire.referencie}}</span>
 								</a>
-							</li>
+							</div>
 							<!-- <li>
 								<a href="#">
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
@@ -370,8 +414,8 @@
 									<img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200">
 									<span>195-50-R15</span>
 								</a>
-							</li>
-						</ul> -->
+							</li>-->
+						</div>
 					</div>
 				</div>
 			</div>

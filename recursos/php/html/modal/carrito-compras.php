@@ -79,9 +79,9 @@
 							</div> -->
 						</div>
 
-			            <div class="alert alert-info bg-color4">
+			            <!-- <div class="alert alert-info bg-color4">
 			            	<i>Despachos sin costo a ciudades principales mayor información sobre envíos especiales via e-mail o contacte nuestro asesor en línea.</i>
-			            </div>
+			            </div> -->
 
 			            <div class="row">
 	            			<div class="col-xs-12 text-right">
@@ -114,13 +114,23 @@
                 					</div>
                                     <div class="form-group">
     									<select name="" id="" class="form-control">
-    										<option value="">Seleccione una ciudad</option>
-    										<option value="">Bogotá</option>
-    										<option value="">Cota</option>
-    										<option value="">Chía</option>
-    										<option value="">Zipaquirá</option>
-    										<option value="">Soacha</option>    									
-                                            <option value="">Cajicá</option>
+    										<option disabled value="">Seleccione una ciudad</option>
+                                            <option value="">ARMENIA</option>
+                                            <option value="">BARRANQUILLA</option>
+                                            <option value="">BOGOTA</option>
+                                            <option value="">BUCARAMANGA</option>
+                                            <option value="">CALI</option>
+                                            <option value="">CHIA</option>
+                                            <option value="">CUCUTA</option>
+                                            <option value="">FACATATIVA</option>
+                                            <option value="">FUNZA</option>
+                                            <option value="">FUSAGASUGA</option>
+                                            <option value="">IBAGUE</option>
+                                            <option value="">LA MESA</option>
+                                            <option value="">MADRID</option>
+                                            <option value="">MEDELLIN</option>
+                                            <option value="">PASTO</option>
+                                            <option value="">ZIPAQUIRÁ</option>
     									</select>
     								</div>
                 					<div class="form-group">

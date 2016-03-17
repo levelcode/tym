@@ -341,18 +341,20 @@ function list_varios( $data, $local = false ){
                         //$rin_products_result->data = get_tire_by_diamater($rin_products_result->data);
                         $info_to_return['rin_products'] = _group_rines_by_diameter($rin_products_result->data);
                         $rines_ciegos = get_rines_ciegos();
-                        $info_to_return['rin_products']['rines ciegos']['rines'] = $rines_ciegos;
+                        $info_to_return['rin_products'] = $info_to_return['rin_products'] + _group_rines_by_diameter($rines_ciegos);
                         break;
                         case 'EMPTY':
                         $rines_ciegos = get_rines_ciegos();
-                        $info_to_return['rin_products'] = $rines_ciegos;
+                        $info_to_return['rin_products'] = _group_rines_by_diameter($rines_ciegos);
                         break;
                         default:
-                        $info_to_return['rin_products'] = array();
+                        $rines_ciegos = get_rines_ciegos();
+                        $info_to_return['rin_products'] = _group_rines_by_diameter($rines_ciegos);
                         break;
                     }
                 }else{
-                    $info_to_return['rin_products'] = array();
+                    $rines_ciegos = get_rines_ciegos();
+                    $info_to_return['rin_products'] = _group_rines_by_diameter($rines_ciegos);
                 }
                 //echo $model_id;
                 if( count($model_id) > 1 ){
@@ -395,12 +397,19 @@ function list_varios( $data, $local = false ){
                 if( count($model_id) > 1 ){
                     foreach( $model_id as $value ){
 
-
                         $delantero = get_bomber_delantero_products_by_model_id( $value );
+                        $trasero = get_bomber_trasero_products_by_model_id( $value );
                         $estribo = get_estribo_products_by_model_id( $value );
-                        $barra_antivolco = get_estribo_products_by_model_id( $value );
+                        //$barra_antivolco = get_estribo_products_by_model_id( $value );
                         $tapetes = get_tapete_maletero_products( $value );
-                        //var_dump($tapetes);
+
+                        $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $value );
+
+                        if( !empty($parrilas_techo_size) ) {
+
+                            $sizes = explode('-', $parrilas_techo_size[0]['product_sizes']);
+                            $info_to_return['parrilas_techo'] = get_parrilla_techo_product_by_sizes( $sizes );
+                        }
 
                         if( !empty($tapetes) ){
                             $info_to_return['tapete_maletero'] = $tapetes;
@@ -408,6 +417,9 @@ function list_varios( $data, $local = false ){
 
                         if( !empty($delantero) ){
                             $info_to_return['bomberestribos_products']['delantero'][] = $delantero[0];
+                        }
+                        if( !empty($trasero) ){
+                            $info_to_return['bomberestribos_products']['trasero'][] = $trasero[0];
                         }
                         if( !empty($estribo) ){
                             $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
@@ -417,19 +429,53 @@ function list_varios( $data, $local = false ){
                         }
                     }
                 }else{
-                    $info_to_return['bomberestribos_products']['delantero'] = get_bomber_delantero_products_by_model_id( $model_id[0] );
-                    $info_to_return['bomberestribos_products']['estribo'] = get_estribo_products_by_model_id( $model_id[0] );
                     $model_id = (is_array($model_id)) ? $model_id[0] : $model_id;
-                    $info_to_return['tapete_maletero'] = get_tapete_maletero_products( $model_id );
+                    $delantero = get_bomber_delantero_products_by_model_id( $model_id );
+
+                    $trasero = get_bomber_trasero_products_by_model_id( $model_id);
+
+                    $estribo = get_estribo_products_by_model_id( $model_id );
+
+                    $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $model_id );
+
+                    if( !empty($parrilas_techo_size) ) {
+                        $sizes = explode("-", $parrilas_techo_size[0]['product_sizes']);
+
+                        $info_to_return['parrilas_techo'] = get_parrilla_techo_product_by_sizes( $sizes );
+                    }
+
+                    if( !empty($delantero) ){
+                        $info_to_return['parrilas_techo'][] = $parrillas;
+                    }
+
+                    if( !empty($delantero) ){
+                        $info_to_return['bomberestribos_products']['delantero'][] = $delantero[0];
+                    }
+                    if( !empty($trasero) ){
+                        $info_to_return['bomberestribos_products']['trasero'][] = $trasero[0];
+                    }
+                    if( !empty($estribo) ){
+                        $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
+                    }
+
+
 
                 }
 
+                $model_id = (is_array($model_id)) ? $model_id[0] : $model_id;
+                $info_to_return['tapete_maletero'] = get_tapete_maletero_products( $model_id );
+
+                $tapetes = get_tapete_maletero_products( $model_id );
 
                 $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
+
                 $info_to_return['head_products'] = get_seat_all_products();
                 $info_to_return['light_hid_products'] = get_lights_hd_all_products();
                 //$info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
                 $info_to_return['accesorios'] = _index_universals(get_universals());
+
+                $info_to_return['accesorios']['tapete maletero'] = $tapetes;
+
                 $info_to_return['status'] = "PRODUCTS_LOADED";
                 //var_dump(error_get_last());
                 break;
@@ -626,7 +672,11 @@ function _group_rines_by_diameter( $data ) {
     $new_array = array();
 
     foreach ($data as $key => $product) {
-        $new_array[$product['diameter']]['rines'][] = $product;
+        if( $product['is_blind'] == '1' ){
+            $new_array['ciegos '.$product['diameter']]['rines'][] = $product;
+        }else{
+            $new_array[$product['diameter']]['rines'][] = $product;
+        }
     }
 
     return $new_array;
@@ -720,8 +770,8 @@ function get_tire_products( $type_of_tires ) {
 }
 
 function get_rines_ciegos() {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "universal".
-    " WHERE name LIKE 'rines ciegos'";
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "rin_product".
+    " WHERE is_blind LIKE '1'";
     return Core\query($sql, array());
 }
 
@@ -1528,14 +1578,47 @@ function get_bomber_delantero( $model_id ) {
 }
 
 function get_bomber_delantero_products_by_model_id( $model_id ) {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomper_delantero_product"
-    ." WHERE model_id = ".$model_id;
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomper_delantero bd".
+    " LEFT JOIN ".$GLOBALS["prefix"]."bomper_delantero_product bdp ON bdp.id = bd.product_id ".
+    " WHERE bd.model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_bomber_trasero_products_by_model_id( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "bomper_trasero bt".
+    " LEFT JOIN ".$GLOBALS["prefix"]."bomper_trasero_product btp ON btp.id = bt.product_id ".
+    " WHERE bt.model_id = ".$model_id;
     return Core\query($sql, array());
 }
 
 function get_estribo_products_by_model_id( $model_id ) {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "estribo_product"
-    ." WHERE model_id = ".$model_id;
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."estribo e ".
+    " LEFT JOIN ".$GLOBALS["prefix"]."estribo_product ep ON ep.id = e.product_id ".
+    " WHERE e.model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_parrilla_techo_product_size_by_model_id( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."parrilla_techo pt".
+    " WHERE pt.model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_parrilla_techo_product_by_sizes( $sizes ) {
+
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."parrillas_techo_product ptp";
+
+    foreach ($sizes as $key => $value) {
+        if( $key == 0 ) {
+            $sql_aux .= " WHERE (ptp.size_in LIKE ".'\''.$value.'\') ';
+
+        }else {
+            $sql_aux .= "OR (ptp.size_in LIKE ".'\''.$value.'\')';
+        }
+    }
+
+    $sql .= $sql_aux;
+
     return Core\query($sql, array());
 }
 

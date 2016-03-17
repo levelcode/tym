@@ -17,6 +17,8 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.lightEmpty = true;
 	$scope.tankEmpty = true;
 
+	$scope.parrillasTechoProductsEmpty = false;
+
 	/*
     listeners
 	*/
@@ -63,7 +65,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 					break;
 					case 'bomberestribos_products':
 						$scope.bomperestribosProducts = value;
-						if ( value.delantero.length == 0 || value == undefined  ){
+						if ( value == undefined ){
 							$scope.bomperestribosEmpty = true;
 						}else {
 							$scope.bomperestribosEmpty = false;
@@ -77,6 +79,16 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.portaequipajesEmpty = true;
 					}else {
 						$scope.portaequipajesEmpty = false;
+					}
+					break;
+				case 'parrilas_techo':
+
+					$scope.parrillasTechoProducts = value;
+
+					if ( !(value.length > 0) ){
+						$scope.parrillasTechoProductsEmpty = true;
+					}else {
+						$scope.parrillasTechoProductsEmpty = false;
 					}
 					break;
 

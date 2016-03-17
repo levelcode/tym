@@ -183,18 +183,18 @@
 							<div ng-if="parrillastechoProductsSelected" >
 								<h1 class="titulo text-uppercase">Parrilas de techo</h1>
 								<hr>
-								<div ng-if="parrillastechoEmpty">
+								<div ng-if="parrillasTechoProductsEmpty">
 									<div class="alert alert-info bg-color4">
 										<i>En este momento no contamos con este producto para tu vehiculo, pero encuentra otros productos haciendo click en otras categorias.</i>
 									</div>
 								</div>
-								<div class="row" ng-if="!parrillastechoEmpty">
-									<div ng-repeat="(key, product) in tankProducts" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'tank' )">
+								<div class="row" ng-if="!parrillasTechoProductsEmpty">
+									<div ng-repeat="(key, product) in parrillasTechoProducts" class="col-sm-6 col-md-4">
+										<a class="producto" ng-click="sendToProductDetail( product, 'parrillas' )">
 											<div class="row">
 												<div class="col-xs-6">
-													<!-- <img ng-src="admin/recursos/img/tank-products/{{product.img}}.gif" alt="" class="img-responsive"> -->
-													<img ng-src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive">
+													<img ng-src="admin/recursos/img/parrillas-products/{{product.img}}.gif" alt="" class="img-responsive">
+													<!-- <img ng-src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive"> -->
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
@@ -208,7 +208,7 @@
 							<!-- product of type tank -->
 							<!-- product of type tank -->
 							<div ng-if="accesoriosProductsSelected" ng-repeat="(keyMain, productGroup) in universalProducts" >
-								<h1 class="titulo text-uppercase" id="{{keyMain}}">Accesorios {{keyMain}}</h1>
+								<h1 class="titulo text-uppercase" id="{{keyMain}}">{{keyMain}}</h1>
 								<hr>
 								<div class="row" ng-if="!accesorios4x4Empty">
 									<div ng-repeat="(key, product) in productGroup" class="col-sm-6 col-md-4">

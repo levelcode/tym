@@ -18,6 +18,8 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.tankEmpty = true;
 
 	$scope.parrillasTechoProductsEmpty = false;
+	$scope.barrasTechoProductsEmpty = false;
+
 
 	/*
     listeners
@@ -91,6 +93,16 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 						$scope.parrillasTechoProductsEmpty = false;
 					}
 					break;
+					case 'barras_techo':
+
+						$scope.barrasTechoProducts = value;
+
+						if ( value == undefined ){
+							$scope.barrasTechoProductsEmpty = true;
+						}else {
+							$scope.barrasTechoProductsEmpty = false;
+						}
+						break;
 
 				case 'light_hid_products':
 

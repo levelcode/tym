@@ -404,6 +404,14 @@ function list_varios( $data, $local = false ){
                         $tapetes = get_tapete_maletero_products( $value );
 
                         $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $value );
+                        $barras_techo_type = get_barra_techo_product_size_by_model_id( $value );
+
+                        if( !empty($barras_techo_type) ) {
+                            $barras_techo = get_barra_techo_product_by_size($barras_techo_type[0]['product_type_id']);
+                            $product_type = get_product_barra_type_info($barras_techo_type[0]['product_type_id']);
+                            var_dump($product_type);
+                            $info_to_return['barras_techo'] = $barras_techo;
+                        }
 
                         if( !empty($parrilas_techo_size) ) {
 
@@ -437,6 +445,14 @@ function list_varios( $data, $local = false ){
                     $estribo = get_estribo_products_by_model_id( $model_id );
 
                     $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $model_id );
+
+                    $barras_techo_type = get_barra_techo_product_size_by_model_id( $model_id );
+
+                    if( !empty($barras_techo_type) ) {
+                        $product_type = get_product_barra_type_info($barras_techo_type[0]['product_type_id']);
+                        $barras_techo = get_barra_techo_product_by_size($barras_techo_type[0]['product_type_id']);
+                        $info_to_return['barras_techo'][$product_type[0]['tipo']] = $barras_techo;
+                    }
 
                     if( !empty($parrilas_techo_size) ) {
                         $sizes = explode("-", $parrilas_techo_size[0]['product_sizes']);
@@ -1601,6 +1617,24 @@ function get_estribo_products_by_model_id( $model_id ) {
 function get_parrilla_techo_product_size_by_model_id( $model_id ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]."parrilla_techo pt".
     " WHERE pt.model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_barra_techo_product_size_by_model_id( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."barra_techo bt".
+    " WHERE bt.model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_barra_techo_product_by_size( $type ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."barra_techo_product btp".
+    " WHERE btp.tipo_barra_id = ".$type;
+    return Core\query($sql, array());
+}
+
+function get_product_barra_type_info( $type_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."tipo_barra tb".
+    " WHERE tb.id = ".$type_id;
     return Core\query($sql, array());
 }
 

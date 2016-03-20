@@ -127,6 +127,7 @@
 								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
 								<br>
 								<br>
+								<span class="c-color4">Talla:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.size_in}}</b><br>
 								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.details}}</b><br>
 								<span class="c-color4">Color:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.color}}</b><br>
 								<span class="c-color4" ng-if="selectedProduct.has_instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.has_instructivo == 'si'" href="admin/recursos/documents/instructivos/porta_equipaje.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>

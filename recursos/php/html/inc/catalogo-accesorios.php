@@ -127,20 +127,20 @@
 							</div>
 							<!-- product of type seat -->
 							<!-- product of type light -->
-							<div ng-if="barrasTechoProductsSelected" >
-								<h1 class="titulo text-uppercase">Barras de techo</h1>
+							<div ng-if="barrasTechoProductsSelected" ng-repeat="(key, productGroup) in barrasTechoProducts">
+								<h1 class="titulo text-uppercase">{{key}}</h1>
 								<hr>
-								<div ng-if="barrastechoEmpty">
+								<div ng-if="barrasTechoProductsEmpty">
 									<div class="alert alert-info bg-color4">
 						            	<i>En este momento no contamos con este producto para tu vehiculo, pero encuentra otros productos haciendo click en otras categorias.</i>
 						            </div>
 								</div>
-								<div class="row" ng-if="!barrastechoEmpty">
-									<div ng-repeat="(key, product) in lightProducts" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'light_hid' )">
+								<div class="row" ng-if="!barrasTechoProductsEmpty">
+									<div ng-repeat="(key1, product) in productGroup" class="col-sm-6 col-md-4">
+										<a class="producto" ng-click="sendToProductDetail( product, 'barras' )">
 											<div class="row">
 												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/light-hid-products/{{product.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="admin/recursos/img/barras-products/{{product.img}}.gif" alt="" class="img-responsive">
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>

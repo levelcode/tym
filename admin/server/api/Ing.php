@@ -406,21 +406,20 @@ function list_varios( $data, $local = false ){
                         $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $value );
                         $barras_techo_type = get_barra_techo_product_size_by_model_id( $value );
 
+                        if( !empty($tapetes) ) {
+                            $info_to_return['accesorios']['tapete maletero'] = $tapetes;
+                        }
+
                         if( !empty($barras_techo_type) ) {
                             $barras_techo = get_barra_techo_product_by_size($barras_techo_type[0]['product_type_id']);
                             $product_type = get_product_barra_type_info($barras_techo_type[0]['product_type_id']);
-                            var_dump($product_type);
-                            $info_to_return['barras_techo'] = $barras_techo;
+                            $info_to_return['barras_techo'][$product_type[0]['tipo']] = $barras_techo;
                         }
 
                         if( !empty($parrilas_techo_size) ) {
 
                             $sizes = explode('-', $parrilas_techo_size[0]['product_sizes']);
                             $info_to_return['parrilas_techo'] = get_parrilla_techo_product_by_sizes( $sizes );
-                        }
-
-                        if( !empty($tapetes) ){
-                            $info_to_return['tapete_maletero'] = $tapetes;
                         }
 
                         if( !empty($delantero) ){

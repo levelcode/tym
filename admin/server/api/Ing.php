@@ -304,7 +304,6 @@ function list_varios( $data, $local = false ){
                 }else{
                     $model_id = $model_by_name[0]['id'];
                 }
-                //var_dump($model_id);
                 if( count($model_id) > 1 ){
                     foreach($model_id as $value){
                         $types = get_rines( $value );
@@ -374,7 +373,7 @@ function list_varios( $data, $local = false ){
                 }
                 $info_to_return['accesorios'] = _index_universals(get_universals());
 
-                // var_dump($info_to_return['tires']);
+                //var_dump($info_to_return['tires']);
                 if( !empty($info_to_return['tires']) ) {
                     $tires_products_result = get_tire_products($info_to_return['tires']);
 
@@ -450,13 +449,15 @@ function list_varios( $data, $local = false ){
 
                     $estribo = get_estribo_products_by_model_id( $model_id );
 
+
                     $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $model_id );
 
                     $barras_techo_type = get_barra_techo_product_size_by_model_id( $model_id );
                     $tapetes = get_tapete_maletero_products( $model_id );
                     $barra_antivolco = get_barra_antivolco_products_by_model_id( $model_id );
 
-                    $tanks = get_tanks( $value );
+                    $tanks = get_tanks( $model_id );
+
 
                     if( !empty($tanks) ) {
                         $tank_products = get_all_tank_products();

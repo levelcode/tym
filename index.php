@@ -74,7 +74,7 @@ $cabecero = new html\Cabecero($opciones);
 				</div>
 			</section>
 
-			<section id="te-puede-interesar">
+			<section id="te-puede-interesar" class="te-puede-interesar">
 				<div class="container cont st-seccion">
 					<div class="row">
 						<div class="col-xs-12">

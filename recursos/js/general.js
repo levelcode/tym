@@ -67,7 +67,7 @@ st.catalogoAccesoriosAux = {
 
 	eventos: function(){
 		var t = this;
-		$('.te-puede-interesar .tipo a').on('click', function(e){
+		$('.te-puede-interesar .tipo a, .te-puede-interesar a').on('click', function(e){
 			e.preventDefault();
 			t.analizar($('#cabecero .menu-accesorios ul li a.accesorios'));
 		});

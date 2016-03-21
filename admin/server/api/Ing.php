@@ -395,6 +395,7 @@ function list_varios( $data, $local = false ){
 
                 if( count($model_id) > 1 ){
                     foreach( $model_id as $value ){
+                        $vehicle = get_vehicle_model_by_id($value);
 
                         $delantero = get_bomber_delantero_products_by_model_id( $value );
                         $trasero = get_bomber_trasero_products_by_model_id( $value );
@@ -405,6 +406,12 @@ function list_varios( $data, $local = false ){
 
                         $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $value );
                         $barras_techo_type = get_barra_techo_product_size_by_model_id( $value );
+
+                        if( $vehicle[0]['sin_barras'] == '1' ){
+                            $type_info = get_product_barra_type_info( 7 );
+                            $barras_techo = get_barras_transversales();
+                            $info_to_return['barras_techo'][$type_info[0]['tipo']] = $barras_techo;
+                        }
 
                         if( !empty($tanks) ) {
                             $tank_products = get_all_tank_products();
@@ -449,6 +456,8 @@ function list_varios( $data, $local = false ){
                     }
                 }else{
                     $model_id = (is_array($model_id)) ? $model_id[0] : $model_id;
+
+                    $vehicle = get_vehicle_model_by_id($model_id);
                     $delantero = get_bomber_delantero_products_by_model_id( $model_id );
 
                     $trasero = get_bomber_trasero_products_by_model_id( $model_id);
@@ -464,6 +473,11 @@ function list_varios( $data, $local = false ){
 
                     $tanks = get_tanks( $model_id );
 
+                    if( $vehicle[0]['sin_barras'] == '1' ){
+                        $type_info = get_product_barra_type_info( 7 );
+                        $barras_techo = get_barras_transversales();
+                        $info_to_return['barras_techo'][$type_info[0]['tipo']] = $barras_techo;
+                    }
 
                     if( !empty($tanks) ) {
                         $tank_products = get_all_tank_products();
@@ -1590,6 +1604,11 @@ function get_models_by_brand( $brand_id ) {
     return Core\query($sql, array());
 }
 
+function get_vehicle_model_by_id( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE id = ".$model_id;
+    return Core\query($sql, array());
+}
+
 function get_years_by_model_by_name( $model_name ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle_model WHERE model LIKE ".'\''.$model_name.'\''." AND status = 1";
     return Core\query($sql, array());
@@ -1666,6 +1685,12 @@ function get_barra_techo_product_by_size( $type ) {
 function get_product_barra_type_info( $type_id ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]."tipo_barra tb".
     " WHERE tb.id = ".$type_id;
+    return Core\query($sql, array());
+}
+
+function get_barras_transversales( ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."barra_techo_product btp".
+    " WHERE btp.tipo_barra_id = 7";
     return Core\query($sql, array());
 }
 

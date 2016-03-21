@@ -418,7 +418,7 @@ function list_varios( $data, $local = false ){
                         if( !empty($barras_techo_type) ) {
                             foreach ($barras_techo_type as $key => $type) {
 
-                                if( $type['product_type_id'] == '4' ){
+                                if( $type['product_type_id'] == '4' || $type['product_type_id'] == '5'){
                                     $barras_techo = get_product_barra_type_info_by_model_and_product_type($value);
                                 }else {
                                     $barras_techo = get_barra_techo_product_by_size($type['product_type_id']);
@@ -476,7 +476,7 @@ function list_varios( $data, $local = false ){
 
                     if( !empty($barras_techo_type) ) {
                         foreach ($barras_techo_type as $key => $type) {
-                            if( $type['product_type_id'] == '4' ){
+                            if( $type['product_type_id'] == '4' || $type['product_type_id'] == '5'){
                                 $barras_techo = get_product_barra_type_info_by_model_and_product_type($model_id);
                             }else {
                                 $barras_techo = get_barra_techo_product_by_size($type['product_type_id']);

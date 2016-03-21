@@ -372,6 +372,7 @@ function list_varios( $data, $local = false ){
                     }
 
                 }
+                $info_to_return['accesorios'] = _index_universals(get_universals());
 
                 // var_dump($info_to_return['tires']);
                 if( !empty($info_to_return['tires']) ) {
@@ -400,11 +401,17 @@ function list_varios( $data, $local = false ){
                         $delantero = get_bomber_delantero_products_by_model_id( $value );
                         $trasero = get_bomber_trasero_products_by_model_id( $value );
                         $estribo = get_estribo_products_by_model_id( $value );
-                        //$barra_antivolco = get_estribo_products_by_model_id( $value );
+                        $barra_antivolco = get_barra_antivolco_products_by_model_id( $value );
                         $tapetes = get_tapete_maletero_products( $value );
+                        $tanks = get_tanks( $value );
 
                         $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $value );
                         $barras_techo_type = get_barra_techo_product_size_by_model_id( $value );
+
+                        if( !empty($tanks) ) {
+                            $tank_products = get_all_tank_products();
+                            $info_to_return['accesorios']['tanques'] = $tank_products;
+                        }
 
                         if( !empty($tapetes) ) {
                             $info_to_return['accesorios']['tapete maletero'] = $tapetes;
@@ -432,7 +439,7 @@ function list_varios( $data, $local = false ){
                             $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
                         }
                         if( !empty($barra_antivolco) ){
-                            //$info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
+                            $info_to_return['accesorios']['barra antivolco'] = $barra_antivolco;
                         }
                     }
                 }else{
@@ -446,6 +453,19 @@ function list_varios( $data, $local = false ){
                     $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $model_id );
 
                     $barras_techo_type = get_barra_techo_product_size_by_model_id( $model_id );
+                    $tapetes = get_tapete_maletero_products( $model_id );
+                    $barra_antivolco = get_barra_antivolco_products_by_model_id( $model_id );
+
+                    $tanks = get_tanks( $value );
+
+                    if( !empty($tanks) ) {
+                        $tank_products = get_all_tank_products();
+                        $info_to_return['accesorios']['tanques'] = $tank_products;
+                    }
+
+                    if( !empty($tapetes) ) {
+                        $info_to_return['accesorios']['tapete maletero'] = $tapetes;
+                    }
 
                     if( !empty($barras_techo_type) ) {
                         $product_type = get_product_barra_type_info($barras_techo_type[0]['product_type_id']);
@@ -473,23 +493,18 @@ function list_varios( $data, $local = false ){
                         $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
                     }
 
-
+                    if( !empty($barra_antivolco) ){
+                        $info_to_return['accesorios']['Barra antivolco'] = $barra_antivolco;
+                    }
 
                 }
 
                 $model_id = (is_array($model_id)) ? $model_id[0] : $model_id;
-                $info_to_return['tapete_maletero'] = get_tapete_maletero_products( $model_id );
-
-                $tapetes = get_tapete_maletero_products( $model_id );
 
                 $info_to_return['portaequipajes_products'] = get_portaequipajes_all_products();
 
                 $info_to_return['head_products'] = get_seat_all_products();
                 $info_to_return['light_hid_products'] = get_lights_hd_all_products();
-                //$info_to_return['tank_products'] = get_tanks( $data['vehicleId'], $data['modelId'] );
-                $info_to_return['accesorios'] = _index_universals(get_universals());
-
-                $info_to_return['accesorios']['tapete maletero'] = $tapetes;
 
                 $info_to_return['status'] = "PRODUCTS_LOADED";
                 //var_dump(error_get_last());
@@ -1573,10 +1588,14 @@ function get_rines( $vehicle_id ) {
     return Core\query($sql, array());
 }
 
-function get_tanks( $vehicle_id, $model_id ) {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tanks_has_tym_vehicle_model vht"
-    ." LEFT JOIN ".$GLOBALS["prefix"]. "tank t ON t.id = vht.tym_tanks_id "
-    ." WHERE vht.tym_vehicle_model_id = ".$model_id." AND vht.tym_vehicle_model_tym_vehicle_id = ".$vehicle_id;
+function get_all_tank_products( ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tank_product tp";
+    return Core\query($sql, array());
+}
+
+function get_tanks( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tank t"
+    ." WHERE t.model_id = ".$model_id;
     return Core\query($sql, array());
 }
 
@@ -1656,8 +1675,9 @@ function get_parrilla_techo_product_by_sizes( $sizes ) {
 }
 
 function get_barra_antivolco_products_by_model_id( $model_id ) {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "barra_antivolco_product"
-    ." WHERE model_id = ".$model_id;
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "barra_antivolco bav ".
+    " LEFT JOIN ".$GLOBALS["prefix"]. "barra_antivolco_product bavp ON bavp.id = bav.product_id ".
+    " WHERE bav.model_id = ".$model_id;
     return Core\query($sql, array());
 }
 

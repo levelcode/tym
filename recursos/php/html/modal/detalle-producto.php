@@ -109,6 +109,49 @@
 					</div>
 				</div>
 				<!-- tire -->
+				<!-- barras -->
+				<div ng-if="selectedProductType == 'barras'" class="row producto">
+					<div class="col-sm-6">
+						<div class="imagen">
+							<img ng-src="admin/recursos/img/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
+							<!-- <img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive"> -->
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<span class="nombre" ng-bind="selectedProduct.brand"></span><br>
+						<span class="descripcion" ng-bind="selectedProduct.brand+' '+selectedProduct.referencie"></span>
+						<br>
+						<br>
+						<div class="row">
+							<div class="col-xs-7">
+								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
+								<br>
+								<br>
+								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
+								<span class="c-color4">Material:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.material}}</b><br>
+								<span class="c-color4" ng-if="selectedProduct.has_instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.has_instructivo == 'si'" href="admin/recursos/documents/instructivos/porta_equipaje.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
+							</div>
+							<div class="col-xs-5 text-right">
+								<br>
+								<br>
+								<span class="c-color3 text-uppercase">Precio</span><br>
+								<b class="precio txt-24" ng-bind="(selectedProduct.price) | currency : '$' : 0"></b><br>
+							</div>
+						</div>
+						<br>
+						<div class="row">
+							<div class="col-xs-12">
+								<br>
+								<br>
+								<br>
+							</div>
+							<div class="col-xs-12 text-right">
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- barras -->
 				<!-- parrillas -->
 				<div ng-if="selectedProductType == 'parrillas'" class="row producto">
 					<div class="col-sm-6">
@@ -196,7 +239,7 @@
 				</div>
 				<!-- bomper -->
 				<!-- univesales -->
-				<div ng-if="selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'bicicletero' || selectedProductType == 'bicicletero de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
+				<div ng-if="selectedProductType == 'tanques' || selectedProductType == 'barra antivolco' || selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'bicicletero' || selectedProductType == 'bicicletero de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
 					<div class="col-sm-6">
 						<div class="imagen">
 							<img ng-src="admin/recursos/img/accesorios/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
@@ -213,6 +256,7 @@
 								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock"></b></span>
 								<br>
 								<br>
+								<span class="c-color4" ng-if="selectedProduct.color != undefined">Color:</span> <b ng-if="selectedProduct.color != undefined" class="tamano c-blanco txt-18" >{{selectedProduct.color}}</b><br>
 								<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
 								<span class="c-color4" ng-if="selectedProduct.instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.instructivo == 'si'" href="admin/recursos/documents/instructivos/{{selectedProductType}}.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
 							</div>

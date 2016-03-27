@@ -208,7 +208,7 @@
 							<!-- product of type tank -->
 							<!-- product of type tank -->
 							<div ng-if="accesoriosProductsSelected" ng-repeat="(keyMain, productGroup) in universalProducts" >
-								<h1 class="titulo text-uppercase" id="{{keyMain}}">{{keyMain}}</h1>
+								<h1 class="titulo text-uppercase" id="{{keyMain | spaceless}}">{{keyMain}}</h1>
 								<hr>
 								<div class="row" ng-if="!accesorios4x4Empty">
 									<div ng-repeat="(key, product) in productGroup" class="col-sm-6 col-md-4">
@@ -236,7 +236,7 @@
 						<div class="tipo">
 							<div class="cuadro">
 								<span><a class="accesorios">Tapete maletero</a></span>
-								<a href="#plumillas" data-nombre="accesorios-accesorios" ng-click="openProductType('accesorios')" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<a href="#plumillas" data-producto-nombre="tapete-maletero" ng-click="openProductType('accesorios')" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img1">
 
@@ -245,7 +245,7 @@
 						<div class="tipo">
 							<div class="cuadro">
 								<span>Pijamas para vehiculos</span>
-								<a href="" style="margin-top: 10px;" ng-click="openProductType('accesorios')" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<a href="" data-producto-nombre="pijamas-para-vehiculos" style="margin-top: 10px;"  ng-click="openProductType('accesorios')" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img2">
 							</div>
@@ -253,7 +253,7 @@
 						<div class="tipo">
 							<div class="cuadro">
 								<span>Plumillas universales</span>
-								<a href="#plumillas" style="margin-top: 10px;" ng-click="openProductType('accesorios')" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<a href="#plumillas" data-producto-nombre="plumillas" style="margin-top: 10px;"  ng-click="openProductType('accesorios')" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
 							<div class="foto img3">
 							</div>

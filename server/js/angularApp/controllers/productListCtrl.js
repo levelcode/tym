@@ -67,7 +67,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 					break;
 					case 'bomberestribos_products':
 						$scope.bomperestribosProducts = value;
-						if ( value == undefined ){
+						if ( !(value.length > 0) ){
 							$scope.bomperestribosEmpty = true;
 						}else {
 							$scope.bomperestribosEmpty = false;
@@ -287,7 +287,13 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 }]);
 
-
+tymApp.filter('spaceless',function() {
+    return function(input) {
+        if (input) {
+            return input.replace(/\s+/g, '-');
+        }
+    }
+});
 
 tymApp.filter('capitalize', function() {
 

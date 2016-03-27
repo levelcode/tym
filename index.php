@@ -87,8 +87,8 @@ $cabecero = new html\Cabecero($opciones);
 
 					<div class="row etiquetas">
 						<div class="col-sm-4">
-							<div class="row tanques">
-								<a data-nombre="accesorios-accesorios" class="col-xs-6 cuadro txt">
+							<div class="row tanques" style="background-color: #FFF;">
+								<a data-producto-nombre="tapete-maletero" class="col-xs-6 cuadro txt">
 									<i>Tapete maletero</i>
 								</a>
 								<div class="col-xs-6 cuadro no-padding bg">
@@ -98,7 +98,7 @@ $cabecero = new html\Cabecero($opciones);
 						</div>
 						<div class="col-sm-4">
 							<div class="row racks">
-								<a data-nombre="accesorios-accesorios" class="col-xs-6 cuadro txt">
+								<a data-producto-nombre="pijamas-para-vehiculos" class="col-xs-6 cuadro txt">
 									<i>Pijamas para vehículos</i>
 								</a>
 								<div class="col-xs-6 cuadro no-padding bg">
@@ -107,8 +107,8 @@ $cabecero = new html\Cabecero($opciones);
 							</div>
 						</div>
 						<div class="col-sm-4">
-							<div class="row bicicleteros">
-								<a data-nombre="accesorios-accesorios" class="col-xs-6 cuadro txt">
+							<div class="row bicicleteros" style="background-color: #FFF;">
+								<a data-producto-nombre="plumillas" class="col-xs-6 cuadro txt">
 									<i>Plumillas</i>
 								</a>
 								<div class="col-xs-6 cuadro no-padding bg">

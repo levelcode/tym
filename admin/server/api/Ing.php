@@ -393,6 +393,12 @@ function list_varios( $data, $local = false ){
                     $info_to_return['tire_products'] = array();
                 }
 
+                $info_to_return['bomberestribos_products']['delantero'][] = array();
+                $info_to_return['bomberestribos_products']['trasero'][] = array();
+                $info_to_return['bomberestribos_products']['estribo'][] = array();
+                $info_to_return['parrilas_techo'] = array();
+                $info_to_return['barras_techo'] = array();
+
                 if( count($model_id) > 1 ){
                     foreach( $model_id as $value ){
                         $vehicle = get_vehicle_model_by_id($value);
@@ -854,7 +860,7 @@ function get_rin_products( $rin_group_types ) {
 
         foreach ($inches as $key => $value) {
             if( $key == 0 ) {
-                $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\') OR ';
+                $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\' AND status LIKE \'active\') OR ';
 
                 if ( count($inches) == 1 ) {
                     $sql_aux .= ' ) OR ';
@@ -862,12 +868,12 @@ function get_rin_products( $rin_group_types ) {
             }else {
                 if ( $key == (count($inches) - 1) ){
                     if ( $key_main == (count($rin_group_types) - 1) ){
-                        $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\')';
+                        $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\' AND status LIKE \'active\')';
                     }else{
-                        $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\') OR ';
+                        $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\' AND status LIKE \'active\') OR ';
                     }
                 }else {
-                    $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\') OR ';
+                    $sql_aux .= "(pcd LIKE ".'\''.$group['pcd'].'\' AND diameter LIKE '.$group['rin_diameter'] ." AND width LIKE ".'\''.$value.'\' AND status LIKE \'active\') OR ';
                 }
             }
         }
@@ -875,7 +881,7 @@ function get_rin_products( $rin_group_types ) {
 
     $sql .= $sql_aux;
 
-    //  var_dump($sql);
+    //<var_dump($sql);
 
     $query_result =  Core\query($sql, array());
 

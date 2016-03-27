@@ -13,33 +13,36 @@ st.catalogoAccesoriosAux = {
 		this.eventos();
 	},
 
-	analizar: function(elm){
-		if(elm.hasClass('activo')){
-			elm.removeClass('activo');
-			this.cerrar();
-			return;
-		}
+	analizar: function(elm, fromElement){
+		// if(elm.hasClass('activo')){
+		// 	elm.removeClass('activo');
+		// 	this.cerrar();
+		// 	return;
+		// }
 
 		$('#accesorio-tipo').html('<div class="text-center"> <br> <p class="txt-11">Cargando accesorios...</p> <br> <img src="recursos/img/preloader-productos.gif" alt=""> </div>');
 
 		$('#catalogo-accesorios .catalogo .indicador').css('top', elm.offset().top - 76);
 		elm.addClass('activo');
         console.log(elm.attr('data-nombre'));
-		$.ajax({
-			url: 'recursos/php/html/inc/' + elm.attr('data-nombre') + '.php',
-			type: 'get',
-			dataType: 'html',
-			complete: function(d){
-				console.log(d);
-				setTimeout(function(){
-					$('#accesorio-tipo').html(d.responseText);
-				},1200);
-			}
-		});
-		this.abrir();
+		// $.ajax({
+		// 	url: 'recursos/php/html/inc/' + elm.attr('data-nombre') + '.php',
+		// 	type: 'get',
+		// 	dataType: 'html',
+		// 	complete: function(d){
+		// 		console.log(d);
+		// 		setTimeout(function(){
+		// 			$('#accesorio-tipo').html(d.responseText);
+		// 		},1200);
+		// 	}
+		// });
+		this.abrir(fromElement);
+
+
+
 	},
 
-	abrir: function(){
+	abrir: function( fromElement ){
 		var t = this;
 		$('#catalogo-accesorios').fadeIn(t.dur);
 		$('#catalogo-accesorios').show({
@@ -49,6 +52,17 @@ st.catalogoAccesoriosAux = {
 			easing: t.eas
 		})
 		t.abierto = true;
+
+		setTimeout(function(){
+			var elementDataId = "#" + $(fromElement).attr('data-producto-nombre');
+			if( $(elementDataId).length > 0 ){
+				$('#catalogo-accesorios .contenido').animate({
+		            scrollTop: $(elementDataId).offset().top - 120
+		        }, 2000);
+			}else{
+				return;
+			}
+		}, 1000);
 	},
 
 	cerrar: function(){
@@ -69,8 +83,9 @@ st.catalogoAccesoriosAux = {
 		var t = this;
 		$('.te-puede-interesar .tipo a, .te-puede-interesar a').on('click', function(e){
 			e.preventDefault();
-			t.analizar($('#cabecero .menu-accesorios ul li a.accesorios'));
+			t.analizar($('#cabecero .menu-accesorios ul li a.accesorios'), this);
 		});
 	}
 }
+
 st.catalogoAccesoriosAux.ini();

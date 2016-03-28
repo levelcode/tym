@@ -11,9 +11,9 @@ $opciones = array(
 	'css' => array(
 		'recursos/css/clientes.css'
 	),
-	'js' => array(	
+	'js' => array(
 		'recursos/js/angular.min.js',
-		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js', 
+		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js',
 		'recursos/js/angular-cookies.min.js',
 		'recursos/js/ng-file-upload/ng-file-upload.min.js'
 	)
@@ -65,7 +65,7 @@ $cabecero = new html\Cabecero($opciones);
 					<h3 class="st-titulo" ng-bind="formTittle"></h3>
 					<div class="col-xs-12">
 						<accordion close-others="oneAtATime">
-							<accordion-group  panel-class="panel-info">
+							<accordion-group  panel-class="panel-info" ng-if="typeOfProductType.type == 'Rines'">
 								<accordion-heading>
 						       	 Individual
 						      	</accordion-heading>
@@ -75,7 +75,7 @@ $cabecero = new html\Cabecero($opciones);
 							    		<div class="form-group">
 											<label for="productimage">Imagen</label>
 											<br>
-											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="request.picFile" class="thumb"> 
+											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="request.picFile" class="thumb">
 											<input type="file" name="productimage" ngf-select ng-model="request.picFile" class="form-control" ng-change="viewSize(request.picFile)" ngf-resize="{width: 250, height: 250, centerCrop: true}" accept="image/*" ngf-min-height="250" ngf-max-size="1MB" required>
 											<span class="help-text">Las dimensiones de la imagen deben de ser 250px x 250px</span>
 											<!-- {{AddProductForm.productimage.$ngfValidations}} -->
@@ -89,15 +89,27 @@ $cabecero = new html\Cabecero($opciones);
 									</div>
 									<div class="col-sm-6 col-lg-6">
 										<div class="form-group">
-											<label for="productReference">Referencia</label>
+											<label for="productReference">Marca</label>
 											<input type="text" name="productReference" ng-disabled="loadingData" ng-model="request.productReference" id="productReference" class="form-control" required>
 										</div>
 									</div>
-									<div class="col-sm-6 col-lg-6" ng-if="typeOfProductType.id == 2">
+									<div class="col-sm-6 col-lg-6">
 										<div class="form-group">
-											<label for="productReference">Detalle de la llanta</label>
-											<input type="text" name="productReference" ng-disabled="loadingData" ng-model="request.tireDetail" id="productReference" class="form-control" required>
-											<span class="help-block">(ancho-perfil-rin)</span>
+											<label for="productDiameter">Diametro</label>
+											<input type="text" name="productDiameter" ng-disabled="loadingData" ng-model="request.productDiameter" id="productDiameter" class="form-control" required>
+											<span class="help-text">Ex:12</span>
+										</div>
+									</div>
+									<div class="col-sm-6 col-lg-6">
+										<div class="form-group">
+											<label for="productWidth">Ancho</label>
+											<input type="text" name="productWidth" ng-disabled="loadingData" ng-model="request.productWidth" id="productWidth" class="form-control" required>
+										</div>
+									</div>
+									<div class="col-sm-6 col-lg-6">
+										<div class="form-group">
+											<label for="productPCD">PCD</label>
+											<select name="productPCD" id="productPCD" class="form-control" ng-disabled="loadingData" ng-model="request.productPCD" ng-options="pcdItem.value for (key, pcdItem) in pcdList track by pcdItem.value" required></select>
 										</div>
 									</div>
 									<div class="col-sm-6 col-lg-6">
@@ -119,32 +131,34 @@ $cabecero = new html\Cabecero($opciones);
 										</div>
 									</div>
 									<hr>
-									<h3>Datos del vehiculo:</h3>
-									<div class="col-sm-4 col-lg-4">
-										<div class="form-group">
-											<label for="tipo">Marca</label>
-											<select name="tipo" id="p" class="form-control" ng-disabled="sendingData" ng-model="request.vehicle" ng-options="vehicle.brand for (key, vehicle) in vehicles.data track by vehicle.id" ng-change="searchByBrand( request.vehicle )" required>
-												<option disabled selected value="">-- Selecciona una opción --</option>
-											</select>
+									<div ng-if="typeOfProductType.need_model_association == '1'">
+										<h3>Datos del vehiculo:</h3>
+										<div class="col-sm-4 col-lg-4">
+											<div class="form-group">
+												<label for="tipo">Marca</label>
+												<select name="tipo" id="p" class="form-control" ng-disabled="sendingData" ng-model="request.vehicle" ng-options="vehicle.brand for (key, vehicle) in vehicles.data track by vehicle.id" ng-change="searchByBrand( request.vehicle )" required>
+													<option disabled selected value="">-- Selecciona una opción --</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-sm-4 col-lg-4">
+											<div class="form-group">
+												<label for="tipo1">Modelo</label>
+												<select name="tipo1" id="p1" class="form-control" ng-disabled="sendingRequest" ng-model="request.model" ng-options="model.model for (key, model) in models.data track by model.id" ng-change="loadYear( request.model )" required>
+													<option disabled selected value="">-- Opción --</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-sm-4 col-lg-4">
+											<div class="form-group">
+												<label for="tipo1">Año</label>
+												<select name="tipo1" id="p1" class="form-control" ng-disabled="sendingRequest" ng-model="request.year" ng-options="year for (key, year) in years.data" ng-change="searchProducts( request )" required>
+													<option disabled selected value="">-- Opción --</option>
+												</select>
+											</div>
 										</div>
 									</div>
-									<div class="col-sm-4 col-lg-4">
-										<div class="form-group">
-											<label for="tipo1">Modelo</label>
-											<select name="tipo1" id="p1" class="form-control" ng-disabled="sendingRequest" ng-model="request.model" ng-options="model.model for (key, model) in models.data track by model.id" ng-change="loadYear( request.model )" required>
-												<option disabled selected value="">-- Opción --</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-sm-4 col-lg-4">
-										<div class="form-group">
-											<label for="tipo1">Año</label>
-											<select name="tipo1" id="p1" class="form-control" ng-disabled="sendingRequest" ng-model="request.year" ng-options="year for (key, year) in years.data" ng-change="searchProducts( request )" required>
-												<option disabled selected value="">-- Opción --</option>
-											</select>
-										</div>
-									</div>																																																
-									<hr>				
+									<hr>
 									<div class="col-xs-12 bloque text-right">
 										<button class="btn btn-danger" ng-click="cancelAll()"><i class="fa fa-remove"></i> &nbsp;Cancelar</button>
 										<button id="save_waste_info" class="btn btn-success" ng-click="addProduct( request )" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
@@ -208,7 +222,7 @@ $cabecero = new html\Cabecero($opciones);
 										<th>estado</th>
 									</tr>
 								</thead>
-								<tbody>									
+								<tbody>
 									<tr ng-if="results.length == 0">
 										<td colspan="7">
 											<div class="alert alert-warning">

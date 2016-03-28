@@ -206,7 +206,7 @@
 								</div>
 							</div>
 							<!-- product of type tank -->
-							<!-- product of type tank -->
+							<!-- product of type accesorios -->
 							<div ng-if="accesoriosProductsSelected" ng-repeat="(keyMain, productGroup) in universalProducts" >
 								<h1 class="titulo text-uppercase" id="{{keyMain | spaceless}}">{{keyMain}}</h1>
 								<hr>
@@ -226,7 +226,7 @@
 									</div>
 								</div>
 							</div>
-							<!-- product of type tank -->
+							<!-- product of type accesorios -->
 						</section>
 					</div>
 					<div class="col-sm-2 text-center te-puede-interesar">

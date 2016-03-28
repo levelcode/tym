@@ -18,9 +18,30 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 	//data arrays
 	$scope.producTypes = {};
 	$scope.vehicles = {};
-	$scope.models = {};	
+	$scope.models = {};
 	$scope.years = {};
-
+	$scope.pcdList = [
+		{id : 1, value : "4x100"},
+		{id : 2, value : "4x100-4x114,3"},
+		{id : 3, value : "4x108"},
+		{id : 4, value : "4x114,3"},
+		{id : 5, value : "5x100"},
+		{id : 6, value : "5x100-5x114,3"},
+		{id : 7, value : "5x100-5x120"},
+		{id : 8, value : "5x105-5x110"},
+		{id : 9, value : "5x105-5x127"},
+		{id : 10, value : "5x105-5x128"},
+		{id : 12, value : "5x112"},
+		{id : 13, value : "5x114,3"},
+		{id : 14, value : "5x114,3-5x120"},
+		{id : 15, value : "5x114,3-5x127"},
+		{id : 16, value : "5x120"},
+		{id : 17, value : "5x120,65"},
+		{id : 18, value : "5x127"},
+		{id : 19, value : "5x139,7"},
+		{id : 20, value : "5x150"},
+		{id : 21, value : "6x139,7"}
+	];
 	//request status
 
 	angular.element(document).ready(function(){
@@ -37,7 +58,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
         $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
@@ -84,7 +105,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
         $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
@@ -100,14 +121,14 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
                 console.info(data + ":(");
             });
 	}
-	
+
 	$scope.loadYear = function( modelSelected ) {
 		console.log(modelSelected);
 
 		var years = [];
 
 		if( modelSelected.year.search( "-" ) != -1 ) {
-			var yearsArray = modelSelected.year.split("-");	
+			var yearsArray = modelSelected.year.split("-");
 
 			var yearsDifference = yearsArray[1] - yearsArray[0];
 
@@ -120,7 +141,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 		}else {
 			years[0] = modelSelected.year;
 		}
-		
+
 		console.log(years);
 		updatetDataToShow( years, "years" );
 
@@ -136,7 +157,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
 		$http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
@@ -187,7 +208,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
         	switch( type ) {
         		case 'product_types':
         			$scope.producTypes.data = na;
-        			$scope.producTypes.empty = false;		
+        			$scope.producTypes.empty = false;
         			break;
     			case 'vehicles':
 					$scope.vehicles.data = na;
@@ -208,25 +229,25 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 				case 'tires':
 					$scope.tires.data = na;
     				$scope.tires.empty = false;
-				break;	
+				break;
         	}
-        	
+
         }else {
         	switch( type ) {
 	    		case 'product_types':
-	    			$scope.producTypes.empty = true;	
+	    			$scope.producTypes.empty = true;
 	    			break;
     			case 'models':
-	    			$scope.models.empty = true;	
+	    			$scope.models.empty = true;
 	    			break;
     			case 'years':
-	    			$scope.years.empty = true;	
+	    			$scope.years.empty = true;
 	    			break;
     			case 'rin_types':
-	    			$scope.rinTypes.empty = true;	
+	    			$scope.rinTypes.empty = true;
 	    			break;
     			case 'tires':
-	    			$scope.tires.empty = true;	
+	    			$scope.tires.empty = true;
 	    			break;
 			}
         }
@@ -250,7 +271,7 @@ adminTymApp.controller('adminProductsCtrl', ['$scope', '$http', '$timeout', '$co
 
        	return na;
 
-	}	
+	}
 
 
 }]);

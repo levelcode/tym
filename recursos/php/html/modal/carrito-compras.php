@@ -29,7 +29,8 @@
 			                    <tbody>
 			                        <tr ng-repeat="(key, product) in shoppingcart.products">
 			                            <td>
-			                                <img style="width:50px;height:auto;" ng-src="admin/recursos/img/{{product.type}}-products/{{product.img}}.gif" alt="imagen de producto">
+                                            <img ng-if="product.type == 'barra de exploradoras' || product.type == 'tanques' || product.type == 'barra antivolco' || product.type == 'plumillas' || product.type == 'barra luces led' || product.type == 'bicicletero' || product.type == 'bicicletero de techo' || product.type == 'filtro de aire' || product.type == 'pijamas para vehiculos' || product.type == 'pitos' || product.type == 'reflejo logo' || product.type == 'rines ciegos' || product.type == 'tapete maletero'" style="width:50px;height:auto;" ng-src="admin/recursos/img/accesorios/{{product.type}}-products/{{selectedProduct.img}}.gif" alt="imagen de producto">
+			                                <img ng-if="product.type != 'barra de exploradoras' && product.type != 'tanques' && product.type != 'barra antivolco' && product.type != 'plumillas' && product.type != 'barra luces led' && product.type != 'bicicletero' && product.type != 'bicicletero de techo' && product.type != 'filtro de aire' && product.type != 'pijamas para vehiculos' && product.type != 'pitos' && product.type != 'reflejo logo' && product.type != 'rines ciegos' && product.type != 'tapete maletero'" style="width:50px;height:auto;" ng-src="admin/recursos/img/{{product.type}}-products/{{product.img}}.gif" alt="imagen de producto">
 			                            </td>
 			                            <td ng-bind="product.name"></td>
 			                            <td class="text-right" ng-bind="product.price | currency : '$' : 0"></td>

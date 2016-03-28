@@ -238,8 +238,8 @@
 					</div>
 				</div>
 				<!-- bomper -->
-				<!-- univesales -->
-				<div ng-if="selectedProductType == 'tanques' || selectedProductType == 'barra antivolco' || selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'bicicletero' || selectedProductType == 'bicicletero de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
+				<!-- accesorios -->
+				<div ng-if="selectedProductType == 'exploradoras' || selectedProductType == 'barra de exploradoras' || selectedProductType == 'tanques' || selectedProductType == 'barra antivolco' || selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'bicicletero' || selectedProductType == 'bicicletero de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
 					<div class="col-sm-6">
 						<div class="imagen">
 							<img ng-src="admin/recursos/img/accesorios/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">

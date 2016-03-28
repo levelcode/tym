@@ -409,9 +409,22 @@ function list_varios( $data, $local = false ){
                         $barra_antivolco = get_barra_antivolco_products_by_model_id( $value );
                         $tapetes = get_tapete_maletero_products( $value );
                         $tanks = get_tanks( $value );
+                        $barra_de_exploradoras = get_barra_de_exploradoras($value);
 
                         $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $value );
                         $barras_techo_type = get_barra_techo_product_size_by_model_id( $value );
+
+                        $exploradoras = get_exploradora_product_by_model_id($value);
+
+                        $cromados = _index_cromados(get_cromados_products($value));
+
+                        if( !empty($cromados) ) {
+                            $info_to_return['cromados'] = $cromados;
+                        }
+
+                        if( !empty($exploradoras) ) {
+                            $info_to_return['accesorios']['exploradoras'] = $exploradoras;
+                        }
 
                         if( $vehicle[0]['sin_barras'] == '1' ){
                             $type_info = get_product_barra_type_info( 7 );
@@ -422,6 +435,11 @@ function list_varios( $data, $local = false ){
                         if( !empty($tanks) ) {
                             $tank_products = get_all_tank_products();
                             $info_to_return['accesorios']['tanques'] = $tank_products;
+                        }
+
+                        if( !empty($barra_de_exploradoras) ) {
+                            $barra_de_exploradoras_products = get_all_barras_exploradoras_products();
+                            $info_to_return['accesorios']['barra de exploradoras'] = $barra_de_exploradoras_products;
                         }
 
                         if( !empty($tapetes) ) {
@@ -478,6 +496,19 @@ function list_varios( $data, $local = false ){
                     $barra_antivolco = get_barra_antivolco_products_by_model_id( $model_id );
 
                     $tanks = get_tanks( $model_id );
+                    $barra_de_exploradoras = get_barra_de_exploradoras($model_id);
+
+                    $exploradoras = get_exploradora_product_by_model_id($model_id);
+
+                    $cromados = _index_cromados(get_cromados_products($value));
+
+                    if( !empty($cromados) ) {
+                        $info_to_return['cromados'] = $cromados;
+                    }
+
+                    if( !empty($exploradoras) ) {
+                        $info_to_return['accesorios']['exploradoras'] = $exploradoras;
+                    }
 
                     if( $vehicle[0]['sin_barras'] == '1' ){
                         $type_info = get_product_barra_type_info( 7 );
@@ -488,6 +519,11 @@ function list_varios( $data, $local = false ){
                     if( !empty($tanks) ) {
                         $tank_products = get_all_tank_products();
                         $info_to_return['accesorios']['tanques'] = $tank_products;
+                    }
+
+                    if( !empty($barra_de_exploradoras) ) {
+                        $barra_de_exploradoras_products = get_all_barras_exploradoras_products();
+                        $info_to_return['accesorios']['barra de exploradoras'] = $barra_de_exploradoras_products;
                     }
 
                     if( !empty($tapetes) ) {
@@ -613,6 +649,15 @@ function filter_tires( $tires ){
 function _index_universals( $universal_products ){
     $new_array = array();
     foreach ($universal_products as $key => $value) {
+        $new_array[$value['name']][] = $value;
+    }
+
+    return $new_array;
+}
+
+function _index_cromados( $cromado_products ){
+    $new_array = array();
+    foreach ($cromado_products as $key => $value) {
         $new_array[$value['name']][] = $value;
     }
 
@@ -1631,9 +1676,20 @@ function get_all_tank_products( ) {
     return Core\query($sql, array());
 }
 
+function get_all_barras_exploradoras_products( ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "barras_exploradoras_product bep";
+    return Core\query($sql, array());
+}
+
 function get_tanks( $model_id ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "tank t"
     ." WHERE t.model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_barra_de_exploradoras( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "barras_exploradoras be"
+    ." WHERE be.model_id = ".$model_id;
     return Core\query($sql, array());
 }
 
@@ -1667,6 +1723,20 @@ function get_estribo_products_by_model_id( $model_id ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]."estribo e ".
     " LEFT JOIN ".$GLOBALS["prefix"]."estribo_product ep ON ep.id = e.product_id ".
     " WHERE e.model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_exploradora_product_by_model_id( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."exploradora e ".
+    " LEFT JOIN ".$GLOBALS["prefix"]."exploradora_product ep ON ep.id = e.product_id ".
+    " WHERE e.model_id = ".$model_id;
+    return Core\query($sql, array());
+}
+
+function get_cromados_products( $model_id ) {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]."cromado c ".
+    " LEFT JOIN ".$GLOBALS["prefix"]."cromado_product cp ON cp.id = c.product_id ".
+    " WHERE c.model_id = ".$model_id;
     return Core\query($sql, array());
 }
 

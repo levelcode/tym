@@ -500,7 +500,7 @@ function list_varios( $data, $local = false ){
 
                     $exploradoras = get_exploradora_product_by_model_id($model_id);
 
-                    $cromados = _index_cromados(get_cromados_products($value));
+                    $cromados = _index_cromados(get_cromados_products($model_id));
 
                     if( !empty($cromados) ) {
                         $info_to_return['cromados'] = $cromados;

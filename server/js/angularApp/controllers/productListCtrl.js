@@ -129,13 +129,8 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 					break;
 					case 'accesorios':
 
-						if( data['cromados'] != undefined && $scope.universalProducts == undefined){
-							$scope.universalProducts = [];
-							$scope.universalProducts['universales'] = value;
-							$scope.universalProducts['cromados'] = data['cromados'];
-						}else{
-							$scope.universalProducts = value;
-						}
+						$scope.universalProducts = value;
+
 						if ( !(value.length > 0) ){
 
 							$scope.universalEmpty = true;

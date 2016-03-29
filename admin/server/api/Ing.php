@@ -419,7 +419,7 @@ function list_varios( $data, $local = false ){
                         $cromados = _index_cromados(get_cromados_products($value));
 
                         if( !empty($cromados) ) {
-                            $info_to_return['cromados'] = $cromados;
+                            _add_to_accesorios( $info_to_return , $cromados );
                         }
 
                         if( !empty($exploradoras) ) {
@@ -502,8 +502,10 @@ function list_varios( $data, $local = false ){
 
                     $cromados = _index_cromados(get_cromados_products($model_id));
 
+
+
                     if( !empty($cromados) ) {
-                        $info_to_return['cromados'] = $cromados;
+                        _add_to_accesorios( $info_to_return , $cromados );
                     }
 
                     if( !empty($exploradoras) ) {
@@ -634,6 +636,13 @@ function list_varios( $data, $local = false ){
     }
 
     return $result;
+}
+
+function _add_to_accesorios( &$accesorios_data, $data_to_add ){
+
+    foreach ($data_to_add as $key => $value) {
+        $accesorios_data['accesorios'][$key] = $value;
+    }
 }
 
 function filter_tires( $tires ){

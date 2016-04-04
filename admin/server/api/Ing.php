@@ -393,11 +393,13 @@ function list_varios( $data, $local = false ){
                     $info_to_return['tire_products'] = array();
                 }
 
-                $info_to_return['bomberestribos_products']['delantero'][] = array();
-                $info_to_return['bomberestribos_products']['trasero'][] = array();
-                $info_to_return['bomberestribos_products']['estribo'][] = array();
+                $info_to_return['bomberestribos_products']['delantero'] = array();
+                $info_to_return['bomberestribos_products']['trasero'] = array();
+                $info_to_return['bomberestribos_products']['estribo'] = array();
                 $info_to_return['parrilas_techo'] = array();
                 $info_to_return['barras_techo'] = array();
+
+                // var_dump($model_id);
 
                 if( count($model_id) > 1 ){
                     foreach( $model_id as $value ){
@@ -466,13 +468,13 @@ function list_varios( $data, $local = false ){
                         }
 
                         if( !empty($delantero) ){
-                            $info_to_return['bomberestribos_products']['delantero'][] = $delantero[0];
+                            $info_to_return['bomberestribos_products']['delantero'][] = $delantero;
                         }
                         if( !empty($trasero) ){
-                            $info_to_return['bomberestribos_products']['trasero'][] = $trasero[0];
+                            $info_to_return['bomberestribos_products']['trasero'][] = $trasero;
                         }
                         if( !empty($estribo) ){
-                            $info_to_return['bomberestribos_products']['estribo'][] = $estribo[0];
+                            $info_to_return['bomberestribos_products']['estribo'][] = $estribo;
                         }
                         if( !empty($barra_antivolco) ){
                             $info_to_return['accesorios']['barra antivolco'] = $barra_antivolco;

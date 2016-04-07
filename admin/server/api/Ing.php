@@ -371,6 +371,7 @@ function list_varios( $data, $local = false ){
                     }
 
                 }
+                //var_dump($info_to_return['tires']);
                 $info_to_return['accesorios'] = _index_universals(get_universals());
 
                 if( !empty($info_to_return['tires']) ) {
@@ -399,7 +400,7 @@ function list_varios( $data, $local = false ){
                 $info_to_return['parrilas_techo'] = array();
                 $info_to_return['barras_techo'] = array();
 
-                // var_dump($model_id);
+                //var_dump($model_id);
 
                 if( count($model_id) > 1 ){
                     foreach( $model_id as $value ){
@@ -468,13 +469,13 @@ function list_varios( $data, $local = false ){
                         }
 
                         if( !empty($delantero) ){
-                            $info_to_return['bomberestribos_products']['delantero'][] = $delantero;
+                            $info_to_return['bomberestribos_products']['delantero'] = $delantero;
                         }
                         if( !empty($trasero) ){
-                            $info_to_return['bomberestribos_products']['trasero'][] = $trasero;
+                            $info_to_return['bomberestribos_products']['trasero'] = $trasero;
                         }
                         if( !empty($estribo) ){
-                            $info_to_return['bomberestribos_products']['estribo'][] = $estribo;
+                            $info_to_return['bomberestribos_products']['estribo'] = $estribo;
                         }
                         if( !empty($barra_antivolco) ){
                             $info_to_return['accesorios']['barra antivolco'] = $barra_antivolco;

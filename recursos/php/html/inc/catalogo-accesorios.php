@@ -75,16 +75,16 @@
 									</div>
 								</div>
 							</div>
-							<!-- product of type tire -->
+							<!-- product of type Bomper y estribos -->
 							<div ng-if="bomperestribosProductsSelected" ng-repeat="(key, productGroup) in bomperestribosProducts">
 								<h1 class="titulo text-uppercase"><span ng-if="key == 'delantero' || key == 'trasero'">Bomper</span> {{key}}</h1>
 								<hr>
-								<div ng-if="bomperestribosEmpty">
+								<div ng-if="productGroup.length == undefined || productGroup.length == 0">
 									<div class="alert alert-info bg-color4">
 						            	<i>En este momento no contamos con este producto para tu vehiculo, pero encuentra otros productos haciendo click en otras categorias.</i>
 						            </div>
 								</div>
-								<div class="row" ng-if="!bomperestribosEmpty">
+								<div class="row" ng-if="productGroup.length > 0">
 									<div ng-repeat="(key1, product) in productGroup" class="col-sm-6 col-md-4">
 										<a class="producto" ng-click="sendToProductDetail( product, 'bomperestribos' )">
 											<div class="row">
@@ -100,6 +100,7 @@
 									</div>
 								</div>
 							</div>
+							<!-- product of type Bomper y estribos -->
 							<!-- product of type seat -->
 							<div ng-if="portaequipajesProductsSelected" >
 								<h1 class="titulo text-uppercase">Portaequipajes</h1>
@@ -130,12 +131,12 @@
 							<div ng-if="barrasTechoProductsSelected" ng-repeat="(key, productGroup) in barrasTechoProducts">
 								<h1 class="titulo text-uppercase">{{key}}</h1>
 								<hr>
-								<div ng-if="barrasTechoProductsEmpty">
+								<div ng-if="productGroup.length == undefined || productGroup.length == 0">
 									<div class="alert alert-info bg-color4">
 						            	<i>En este momento no contamos con este producto para tu vehiculo, pero encuentra otros productos haciendo click en otras categorias.</i>
 						            </div>
 								</div>
-								<div class="row" ng-if="!barrasTechoProductsEmpty">
+								<div class="row" ng-if="productGroup.length > 0">
 									<div ng-repeat="(key1, product) in productGroup" class="col-sm-6 col-md-4">
 										<a class="producto" ng-click="sendToProductDetail( product, 'barras' )">
 											<div class="row">

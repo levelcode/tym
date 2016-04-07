@@ -27,6 +27,16 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 	$rootScope.$on('vehicle_chaged', function( event, data ){
 		$scope.selectedCar = data;
+		$scope.rinProducts = null;
+		$scope.tireProducts = null;
+		$scope.bomperestribosProducts = null;
+		$scope.portaequipajesProducts = null;
+		$scope.parrillasTechoProducts = null;
+		$scope.barrasTechoProducts = null;
+		$scope.lightProducts = null;
+		$scope.tankProducts = null;
+		$scope.universalProducts = null;
+
 	});
 
 
@@ -67,7 +77,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 					break;
 					case 'bomberestribos_products':
 						$scope.bomperestribosProducts = value;
-						if ( !(value.length > 0) ){
+						if ( !($scope.getNumOfObjects(value) > 0) ){
 							$scope.bomperestribosEmpty = true;
 						}else {
 							$scope.bomperestribosEmpty = false;
@@ -281,6 +291,16 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 		$rootScope.$broadcast( ConstantsService.VIEW_DETAIL, data);
 
+	}
+
+	$scope.getNumOfObjects = function( objectOfObjects ) {
+		var length = 0;
+    	for( var key in objectOfObjects ) {
+        	if( objectOfObjects.hasOwnProperty(key) ) {
+            	++length;
+        	}
+    	}
+    	return length;
 	}
 
 

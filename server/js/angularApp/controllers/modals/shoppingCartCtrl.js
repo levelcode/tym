@@ -1,6 +1,31 @@
 tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'ConstantsService', '$http', function( $scope, $cookies, $rootScope, ConstantsService, $http ){
 
     'use strict';
+    var dropdownMaxValue = 12;
+
+    angular.element(document).ready(function(){
+        $scope.quantityDropdownItems = createRange(dropdownMaxValue);
+	});
+
+    $scope.tableData =
+    [
+        {city:"ARMENIA", priceWeigth : 13000, priceSecure : 5000 , time : "24 horas"},
+        {city:"BARRANQUILLA", priceWeigth : 18000 , priceSecure : 5000 , time : "48 horas"},
+        {city:"BUCARAMANGA", priceWeigth : 13000, priceSecure : 5000 , time : "24 horas"},
+        {city:"CALI", priceWeigth : 13000, priceSecure : 5000 , time : "36 horas"},
+        {city:"CHIA", priceWeigth : 9000, priceSecure : 5000 , time : "24 horas"},
+        {city:"CUCUTA", priceWeigth : 20500, priceSecure : 5000 , time : "48 horas"},
+        {city:"FACATATIVA", priceWeigth : 10500, priceSecure : 5000 , time : "24 horas"},
+        {city:"FUNZA", priceWeigth : 9000, priceSecure : 5000 , time : "24 horas"},
+        {city:"FUSAGASUGA", priceWeigth : 11500, priceSecure : 5000 , time : "24 horas"},
+        {city:"LA MESA", priceWeigth : 17000, priceSecure : 5000 , time : "24 horas"},
+        {city:"MADRID", priceWeigth : 10500, priceSecure : 5000 , time : "24 horas"},
+        {city:"MEDELLIN", priceWeigth : 13000, priceSecure : 5000 , time : ""},
+        {city:"PASTO", priceWeigth : 25000, priceSecure : 5000 , time : "48 horas"},
+        {city:"ZIPAQUIRA", priceWeigth : 12000, priceSecure : 5000 , time : "24 horas"}
+    ]
+
+
 
     var todayFull = new Date();
     var todayDay = todayFull.getDate();
@@ -61,7 +86,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
                 auxSubtotal += $scope.shoppingcart.pointsDoDiscount;
             }
 
-            var shippingCharge = getShippingCharge(auxSubtotal, $scope.shoppingcart.instalationUsed, $scope.shoppingcart.deliveryUsed, $scope.shoppingcart.addDeliveryAndinstalation );
+            var shippingCharge = getShippingCharge(auxSubtotal, $scope.shoppingcart.instalationUsed, $scope.shoppingcart.deliveryUsed, $scope.shoppingcart.addDeliveryAndinstalation, $scope.shoppingcart.products );
 
             console.info($scope.shoppingcart);
 
@@ -141,14 +166,21 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
         return shoppingCartSubtotals;
     }
 
+    function createRange( maxValue ) {
+        var items = [];
+        for( var i = 0; i < maxValue ; i++ ){
+            items[i] = i+1;
+        }
+        return items;
+    }
+
 
     $scope.removeProduct = function ( key ) {
-
 
         $scope.shoppingcart.products.splice( key, 1 );
         $scope.shoppingcart.numOfproductsTotal--;
         $scope.shoppingcart.numOfproductsSubtotal--;
-  
+
         if ( $scope.shoppingcart.numOfproductsTotal == 0 ){
             $scope.shoppingcart.haveProducts = false;
 
@@ -158,26 +190,41 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
     };
 
-    function getShippingCharge ( subtotal, instalationUsed, deliveryUsed, useInstalation  ) {
+    function getShippingCharge ( subtotal, instalationUsed, deliveryUsed, useInstalation, products ) {
 
-        var shippingCharge;
+        var shippingCharge = 0;
 
-        if ( useInstalation || instalationUsed ) {
-            shippingCharge = subtotal * ConstantsService.DELIVERY_INSTALATION_PERCENT;
-            if ( instalationUsed ) {
-                $scope.shoppingcart.instalationUsed = false;
-            }else {
-                $scope.shoppingcart.instalationUsed = true;
+        angular.forEach(products, function(item, key){
+            switch (item.size) {
+                case 'p':
+                    shippingCharge += 15000;
+                break;
+                case 'm':
+                    shippingCharge += 20000;
+                break;
+                case 'g':
+                    shippingCharge += 40000;
+                break;
+
             }
-        }else {
-            shippingCharge = subtotal * ConstantsService.DELIVERY_PERCENT;
+        });
 
-            if ( deliveryUsed ) {
-                $scope.shoppingcart.deliveryUsed = false;
-            }else {
-                $scope.shoppingcart.deliveryUsed = true;
-            }
-        }
+        // if ( useInstalation || instalationUsed ) {
+        //     shippingCharge = subtotal * ConstantsService.DELIVERY_INSTALATION_PERCENT;
+        //     if ( instalationUsed ) {
+        //         $scope.shoppingcart.instalationUsed = false;
+        //     }else {
+        //         $scope.shoppingcart.instalationUsed = true;
+        //     }
+        // }else {
+        //     shippingCharge = subtotal * ConstantsService.DELIVERY_PERCENT;
+        //
+        //     if ( deliveryUsed ) {
+        //         $scope.shoppingcart.deliveryUsed = false;
+        //     }else {
+        //         $scope.shoppingcart.deliveryUsed = true;
+        //     }
+        // }
 
         return shippingCharge;
     }
@@ -192,7 +239,17 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
        if( (arguments != undefined) ) {
            switch ( arguments[1] ) {
                case 'addDelivery':
-                   addDelivery();
+                    if(arguments[2] == "BOGOTA" || $scope.shoppingcart.addDelivery){
+                        if(arguments[2] == "BOGOTA")
+                            $scope.localDelivery = true;
+                        else {
+                            $scope.localDelivery = false;
+                        }
+
+                        addDelivery();
+                    }else{
+                        $scope.localDelivery = false;
+                    }
                    break;
                case 'addDeliveryAndinstalation':
                    addDeliveryAndinstalation();

@@ -55,7 +55,7 @@
 								<br>
 							</div>
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.details, 1, selectedProduct.price_client, 0, 0, selectedProduct.img, 'rin')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.details, 1, selectedProduct.price_client, 0, 0, selectedProduct.img, 'rin', selectedProduct.size )" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -103,7 +103,7 @@
 								<br>
 							</div>
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -146,7 +146,7 @@
 								<br>
 							</div>
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -190,7 +190,7 @@
 								<br>
 							</div>
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -232,14 +232,14 @@
 								<br>
 							</div>
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- bomper -->
 				<!-- accesorios -->
-				<div ng-if="selectedProductType == 'exploradoras' || selectedProductType == 'barra de exploradoras' || selectedProductType == 'tanques' || selectedProductType == 'barra antivolco' || selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'bicicletero' || selectedProductType == 'bicicletero de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
+				<div ng-if="selectedProductType == 'kit completo' || selectedProductType == 'marco placa' || selectedProductType == 'rejilla frontal' || selectedProductType == 'cubierta stops traseros' || selectedProductType == 'exploradoras' || selectedProductType == 'barra de exploradoras' || selectedProductType == 'tanques' || selectedProductType == 'barra antivolco' || selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'bicicletero' || selectedProductType == 'bicicletero de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
 					<div class="col-sm-6">
 						<div class="imagen">
 							<img ng-src="admin/recursos/img/accesorios/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
@@ -275,7 +275,7 @@
 								<br>
 							</div>
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -310,7 +310,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'portaequipajes')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'portaequipajes', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -345,7 +345,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'light_hid')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'light_hid', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>
@@ -382,7 +382,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-12 text-right">
-								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'accesorios/universales')" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+								<button ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'accesorios/universales', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 							</div>
 						</div>
 					</div>

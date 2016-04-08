@@ -88,6 +88,10 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
             var shippingCharge = getShippingCharge(auxSubtotal, $scope.shoppingcart.instalationUsed, $scope.shoppingcart.deliveryUsed, $scope.shoppingcart.addDeliveryAndinstalation, $scope.shoppingcart.products );
 
+            if( shippingCharge > 80000 ){
+                shippingCharge = 80000; 
+            }
+
             console.info($scope.shoppingcart);
 
             $scope.shoppingcart.shippingCharge = shippingCharge;

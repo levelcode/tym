@@ -28,7 +28,7 @@
 			                    </thead>
 			                    <tbody>
 			                        <tr ng-repeat="(key, product) in shoppingcart.products">
-			                            <td>{{product.size}}
+			                            <td>
                                             <img ng-if="product.type == 'kit completo' || product.type == 'marco placa' || product.type == 'rejilla frontal' || product.type == 'cubierta stops traseros' || product.type == 'exploradoras' || product.type == 'barra de exploradoras' || product.type == 'tanques' || product.type == 'barra antivolco' || product.type == 'plumillas' || product.type == 'barra luces led' || product.type == 'bicicletero' || product.type == 'bicicletero de techo' || product.type == 'filtro de aire' || product.type == 'pijamas para vehiculos' || product.type == 'pitos' || product.type == 'reflejo logo' || product.type == 'rines ciegos' || product.type == 'tapete maletero'"  style="width:50px;height:auto;" ng-src="admin/recursos/img/accesorios/{{product.type}}-products/{{product.img}}.gif" alt="imagen de producto">
 			                                <img ng-if="product.type != 'kit completo' && product.type != 'marco placa' && product.type != 'rejilla frontal' && product.type != 'cubierta stops traseros' && product.type != 'exploradoras' && product.type != 'barra de exploradoras' && product.type != 'tanques' && product.type != 'barra antivolco' && product.type != 'plumillas' && product.type != 'barra luces led' && product.type != 'bicicletero' && product.type != 'bicicletero de techo' && product.type != 'filtro de aire' && product.type != 'pijamas para vehiculos' && product.type != 'pitos' && product.type != 'reflejo logo' && product.type != 'rines ciegos' && product.type != 'tapete maletero'" style="width:50px;height:auto;" ng-src="admin/recursos/img/{{product.type}}-products/{{product.img}}.gif" alt="imagen de producto">
 			                            </td>
@@ -79,17 +79,19 @@
 			            	<i>Los envíos a ciudades diferente de bogota son realizadas por la empresa ENCOEXPRESS con la siguiente tarifa contra-entrega</i>
                             <table class="table table-striped">
                                 <thead>
-                                    <th>Ciudad</th>
-                                    <th>1 a 30 Kgs</th>
-                                    <th>Seguro mínimo 1 %</th>
-                                    <th>Frecuencia</th>
+                                    <tr>
+                                        <th>Ciudad</th>
+                                        <th>1 a 30 Kgs</th>
+                                        <th>Seguro mínimo 1 %</th>
+                                        <th>Frecuencia</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     <tr ng-repeat="(key, value) in tableData">
-                                        <td ng-bind="value.city"><td>
-                                        <td ng-bind="value.priceWeigth"><td>
-                                        <td ng-bind="value.priceSecure"><td>
-                                        <td ng-bind="value.time"><td>
+                                        <td class="text-left" ng-bind="value.city"></td>
+                                        <td ng-bind="value.priceWeigth"></td>
+                                        <td ng-bind="value.priceSecure"></td>
+                                        <td ng-bind="value.time"></td>
                                     </tr>
                                 </tbody>
                             </table>

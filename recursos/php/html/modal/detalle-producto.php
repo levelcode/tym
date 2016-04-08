@@ -91,7 +91,7 @@
 								<br>
 								<span class="c-color3 text-uppercase">Precio por llanta</span><br>
 								<b class="precio txt-24" ng-bind="(selectedProduct.price) | currency : '$' : 0"></b><br>
-								<span class="c-color3 text-uppercase">Set x 4:</span><br>
+								<!-- <span class="c-color3 text-uppercase">Set x 4:</span><br> -->
 								<b class="precio txt-20" ng-bind="(selectedProduct.price_group) | currency : '$' : 0"></b>
 							</div>
 						</div>

@@ -242,6 +242,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.rinProductsSelected = false;
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
+				$scope.accesoriosProductsSelected = false;
 				break;
 			case 'accesorios':
 				$scope.accesoriosProductsSelected = true;

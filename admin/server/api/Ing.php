@@ -398,9 +398,7 @@ function list_varios( $data, $local = false ){
                 $info_to_return['bomberestribos_products']['trasero'] = array();
                 $info_to_return['bomberestribos_products']['estribo'] = array();
                 $info_to_return['parrilas_techo'] = array();
-                $info_to_return['barras_techo'] = array();
-
-                //var_dump($model_id);
+                $info_to_return['barras_techo'] = array();                
 
                 if( count($model_id) > 1 ){
                     foreach( $model_id as $value ){
@@ -618,7 +616,6 @@ function list_varios( $data, $local = false ){
             case 'admin-main-page':
             switch ( $data['action'] ) {
                 case 'get_base_data':
-                $info_to_return['menu_items'] = get_all_product_types();
                 $info_to_return['universals'] = get_universals();
                 $info_to_return['status'] = 'LOADED';
                 break;
@@ -1274,7 +1271,7 @@ function get_lights_hd_all_products() {
 }
 
 function get_all_product_types() {
-    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type ORDER BY type ASC";
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "product_type WHERE status = 'active' ORDER BY type ASC";
     return Core\query($sql, array());
 }
 

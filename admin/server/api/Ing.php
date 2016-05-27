@@ -328,7 +328,7 @@ function list_varios( $data, $local = false ){
                 }
                 //var_dump($model_by_name);
 
-                //var_dump($info_to_return['rin_types']);
+                // var_dump($info_to_return['rin_types']);
 
                 if( !empty($info_to_return['rin_types']) ) {
                     $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
@@ -398,7 +398,7 @@ function list_varios( $data, $local = false ){
                 $info_to_return['bomberestribos_products']['trasero'] = array();
                 $info_to_return['bomberestribos_products']['estribo'] = array();
                 $info_to_return['parrilas_techo'] = array();
-                $info_to_return['barras_techo'] = array();                
+                $info_to_return['barras_techo'] = array();
 
                 if( count($model_id) > 1 ){
                     foreach( $model_id as $value ){

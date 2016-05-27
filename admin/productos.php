@@ -65,7 +65,7 @@ $cabecero = new html\Cabecero($opciones);
 					<h3 class="st-titulo" ng-bind="formTittle"></h3>
 					<div class="col-xs-12">
 						<accordion close-others="oneAtATime">
-							<accordion-group  panel-class="panel-info" ng-if="typeOfProductType.type == 'Rines'">
+							<!-- <accordion-group  panel-class="panel-info" ng-if="typeOfProductType.type == 'Rines'">
 								<accordion-heading>
 						       	 Individual
 						      	</accordion-heading>
@@ -78,7 +78,6 @@ $cabecero = new html\Cabecero($opciones);
 											<img ng-show="AddProductForm.file.$valid" ngf-thumbnail="request.picFile" class="thumb">
 											<input type="file" name="productimage" ngf-select ng-model="request.picFile" class="form-control" ng-change="viewSize(request.picFile)" ngf-resize="{width: 250, height: 250, centerCrop: true}" accept="image/*" ngf-min-height="250" ngf-max-size="1MB" required>
 											<span class="help-text">Las dimensiones de la imagen deben de ser 250px x 250px</span>
-											<!-- {{AddProductForm.productimage.$ngfValidations}} -->
 										</div>
 							    	</div>
 									<div class="col-sm-6 col-lg-6">
@@ -164,7 +163,7 @@ $cabecero = new html\Cabecero($opciones);
 										<button id="save_waste_info" class="btn btn-success" ng-click="addProduct( request )" ng-disabled="sendingRequest || AddProductForm.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
 									</div>
 								</form>
-							</accordion-group>
+							</accordion-group> -->
 							<accordion-group  panel-class="panel-info">
 								<accordion-heading>
 						       	 Multiples productos
@@ -219,7 +218,7 @@ $cabecero = new html\Cabecero($opciones);
 										<th>Descripción</th>
 										<th>Stock</th>
 										<th>Precio</th>
-										<th>estado</th>
+										<th>Acciones</th>
 									</tr>
 								</thead>
 								<tbody>

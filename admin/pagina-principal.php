@@ -132,7 +132,6 @@ $cabecero = new html\Cabecero($opciones);
 											<img ng-show="mayInterestYouFormSecondarySection.file.$valid" ngf-thumbnail="secondarySection.picFile" class="thumb">
 											<input type="file" name="secondarySectionImage" ngf-select ng-model="secondarySection.picFile" class="form-control" ng-change="" ngf-resize="{width: 190, height: 190, centerCrop: true}" accept="image/*" ngf-min-height="190" ngf-max-size="1MB" required>
 											<span class="help-text">Las dimensiones de la imagen deben de ser 190px x 190px, y un peso de máximo 1MB</span>
-											<!-- {{mayInterestYouFormSecondarySection.secondarySectionImage.$ngfValidations}} -->
 										</div>
 							    	</div>
 									<div class="col-sm-12 col-lg-12">
@@ -162,8 +161,7 @@ $cabecero = new html\Cabecero($opciones);
 											<br>
 											<img ng-show="mayInterestYouFormThirdSection.file.$valid" ngf-thumbnail="thirdSection.picFile" class="thumb">
 											<input type="file" name="thirdSectionImage" ngf-select ng-model="thirdSection.picFile" class="form-control" ng-change="" ngf-resize="{width: 190, height: 190, centerCrop: true}" accept="image/*" ngf-min-height="190" ngf-max-size="1MB" required>
-											<span class="help-text">Las dimensiones de la imagen deben de ser 190px x 190px, y un peso de máximo 1MB</span>
-											<!-- {{mayInterestYouFormThirdSection.thirdSectionImage.$ngfValidations}} -->
+											<span class="help-text">Las dimensiones de la imagen deben de ser 190px x 190px, y un peso de máximo 1MB</span>											
 										</div>
 							    	</div>
 									<div class="col-sm-12 col-lg-12">

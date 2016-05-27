@@ -13,12 +13,12 @@
 			<a href="#" class="actualizar">
 				<i class="fa fa-refresh"></i>
 			</a>
-			<a href="#" class="notificaciones">
+			<!-- <a href="#" class="notificaciones">
 				<i class="fa fa-bell"></i>
 				<div id="notification-alert" ng-if="!notifications.empty">
 					<span ng-bind="notifications.data.length"></span>
 				</div>
-			</a>
+			</a> -->
 			<input type="hidden" id="id_cliente" name="id_cliente" ng-model="userId" ng-init="userId= <?= $_SESSION['id']?>">
 		</header>
 		<div id="cargando-datos">

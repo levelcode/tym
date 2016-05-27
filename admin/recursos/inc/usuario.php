@@ -4,7 +4,7 @@
 <div id="usuario">
 	<a href="#" class="cerrar">
 		<i class="fa fa-remove"></i>
-	</a>	
+	</a>
 	<div class="contenido">
 		<div class="foto">
 			<img class="img-thumbnail" src="<?= ( isset($_SESSION['uri_img']) ) ? $_SESSION['uri_img'].$_SESSION['image_format_id'] : 'recursos/img/no-user-thumbnail.png'; ?>" alt="">
@@ -14,9 +14,9 @@
 		</div>
 		<hr>
 		<ul class="opciones text-left">
-			<li>
+			<!-- <li>
 				<a href="./perfil"><i class="fa fa-user"></i> &nbsp;Perfil</a>
-			</li>
+			</li> -->
 			<li>
 				<a href="www.progracol.com"><i class="fa fa-question"></i> &nbsp;Ayuda</a>
 			</li>

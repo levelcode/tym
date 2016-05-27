@@ -1,7 +1,7 @@
 <div id="menu">
 	<div class="contenido">
 		<div class="bloque text-center">
-			<a class="btn bg-uno" href="./admin"><i class="fa fa-home"></i> &nbsp;Inicio</a>
+			<a class="btn bg-uno" href="./inicio"><i class="fa fa-home"></i> &nbsp;Inicio</a>
 		</div>
 		<ul class="main">
 			<li data-nombre="cliente">
@@ -34,8 +34,8 @@
 					</ul>
 				</div>
 			</li>
-	
-			<li data-nombre="logistica">
+
+			<!-- <li data-nombre="logistica">
 						<a href="#">
 							<div class="bg">
 								<svg class="icono" width="60" viewBox="0 0 32 32">
@@ -71,9 +71,9 @@
 								</li> -->
 							</ul>
 						</div>
-			</li>
-			
-		
+			</li> -->
+
+
 			<li data-nombre="recolector">
 							<a href="#">
 								<div class="bg">
@@ -105,7 +105,7 @@
 								</ul>
 							</div>
 			</li>
-			
+
 			<!-- <li data-nombre="bascula">
 							<a href="#">
 								<div class="bg">

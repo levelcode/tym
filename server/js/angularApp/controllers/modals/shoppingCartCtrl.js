@@ -7,6 +7,11 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
         $scope.quantityDropdownItems = createRange(dropdownMaxValue);
 	});
 
+    $scope.merchantId = "566006";
+    $scope.accountId = "568589";
+    $scope.apiKey = "KcpKUJXxW46g7K9qrIum5vBNTf";
+    $scope.referenceCode = Math.floor((Math.random() * 100) + 1);
+
     $scope.tableData =
     [
         {city:"ARMENIA", priceWeigth : 13000, priceSecure : 5000 , time : "24 horas"},
@@ -89,7 +94,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
             var shippingCharge = getShippingCharge(auxSubtotal, $scope.shoppingcart.instalationUsed, $scope.shoppingcart.deliveryUsed, $scope.shoppingcart.addDeliveryAndinstalation, $scope.shoppingcart.products );
 
             if( shippingCharge > 80000 ){
-                shippingCharge = 80000; 
+                shippingCharge = 80000;
             }
 
             console.info($scope.shoppingcart);

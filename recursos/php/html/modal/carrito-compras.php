@@ -105,7 +105,7 @@
 	            		<hr class="visible-xs">
             		</div>
             		<div class="col-sm-5" ng-if="shoppingcart.addDelivery || shoppingcart.addDeliveryAndinstalation || delivery">
-                        <form name="paymentForm" method="post" action="https://stg.gateway.payulatam.com/ppp-web-gateway/">
+                        <form name="paymentForm" method="post" action="https://sandbox.gateway.payulatam.com/ppp-web-gateway">
                 			<div class="registro-compra bg-color3 text-left">
                 				<h3 class="text-uppercase">Datos de envío</h3>
 
@@ -151,15 +151,15 @@
                 						<label for="">Teléfono fijo:</label>
                 						<input type="text" name="" id="" class="form-control" required>
                 					</div>
-                                    <input name="merchantId"    type="hidden"  value="500238"   >
-                                    <input name="accountId"     type="hidden"  value="500538" >
+                                    <input name="merchantId"    type="hidden"  value="{{merchantId}}"   >
+                                    <input name="accountId"     type="hidden"  value="{{accountId}}" >
                                     <input name="description"   type="hidden"  value="Test PAYU"  >
-                                    <input name="referenceCode" type="hidden"  value="454545454" >
-                                    <input name="amount"        type="hidden"  value="3"   >
+                                    <input name="referenceCode" type="hidden"  value="{{referenceCode}}" >
+                                    <input name="amount"        type="hidden"  value="{{shoppingcart.total}}"   >
                                     <input name="tax"           type="hidden"  value="0"  >
                                     <input name="taxReturnBase" type="hidden"  value="0" >
-                                    <input name="currency"      type="hidden"  value="USD" >
-                                    <input name="signature"     type="hidden"  value="be2f083cb3391c84fdf5fd6176801278"  >
+                                    <input name="currency"      type="hidden"  value="COP" >
+                                    <input name="signature"     type="hidden"  value="ba9ffa71559580175585e45ce70b6c37"  >
                                     <input name="test"          type="hidden"  value="1" >
                                     <input name="buyerEmail"    type="hidden"  value="test@test.com" >
                                     <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >

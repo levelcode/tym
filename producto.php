@@ -8,7 +8,7 @@ $opciones = array(
 	'autor' => 'prograCOL - http://progracol.com',
 	'titulo' => 'Descripción del producto - '._TITULO,
 	'css' => array(
-		'recursos/css/empresas-aliadas.css'
+		'recursos/css/descripcion-producto.css'
 	),
 	'js' => array(
 		'recursos/js/angular.min.js',

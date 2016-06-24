@@ -38,7 +38,7 @@
 
 <?php require_once(_MODAL.'contacto.php'); ?>
 <?php require_once(_INC.'catalogo-accesorios.php'); ?>
-<?php require_once(_MODAL.'detalle-producto.php'); ?>
+<?php //require_once(_MODAL.'detalle-producto.php'); ?>
 <?php require_once(_MODAL.'mi-perfil.php'); ?>
 <?php require_once(_MODAL.'ingreso-registro.php'); ?>
 <?php require_once(_MODAL.'carrito-compras.php'); ?>

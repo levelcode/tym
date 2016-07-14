@@ -1,4 +1,4 @@
-tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsService', function( $scope, $http, $rootScope, ConstantsService ){
+tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsService', '$cookies', '$window', function( $scope, $http, $rootScope, ConstantsService, $cookies, $window ){
 
 	'use strict';
 
@@ -8,18 +8,39 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 	$scope.rinTypes = {};
 	$scope.rinProducts = {};
 	$scope.tires = {};
-
 	$scope.loadingData = false;
 	$scope.showOptions = false;
-
 	$scope.defaultValueBrand = "Seleccione Marca";
 	$scope.defaultValueModel = "Selecciona Modelo";
 	$scope.defaultValueYear = "Selecciona Año";
 
+	/*
+	*cookies config
+	*/
+	var todayFull = new Date();
+	var todayDay = todayFull.getDate();
+	todayFull.setDate( todayDay + 1 );
+	var cookiesOptions = { path: "/" , expires: todayFull };
+	/*
+	*cookies config
+	*/
+
 	angular.element(document).ready(function(){
 		$scope.loadingData = true;
 		loadHomeData();
+		$scope.currentSearch = $cookies.getObject('TYMSEARCH');
+		if( $scope.currentSearch != undefined ){
+			console.log($scope.currentSearch);
+			$scope.searchProducts($scope.currentSearch);
+			st.menuAccesorios.abrir();
+		}
 	});
+
+	$scope.resetSearch = function(){
+		st.menuAccesorios.cerrar();
+		$cookies.remove('TYMSEARCH');
+		$window.location.reload();
+	}
 
 	$scope.read = function () {
 		var post = 	{};
@@ -27,9 +48,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 
         $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-
                 console.log(data);
-
             }).
             error(function (data, status, headers, config) {
                 console.info(data + ":(");
@@ -126,7 +145,6 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 	$scope.searchProducts = function( request ) {
 
 		$rootScope.$broadcast('vehicle_chaged', request);
-
 		$scope.request = request;
 		//$scope.showOptions = true;
 		console.log(request);
@@ -147,6 +165,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 
                 switch( data['status'] ) {
                 	case 'PRODUCTS_LOADED':
+						saveSearchData('TYMSEARCH', request, cookiesOptions);
 		            	var jsonObject = angular.fromJson(data);
 						$rootScope.$broadcast( ConstantsService.PRODUCTS_CHARGED, jsonObject);
 			            updatetDataToShow( jsonObject['rin_types'], "rin_types" );
@@ -158,6 +177,10 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
             error(function (data, status, headers, config) {
                 console.info(data + ":(");
             });
+	}
+
+	function saveSearchData( name, searchData, options ) {
+		$cookies.putObject( name, searchData, options );
 	}
 
 	function loadHomeData() {

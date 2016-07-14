@@ -1,4 +1,4 @@
-// variable para el sitio 
+// variable para el sitio
 st.index = {};
 
 st.index.buscador = {
@@ -7,6 +7,7 @@ st.index.buscador = {
 	// metds
 	ini: function(){
 		this.eventos();
+		st.menuAccesorios.cerrar();
 	},
 
 	analizar: function(){

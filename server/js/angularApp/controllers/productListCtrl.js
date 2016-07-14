@@ -290,7 +290,8 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 		var data = { info: product, type: productType };
 
-		$rootScope.$broadcast( ConstantsService.VIEW_DETAIL, data);
+		console.log($location.path());
+		//window.location = "";
 
 	}
 

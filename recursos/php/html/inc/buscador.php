@@ -29,6 +29,19 @@
 						</div>
 					</div>
 				</div>
+				<div class="row" ng-if="currentSearch != undefined">
+					<div class="col-lg-12">
+						<h4>Actual búsqueda:</h4>
+					</div>
+				</div>
+				<div class="row" ng-if="currentSearch != undefined">
+					<div class="col-lg-7">
+						<strong>Marca:&nbsp;</strong>{{currentSearch.vehicle.brand}},&nbsp;<strong>Modelo:&nbsp;</strong>{{currentSearch.model.model}},&nbsp;<strong>Año:&nbsp;</strong>{{currentSearch.year}}
+					</div>
+					<div class="col-lg-5">
+						<button type="button" class="btn form-control bg-color3" ng-click="resetSearch()" >Limpiar búsqueda</button>
+					</div>
+				</div>
 			</div>
 			<div class="col-sm-2">
 				<button type="button" id="boton-busqueda-vehiculo" class="btn form-control bg-color3" ng-click="searchProducts( selectedCar )"><span><i class="fa fa-search"></i>&nbsp;&nbsp;Buscar</span></button>

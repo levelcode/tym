@@ -39,7 +39,7 @@
 								<br>
 								<br>
 								<span class="c-color3 text-uppercase">Precio por rin</span><br>
-								<b class="precio txt-24" ng-bind="(selectedProduct.price_client) | currency : '$' : 0"></b><br>
+								<b class="precio txt-16" ng-bind="(selectedProduct.price_client) | currency : '$' : 0"></b><br>
 								<!-- <span class="c-color3 text-uppercase">Set x 4:</span><br>
 								<b class="precio txt-20" ng-bind="(selectedProduct.price_client) | currency : '$' : 0"></b> -->
 							</div>
@@ -76,7 +76,7 @@
 						<br>
 						<div class="row">
 							<div class="col-xs-8">
-								<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
+								<span class="unidades text-center c-color3">Juegos x 4 <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
 								<br>
 								<br>
 								<span class="c-color4">Llanta:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.type}}</b><br>

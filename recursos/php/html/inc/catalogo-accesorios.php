@@ -155,7 +155,7 @@
 							<!-- product of type light -->
 							<!-- product of type tank -->
 							<div ng-if="bicicleterosProductsSelected" >
-								<h1 class="titulo text-uppercase">Bicicleteros</h1>
+								<h1 class="titulo text-uppercase">Porta-bicicletas</h1>
 								<hr>
 								<div ng-if="bicicleterosEmpty">
 									<div class="alert alert-info bg-color4">

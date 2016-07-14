@@ -1,5 +1,5 @@
 
-tymApp.factory('UtilService', function() {
+tymApp.factory('UtilService', [ '$http', function($http) {
 
     'use strict';
 
@@ -21,4 +21,4 @@ tymApp.factory('UtilService', function() {
     };
 
     return utilService;
-});
+}]);

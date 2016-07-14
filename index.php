@@ -79,7 +79,7 @@ $cabecero = new html\Cabecero($opciones);
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="st-titulo text-left">
-								<h1>Te puede interesar</h1>
+								<h1>Lo más vendido</h1>
 								<i class="st-separador"></i>
 							</div>
 						</div>
@@ -125,7 +125,7 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/index.js',
+		'src/js/index.js',
 		'server/js/angularApp/angularApp.js',
 		'server/js/angularApp/controllers/searchCtrl.js',
 		'server/js/angularApp/controllers/productListHeaderCtrl.js',

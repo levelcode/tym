@@ -1,4 +1,4 @@
-tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService', function( $scope, $rootScope, ConstantsService ){
+tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService', '$location', function( $scope, $rootScope, ConstantsService, $location ){
 
 	$scope.productsLoaded = false;
 	$scope.rinProductsSelected = false;
@@ -289,9 +289,16 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.sendToProductDetail = function( product, productType ) {
 
 		var data = { info: product, type: productType };
+		console.log(product);
+		var url = undefined;
+		switch (productType) {
+			case 'rin':
+				url = "/producto/" + productType;
+				break;
+			default:
 
-		console.log($location.path());
-		//window.location = "";
+		}
+		//window.location = "/product/" + product;
 
 	}
 

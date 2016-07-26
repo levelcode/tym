@@ -9,16 +9,15 @@ use App\Ing as Ing;
 //call_user_func($_POST['a']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
     if( empty($_POST) ) {
         $_POST = json_decode(file_get_contents('php://input'), true);
     }
-
     if (isset($_POST["a"])) {
-
-
         $a = $_POST["a"];
-        switch ($a) {/**/
+        switch ($a) {
+            case 'unique_element':
+                echo Ing\get_product($_POST);
+            break;
             case 'login':
             echo Ing\login( $_POST["id"], $_POST["pass"], $_POST["userType"] );
             break;
@@ -34,7 +33,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             case 'create_item':
             echo Ing\create_item($_POST);
             break;
-
             /* LISTAS */
             case 'list_all':
             echo Ing\list_all($_POST);

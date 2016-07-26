@@ -1900,4 +1900,23 @@ function crearUsuario(){
 
 }
 
+function get_product($post){
+    $result = new \stdClass();
+    switch($post['data']['category']){
+        case 'rin':
+            $query_result = get_rin_by_id($post['data']['id'], $post['data']['ref']);
+            var_dump($query_result);
+        break;
+    }
+    return json_encode($result);
+}
+
+function get_rin_by_id( $rin_id, $reference = null ) {
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."rin_product WHERE id = ". $rin_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
 ?>

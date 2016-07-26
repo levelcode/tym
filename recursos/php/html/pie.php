@@ -1,4 +1,4 @@
-<?php 
+<?php
 namespace html;
 
 class Pie extends a_Html
@@ -18,21 +18,21 @@ class Pie extends a_Html
 		<!-- boton de subir -->
 		<div id="boton-arriba">
 			<i class="fa fa-angle-double-up"></i>
-		</div>  
+		</div>
 
-		<!-- modal 
+		<!-- modal
 		<div id="modal">
             <div class="contenido">
 				<span class="cerrar"><i class="fa fa-remove"></i></span>
             	<div class="datos"><div class="wrap">Hola mundo</div></div>
             </div>
         </div>-->
-        
-		<script src="recursos/js/jquery-ui.js"></script>
-		<script src="recursos/js/bootstrap.js"></script>
+
+		<script src="/recursos/js/jquery-ui.js"></script>
+		<script src="/recursos/js/bootstrap.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js"></script>
-		<script src="recursos/js/lightslider.js"></script>
-		<script src="recursos/js/general.js"></script>
+		<script src="/recursos/js/lightslider.js"></script>
+		<script src="/recursos/js/general.js"></script>
 		<?php $this->obtener('js') ?>
 	</body>
 </html>

@@ -284,22 +284,21 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 
 	}
 
-
+	$scope.reload = function() {
+		$window.location.reload();
+	}
 
 	$scope.sendToProductDetail = function( product, productType ) {
-
 		var data = { info: product, type: productType };
 		console.log(product);
 		var url = undefined;
 		switch (productType) {
 			case 'rin':
-				url = "/producto/" + productType;
+				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie + '/' + product.id;
 				break;
 			default:
-
 		}
-		//window.location = "/product/" + product;
-
+		window.location = url;
 	}
 
 	$scope.getNumOfObjects = function( objectOfObjects ) {

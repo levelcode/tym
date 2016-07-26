@@ -26,7 +26,7 @@ class Cabecero extends a_Html
 	private function construirCss(array $opcion){
 		$html = '';
 		foreach($opcion as $script){
-			$html .= "\t\t<link rel=\"stylesheet\" href=\"{$script}\" />\n";
+			$html .= "\t\t<link rel=\"stylesheet\" href=\"\\{$script}\" />\n";
 		}
 		$this->css = $html;
 	}
@@ -40,19 +40,19 @@ class Cabecero extends a_Html
 		<meta charset="UTF-8" >
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php $this->obtener('titulo') ?></title>
-		<link rel="icon" href="recursos/img/favicon.png">
-		<link rel="stylesheet" href="recursos/css/bootstrap.css">
-		<link rel="stylesheet" href="recursos/css/font-awesome.css">
-		<link rel="stylesheet" href="recursos/css/lightslider.css">
-		<!-- <link rel="stylesheet" href="recursos/css/eventi-iconos.css">  -->
+		<link rel="icon" href="/recursos/img/favicon.png">
+		<link rel="stylesheet" href="/recursos/css/bootstrap.css">
+		<link rel="stylesheet" href="/recursos/css/font-awesome.css">
+		<link rel="stylesheet" href="/recursos/css/lightslider.css">
+		<!-- <link rel="stylesheet" href="/recursos/css/eventi-iconos.css">  -->
 		<?php if( $this->is_admin ): ?>
-			<link rel="stylesheet" href="recursos/css/admin/general.css">
+			<link rel="stylesheet" href="/recursos/css/admin/general.css">
 		<?php endif;?>
-		<link rel="stylesheet" href="recursos/css/general.css">
-		<link rel="stylesheet" href="recursos/css/extra.css">
-		<link rel="stylesheet" href="recursos/css/tooltip.css">
+		<link rel="stylesheet" href="/recursos/css/general.css">
+		<link rel="stylesheet" href="/recursos/css/extra.css">
+		<link rel="stylesheet" href="/recursos/css/tooltip.css">
 		<?php $this->obtener('css') ?>
-		<script src="recursos/js/jquery.js"></script>
+		<script src="/recursos/js/jquery.js"></script>
 		<?php $this->obtener('js') ?>
 	</head>
 	<body>
@@ -63,7 +63,7 @@ class Cabecero extends a_Html
 		<!-- preloader -->
 		<div id="preloader">
 			<div class="cont">
-				<img src="recursos/img/preloader.gif" alt="">
+				<img src="/recursos/img/preloader.gif" alt="">
 			</div>
 		</div>
 
@@ -72,7 +72,7 @@ class Cabecero extends a_Html
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 text-center">
-						<img src="recursos/img/logo.png" alt="logotipo"><br>
+						<img src="/recursos/img/logo.png" alt="logotipo"><br>
 						<h1>JavaScript está desactivado</h1>
 						<p class="txt-18">Esta aplicación solo funciona con javascript activado, por favor activalo en tu navegador para eliminar este mensaje y usar el sitio</p>
 					</div>

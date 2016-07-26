@@ -11,11 +11,11 @@ $opciones = array(
 		'recursos/css/descripcion-producto.css'
 	),
 	'js' => array(
-		'recursos/js/angular.min.js',
-		'recursos/js/ui-bootstrap-tpls-0.13.4.min.js',
-		'recursos/js/angular-cookies.min.js',
-		'recursos/js/ng-file-upload/ng-file-upload.min.js',
-		'recursos/js/angular-sanitize.min.js'
+		'/recursos/js/angular.min.js',
+		'/recursos/js/ui-bootstrap-tpls-0.13.4.min.js',
+		'/recursos/js/angular-cookies.min.js',
+		'/recursos/js/ng-file-upload/ng-file-upload.min.js',
+		'/recursos/js/angular-sanitize.min.js'
 	)
 );
 
@@ -26,6 +26,7 @@ $cabecero = new html\Cabecero($opciones);
 
 <!-- contenido -->
 		<div id="contenido">
+			<input type="hidden" name="queryString" ng-model="queryString" ng-init="queryString = '?<?= $_SERVER['QUERY_STRING'];?>'">
 			<div id="titulo">
 				<h1 class="text-uppercase">Descripción producto</h1>
 			</div>
@@ -540,19 +541,18 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/empresas-aliadas.js',
-		'server/js/angularApp/angularApp.js',
-		'server/js/angularApp/controllers/productListHeaderCtrl.js',
-		'server/js/angularApp/controllers/productListCtrl.js',
-		'server/js/angularApp/controllers/productDetailCtrl.js',
-		'server/js/angularApp/controllers/monthPromotionCtrl.js',
-		'server/js/angularApp/controllers/shoppingCartAuxCtrl.js',
-		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
-		'server/js/angularApp/controllers/modals/profileCtrl.js',
-		'server/js/angularApp/controllers/modals/shoppingCartCtrl.js',
-		'server/js/angularApp/controllers/menuProductCtrl.js',
-		'server/js/angularApp/services/constantService.js',
-		'server/js/angularApp/services/utilService.js'
+		'/server/js/angularApp/angularApp.js',
+		'/server/js/angularApp/controllers/productListHeaderCtrl.js',
+		'/server/js/angularApp/controllers/productListCtrl.js',
+		'/server/js/angularApp/controllers/productDetailCtrl.js',
+		'/server/js/angularApp/controllers/monthPromotionCtrl.js',
+		'/server/js/angularApp/controllers/shoppingCartAuxCtrl.js',
+		'/server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
+		'/server/js/angularApp/controllers/modals/profileCtrl.js',
+		'/server/js/angularApp/controllers/modals/shoppingCartCtrl.js',
+		'/server/js/angularApp/controllers/menuProductCtrl.js',
+		'/server/js/angularApp/services/constantService.js',
+		'/server/js/angularApp/services/utilService.js'
 	)
 );
 

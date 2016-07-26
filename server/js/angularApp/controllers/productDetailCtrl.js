@@ -106,9 +106,9 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
         return currentProduct;
     }
 
-    angular.element(document).ready(function() {
-        //charge_products();
-    });
+    // angular.element(document).ready(function() {
+    //     //charge_products();
+    // });
 
     function charge_products() {
 
@@ -195,5 +195,60 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
 		$rootScope.$broadcast( ConstantsService.VIEW_DETAIL, data);
 
+	}
+
+	function getParameterByName(name, url) {
+		if (!url) url = window.location.href;
+		name = name.replace(/[\[\]]/g, "\\$&");
+		var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+		results = regex.exec(url);
+		if (!results) return null;
+		if (!results[2]) return '';
+		return decodeURIComponent(results[2].replace(/\+/g, " "));
+	}
+
+	angular.element(document).ready(function(){
+		$scope.loadingData = true;
+		console.info($scope.queryString);
+		chooseAction( getParameterByName("action", $scope.queryString));
+	});
+
+
+	function chooseAction( action ){
+		if( action != undefined ){
+			switch( action ){
+				case 'get-rin-product':
+					getProductByIdAndReference(getParameterByName("category", $scope.queryString), getParameterByName("referencie", $scope.queryString), getParameterByName("product-id", $scope.queryString));
+				break;
+			}
+		}else {
+			window.location = "/";
+		}
+	}
+
+	function getProductByIdAndReference(productCategory, referencie, productId){
+		$scope.loadingData = true;
+		var post = {};
+			post.a = 'unique_element';
+			post.from = productCategory;
+			post.action = "get_product";
+			post.data = { category : productCategory, ref : referencie, id : productId };
+        $http.post("/admin/server/api/Ajax.php", post)
+        .success(function (data, status, headers, config) {
+            console.log(data);
+            $scope.loadingData = false;
+            switch( data['status'] ) {
+            	case 'LOADED':
+	            	var jsonObject = angular.fromJson(data);
+					console.log(jsonObject);
+		            break;
+				default:
+
+					break;
+            }
+        }).
+        error(function (data, status, headers, config) {
+            console.info(data + ":(");
+    	});
 	}
 }]);

@@ -1906,6 +1906,7 @@ function get_product($post){
         case 'rin':
             $query_result = get_rin_by_id($post['data']['id'], $post['data']['ref']);
             if(isset($query_result[0])){
+                $result->images = get_images($post['data']['category'], $post['data']['id']);
                 $result->data = $query_result[0];
                 $result->status = "SUCCESS";
             }else{
@@ -1918,6 +1919,14 @@ function get_product($post){
         break;
     }
     return json_encode($result);
+}
+function get_images($category, $product_id){
+    $dir = "../../../admin/recursos/img/".$category."-products/".$product_id;
+    $files = scandir($dir);
+    if(is_array($files)){
+        $files = array_slice($files, 2);
+    }
+    return $files;
 }
 
 function get_rin_by_id( $rin_id, $reference = null ) {

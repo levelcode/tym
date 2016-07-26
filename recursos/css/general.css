@@ -8,3 +8,15 @@
 .precio{
     font-weight: 100;
 }
+.thumbnail-option{
+    margin-bottom: 5px;
+}
+.thumbnail-option img{
+    width: 100px;
+}
+.thumbnail-option img:hover{
+    box-shadow: 4px 4px 4px rgb(91, 192, 222)!important;
+}
+.thumbnail-option-active{
+    box-shadow: 4px 4px 4px rgb(91, 192, 222)!important;
+}

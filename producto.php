@@ -50,7 +50,15 @@ $cabecero = new html\Cabecero($opciones);
 										<div ng-if="selectedProductType == 'rin'" class="row producto">
 											<div class="col-sm-6">
 												<div class="imagen">
-													<img ng-src="admin/recursos/img/rin-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="/admin/recursos/img/rin-products/{{selectedProduct.img}}" alt="" class="img-responsive">
+												</div>
+												<br>
+												<div class="row">
+													<div class="col-sm-3 thumbnail-option" ng-repeat="imgItem in selectedProductImages">
+														<div class="imagen">
+															<img ng-src="/admin/recursos/img/rin-products/{{imgItem}}" alt="" class="img-responsive"  ng-click="changeImage(imgItem)" ng-class="{'thumbnail-option-active': selectedProduct.img == imgItem }">
+														</div>
+													</div>
 												</div>
 											</div>
 											<div class="col-sm-6">

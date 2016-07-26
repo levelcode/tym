@@ -1,6 +1,6 @@
 <header id="cabecero">
-	<a href="./" class="logo" data-toggle="tooltip" data-placement="bottom" title="Inicio">
-		
+	<a href="/" class="logo" data-toggle="tooltip" data-placement="bottom" title="Inicio">
+
 	</a>
 	<?php require_once(_INC.'menu.php') ?>
 
@@ -11,7 +11,7 @@
 	<div id="usuario" data-toogle="Usuarios registardos" class="txt-12 text-center">
 		<?php if( !isset($_SESSION['id']) ): ?>
 			<div class="ingreso" data-modal="ingreso-registro">
-				<img src="recursos/img/icono-usuario.png" alt="usuario">
+				<img src="/recursos/img/icono-usuario.png" alt="usuario">
 				<br>
 				Ingreso&nbsp;·&nbsp;Registro
 				<br>

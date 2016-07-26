@@ -141,6 +141,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 		$scope.showComptariblesProducts = false	;
 		$scope.selectedProductType = data.type;
 		$scope.selectedProduct = data.info;
+		$scope.selectedProduct.img = data.images[0];
+		$scope.selectedProductImages = data.images;
 
 		if( data.type == 'rin' ){
 			searchCompatibleTires( data.info.diameter, data.info.width );
@@ -244,6 +246,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 					var result = {};
 					result.type = productCategory;
 					result.info = jsonObject.data;
+					result.images = jsonObject.images;
 					$rootScope.$broadcast( ConstantsService.VIEW_DETAIL,result);
 		            break;
 				default:
@@ -254,5 +257,9 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
         error(function (data, status, headers, config) {
             console.info(data + ":(");
     	});
+	}
+
+	$scope.changeImage = function(newImage){
+		$scope.selectedProduct.img = newImage;
 	}
 }]);

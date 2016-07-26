@@ -137,6 +137,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	});
 
 	$rootScope.$on( ConstantsService.VIEW_DETAIL, function( event, data ){
+		console.log(data);
 		$scope.showComptariblesProducts = false	;
 		$scope.selectedProductType = data.type;
 		$scope.selectedProduct = data.info;
@@ -238,12 +239,15 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
             console.log(data);
             $scope.loadingData = false;
             switch( data['status'] ) {
-            	case 'LOADED':
+            	case 'SUCCESS':
 	            	var jsonObject = angular.fromJson(data);
-					console.log(jsonObject);
+					var result = {};
+					result.type = productCategory;
+					result.info = jsonObject.data;
+					$rootScope.$broadcast( ConstantsService.VIEW_DETAIL,result);
 		            break;
 				default:
-
+					console.log(jsonObject);
 					break;
             }
         }).

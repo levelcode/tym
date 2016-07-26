@@ -1905,7 +1905,16 @@ function get_product($post){
     switch($post['data']['category']){
         case 'rin':
             $query_result = get_rin_by_id($post['data']['id'], $post['data']['ref']);
-            var_dump($query_result);
+            if(isset($query_result[0])){
+                $result->data = $query_result[0];
+                $result->status = "SUCCESS";
+            }else{
+                $result->data = $query_result;
+                $result->status = "ERROR";
+            }
+        break;
+        default:
+            $result->status = "ERROR";
         break;
     }
     return json_encode($result);

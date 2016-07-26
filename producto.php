@@ -40,7 +40,7 @@ $cabecero = new html\Cabecero($opciones);
 									<div class="col-sm-10" ng-cloak>
 										<div class="row">
 											<div class="col-sm-6">
-												<p class="txt-13 text-uppercase"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
+												<p class="txt-18 text-uppercase"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
 											</div>
 											<div class="col-sm-6">
 												<!-- <p class="txt-13">Valora este artículo: &nbsp;<i class="st-calificacion valor-0"></i> | Votos (0)</p> -->
@@ -63,11 +63,11 @@ $cabecero = new html\Cabecero($opciones);
 														<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
 														<br>
 														<br>
-														<span class="c-color4">Tamaño:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.diameter}}" {{selectedProduct.width}}</b><br>
-														<span class="c-color4">PCD:</span> <b class="pcd c-blanco txt-18">{{selectedProduct.pcd}}</b><br>
-														<span class="c-color4">Color:</span> <b class="et c-blanco txt-18" ng-bind="selectedProduct.color"></b><br>
-														<span class="c-color4">Tipo:</span> <b class="cb c-blanco txt-18" ng-bind="selectedProduct.type"></b><br>
-														<span class="c-color4">Material:</span> <b class="cb c-blanco txt-18" ng-bind="selectedProduct.material"></b><br>
+														<span class="c-color4">Tamaño:</span> <b class="tamano c-blanco txt-15" >{{selectedProduct.diameter}}" {{selectedProduct.width}}</b><br>
+														<span class="c-color4">PCD:</span> <b class="pcd c-blanco txt-15">{{selectedProduct.pcd}}</b><br>
+														<span class="c-color4">Color:</span> <b class="et c-blanco txt-15" ng-bind="selectedProduct.color"></b><br>
+														<span class="c-color4">Tipo:</span> <b class="cb c-blanco txt-15" ng-bind="selectedProduct.type"></b><br>
+														<span class="c-color4">Material:</span> <b class="cb c-blanco txt-15" ng-bind="selectedProduct.material"></b><br>
 														<span class="c-color4" ng-if="selectedProduct.has_instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.has_instructivo == 'si'" href="admin/recursos/documents/instructivos/{{selectedProductType}}.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
 													</div>
 													<div class="col-xs-5 text-right">
@@ -83,7 +83,7 @@ $cabecero = new html\Cabecero($opciones);
 												<div class="row">
 													<div class="col-xs-12">
 														<span class="c-color3 text-uppercase">Descripción:</span><br>
-														<b class="precio txt-24" ng-bind="selectedProduct.details"></b><br>
+														<b class="precio txt-15" ng-bind="selectedProduct.details"></b><br>
 														<!-- <span class="c-color3 text-uppercase">Compatible con los siguientes modelos</span> -->
 														<br>
 														<br>

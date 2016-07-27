@@ -50,13 +50,13 @@ $cabecero = new html\Cabecero($opciones);
 										<div ng-if="selectedProductType == 'rin'" class="row producto">
 											<div class="col-sm-6">
 												<div class="imagen">
-													<img ng-src="/admin/recursos/img/rin-products/{{selectedProduct.img}}" alt="" class="img-responsive">
+													<img ng-src="/admin/recursos/img/{{response.type}}-products/{{selectedProduct.id}}/{{selectedProduct.img}}" alt="" class="img-responsive">
 												</div>
 												<br>
 												<div class="row">
 													<div class="col-sm-3 thumbnail-option" ng-repeat="imgItem in selectedProductImages">
 														<div class="imagen">
-															<img ng-src="/admin/recursos/img/rin-products/{{imgItem}}" alt="" class="img-responsive"  ng-click="changeImage(imgItem)" ng-class="{'thumbnail-option-active': selectedProduct.img == imgItem }">
+															<img ng-src="/admin/recursos/img/{{response.type}}-products/{{selectedProduct.id}}/{{imgItem}}" alt="" class="img-responsive"  ng-click="changeImage(imgItem)" ng-class="{'thumbnail-option-active': selectedProduct.img == imgItem }">
 														</div>
 													</div>
 												</div>
@@ -108,8 +108,15 @@ $cabecero = new html\Cabecero($opciones);
 										<div ng-if="selectedProductType == 'tire'" class="row producto">
 											<div class="col-sm-6">
 												<div class="imagen">
-													<img ng-src="admin/recursos/img/tire-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
-													<!-- <img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive"> -->
+													<img ng-src="/admin/recursos/img/{{response.type}}-products/{{selectedProduct.id}}/{{selectedProduct.img}}" alt="" class="img-responsive">
+												</div>
+												<br>
+												<div class="row">
+													<div class="col-sm-3 thumbnail-option" ng-repeat="imgItem in selectedProductImages">
+														<div class="imagen">
+															<img ng-src="/admin/recursos/img/{{response.type}}-products/{{selectedProduct.id}}/{{imgItem}}" alt="" class="img-responsive"  ng-click="changeImage(imgItem)" ng-class="{'thumbnail-option-active': selectedProduct.img == imgItem }">
+														</div>
+													</div>
 												</div>
 											</div>
 											<div class="col-sm-6">
@@ -135,7 +142,7 @@ $cabecero = new html\Cabecero($opciones);
 														<span class="c-color3 text-uppercase">Precio por llanta</span><br>
 														<b class="precio txt-24" ng-bind="(selectedProduct.price) | currency : '$' : 0"></b><br>
 														<!-- <span class="c-color3 text-uppercase">Set x 4:</span><br> -->
-														<b class="precio txt-20" ng-bind="(selectedProduct.price_group) | currency : '$' : 0"></b>
+														<!-- <b class="precio txt-20" ng-bind="(selectedProduct.price_group) | currency : '$' : 0"></b> -->
 													</div>
 												</div>
 												<br>
@@ -243,8 +250,15 @@ $cabecero = new html\Cabecero($opciones);
 										<div ng-if="selectedProductType == 'bomperestribos'" class="row producto">
 											<div class="col-sm-6">
 												<div class="imagen">
-													<img ng-src="admin/recursos/img/bomperestribos-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
-													<!-- <img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive"> -->
+													<img ng-src="/admin/recursos/img/{{response.type}}-products/{{response.subType}}/{{selectedProduct.id}}/{{selectedProduct.img}}" alt="" class="img-responsive">
+												</div>
+												<br>
+												<div class="row">
+													<div class="col-sm-3 thumbnail-option" ng-repeat="imgItem in selectedProductImages">
+														<div class="imagen">
+															<img ng-src="/admin/recursos/img/{{response.type}}-products/{{response.subType}}/{{selectedProduct.id}}/{{imgItem}}" alt="" class="img-responsive"  ng-click="changeImage(imgItem)" ng-class="{'thumbnail-option-active': selectedProduct.img == imgItem }">
+														</div>
+													</div>
 												</div>
 											</div>
 											<div class="col-sm-6">
@@ -257,7 +271,7 @@ $cabecero = new html\Cabecero($opciones);
 														<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock"></b></span>
 														<br>
 														<br>
-														<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
+														<span class="c-color4">Caracteristica:</span> <b class="precio txt-15" ng-bind-html="selectedProduct.detail" ></b><br>
 														<span class="c-color4" ng-if="selectedProduct.instructivo == 'si'">Instructivo:</span> <a href="admin/recursos/documents/instructivos/bomper/bompers.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
 													</div>
 													<div class="col-xs-5 text-right">
@@ -551,6 +565,8 @@ $opciones = array(
 	'js' => array(
 		'/server/js/angularApp/angularApp.js',
 		'/server/js/angularApp/controllers/productListHeaderCtrl.js',
+		'/server/js/angularApp/controllers/mainSearchCtrl.js',
+		'/server/js/angularApp/controllers/searchCtrl.js',
 		'/server/js/angularApp/controllers/productListCtrl.js',
 		'/server/js/angularApp/controllers/productDetailCtrl.js',
 		'/server/js/angularApp/controllers/monthPromotionCtrl.js',

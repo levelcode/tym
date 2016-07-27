@@ -12,7 +12,7 @@
 								<br>
 								<p class="txt-16">cargando...</p>
 								<br>
-								<img src="recursos/img/preloader-productos.gif" alt="">
+								<img src="/recursos/img/preloader-productos.gif" alt="">
 							</div>
 							<!-- product of type rin -->
 							<div ng-if="rinProductsSelected" >
@@ -32,7 +32,7 @@
 											<a class="producto" ng-click="sendToProductDetail( product, 'rin' )">
 												<div class="row">
 													<div class="col-xs-6">
-														<img ng-src="admin/recursos/img/rin-products/{{product.img}}.gif" alt="" class="img-responsive">
+														<img ng-src="/admin/recursos/img/rin-products/{{product.img}}.gif" alt="" class="img-responsive">
 													</div>
 													<div class="col-xs-6">
 														{{product.brand}}<br>
@@ -63,7 +63,7 @@
 											<a class="producto" ng-click="sendToProductDetail( product, 'tire' )">
 												<div class="row">
 													<div class="col-xs-6">
-														<img ng-src="admin/recursos/img/tire-products/{{product.img}}.gif" alt="" class="img-responsive">
+														<img ng-src="/admin/recursos/img/tire-products/{{product.img}}.gif" alt="" class="img-responsive">
 													</div>
 													<div class="col-xs-6">
 														{{product.brand}}<br>
@@ -86,10 +86,10 @@
 								</div>
 								<div class="row" ng-if="productGroup.length > 0">
 									<div ng-repeat="(key1, product) in productGroup" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'bomperestribos' )">
+										<a class="producto" ng-click="sendToProductDetail( product, 'bomperestribos', key )">
 											<div class="row">
 												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/bomperestribos-products/{{product.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="/admin/recursos/img/bomperestribos-products/{{product.img}}.gif" alt="" class="img-responsive">
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
@@ -115,7 +115,7 @@
 										<a class="producto" ng-click="sendToProductDetail( product, 'portaequipaje' )">
 											<div class="row">
 												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/portaequipajes-products/{{product.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="/admin/recursos/img/portaequipajes-products/{{product.img}}.gif" alt="" class="img-responsive">
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
@@ -141,7 +141,7 @@
 										<a class="producto" ng-click="sendToProductDetail( product, 'barras' )">
 											<div class="row">
 												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/barras-products/{{product.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="/admin/recursos/img/barras-products/{{product.img}}.gif" alt="" class="img-responsive">
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
@@ -167,7 +167,7 @@
 										<a class="producto" ng-click="sendToProductDetail( product, 'tank' )">
 											<div class="row">
 												<div class="col-xs-6">
-													<!-- <img ng-src="admin/recursos/img/tank-products/{{product.img}}.gif" alt="" class="img-responsive"> -->
+													<!-- <img ng-src="/admin/recursos/img/tank-products/{{product.img}}.gif" alt="" class="img-responsive"> -->
 													<img ng-src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive">
 												</div>
 												<div class="col-xs-6">
@@ -194,7 +194,7 @@
 										<a class="producto" ng-click="sendToProductDetail( product, 'parrillas' )">
 											<div class="row">
 												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/parrillas-products/{{product.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="/admin/recursos/img/parrillas-products/{{product.img}}.gif" alt="" class="img-responsive">
 													<!-- <img ng-src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive"> -->
 												</div>
 												<div class="col-xs-6">
@@ -216,7 +216,7 @@
 										<a class="producto" ng-click="sendToProductDetail( product, keyMain )">
 											<div class="row">
 												<div class="col-xs-6">
-													<img ng-src="admin/recursos/img/accesorios/{{keyMain}}-products/{{product.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="/admin/recursos/img/accesorios/{{keyMain}}-products/{{product.img}}.gif" alt="" class="img-responsive">
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>

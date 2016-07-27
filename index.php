@@ -40,7 +40,7 @@ $cabecero = new html\Cabecero($opciones);
 							</div>
 						</div>
 					</div>
-					<div class="row" ng-controller="monthPromotionCtrl" ng-cloak>
+					<div class="row" ng-controller="monthPromotionCtrl" ng-cloak id="month_promotions">
 						<div class="col-sm-4 promociones st-seccion" ng-repeat="item in promotions" >
 							<div class="row" ng-if="item.data.category_aux == 'rin'">
 								<div ng-click="sendToProductDetail(item.data, 'rin')">
@@ -150,6 +150,7 @@ $opciones = array(
 	'js' => array(
 		'src/js/index.js',
 		'server/js/angularApp/angularApp.js',
+		'server/js/angularApp/controllers/mainSearchCtrl.js',
 		'server/js/angularApp/controllers/searchCtrl.js',
 		'server/js/angularApp/controllers/productListHeaderCtrl.js',
 		'server/js/angularApp/controllers/productListCtrl.js',

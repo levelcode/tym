@@ -1,4 +1,4 @@
-<header id="cabecero">
+<header id="cabecero" ng-controller="searchCtrl">
 	<a href="/" class="logo" data-toggle="tooltip" data-placement="bottom" title="Inicio">
 
 	</a>

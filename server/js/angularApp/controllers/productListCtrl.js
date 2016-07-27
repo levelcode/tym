@@ -286,18 +286,38 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 	$scope.reload = function() {
 		$window.location.reload();
 	}
+	function walkInTheObject( obj ){
+		angular.forEach( product, function(value, key){
+			console.log(obj);
+		})
+	}
 
-	$scope.sendToProductDetail = function( product, productType ) {
+	$scope.sendToProductDetail = function( product, productType, productSubType ) {
 		var data = { info: product, type: productType };
-		console.log(product);
 		var url = undefined;
+		console.log(product);
+		console.log(productSubType);
+
 		switch (productType) {
 			case 'rin':
 				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie + '/' + product.id;
 				break;
+			case 'tire':
+				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie + '/' + product.id;
+				break;
 			default:
+			case 'bomperestribos':
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie + '/' + product.id;
+				break;
+
+			// portaequipaje
+			// barras
+			// tank
+			// parrillas
+			// #accesorios
 		}
-		window.location = url;
+		if(url != undefined)
+			window.location = url;
 	}
 
 	$scope.getNumOfObjects = function( objectOfObjects ) {

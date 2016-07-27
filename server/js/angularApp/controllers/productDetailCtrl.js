@@ -138,6 +138,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
 	$rootScope.$on( ConstantsService.VIEW_DETAIL, function( event, data ){
 		console.log(data);
+		$scope.response = data;
 		$scope.showComptariblesProducts = false	;
 		$scope.selectedProductType = data.type;
 		$scope.selectedProduct = data.info;
@@ -220,8 +221,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	function chooseAction( action ){
 		if( action != undefined ){
 			switch( action ){
-				case 'get-rin-product':
-					getProductByIdAndReference(getParameterByName("category", $scope.queryString), getParameterByName("referencie", $scope.queryString), getParameterByName("product-id", $scope.queryString));
+				case 'get-product':
+					getProductByIdAndReference(getParameterByName("category", $scope.queryString), getParameterByName("referencie", $scope.queryString), getParameterByName("product-id", $scope.queryString), getParameterByName("subcategory", $scope.queryString));
 				break;
 			}
 		}else {
@@ -229,13 +230,13 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 		}
 	}
 
-	function getProductByIdAndReference(productCategory, referencie, productId){
+	function getProductByIdAndReference(productCategory, referencie, productId, subcategory){
 		$scope.loadingData = true;
 		var post = {};
 			post.a = 'unique_element';
 			post.from = productCategory;
 			post.action = "get_product";
-			post.data = { category : productCategory, ref : referencie, id : productId };
+			post.data = { category : productCategory, ref : referencie, id : productId, sub: subcategory };
         $http.post("/admin/server/api/Ajax.php", post)
         .success(function (data, status, headers, config) {
             console.log(data);
@@ -245,6 +246,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	            	var jsonObject = angular.fromJson(data);
 					var result = {};
 					result.type = productCategory;
+					result.subType = subcategory;
 					result.info = jsonObject.data;
 					result.images = jsonObject.images;
 					$rootScope.$broadcast( ConstantsService.VIEW_DETAIL,result);

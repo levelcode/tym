@@ -1,4 +1,4 @@
-<div class="container-fluid" id="buscador" ng-controller="searchCtrl">
+<div class="container-fluid" id="buscador" ng-controller="mainSearchCtrl">
 	<form name="searchForm">
 		<div class="row">
 			<div class="col-xs-12 text-left">

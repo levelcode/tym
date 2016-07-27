@@ -1897,14 +1897,33 @@ function get_product($post){
                 $result->status = "ERROR";
             }
         break;
+        case 'bomperestribos':
+            switch($post['data']['sub']){
+                case 'delantero':
+                        $query_result = get_bomper_delantero_by_id($post['data']['id'], $post['data']['ref']);
+                    break;
+            }
+            if(isset($query_result[0])){
+                $result->images = get_images($post['data']['category'], $post['data']['id'], $post['data']['sub']);
+                $result->data = $query_result[0];
+                $result->status = "SUCCESS";
+            }else{
+                $result->data = $query_result;
+                $result->status = "ERROR";
+            }
+        break;
         default:
             $result->status = "ERROR";
         break;
     }
     return json_encode($result);
 }
-function get_images($category, $product_id){
-    $dir = "../../../admin/recursos/img/".$category."-products/".$product_id;
+function get_images($category, $product_id, $subcategory = null){
+    if(isset($subcategory)){
+        $dir = "../../../admin/recursos/img/".$category."-products/".$subcategory.'/'.$product_id;
+    }else{
+        $dir = "../../../admin/recursos/img/".$category."-products/".$product_id;
+    }
     $files = scandir($dir);
     if(is_array($files)){
         $files = array_slice($files, 2);
@@ -1928,4 +1947,11 @@ function get_tire_by_id( $rin_id, $reference = null ) {
     return Core\query($sql, array());
 }
 
+function get_bomper_delantero_by_id( $product_id, $reference = null ) {
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."bomper_delantero_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
 ?>

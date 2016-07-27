@@ -1,7 +1,5 @@
 tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsService', '$cookies', '$window', function( $scope, $http, $rootScope, ConstantsService, $cookies, $window ){
 
-	'use strict';
-
 	$scope.vehicles = {};
 	$scope.models = {};
 	$scope.years = {};
@@ -14,9 +12,6 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 	$scope.defaultValueModel = "Selecciona Modelo";
 	$scope.defaultValueYear = "Selecciona Año";
 
-	/*
-	*cookies config
-	*/
 	var todayFull = new Date();
 	var todayDay = todayFull.getDate();
 	todayFull.setDate( todayDay + 1 );
@@ -27,120 +22,29 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 
 	angular.element(document).ready(function(){
 		$scope.loadingData = true;
-		loadHomeData();
+		autoSearch();
+	});
+
+	function autoSearch(){
 		$scope.currentSearch = $cookies.getObject('TYMSEARCH');
 		if( $scope.currentSearch != undefined ){
 			console.log($scope.currentSearch);
 			$scope.searchProducts($scope.currentSearch);
 			st.menuAccesorios.abrir();
 		}
-	});
-
-	$scope.resetSearch = function(){
-		st.menuAccesorios.cerrar();
-		$cookies.remove('TYMSEARCH');
-		$window.location.reload();
 	}
 
-	$scope.read = function () {
-		var post = 	{};
-			post.a = 'read';
-
-        $http.post("admin/server/api/Ajax.php", post)
-            .success(function (data, status, headers, config) {
-                console.log(data);
-            }).
-            error(function (data, status, headers, config) {
-                console.info(data + ":(");
-            });
-	};
-
-	$scope.searchByBrand = function( selectedVehicleBrand ) {
-		console.log( selectedVehicleBrand );
-		$scope.loadingData = true;
-		$scope.defaultValueModel = "Cargando";
-
-		var post = 	{};
-			post.a = 'list_varios';
-			post.from = 'home';
-			post.action = "get_models_by_brand";
-			post.brandId = selectedVehicleBrand.id;
-
-        $http.post("admin/server/api/Ajax.php", post)
-            .success(function (data, status, headers, config) {
-
-                console.log(data);
-                $scope.loadingData = false;
-				$scope.defaultValueModel = "Selecciona Modelo";
-
-                switch( data['status'] ) {
-                	case 'VEHICLE_MODELS_LOADED':
-		            	var jsonObject = angular.fromJson(data);
-			            updatetDataToShow( jsonObject['models'], "models" );
-			            break;
-                }
-
-            }).
-            error(function (data, status, headers, config) {
-                console.info(data + ":(");
-            });
-	}
-
-	$scope.loadYear = function( modelSelected ) {
-		if( modelSelected != undefined) {
-		console.log(modelSelected);
-
-		console.log( modelSelected );
-		$scope.loadingData = true;
-		$scope.defaultValueYear = "Cargando";
-
-		var post = 	{};
-			post.a = 'list_varios';
-			post.from = 'home';
-			post.action = "get_years_by_model";
-			post.modelName = modelSelected.model;
-
-        $http.post("admin/server/api/Ajax.php", post)
-            .success(function (data, status, headers, config) {
-
-                console.log(data);
-                $scope.loadingData = false;
-				$scope.defaultValueYear = "Selecciona Año";
-
-                switch( data['status'] ) {
-                	case 'VEHICLE_MODEL_YEARS_LOADED':
-		            	var jsonObject = angular.fromJson(data);
-			            updatetDataToShow( jsonObject['years'], "years" );
-			            break;
-                }
-
-            }).
-            error(function (data, status, headers, config) {
-                console.info(data + ":(");
-            });
+	$rootScope.$on(ConstantsService.RE_SEARCH, function(event, data){
+		console.log('cheking-if-searching');
+		switch (data.status) {
+			case 'JUST_SEARCH':
+				$scope.searchProducts(data.info);
+				break;
+			case 'RE_SEARCH':
+				autoSearch();
+				break;
 		}
-
-		// var years = [];
-		//
-		// if( modelSelected.year.search( "-" ) != -1 ) {
-		// 	var yearsArray = modelSelected.year.split("-");
-		//
-		// 	var yearsDifference = yearsArray[1] - yearsArray[0];
-		//
-		// 	for (var i = 0; i <= yearsDifference; i++) {
-		// 		if( i==0 )
-		// 			years[i] = parseInt(yearsArray[0]);
-		// 		else
-		// 			years[i] = parseInt(yearsArray[0]) + i;
-		// 	};
-		// }else {
-		// 	years[0] = modelSelected.year;
-		// }
-		//
-		// console.log(years);
-		// updatetDataToShow( years, "years" );
-
-	}
+	});
 
 	$scope.searchProducts = function( request ) {
 
@@ -157,7 +61,7 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 			post.modelName = request.model.model;
 			post.year = request.year;
 
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("/admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
 
                 console.log(data);
@@ -181,38 +85,6 @@ tymApp.controller( 'searchCtrl', [ '$scope', '$http', '$rootScope', 'ConstantsSe
 
 	function saveSearchData( name, searchData, options ) {
 		$cookies.putObject( name, searchData, options );
-	}
-
-	function loadHomeData() {
-
-		$scope.defaultValueBrand = "Cargando";
-		$scope.loadingData = true;
-
-		var post = 	{};
-			post.a = 'list_varios';
-			post.from = 'home';
-			post.action = 'load_vehicles';
-
-        $http.post("admin/server/api/Ajax.php", post)
-            .success(function (data, status, headers, config) {
-
-                console.log(data);
-                $scope.loadingData = false;
-				$scope.defaultValueBrand = "Seleccione Marca";
-
-                switch( data['status'] ) {
-                	case 'VEHICLES_LOADED':
-
-                		var jsonObject = angular.fromJson(data);
-	                	updatetDataToShow( jsonObject['vehicles'], "vehicles" );
-                		break;
-                }
-
-
-            }).
-            error(function (data, status, headers, config) {
-                console.info(data + ":(");
-            });
 	}
 
 	function doArray( data, preserveKey ) {

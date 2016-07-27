@@ -33,42 +33,49 @@ $cabecero = new html\Cabecero($opciones);
 			<section id="promociones-galeria">
 				<div class="container">
 					<div class="row">
-						<div class="col-sm-7 promociones st-seccion" ng-controller="monthPromotionCtrl" ng-cloak>
-							<div class="row">
-								<div class="col-xs-12">
-
-								</div>
-								<div class="col-sm-6">
-									<div class="st-titulo">
-										<small>Nuestra</small>
-										<h1>Promoción del mes</h1>
-									</div>
-									<i class="st-separador"></i>
-									<p class="txt-13 ng-cloak" ng-bind="promotion.detail"></p>
-								</div>
-								<div class="col-sm-6">
-									<br>
-									<img ng-src="{{promotion.base_img}}" alt="" class="img-responsive">
-								</div>
+						<div class="col-md-12">
+							<div class="st-titulo">
+								<small>Nuestras</small>
+								<h1>Promociónes del mes</h1>
 							</div>
 						</div>
-						<div class="col-sm-5 galeria st-seccion">
-							<div class="row">
-								<div class="col-lg-5">
-									<div class="st-titulo">
-										<h1>Galería</h1>
-										<small>Vídeos/Eventos</small>
+					</div>
+					<div class="row" ng-controller="monthPromotionCtrl" ng-cloak>
+						<div class="col-sm-4 promociones st-seccion" ng-repeat="item in promotions" >
+							<div class="row" ng-if="item.data.category_aux == 'rin'">
+								<div ng-click="sendToProductDetail(item.data, 'rin')">
+									<div class="col-xs-12">
 									</div>
-									<i class="st-separador"></i>
-								</div>
-								<div class="col-lg-7">
-									<a href="./videos">
-										<img src="recursos/img/imac-videos.png" alt="" class="img-responsive">
-									</a>
+									<div class="col-sm-6">
+										<div class="st-titulo">
+											<small ng-bind="item.data.brand"></small>
+										</div>
+										<i class="st-separador"></i>
+										<p class="txt-13 ng-cloak" ng-bind="(item.data.price_client) | currency : '$ ' : 0"></p>
+									</div>
+									<div class="col-sm-6">
+										<br>
+										<img ng-src="/admin/recursos/img/{{item.data.category_aux}}-products/{{item.data.img}}.gif" alt="" class="img-responsive">
+									</div>
 								</div>
 							</div>
-
-
+							<div class="row" ng-if="item.data.category_aux == 'tire'">
+								<div ng-click="sendToProductDetail(item.data, 'tire')">
+									<div class="col-xs-12">
+									</div>
+									<div class="col-sm-6">
+										<div class="st-titulo">
+											<small ng-bind="item.data.brand"></small>
+										</div>
+										<i class="st-separador"></i>
+										<p class="txt-13 ng-cloak" ng-bind="(item.data.price) | currency : '$ ' : 0"></p>
+									</div>
+									<div class="col-sm-6">
+										<br>
+										<img ng-src="/admin/recursos/img/{{item.data.category_aux}}-products/{{item.data.img}}.gif" alt="" class="img-responsive">
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -79,14 +86,30 @@ $cabecero = new html\Cabecero($opciones);
 					<div class="row">
 						<div class="col-xs-12">
 							<div class="st-titulo text-left">
-								<h1>Lo más vendido</h1>
+								<h1>Te puede interesar</h1>
 								<i class="st-separador"></i>
 							</div>
 						</div>
 					</div>
 
 					<div class="row etiquetas">
-						<div class="col-sm-4">
+						<div class="col-sm-3 galeria st-seccion">
+							<div class="row">
+								<div class="col-lg-7">
+									<div class="st-titulo">
+										<h1>Galería</h1>
+										<small>Vídeos/Eventos</small>
+									</div>
+									<i class="st-separador"></i>
+								</div>
+								<div class="col-lg-5">
+									<a href="./videos">
+										<img src="recursos/img/imac-videos.png" alt="" class="img-responsive">
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-3">
 							<div class="row tanques" style="background-color: #FFF;">
 								<a data-producto-nombre="tapete-maletero" class="col-xs-6 cuadro txt">
 									<i>Tapete maletero</i>
@@ -96,7 +119,7 @@ $cabecero = new html\Cabecero($opciones);
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4">
+						<div class="col-sm-3">
 							<div class="row racks">
 								<a data-producto-nombre="pijamas-para-vehiculos" class="col-xs-6 cuadro txt">
 									<i>Pijamas para vehículos</i>
@@ -106,7 +129,7 @@ $cabecero = new html\Cabecero($opciones);
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-4">
+						<div class="col-sm-3">
 							<div class="row bicicleteros" style="background-color: #FFF;">
 								<a data-producto-nombre="plumillas" class="col-xs-6 cuadro txt">
 									<i>Plumillas</i>

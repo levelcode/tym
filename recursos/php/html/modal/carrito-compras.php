@@ -22,15 +22,15 @@
 			                            <th>PRECIO</th>
 			                            <th>CANTIDAD</th>
 			                            <th>SUBTOTAL</th>
-                                        <!-- <th>INSTALACIÓN</th> -->
+                                        <th>INSTALACIÓN</th>
                                         <th></th>
 			                        </tr>
 			                    </thead>
 			                    <tbody>
 			                        <tr ng-repeat="(key, product) in shoppingcart.products">
 			                            <td>
-                                            <img ng-if="product.type == 'kit completo' || product.type == 'marco placa' || product.type == 'rejilla frontal' || product.type == 'cubierta stops traseros' || product.type == 'exploradoras' || product.type == 'barra de exploradoras' || product.type == 'tanques' || product.type == 'barra antivolco' || product.type == 'plumillas' || product.type == 'barra luces led' || product.type == 'bicicletero' || product.type == 'bicicletero de techo' || product.type == 'filtro de aire' || product.type == 'pijamas para vehiculos' || product.type == 'pitos' || product.type == 'reflejo logo' || product.type == 'rines ciegos' || product.type == 'tapete maletero'"  style="width:50px;height:auto;" ng-src="/admin/recursos/img/accesorios/{{product.type}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
-			                                <img ng-if="product.type != 'kit completo' && product.type != 'marco placa' && product.type != 'rejilla frontal' && product.type != 'cubierta stops traseros' && product.type != 'exploradoras' && product.type != 'barra de exploradoras' && product.type != 'tanques' && product.type != 'barra antivolco' && product.type != 'plumillas' && product.type != 'barra luces led' && product.type != 'bicicletero' && product.type != 'bicicletero de techo' && product.type != 'filtro de aire' && product.type != 'pijamas para vehiculos' && product.type != 'pitos' && product.type != 'reflejo logo' && product.type != 'rines ciegos' && product.type != 'tapete maletero'" style="width:50px;height:auto;" ng-src="/admin/recursos/img/{{product.type}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
+                                            <img ng-if="product.type == 'kit completo' || product.type == 'marco placa' || product.type == 'rejilla frontal' || product.type == 'cubierta stops traseros' || product.type == 'exploradoras' || product.type == 'barra de exploradoras' || product.type == 'tanques' || product.type == 'barra antivolco' || product.type == 'plumillas' || product.type == 'barra luces led' || product.type == 'portabicicleta' || product.type == 'portabicicleta de techo' || product.type == 'filtro de aire' || product.type == 'pijamas para vehiculos' || product.type == 'pitos' || product.type == 'reflejo logo' || product.type == 'rines ciegos' || product.type == 'tapete maletero'"  style="width:50px;height:auto;" ng-src="/admin/recursos/img/accesorios/{{product.type}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
+			                                <img ng-if="product.type != 'kit completo' && product.type != 'marco placa' && product.type != 'rejilla frontal' && product.type != 'cubierta stops traseros' && product.type != 'exploradoras' && product.type != 'barra de exploradoras' && product.type != 'tanques' && product.type != 'barra antivolco' && product.type != 'plumillas' && product.type != 'barra luces led' && product.type != 'portabicicleta' && product.type != 'portabicicleta de techo' && product.type != 'filtro de aire' && product.type != 'pijamas para vehiculos' && product.type != 'pitos' && product.type != 'reflejo logo' && product.type != 'rines ciegos' && product.type != 'tapete maletero'" style="width:50px;height:auto;" ng-src="/admin/recursos/img/{{product.type}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
 			                            </td>
 			                            <td ng-bind="product.name"></td>
 			                            <td class="text-right" ng-bind="product.price | currency : '$' : 0"></td>
@@ -39,9 +39,9 @@
 			                            	</select>
 			                            </td>
 			                            <td class="text-right" ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
-                                        <!-- <td>
+                                        <td >
                                             <input type="checkbox" name="instalation" ng-model="instalation" id="checkout-instalation">
-                                        </td> -->
+                                        </td>
                                         <td><i style="cursor: pointer;" ng-click="removeProduct( key )" class="fa fa-trash-o"></i></td>
 			                        </tr>
 			                        <tr class="text-right">
@@ -61,7 +61,7 @@
 							<div class="col-xs-12 text-uppercase text-left" ng-show="!deliveryAndInstalation">
 								<label>
 									<input type="checkbox" name="delivery" ng-model="delivery" ng-checked="shoppingcart.shippingFree != undefined && shoppingcart.addDelivery" id="checkout-delivery">
-									Envío
+									Envío  <a data-modal="politicas-de-garantia">Política de garantía</a>
 								</label>
 							</div>
                             <!-- <div class="col-xs-12 text-uppercase text-left">
@@ -72,10 +72,11 @@
 							</div> -->
 						</div>
 
-                        <div class="alert alert-info bg-color4" ng-if="localDelivery && delivery">
-			            	<i>El envío tiene un costo de : {{shoppingcart.shippingCharge}}</i>
+                        <div class="alert alert-info bg-color4" ng-if="delivery">
+			            	<i>El envío es gratis</i>
+                            <p>Si deseas la instalación de algún producto, esta tendrá un costo adicional y lo puedes agendar atraves de nuestro chat</p>
                         </div>
-			            <div class="alert alert-info bg-color4" ng-if="!localDelivery && delivery">
+			            <!-- <div class="alert alert-info bg-color4" ng-if="!localDelivery && delivery">
 			            	<i>Los envíos a ciudades diferente de bogota son realizadas por la empresa ENCOEXPRESS con la siguiente tarifa contra-entrega</i>
                             <table class="table table-striped">
                                 <thead>
@@ -95,11 +96,11 @@
                                     </tr>
                                 </tbody>
                             </table>
-			            </div>
+			            </div> -->
 
 			            <div class="row">
 	            			<div class="col-xs-12 text-right">
-	            				<button ng-click="close()" class="btn bg-color3 c-blanco text-uppercase">Volver a la tienda</button>
+	            				<!-- <button ng-click="close()" class="btn bg-color3 c-blanco text-uppercase">Volver a la tienda</button> -->
 	            			</div>
 	            		</div>
 	            		<hr class="visible-xs">
@@ -127,7 +128,7 @@
                 						<input type="text" name="" id="" class="form-control" required>
                 					</div>
                                     <div class="form-group">
-    									<select name="deliveryCity" ng-model="deliveryCity" id="deliveryCity" ng-change="recalculateTotals( 0, 'addDelivery', deliveryCity )" class="form-control">
+    									<select name="deliveryCity" ng-model="deliveryCity" id="deliveryCity" class="form-control">
     										<option disabled value="">Seleccione una ciudad</option>
                                             <option ng-value="ARMENIA">ARMENIA</option>
                                             <option ng-value="BARRANQUILLA">BARRANQUILLA</option>
@@ -153,7 +154,7 @@
                 					</div>
                                     <input name="merchantId"    type="hidden"  value="{{merchantId}}"   >
                                     <input name="accountId"     type="hidden"  value="{{accountId}}" >
-                                    <input name="description"   type="hidden"  value="Test PAYU"  >
+                                    <input name="description"   type="hidden"  value="Compra TYM"  >
                                     <input name="referenceCode" type="hidden"  value="{{referenceCode}}" >
                                     <input name="amount"        type="hidden"  value="{{shoppingcart.total}}"   >
                                     <input name="tax"           type="hidden"  value="0"  >
@@ -161,20 +162,29 @@
                                     <input name="currency"      type="hidden"  value="COP" >
                                     <input name="signature"     type="hidden"  value="ba9ffa71559580175585e45ce70b6c37"  >
                                     <input name="test"          type="hidden"  value="1" >
-                                    <input name="buyerEmail"    type="hidden"  value="test@test.com" >
+                                    <input name="buyerEmail"    type="hidden"  value="{{order.email}}" >
                                     <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
                                     <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
 
                 			</div>
     						<br>
                 			<div class="row">
-    	            			<div class="col-xs-12 text-right">
-                                    <button name="Submit" type="submit" value="Enviar" ng-disabled="(shoppingcart == undefined) || paymentForm.$invalid" class="btn bg-color2 c-blanco text-uppercase">Pagar</button>
+    	            			<div class="col-md-12">
+                                    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                                        <div class="btn-group" role="group">
+                                            <button name="Submit" type="submit" value="Enviar" ng-disabled="(shoppingcart == undefined) || paymentForm.$invalid" class="btn btn-lg bg-color2 c-blanco text-uppercase">Pagar</button>
+                                        </div>
+                                    </div>
     	            			</div>
     	            		</div>
                         </form>
             		</div>
             	</div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <img class="pull-right" src="/recursos/img/Pagos-seguros-con-payulatam.png" alt="pagos payu">
+                    </div>
+                </div>
             </div>
     	</div>
     </div>

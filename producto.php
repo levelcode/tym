@@ -91,7 +91,7 @@ $cabecero = new html\Cabecero($opciones);
 												<div class="row">
 													<div class="col-xs-12">
 														<span class="c-color3 text-uppercase">Descripción:</span><br>
-														<b class="precio txt-15" ng-bind="selectedProduct.details"></b><br>
+														<b class="precio txt-15" ng-bind-html="selectedProduct.details"></b><br>
 														<!-- <span class="c-color3 text-uppercase">Compatible con los siguientes modelos</span> -->
 														<br>
 														<br>
@@ -282,7 +282,7 @@ $cabecero = new html\Cabecero($opciones);
 										</div>
 										<!-- bomper -->
 										<!-- accesorios -->
-										<div ng-if="selectedProductType == 'cromados' || selectedProductType == 'kit completo' || selectedProductType == 'marco placa' || selectedProductType == 'rejilla frontal' || selectedProductType == 'cubierta stops traseros' || selectedProductType == 'exploradoras' || selectedProductType == 'barra de exploradoras' || selectedProductType == 'tanques' || selectedProductType == 'barra antivolco' || selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'bicicletero' || selectedProductType == 'bicicletero de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
+										<div ng-if="selectedProductType == 'cromados' || selectedProductType == 'kit completo' || selectedProductType == 'marco placa' || selectedProductType == 'rejilla frontal' || selectedProductType == 'cubierta stops traseros' || selectedProductType == 'exploradoras' || selectedProductType == 'barra de exploradoras' || selectedProductType == 'tanques' || selectedProductType == 'barra antivolco' || selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'portabicicleta' || selectedProductType == 'portabicicleta de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
 											<div class="col-sm-6">
 												<div class="imagen">
 													<img ng-src="admin/recursos/img/accesorios/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">

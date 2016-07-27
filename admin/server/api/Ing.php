@@ -238,45 +238,23 @@ function list_varios( $data, $local = false ){
             case 'home':
             switch ( $data['action'] ) {
                 case 'get_main_page_promotion':
-                // $models = group_models(read_vehicles()); //read vehicles from .csv
-                // var_dump($models);
 
-                //read_tires_products();
-                //
-                // $rines_readed = read_rines();
-                // $models = get_all_models();
-                // model_in_index($models);
-                //
-                // associate_tires($rines_readed , $models );//associate products with models
-                //var_dump($rines_readed);
+                $promotions = get_promotions();
+                $promotion_products = array();
 
-                // save_rines($rines_readed);
-
-
-
-                //var_dump($models);
-                //(read_tires());
-                // $tires_readed = read_tires();
-                // $models = get_all_models();
-                // model_in_index($models);
-                // associate_tires($tires_readed , $models );//associate products with models
-                // //var_dump($tires_readed);
-                // save_tires( $tires_readed );
-
-                //read_rin_products();
-
-
-
-                //  var_dump($rines_readed);
-
-                $promotion = get_month_promotion();
-
-                if( isset($promotion) && (count($promotion) == 0) ){
-                    $promotion[0]['base_img'] = "recursos/img/img-promociones.png";
-                    $promotion[0]['detail'] = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
+                foreach ($promotions as $key => $value) {
+                    $table = explode('-', $value['detail'])[0];
+                    $product_id = explode('-', $value['detail'])[1];
+                    $query = array();
+                    $query['data']['category'] = $table;
+                    $query['data']['id'] = $product_id;
+                    $result = get_product($query);
+                    $result = json_decode($result);
+                    $result->data->category_aux = $table;
+                    array_push($promotion_products, $result);
                 }
 
-                $info_to_return['promotion'] = $promotion;
+                $info_to_return['promotions'] = $promotion_products;
                 $info_to_return['status'] = "PROMOTION_LOADED";
                 break;
                 case 'load_vehicles':
@@ -615,8 +593,8 @@ function list_varios( $data, $local = false ){
             break;
             case 'admin-main-page':
             switch ( $data['action'] ) {
-                case 'get_base_data':
-                $info_to_return['universals'] = get_universals();
+                case 'get_promotions':
+                $info_to_return['promotions'] = get_promotions();
                 $info_to_return['status'] = 'LOADED';
                 break;
             }
@@ -1547,30 +1525,18 @@ function insert_product_type( $data ) {
 //main page
 function update_month_promotion_in_main_page( $data ) {
 
-    $old_promotion = get_month_promotion();
-
     $item_to_update['table'] = "month_promotion";
     $item_to_update['column_id'] = "id";
 
-    if( isset($old_promotion) ) {
-
-        $item_to_update['id'] = $old_promotion[0]['id'];
-        $item_to_update['base_img'] = $data['picFile']['$ngfDataUrl'];
-        $item_to_update['detail'] = $data['promotionDetail'];
-
+    foreach ($data as $key => $item) {
+        $item_to_update['id'] = $item['id'];
+        $item_to_update['detail'] = $item['detail'];
         $insert_id = Core\update($item_to_update);
-
-    }else {
-        $item_to_update['base_img'] = $data['picFile']['$ngfDataUrl'];
-        $item_to_update['detail'] = $data['promotionDetail'];
-
-        $insert_id = Core\create($item_to_update, false, false);
     }
 
     $completed = false;
-
     if( isset($insert_id) )
-    $completed = true;
+        $completed = true;
 
     return $completed;
 
@@ -1648,6 +1614,12 @@ function get_universals( $vehicle_id = NULL, $model_id = NULL ) {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "universal ORDER BY name ASC";
     return Core\query($sql, array());
 }
+
+function get_promotions() {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "month_promotion ORDER BY id ASC";
+    return Core\query($sql, array());
+}
+
 
 function get_all_vehicles() {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle WHERE status = 1 ORDER BY brand ASC";
@@ -1914,6 +1886,17 @@ function get_product($post){
                 $result->status = "ERROR";
             }
         break;
+        case 'tire':
+            $query_result = get_tire_by_id($post['data']['id'], $post['data']['ref']);
+            if(isset($query_result[0])){
+                $result->images = get_images($post['data']['category'], $post['data']['id']);
+                $result->data = $query_result[0];
+                $result->status = "SUCCESS";
+            }else{
+                $result->data = $query_result;
+                $result->status = "ERROR";
+            }
+        break;
         default:
             $result->status = "ERROR";
         break;
@@ -1931,6 +1914,14 @@ function get_images($category, $product_id){
 
 function get_rin_by_id( $rin_id, $reference = null ) {
     $sql  = "SELECT * FROM ".$GLOBALS['prefix']."rin_product WHERE id = ". $rin_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_tire_by_id( $rin_id, $reference = null ) {
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."tire_product WHERE id = ". $rin_id;
     if(isset($reference))
         $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
     //var_dump($sql);

@@ -10,7 +10,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
     $scope.merchantId = "566006";
     $scope.accountId = "568589";
     $scope.apiKey = "KcpKUJXxW46g7K9qrIum5vBNTf";
-    $scope.referenceCode = Math.floor((Math.random() * 100) + 1);
+    $scope.referenceCode = Math.floor((Math.random() * 10000) + 1);
 
     $scope.tableData =
     [

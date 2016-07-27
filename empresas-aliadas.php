@@ -40,7 +40,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="item active sld-1">
 									<div class="container-fluid">
 										<div class="row">
-											<div class="col-sm-8 col-sm-offset-2 sld">
+											<div class="col-sm-9 col-sm-offset-2 sld">
 												<div class="row">
 													<div class="col-sm-5">
 														<img src="recursos/img/logo-tym-navidad.png" alt="" class="img-responsive">
@@ -59,7 +59,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="item sld-2">
 									<div class="container-fluid">
 										<div class="row">
-											<div class="col-sm-8 col-sm-offset-2 sld">
+											<div class="col-sm-9 col-sm-offset-2 sld">
 												<div class="row">
 													<div class="col-sm-5">
 														<img src="recursos/img/logo-easy.png" alt="" class="img-responsive">
@@ -80,7 +80,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="item sld-3">
 									<div class="container-fluid">
 										<div class="row">
-											<div class="col-sm-8 col-sm-offset-2 sld">
+											<div class="col-sm-9 col-sm-offset-2 sld">
 												<div class="row">
 													<div class="col-sm-5">
 														<img src="recursos/img/logo-femm.png" alt="" class="img-responsive">
@@ -108,7 +108,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="item sld-4">
 									<div class="container-fluid">
 										<div class="row">
-											<div class="col-sm-8 col-sm-offset-2 sld">
+											<div class="col-sm-9 col-sm-offset-2 sld">
 												<div class="row">
 													<div class="col-sm-5">
 														<img src="recursos/img/logo-puente-gruas.png" alt="" class="img-responsive">
@@ -127,7 +127,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="item sld-5">
 									<div class="container-fluid">
 										<div class="row">
-											<div class="col-sm-8 col-sm-offset-2 sld">
+											<div class="col-sm-9 col-sm-offset-2 sld">
 												<div class="row">
 													<div class="col-sm-5">
 														<img src="recursos/img/logo-smart-motion.png" alt="" class="img-responsive">
@@ -145,7 +145,7 @@ $cabecero = new html\Cabecero($opciones);
 								</div>
 							</div>
 							<!-- Controls -->
-							<a class="left carousel-control" href="#rotabanner" role="button" data-slide="prev">
+							<!-- <a class="left carousel-control" href="#rotabanner" role="button" data-slide="prev">
 								<div class="flecha">
 									<span class="fa fa-angle-left fa-3x"></span>
 								</div>
@@ -154,7 +154,7 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="flecha">
 									<span class="fa fa-angle-right fa-3x"></span>
 								</div>
-							</a>
+							</a> -->
 
 							<!-- Indicators -->
 							<ol class="carousel-indicators">
@@ -175,17 +175,17 @@ $cabecero = new html\Cabecero($opciones);
 
 $opciones = array(
 	'js' => array(
-		'recursos/js/empresas-aliadas.js',
 		'server/js/angularApp/angularApp.js',
+		'server/js/angularApp/controllers/searchCtrl.js',
 		'server/js/angularApp/controllers/productListHeaderCtrl.js',
 		'server/js/angularApp/controllers/productListCtrl.js',
 		'server/js/angularApp/controllers/productDetailCtrl.js',
 		'server/js/angularApp/controllers/monthPromotionCtrl.js',
-		'server/js/angularApp/controllers/shoppingCartAxuCtrl.js',
+		'server/js/angularApp/controllers/shoppingCartAuxCtrl.js',
+		'server/js/angularApp/controllers/menuProductCtrl.js',
 		'server/js/angularApp/controllers/modals/LoginSignUpCtrl.js',
 		'server/js/angularApp/controllers/modals/profileCtrl.js',
 		'server/js/angularApp/controllers/modals/shoppingCartCtrl.js',
-		'server/js/angularApp/controllers/menuProductCtrl.js',
 		'server/js/angularApp/services/constantService.js',
 		'server/js/angularApp/services/utilService.js'
 	)

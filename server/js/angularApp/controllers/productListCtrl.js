@@ -205,6 +205,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.portaequipajesProductsSelected = false;
 				$scope.barrasTechoProductsSelected = false;
 				$scope.parrillastechoProductsSelected = false;
+				$scope.accesoriosProductsSelected = false;
 				break;
 			case 'portaequipajes':
 				$scope.portaequipajesProductsSelected = true;
@@ -257,9 +258,7 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				$scope.parrillastechoProductsSelected = false;
 				break;
 			default:
-
 				console.log('product type no programmed');
-
 				break;
 
 		}

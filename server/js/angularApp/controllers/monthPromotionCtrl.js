@@ -16,7 +16,7 @@ tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', 
 
         $http.post("admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
@@ -24,7 +24,7 @@ tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', 
                 	case 'PROMOTION_LOADED':
 		            	var jsonObject = angular.fromJson(data);
 			            //updatetDataToShow( jsonObject['menu_items'], "menu_items" );
-			            $scope.promotion = jsonObject['promotion'][0];
+			            $scope.promotions = jsonObject['promotions'];
 		            break;
 		            case 'ERROR':
 		            	$timeout(function() {$window.location.reload();} , 1000 );
@@ -37,5 +37,18 @@ tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', 
             });
 
 	}
-	
+
+	$scope.sendToProductDetail = function( product, productType ) {
+		var data = { info: product, type: productType };
+		console.log(product);
+		var url = undefined;
+		switch (productType) {
+			case 'rin':
+				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie + '/' + product.id;
+				break;
+			default:
+		}
+		window.location = url;
+	}
+
 }]);

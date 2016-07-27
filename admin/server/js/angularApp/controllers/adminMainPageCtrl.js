@@ -20,28 +20,27 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 	$scope.universalProductsTypes = {};
 
 	angular.element(document).ready(function(){
-		loadData();
+		getMothPromotions();
 	});
 
-	function loadData() {
+	function getMothPromotions() {
 		$scope.loadingData = true;
 
 		var post = 	{};
 			post.a = 'list_varios';
 			post.from = 'admin-main-page';
-			post.action = "get_base_data";
+			post.action = "get_promotions";
 
         $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
                 switch( data['status'] ) {
                 	case 'LOADED':
 		            	var jsonObject = angular.fromJson(data);
-			            updatetDataToShow( jsonObject['menu_items'], "menu_items" );
-			            updatetDataToShow( jsonObject['universals'], "universals" );
+			            $scope.promotions = jsonObject.promotions;
 			            break;
                 }
 
@@ -60,7 +59,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 				$scope.homePromotion = true;
 				$scope.universalProductsSection = false;
 			break;
-			case 'universalSection':
+			case 'tePuedeInteresar':
 				$scope.sectionSelected = false;
 
 				$scope.homePromotion = false;
@@ -84,14 +83,14 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 
         $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
                 console.log(data);
                 $scope.loadingData = false;
 
                 switch( data['status'] ) {
                 	case 'SUCCESS':
 		            	var jsonObject = angular.fromJson(data);
-			            
+
 			            st.ventanaInfo.abrir("Guandado con éxito", "success", 2000);
 		            break;
 		            case 'ERROR':
@@ -116,11 +115,11 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
         	switch( type ) {
         		case 'universals':
         			$scope.universalProductsTypes.data = na;
-        			$scope.universalProductsTypes.empty = false;		
+        			$scope.universalProductsTypes.empty = false;
         			break;
     			case 'menu_items':
         			$scope.menuItems.data = na;
-        			$scope.menuItems.empty = false;		
+        			$scope.menuItems.empty = false;
         			break;
     			case 'models':
     					$scope.models.data = na;
@@ -139,26 +138,26 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
         				$scope.tires.empty = false;
 					break;
         	}
-        	
+
         }else {
         	switch( type ) {
         		case 'universals':
-	    			$scope.universalProductsTypes.empty = true;	
+	    			$scope.universalProductsTypes.empty = true;
 	    			break;
 	    		case 'menu_items':
-	    			$scope.menuItems.empty = true;	
+	    			$scope.menuItems.empty = true;
 	    			break;
     			case 'models':
-	    			$scope.models.empty = true;	
+	    			$scope.models.empty = true;
 	    			break;
     			case 'years':
-	    			$scope.years.empty = true;	
+	    			$scope.years.empty = true;
 	    			break;
     			case 'rin_types':
-	    			$scope.rinTypes.empty = true;	
+	    			$scope.rinTypes.empty = true;
 	    			break;
     			case 'tires':
-	    			$scope.tires.empty = true;	
+	    			$scope.tires.empty = true;
 	    			break;
 			}
         }
@@ -182,7 +181,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 
        	return na;
 
-	}	
+	}
 
 
 }]);

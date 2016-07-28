@@ -245,12 +245,14 @@ function list_varios( $data, $local = false ){
                 foreach ($promotions as $key => $value) {
                     $table = explode('-', $value['detail'])[0];
                     $product_id = explode('-', $value['detail'])[1];
+                    $custom_message = explode('-', $value['detail'])[2];
                     $query = array();
                     $query['data']['category'] = $table;
                     $query['data']['id'] = $product_id;
                     $result = get_product($query);
                     $result = json_decode($result);
                     $result->data->category_aux = $table;
+                    $result->data->custom_message = $custom_message;
                     array_push($promotion_products, $result);
                 }
 
@@ -1901,7 +1903,13 @@ function get_product($post){
             switch($post['data']['sub']){
                 case 'delantero':
                         $query_result = get_bomper_delantero_by_id($post['data']['id']);
-                    break;
+                break;
+                case 'trasero':
+                        $query_result = get_bomper_trasero_by_id($post['data']['id']);
+                break;
+                case 'estribo':
+                    $query_result = get_estribo_by_id($post['data']['id']);
+                break;
             }
             if(isset($query_result[0])){
                 $result->images = get_images($post['data']['category'], $post['data']['id']);
@@ -1925,7 +1933,29 @@ function get_product($post){
         case 'barras':
             $query_result = get_barra_by_id($post['data']['id']);
             if(isset($query_result[0])){
-                $result->images = get_images($post['data']['category'], $post['data']['id'], str_replace('-', ' ',$post['data']['sub']));
+                $result->images = get_images($post['data']['category'], $post['data']['id'], $post['data']['sub']);
+                $result->data = $query_result[0];
+                $result->status = "SUCCESS";
+            }else{
+                $result->data = $query_result;
+                $result->status = "ERROR";
+            }
+        break;
+        case 'portaequipajes':
+            $query_result = get_portaequipaje_by_id($post['data']['id']);
+            if(isset($query_result[0])){
+                $result->images = get_images($post['data']['category'], $post['data']['id']);
+                $result->data = $query_result[0];
+                $result->status = "SUCCESS";
+            }else{
+                $result->data = $query_result;
+                $result->status = "ERROR";
+            }
+        break;
+        case 'parrillas':
+            $query_result = get_parrilla_by_id($post['data']['id']);
+            if(isset($query_result[0])){
+                $result->images = get_images($post['data']['category'], $post['data']['id']);
                 $result->data = $query_result[0];
                 $result->status = "SUCCESS";
             }else{
@@ -1979,6 +2009,20 @@ function get_bomper_delantero_by_id( $product_id, $reference = null ) {
     return Core\query($sql, array());
 }
 
+function get_bomper_trasero_by_id( $product_id, $reference = null ) {
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."bomper_trasero_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+function get_estribo_by_id( $product_id, $reference = null ) {
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."bomper_estribo_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
 function get_universal_by_id($product_id, $reference = null){
     $sql  = "SELECT * FROM ".$GLOBALS['prefix']."universal WHERE id = ". $product_id;
     if(isset($reference))
@@ -1989,6 +2033,21 @@ function get_universal_by_id($product_id, $reference = null){
 
 function get_barra_by_id($product_id, $reference = null){
     $sql  = "SELECT * FROM ".$GLOBALS['prefix']."barra_techo_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+function get_portaequipaje_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."portaequipaje WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_parrilla_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."parrillas_techo_product WHERE id = ". $product_id;
     if(isset($reference))
         $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
     //var_dump($sql);

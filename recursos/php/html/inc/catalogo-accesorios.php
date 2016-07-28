@@ -112,7 +112,7 @@
 								</div>
 								<div class="row" ng-if="!portaequipajesEmpty">
 									<div ng-repeat="(key, product) in portaequipajesProducts" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'portaequipaje' )">
+										<a class="producto" ng-click="sendToProductDetail( product, 'portaequipajes' )">
 											<div class="row">
 												<div class="col-xs-6">
 													<img ng-src="/admin/recursos/img/portaequipajes-products/{{product.img}}.gif" alt="" class="img-responsive">
@@ -153,34 +153,8 @@
 								</div>
 							</div>
 							<!-- product of type light -->
-							<!-- product of type tank -->
-							<div ng-if="bicicleterosProductsSelected" >
-								<h1 class="titulo text-uppercase">Porta-bicicletas</h1>
-								<hr>
-								<div ng-if="bicicleterosEmpty">
-									<div class="alert alert-info bg-color4">
-										<i>En este momento no contamos con este producto para tu vehiculo, pero encuentra otros productos haciendo click en otras categorias.</i>
-									</div>
-								</div>
-								<div class="row" ng-if="!bicicleterosEmpty">
-									<div ng-repeat="(key, product) in tankProducts" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'tank' )">
-											<div class="row">
-												<div class="col-xs-6">
-													<!-- <img ng-src="/admin/recursos/img/tank-products/{{product.img}}.gif" alt="" class="img-responsive"> -->
-													<img ng-src="recursos/img/foto-rin-01.jpg" alt="" class="img-responsive">
-												</div>
-												<div class="col-xs-6">
-													{{product.brand}}<br>
-													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
-												</div>
-											</div>
-										</a>
-									</div>
-								</div>
-							</div>
-							<!-- product of type tank -->
-							<!-- product of type tank -->
+
+							<!-- product of type parrillas -->
 							<div ng-if="parrillastechoProductsSelected" >
 								<h1 class="titulo text-uppercase">Parrilas de techo</h1>
 								<hr>
@@ -206,7 +180,7 @@
 									</div>
 								</div>
 							</div>
-							<!-- product of type tank -->
+							<!-- product of type parrillas -->
 							<!-- product of type accesorios -->
 							<div ng-if="accesoriosProductsSelected" ng-repeat="(keyMain, productGroup) in universalProducts" >
 								<h1 class="titulo text-uppercase" id="{{keyMain | spaceless}}">{{keyMain}}</h1>

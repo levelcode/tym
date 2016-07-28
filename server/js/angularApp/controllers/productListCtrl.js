@@ -308,10 +308,12 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 			case 'barras':
 				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
 				break;
-			// portaequipaje
-			// barras
-			// tank
-			// parrillas
+			case 'portaequipajes':
+				url = "/producto/" + productType + '/' + product.size + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
+			case 'parrillas':
+				url = "/producto/" + productType + '/' + product.size + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
 		}
 		if(url != undefined)
 			window.location = url;

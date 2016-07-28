@@ -51,7 +51,7 @@ $cabecero = new html\Cabecero($opciones);
 											<small ng-bind="item.data.brand"></small>
 										</div>
 										<i class="st-separador"></i>
-										<p class="txt-13 ng-cloak" ng-bind="(item.data.price_client) | currency : '$ ' : 0"></p>
+										<p class="txt-15 ng-cloak" ng-bind="item.data.custom_message"></p>
 									</div>
 									<div class="col-sm-6">
 										<br>
@@ -68,7 +68,7 @@ $cabecero = new html\Cabecero($opciones);
 											<small ng-bind="item.data.brand"></small>
 										</div>
 										<i class="st-separador"></i>
-										<p class="txt-13 ng-cloak" ng-bind="(item.data.price) | currency : '$ ' : 0"></p>
+										<p class="txt-15 ng-cloak" ng-bind="item.data.custom_message"></p>
 									</div>
 									<div class="col-sm-6">
 										<br>

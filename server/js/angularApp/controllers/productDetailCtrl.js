@@ -136,7 +136,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 		$scope.selectedCar = data;
 	});
 
-	$rootScope.$on( ConstantsService.VIEW_DETAIL, function( event, data ){
+	$scope.show = function( data ){
 		console.log(data);
 		$scope.response = data;
 		$scope.showComptariblesProducts = false	;
@@ -147,9 +147,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
 		if( data.type == 'rin' ){
 			searchCompatibleTires( data.info.diameter, data.info.width );
-		}
-	});
-
+		};
+	}
 	function searchCompatibleTires( diameter, width ) {
 		console.log( diameter + '-' + width );
 		$scope.tiresCompatible = null;
@@ -190,15 +189,11 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
             });
 	}
 
-	$scope.sendToProductDetail = function( product, productType ) {
-
+	$scope.sendToProductDetail = function( product, productType) {
 		if( angular.isString(product) )
 			product = angular.fromJson();
-
 		var data = { info: product, type: productType };
-
-		$rootScope.$broadcast( ConstantsService.VIEW_DETAIL, data);
-
+		$scope.show(data);
 	}
 
 	function getParameterByName(name, url) {
@@ -249,7 +244,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 					result.subType = subcategory;
 					result.info = jsonObject.data;
 					result.images = jsonObject.images;
-					$rootScope.$broadcast( ConstantsService.VIEW_DETAIL,result);
+					$scope.show(result);
 		            break;
 				default:
 					console.log(jsonObject);

@@ -138,7 +138,7 @@
 								</div>
 								<div class="row" ng-if="productGroup.length > 0">
 									<div ng-repeat="(key1, product) in productGroup" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, 'barras' )">
+										<a class="producto" ng-click="sendToProductDetail( product, 'barras', key )">
 											<div class="row">
 												<div class="col-xs-6">
 													<img ng-src="/admin/recursos/img/barras-products/{{product.img}}.gif" alt="" class="img-responsive">
@@ -213,7 +213,7 @@
 								<hr>
 								<div class="row" ng-if="!accesorios4x4Empty">
 									<div ng-repeat="(key, product) in productGroup" class="col-sm-6 col-md-4">
-										<a class="producto" ng-click="sendToProductDetail( product, keyMain )">
+										<a class="producto" ng-click="sendToProductDetail( product, 'accesorios', keyMain )">
 											<div class="row">
 												<div class="col-xs-6">
 													<img ng-src="/admin/recursos/img/accesorios/{{keyMain}}-products/{{product.img}}.gif" alt="" class="img-responsive">

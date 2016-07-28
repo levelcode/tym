@@ -264,23 +264,13 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 		}
 
 	}
-
-
-
 	function groupByRinType( data ) {
-
 		var na = [];
-
 			//na.rines = {};
-
 		angular.forEach(data, function (value, key) {
-
        		na[value.diameter] = value;
-
   		});
-
 		return na;
-
 	}
 
 	$scope.reload = function() {
@@ -291,6 +281,9 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 			console.log(obj);
 		})
 	}
+	$rootScope.$on(ConstantsService.VIEW_DETAIL, function(event, data){
+		$scope.sendToProductDetail(data.info, data.type);
+	});
 
 	$scope.sendToProductDetail = function( product, productType, productSubType ) {
 		var data = { info: product, type: productType };
@@ -303,18 +296,22 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie + '/' + product.id;
 				break;
 			case 'tire':
-				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie + '/' + product.id;
+				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
 				break;
 			default:
 			case 'bomperestribos':
-				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie + '/' + product.id;
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
 				break;
-
+			case 'accesorios':
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
+			case 'barras':
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
 			// portaequipaje
 			// barras
 			// tank
 			// parrillas
-			// #accesorios
 		}
 		if(url != undefined)
 			window.location = url;

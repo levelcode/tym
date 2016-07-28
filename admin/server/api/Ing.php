@@ -1876,7 +1876,7 @@ function get_product($post){
     $result = new \stdClass();
     switch($post['data']['category']){
         case 'rin':
-            $query_result = get_rin_by_id($post['data']['id'], $post['data']['ref']);
+            $query_result = get_rin_by_id($post['data']['id']);
             if(isset($query_result[0])){
                 $result->images = get_images($post['data']['category'], $post['data']['id']);
                 $result->data = $query_result[0];
@@ -1887,7 +1887,7 @@ function get_product($post){
             }
         break;
         case 'tire':
-            $query_result = get_tire_by_id($post['data']['id'], $post['data']['ref']);
+            $query_result = get_tire_by_id($post['data']['id']);
             if(isset($query_result[0])){
                 $result->images = get_images($post['data']['category'], $post['data']['id']);
                 $result->data = $query_result[0];
@@ -1900,11 +1900,32 @@ function get_product($post){
         case 'bomperestribos':
             switch($post['data']['sub']){
                 case 'delantero':
-                        $query_result = get_bomper_delantero_by_id($post['data']['id'], $post['data']['ref']);
+                        $query_result = get_bomper_delantero_by_id($post['data']['id']);
                     break;
             }
             if(isset($query_result[0])){
+                $result->images = get_images($post['data']['category'], $post['data']['id']);
+                $result->data = $query_result[0];
+                $result->status = "SUCCESS";
+            }else{
+                $result->data = $query_result;
+                $result->status = "ERROR";
+            }
+        case 'accesorios':
+            $query_result = get_universal_by_id($post['data']['id']);
+            if(isset($query_result[0])){
                 $result->images = get_images($post['data']['category'], $post['data']['id'], $post['data']['sub']);
+                $result->data = $query_result[0];
+                $result->status = "SUCCESS";
+            }else{
+                $result->data = $query_result;
+                $result->status = "ERROR";
+            }
+        break;
+        case 'barras':
+            $query_result = get_barra_by_id($post['data']['id']);
+            if(isset($query_result[0])){
+                $result->images = get_images($post['data']['category'], $post['data']['id'], str_replace('-', ' ',$post['data']['sub']));
                 $result->data = $query_result[0];
                 $result->status = "SUCCESS";
             }else{
@@ -1920,7 +1941,10 @@ function get_product($post){
 }
 function get_images($category, $product_id, $subcategory = null){
     if(isset($subcategory)){
-        $dir = "../../../admin/recursos/img/".$category."-products/".$subcategory.'/'.$product_id;
+        if($category == 'accesorios')
+            $dir = "../../../admin/recursos/img/accesorios/".$subcategory."-products/".$product_id;
+        else
+            $dir = "../../../admin/recursos/img/".$category."-products/".$subcategory.'/'.$product_id;
     }else{
         $dir = "../../../admin/recursos/img/".$category."-products/".$product_id;
     }
@@ -1949,6 +1973,22 @@ function get_tire_by_id( $rin_id, $reference = null ) {
 
 function get_bomper_delantero_by_id( $product_id, $reference = null ) {
     $sql  = "SELECT * FROM ".$GLOBALS['prefix']."bomper_delantero_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_universal_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."universal WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_barra_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."barra_techo_product WHERE id = ". $product_id;
     if(isset($reference))
         $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
     //var_dump($sql);

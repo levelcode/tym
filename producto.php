@@ -177,7 +177,7 @@ $cabecero = new html\Cabecero($opciones);
 														<span class="unidades text-center c-color3">Unidades <b class="c-blanco" ng-bind="selectedProduct.stock_unit"></b></span>
 														<br>
 														<br>
-														<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
+														<span class="c-color4">Caracteristica:</span> <b class="precio txt-15" ng-bind-html="selectedProduct.detail" ></b><br>
 														<span class="c-color4">Material:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.material}}</b><br>
 														<span class="c-color4" ng-if="selectedProduct.has_instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.has_instructivo == 'si'" href="admin/recursos/documents/instructivos/porta_equipaje.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
 													</div>
@@ -296,11 +296,19 @@ $cabecero = new html\Cabecero($opciones);
 										</div>
 										<!-- bomper -->
 										<!-- accesorios -->
-										<div ng-if="selectedProductType == 'cromados' || selectedProductType == 'kit completo' || selectedProductType == 'marco placa' || selectedProductType == 'rejilla frontal' || selectedProductType == 'cubierta stops traseros' || selectedProductType == 'exploradoras' || selectedProductType == 'barra de exploradoras' || selectedProductType == 'tanques' || selectedProductType == 'barra antivolco' || selectedProductType == 'plumillas' || selectedProductType == 'barra luces led' || selectedProductType == 'portabicicleta' || selectedProductType == 'portabicicleta de techo' || selectedProductType == 'filtro de aire' || selectedProductType == 'pijamas para vehiculos' || selectedProductType == 'pitos' || selectedProductType == 'reflejo logo' || selectedProductType == 'rines ciegos' || selectedProductType == 'tapete maletero'" class="row producto">
+										<div ng-if="selectedProductType == 'accesorios'" class="row producto">
 											<div class="col-sm-6">
 												<div class="imagen">
-													<img ng-src="admin/recursos/img/accesorios/{{selectedProductType}}-products/{{selectedProduct.img}}.gif" alt="" class="img-responsive">
+													<img ng-src="/admin/recursos/img/accesorios/{{response.subType}}-products/{{selectedProduct.id}}/{{selectedProduct.img}}" alt="" class="img-responsive">
 													<!-- <img ng-src="recursos/img/foto-producto.jpg" alt="" class="img-responsive"> -->
+												</div>
+												<br>
+												<div class="row">
+													<div class="col-sm-3 thumbnail-option" ng-repeat="imgItem in selectedProductImages">
+														<div class="imagen">
+															<img ng-src="/admin/recursos/img/accesorios/{{response.subType}}-products/{{selectedProduct.id}}/{{imgItem}}" alt="" class="img-responsive"  ng-click="changeImage(imgItem)" ng-class="{'thumbnail-option-active': selectedProduct.img == imgItem }">
+														</div>
+													</div>
 												</div>
 											</div>
 											<div class="col-sm-6">
@@ -314,7 +322,7 @@ $cabecero = new html\Cabecero($opciones);
 														<br>
 														<br>
 														<span class="c-color4" ng-if="selectedProduct.color != undefined">Color:</span> <b ng-if="selectedProduct.color != undefined" class="tamano c-blanco txt-18" >{{selectedProduct.color}}</b><br>
-														<span class="c-color4">Caracteristica:</span> <b class="tamano c-blanco txt-18" >{{selectedProduct.detail}}</b><br>
+														<span class="c-color4">Caracteristica:</span> <b class="precio txt-15" ng-bind-html="selectedProduct.detail" ></b><br>
 														<span class="c-color4" ng-if="selectedProduct.instructivo == 'si'">Instructivo:</span> <a ng-if="selectedProduct.instructivo == 'si'" href="admin/recursos/documents/instructivos/{{selectedProductType}}.pdf" target="_blank" class="tamano c-blanco txt-18" >Descargar</a><br>
 													</div>
 													<div class="col-xs-5 text-right">

@@ -81,7 +81,7 @@ $cabecero = new html\Cabecero($opciones);
 				</div>
 			</section>
 
-			<section id="te-puede-interesar" class="te-puede-interesar">
+			<section id="te-puede-interesar">
 				<div class="container cont st-seccion">
 					<div class="row">
 						<div class="col-xs-12">
@@ -93,7 +93,7 @@ $cabecero = new html\Cabecero($opciones);
 					</div>
 
 					<div class="row etiquetas">
-						<div class="col-sm-3 galeria st-seccion">
+						<div class="col-sm-3 st-seccion">
 							<div class="row">
 								<div class="col-lg-7">
 									<a href="/videos"><div class="st-titulo">
@@ -109,33 +109,35 @@ $cabecero = new html\Cabecero($opciones);
 								</div>
 							</div>
 						</div>
-						<div class="col-sm-3">
-							<div class="row tanques" style="background-color: #FFF;">
-								<a data-producto-nombre="tapete-maletero" class="col-xs-6 cuadro txt">
-									<i>Tapete maletero</i>
-								</a>
-								<div class="col-xs-6 cuadro no-padding bg">
-									<!-- <img src="recursos/img/img-tanques.jpg" class="img-responsive hidden-xs"> -->
+						<div class="te-puede-interesar">
+							<div class="col-sm-3">
+								<div class="row tanques" style="background-color: #FFF;">
+									<a data-producto-nombre="tapete-maletero" class="col-xs-6 cuadro txt">
+										<i>Tapete maletero</i>
+									</a>
+									<div class="col-xs-6 cuadro no-padding bg">
+										<!-- <img src="recursos/img/img-tanques.jpg" class="img-responsive hidden-xs"> -->
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="row racks">
-								<a data-producto-nombre="pijamas-para-vehiculos" class="col-xs-6 cuadro txt">
-									<i>Pijamas para vehículos</i>
-								</a>
-								<div class="col-xs-6 cuadro no-padding bg">
-									<!-- <img src="recursos/img/img-racks.jpg" class="img-responsive hidden-xs"> -->
+							<div class="col-sm-3">
+								<div class="row racks">
+									<a data-producto-nombre="pijamas-para-vehiculos" class="col-xs-6 cuadro txt">
+										<i>Pijamas para vehículos</i>
+									</a>
+									<div class="col-xs-6 cuadro no-padding bg">
+										<!-- <img src="recursos/img/img-racks.jpg" class="img-responsive hidden-xs"> -->
+									</div>
 								</div>
 							</div>
-						</div>
-						<div class="col-sm-3">
-							<div class="row bicicleteros" style="background-color: #FFF;">
-								<a data-producto-nombre="plumillas" class="col-xs-6 cuadro txt">
-									<i>Plumillas</i>
-								</a>
-								<div class="col-xs-6 cuadro no-padding bg">
-									<!-- <img src="recursos/img/img-bicicleteros.jpg" class="img-responsive hidden-xs"> -->
+							<div class="col-sm-3">
+								<div class="row bicicleteros" style="background-color: #FFF;">
+									<a data-producto-nombre="plumillas" class="col-xs-6 cuadro txt">
+										<i>Plumillas</i>
+									</a>
+									<div class="col-xs-6 cuadro no-padding bg">
+										<!-- <img src="recursos/img/img-bicicleteros.jpg" class="img-responsive hidden-xs"> -->
+									</div>
 								</div>
 							</div>
 						</div>

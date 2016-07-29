@@ -53,6 +53,7 @@ class Cabecero extends a_Html
 		<link rel="stylesheet" href="/recursos/css/tooltip.css">
 		<?php $this->obtener('css') ?>
 		<script src="/recursos/js/jquery.js"></script>
+		<script src="/recursos/js/zopim-chat.js"></script>
 		<?php $this->obtener('js') ?>
 	</head>
 	<body>

@@ -36,7 +36,7 @@
 													</div>
 													<div class="col-xs-6">
 														{{product.brand}}<br>
-														<i class="txt-12 c-color1" ng-bind="product.brand+' '+product.referencie"></i>
+														<i class="txt-14 c-color1" ng-bind="(product.price_client)|currency : '$ ' : 0"></i>
 													</div>
 												</div>
 											</a>
@@ -67,7 +67,7 @@
 													</div>
 													<div class="col-xs-6">
 														{{product.brand}}<br>
-														<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+														<i class="txt-14 c-color1" ng-bind="(product.price)|currency : '$ ' : 0"></i>
 													</div>
 												</div>
 											</a>
@@ -93,7 +93,7 @@
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
-													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+													<i class="txt-14 c-color1" ng-bind="(product.price)|currency : '$ ' : 0"></i>
 												</div>
 											</div>
 										</a>
@@ -119,7 +119,7 @@
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
-													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+													<i class="txt-14 c-color1" ng-bind="(product.price)|currency : '$ ' : 0"></i>
 												</div>
 											</div>
 										</a>
@@ -145,7 +145,7 @@
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
-													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+													<i class="txt-14 c-color1" ng-bind="(product.price)|currency : '$ ' : 0"></i>
 												</div>
 											</div>
 										</a>
@@ -173,7 +173,7 @@
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
-													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+													<i class="txt-14 c-color1" ng-bind="(product.price)|currency : '$ ' : 0"></i>
 												</div>
 											</div>
 										</a>
@@ -194,7 +194,7 @@
 												</div>
 												<div class="col-xs-6">
 													{{product.brand}}<br>
-													<i class="txt-12 c-color1" ng-bind="product.referencie"></i>
+													<i class="txt-14 c-color1" ng-bind="(product.price)|currency : '$ ' : 0"></i>
 												</div>
 											</div>
 										</a>

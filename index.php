@@ -41,7 +41,7 @@ $cabecero = new html\Cabecero($opciones);
 						</div>
 					</div>
 					<div class="row" ng-controller="monthPromotionCtrl" ng-cloak id="month_promotions">
-						<div class="col-sm-4 promociones st-seccion" ng-repeat="item in promotions" >
+						<div class="col-sm-4 promociones st-seccion handy" ng-repeat="item in promotions" >
 							<div class="row" ng-if="item.data.category_aux == 'rin'">
 								<div ng-click="sendToProductDetail(item.data, 'rin')">
 									<div class="col-xs-12">
@@ -96,14 +96,14 @@ $cabecero = new html\Cabecero($opciones);
 						<div class="col-sm-3 galeria st-seccion">
 							<div class="row">
 								<div class="col-lg-7">
-									<div class="st-titulo">
-										<h1>Galería</h1>
-										<small>Vídeos/Eventos</small>
-									</div>
+									<a href="/videos"><div class="st-titulo">
+											<h1>Galería</h1>
+											<small>Vídeos/Eventos</small>
+										</div></a>
 									<i class="st-separador"></i>
 								</div>
 								<div class="col-lg-5">
-									<a href="./videos">
+									<a href="/videos">
 										<img src="recursos/img/imac-videos.png" alt="" class="img-responsive">
 									</a>
 								</div>

@@ -487,7 +487,7 @@ $cabecero = new html\Cabecero($opciones);
 													<br>
 													<p class="txt-16">cargando...</p>
 													<br>
-													<img src="recursos/img/preloader-productos.gif" alt="">
+													<img src="/recursos/img/preloader-productos.gif" alt="">
 												</div>
 												<div ng-if="tiresCompatible == undefined && selectedProductType == 'rin'" class="alert alert-info bg-color4">
 									            	<i>Sin productos Compatibles</i>
@@ -502,7 +502,7 @@ $cabecero = new html\Cabecero($opciones);
 
 													<div ng-repeat="(key, tire) in tiresCompatible | limitTo:5	track by $index" style="float: left; background-color: #FFF;padding: 5px;width: 171px;margin: 0 0 0 5px;">
 														<a ng-click="sendToProductDetail( tire, 'tire' )">
-															<img ng-src="admin/recursos/img/tire-products/{{tire.img}}.gif" alt="" style="width: 157px;"><br>
+															<img ng-src="/admin/recursos/img/tire-products/{{tire.img}}.gif" alt="" style="width: 157px;"><br>
 															<span style="font-size: 10px;">{{tire.brand}} - {{tire.referencie}}</span>
 														</a>
 													</div>

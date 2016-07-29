@@ -136,6 +136,40 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 		$scope.selectedCar = data;
 	});
 
+	$scope.sendToProductDetail = function( product, productType, productSubType ) {
+		var data = { info: product, type: productType };
+		var url = undefined;
+		console.log(product);
+		console.log(productSubType);
+
+		switch (productType) {
+			case 'rin':
+				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie + '/' + product.id;
+				break;
+			case 'tire':
+				url = "/producto/" + productType + '/' + product.diameter + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
+			default:
+			case 'bomperestribos':
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
+			case 'accesorios':
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
+			case 'barras':
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
+			case 'portaequipajes':
+				url = "/producto/" + productType + '/' + product.size + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
+			case 'parrillas':
+				url = "/producto/" + productType + '/' + product.size + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				break;
+		}
+		if(url != undefined)
+			window.location = url;
+	}
+
 	$scope.show = function( data ){
 		console.log(data);
 		$scope.response = data;
@@ -161,7 +195,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 			post.diameter = diameter;
 			post.width = width;
 
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("/admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
 
                 console.log(data);
@@ -173,6 +207,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 			            	var jsonObject = angular.fromJson(data);
 										var tiresCompatible = jsonObject['tires_compatibles'];
 										$scope.tiresCompatible = tiresCompatible;
+
 										// var str = '<li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>205-50-R15</span></a></li><li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>185-55-R15</span></a></li><li><a href="#"><img src="recursos/img/foto-producto.jpg" alt="" class="img-responsive" width="200"><span>195-50-R15</span></a></li><li>';
 										// var realStr = '';
 										// for( var i = 0 ; i < tiresCompatible.length; i++ ){
@@ -189,12 +224,12 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
             });
 	}
 
-	$scope.sendToProductDetail = function( product, productType) {
-		if( angular.isString(product) )
-			product = angular.fromJson();
-		var data = { info: product, type: productType };
-		$scope.show(data);
-	}
+	// $scope.sendToProductDetail = function( product, productType) {
+	// 	if( angular.isString(product) )
+	// 		product = angular.fromJson();
+	// 	var data = { info: product, type: productType };
+	// 	$scope.show(data);
+	// }
 
 	function getParameterByName(name, url) {
 		if (!url) url = window.location.href;

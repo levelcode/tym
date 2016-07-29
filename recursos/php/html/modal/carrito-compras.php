@@ -182,7 +182,7 @@
             	</div>
                 <div class="row">
                     <div class="col-md-12">
-                        <img class="pull-right" src="/recursos/img/Pagos-seguros-con-payulatam.png" alt="pagos payu">
+                        <img class="pull-right img-responsive" src="/recursos/img/formas-de-pago.png" alt="pagos payu">
                     </div>
                 </div>
             </div>

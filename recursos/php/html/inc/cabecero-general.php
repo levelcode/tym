@@ -7,7 +7,9 @@
 	<div id="alternador-menu-accesorios" data-toggle="tooltip" data-placement="bottom" title="Mostra u ocultar el menú de accesorios">
 	</div>
 	<?php require_once(_INC.'menu-accesorios.php') ?>
-
+	<div id="video_aux" class="txt-12 text-center">
+		<button data-modal="ingreso-registro" class="hidden-xs btn btn-lg bg-color2 c-blanco text-uppercase">¿Como comprar?</button>
+	</div>
 	<div id="usuario" data-toogle="Usuarios registardos" class="txt-12 text-center">
 		<?php if( !isset($_SESSION['id']) ): ?>
 			<div class="ingreso" data-modal="ingreso-registro">

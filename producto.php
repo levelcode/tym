@@ -102,6 +102,14 @@ $cabecero = new html\Cabecero($opciones);
 													</div>
 												</div>
 											</div>
+											<div class="row" >
+												<div class="col-md-12">
+													<br>
+													<div class="alert alert-info bg-color4" ng-if="selectedProduct.is_blind == '1'">
+														<i>Instructivo: TYM ha importado rines ciegos de la marca autraliana PDW con los más altos estándares de caildad, estos rines no tienen huecos, por lo tanto, se puede realizar la perforación de los mismoa a la medida técnica que necesite su vehículo. esta perforación o barrenación la realiza TYM y tiene un costo adicional.<br>Los Rines ciegos disponiblrs son de fiámetro 15 y 16 pulgadas y de 8 pulgadas de ancho.</i>
+													</div>
+												</div>
+											</div>
 										</div>
 										<!-- rin -->
 										<!-- tire -->

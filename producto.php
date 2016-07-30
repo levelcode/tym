@@ -719,7 +719,7 @@ $cabecero = new html\Cabecero($opciones);
 										</div>
 									</div>
 									<div class="col-sm-2 text-center te-puede-interesar">
-										<h5 class="text-uppercase txt-18 c-color4">Lo más vendidos</h5>
+										<h5 class="text-uppercase txt-18 c-color4">Te puede interesar</h5>
 										<i class="st-separador"></i>
 
 										<div class="tipo">

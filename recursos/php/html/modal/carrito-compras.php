@@ -106,7 +106,7 @@
 	            		<hr class="visible-xs">
             		</div>
             		<div class="col-sm-5" ng-if="shoppingcart.addDelivery || shoppingcart.addDeliveryAndinstalation || delivery">
-                        <form name="paymentForm" method="post" action="https://sandbox.gateway.payulatam.com/ppp-web-gateway">
+                        <form name="paymentForm" method="post" action="https://gateway.payulatam.com/ppp-web-gateway/">
                 			<div class="registro-compra bg-color3 text-left">
                 				<h3 class="text-uppercase">Datos de envío</h3>
 
@@ -125,10 +125,10 @@
                 					</div>
                                     <div class="form-group">
                 						<label for="">Dirección de envío:</label>
-                						<input type="text" name="" id="" class="form-control" required>
+                						<input type="text" name="shippingAddress" ng-model="order.shippingAddress" id="" class="form-control" required>
                 					</div>
                                     <div class="form-group">
-    									<select name="deliveryCity" ng-model="deliveryCity" id="deliveryCity" class="form-control">
+    									<select name="deliveryCity" ng-model="order.deliveryCity" id="deliveryCity" class="form-control">
     										<option disabled value="">Seleccione una ciudad</option>
                                             <option ng-value="ARMENIA">ARMENIA</option>
                                             <option ng-value="BARRANQUILLA">BARRANQUILLA</option>
@@ -154,14 +154,18 @@
                 					</div>
                                     <input name="merchantId"    type="hidden"  value="{{merchantId}}"   >
                                     <input name="accountId"     type="hidden"  value="{{accountId}}" >
-                                    <input name="description"   type="hidden"  value="Compra TYM"  >
+                                    <input name="buyerFullName" type="hidden"  value="{{order.userName}}" >
+                                    <input name="description"   type="hidden"  value="{{'Compra TYM'+referenceCode}}"  >
                                     <input name="referenceCode" type="hidden"  value="{{referenceCode}}" >
+                                    <input name="shippingAddress" type="hidden"  value="{{order.shippingAddress}}" >
+                                    <input name="shippingCity" type="hidden"  value="{{order.deliveryCity}}" >
+                                    <input name="shippingCountry" type="hidden"  value="CO" >
                                     <input name="amount"        type="hidden"  value="{{shoppingcart.total}}"   >
                                     <input name="tax"           type="hidden"  value="0"  >
                                     <input name="taxReturnBase" type="hidden"  value="0" >
                                     <input name="currency"      type="hidden"  value="COP" >
-                                    <input name="signature"     type="hidden"  value="ba9ffa71559580175585e45ce70b6c37"  >
-                                    <input name="test"          type="hidden"  value="1" >
+                                    <input name="signature"     type="hidden"  value="{{signature}}"  >
+                                    <input name="test"          type="hidden"  value="0" >
                                     <input name="buyerEmail"    type="hidden"  value="{{order.email}}" >
                                     <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
                                     <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >

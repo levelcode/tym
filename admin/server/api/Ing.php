@@ -241,17 +241,24 @@ function list_varios( $data, $local = false ){
 
                 $promotions = get_promotions();
                 $promotion_products = array();
-
+                $accesories_items  = array('kit completo' , 'marco placa' , 'rejilla frontal' , 'cubierta stops traseros' , 'exploradoras' , 'barra de exploradoras' , 'tanques' , 'barra antivolco' , 'plumillas' , 'barra luces led' , 'portabicicleta' , 'portabicicleta de techo' , 'filtro de aire' , 'pijamas para vehiculos' , 'pitos' , 'reflejo logo' , 'rines ciegos' , 'tapete maletero');
                 foreach ($promotions as $key => $value) {
                     $table = explode('-', $value['detail'])[0];
                     $product_id = explode('-', $value['detail'])[1];
                     $custom_message = explode('-', $value['detail'])[2];
                     $query = array();
+
+                    if(in_array($table, $accesories_items)){
+                        $aux = $table;
+                        $table = 'accesorios';
+                        $query['data']['sub'] = $aux;
+                    }
+
                     $query['data']['category'] = $table;
                     $query['data']['id'] = $product_id;
                     $result = get_product($query);
                     $result = json_decode($result);
-                    $result->data->category_aux = $table;
+                    $result->data->category_aux = (isset($query['data']['sub'])) ? $query['data']['sub']: $table;
                     $result->data->custom_message = $custom_message;
                     array_push($promotion_products, $result);
                 }
@@ -1931,6 +1938,30 @@ function get_product($post){
                 case 'tanques':
                     $query_result = get_tank_by_id($post['data']['id']);
                     break;
+                case 'tapete maletero':
+                    $query_result = get_tapete_maletero_by_id($post['data']['id']);
+                    break;
+                case 'barra antivolco':
+                    $query_result = get_barra_antivolco_by_id($post['data']['id']);
+                    break;
+                case 'exploradoras':
+                    $query_result = get_exploradora_by_id($post['data']['id']);
+                    break;
+                case 'barra de exploradoras':
+                    $query_result = get_barras_de_exploradoras_by_id($post['data']['id']);
+                    break;
+                case 'cromados':
+                    $query_result = get_cromado_by_id($post['data']['id']);
+                    break;
+                case 'cubierta stops traseros':
+                    $query_result = get_cromado_by_id($post['data']['id']);
+                    break;
+                case 'pisa alfombras':
+                    $query_result = get_cromado_by_id($post['data']['id']);
+                    break;
+                case 'cortina maletero':
+                    $query_result = get_cromado_by_id($post['data']['id']);
+                    break;
                 default:
                     $query_result = get_universal_by_id($post['data']['id']);
                     break;
@@ -2048,6 +2079,46 @@ function get_universal_by_id($product_id, $reference = null){
 
 function get_tank_by_id($product_id, $reference = null){
     $sql  = "SELECT * FROM ".$GLOBALS['prefix']."tank_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_tapete_maletero_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."tapete_maletero_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_barra_antivolco_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."barra_antivolco_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_exploradora_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."exploradora_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_barras_de_exploradoras_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."barras_de_exploradoras_product WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_cromado_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."cromado_product WHERE id = ". $product_id;
     if(isset($reference))
         $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
     //var_dump($sql);

@@ -36,14 +36,14 @@ $cabecero = new html\Cabecero($opciones);
 						<div class="col-md-12">
 							<div class="st-titulo">
 								<small>Nuestras</small>
-								<h1>Promociónes del mes</h1>
+								<h1>Promociones del mes</h1>
 							</div>
 						</div>
 					</div>
 					<div class="row" ng-controller="monthPromotionCtrl" ng-cloak id="month_promotions">
 						<div class="col-sm-4 promociones st-seccion handy" ng-repeat="item in promotions" >
-							<div class="row" ng-if="item.data.category_aux == 'rin'">
-								<div ng-click="sendToProductDetail(item.data, 'rin')">
+							<div class="row" >
+								<div ng-click="sendToProductDetail(item.data, item.data.category_aux)">
 									<div class="col-xs-12">
 									</div>
 									<div class="col-sm-6">
@@ -55,11 +55,12 @@ $cabecero = new html\Cabecero($opciones);
 									</div>
 									<div class="col-sm-6">
 										<br>
-										<img ng-src="/admin/recursos/img/{{item.data.category_aux}}-products/{{item.data.img}}.gif" alt="" class="img-responsive">
+										<img ng-if="item.data.category_aux == 'kit completo' || item.data.category_aux == 'marco placa' || item.data.category_aux == 'rejilla frontal' || item.data.category_aux == 'cubierta stops traseros' || item.data.category_aux == 'exploradoras' || item.data.category_aux == 'barra de exploradoras' || item.data.category_aux == 'tanques' || item.data.category_aux == 'barra antivolco' || item.data.category_aux == 'plumillas' || item.data.category_aux == 'barra luces led' || item.data.category_aux == 'portabicicleta' || item.data.category_aux == 'portabicicleta de techo' || item.data.category_aux == 'filtro de aire' || item.data.category_aux == 'pijamas para vehiculos' || item.data.category_aux == 'pitos' || item.data.category_aux == 'reflejo logo' || item.data.category_aux == 'rines ciegos' || item.data.category_aux == 'tapete maletero'" ng-src="/admin/recursos/img/accesorios/{{item.data.category_aux}}-products/{{item.data.img}}.gif" alt="" class="img-responsive">
+										<img ng-if="item.data.category_aux != 'kit completo' && item.data.category_aux != 'marco placa' && item.data.category_aux != 'rejilla frontal' && item.data.category_aux != 'cubierta stops traseros' && item.data.category_aux != 'exploradoras' && item.data.category_aux != 'barra de exploradoras' && item.data.category_aux != 'tanques' && item.data.category_aux != 'barra antivolco' && item.data.category_aux != 'plumillas' && item.data.category_aux != 'barra luces led' && item.data.category_aux != 'portabicicleta' && item.data.category_aux != 'portabicicleta de techo' && item.data.category_aux != 'filtro de aire' && item.data.category_aux != 'pijamas para vehiculos' && item.data.category_aux != 'pitos' && item.data.category_aux != 'reflejo logo' && item.data.category_aux != 'rines ciegos' && item.data.category_aux != 'tapete maletero'" ng-src="/admin/recursos/img/{{item.data.category_aux}}-products/{{item.data.img}}.gif" alt="" class="img-responsive">
 									</div>
 								</div>
 							</div>
-							<div class="row" ng-if="item.data.category_aux == 'tire'">
+							<!-- <div class="row" ng-if="item.data.category_aux == 'tire'">
 								<div ng-click="sendToProductDetail(item.data, 'tire')">
 									<div class="col-xs-12">
 									</div>
@@ -75,7 +76,7 @@ $cabecero = new html\Cabecero($opciones);
 										<img ng-src="/admin/recursos/img/{{item.data.category_aux}}-products/{{item.data.img}}.gif" alt="" class="img-responsive">
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>

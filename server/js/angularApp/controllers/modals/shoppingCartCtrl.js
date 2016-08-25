@@ -2,8 +2,26 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
     'use strict';
     var dropdownMaxValue = 12;
+    var cookiesOptions = { path: "/" , expires: todayFull };
 
     angular.element(document).ready(function(){
+
+        var shoppingCartInCookie = $cookies.getObject( 'shoppingcart' );
+
+        if( shoppingCartInCookie != undefined ) {
+            $scope.shoppingcart = shoppingCartInCookie;
+            $scope.subtotal = $scope.shoppingcart.subtotal;
+            $scope.shippingCharge = $scope.shoppingcart.shippingCharge;
+            $scope.tax = $scope.shoppingcart.tax;
+            $scope.total = $scope.shoppingcart.total;
+        }
+
+        var orderInCookie = $cookies.getObject('ox');
+
+        if( orderInCookie != undefined ) {
+            $scope.order = orderInCookie;
+        }
+
         $scope.quantityDropdownItems = createRange(dropdownMaxValue);
 
         var itemsSignature = $scope.apiKey + '~' + $scope.merchantId + '~' + $scope.referenceCode + '~' + $scope.shoppingcart.total + '~' + 'COP';
@@ -11,10 +29,19 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
     });
 
     $scope.$on('CITY_CHANGED', function(event, data){
-        if(data == 'BOGOTA'){
-
+        var order = $cookies.getObject('ox');
+        if( order != undefined ){
+            $scope.order = order;
+            $scope.order.deliveryCity = data;
+            $cookies.putObject('ox', $scope.order, cookiesOptions);
+        }else{
+            $scope.order.deliveryCity = data;
+            $cookies.putObject('ox', $scope.order, cookiesOptions);
         }
-        $scope.order.deliveryCity = data;
+
+        if($scope.order.deliveryCity != 'BOGOTA')
+            removeInstalation();
+
     })
 
     $scope.merchantId = "566006";
@@ -48,7 +75,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
     todayFull.setDate( todayDay + 3 );
 
-    var cookiesOptions = { path: "/" , expires: todayFull };
+
 
 
     $scope.read = function() {
@@ -91,6 +118,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
             shoppingCartSubtotals = calculateShoppingcartSubtotals($scope.shoppingcart.products);
 
+            $scope.shoppingcart.instalationValue = shoppingCartSubtotals.instalation;
             $scope.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
             $scope.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
 
@@ -167,16 +195,11 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
         console.log($scope.signature);
     }
 
-    var shoppingCartInCookie = $cookies.getObject( 'shoppingcart' );
-
-    if( shoppingCartInCookie != undefined ) {
-
-        $scope.shoppingcart = shoppingCartInCookie;
-        $scope.subtotal = $scope.shoppingcart.subtotal;
-        $scope.shippingCharge = $scope.shoppingcart.shippingCharge;
-        $scope.tax = $scope.shoppingcart.tax;
-        $scope.total = $scope.shoppingcart.total;
-
+    function removeInstalation(){
+        for (var i = 0; i < $scope.shoppingcart.products.length; i++) {
+            $scope.shoppingcart.products[i].addInstalation = false;
+        }
+        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart );
     }
 
     function calculateShoppingcartSubtotals( products ) {
@@ -186,22 +209,20 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
         var instalation = 0;
 
         angular.forEach( products, function(value ,key) {
+            console.log(value);
             if(value.addInstalation){
-                var currentInstalationPrice = 0;
-                if(value.price_instalation != undefined && value.price_instalation != 'no aplica')
-                    currentInstalationPrice = value.price_instalation;
-                if(value.instalation_price != undefined && value.instalation_price != 'no aplica')
-                    currentInstalationPrice = value.instalation_price;
-                if(value.instalation != undefined && value.instalation != 'no aplica')
-                    currentInstalationPrice = value.instalation;
+                var currentInstalationPrice = value.instalationValue;
+
+                if(currentInstalationPrice != 'no aplica'){
+                    if(currentInstalationPrice == 0)
+                        currentInstalationPrice = 20000;
+                    instalation += (currentInstalationPrice * value.cant);
+                    if(instalation > 150000)
+                        instalation = 150000;
+                }
             }
 
-            if(currentInstalationPrice != undefined){
-                instalation += (currentInstalationPrice * value.cant);
-                subtotal += ( value.price * value.cant ) + (currentInstalationPrice * value.cant);
-            }else{
-                subtotal += ( value.price * value.cant );
-            }
+            subtotal += ( value.price * value.cant );
 
             tax += ( value.tax * value.price );
         });
@@ -297,7 +318,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
                 }
                 break;
                 case 'addInstalation':
-                addInstalation();
+                addInstalation(arguments[0]);
                 break;
                 case 'decrease':
                 decreaseShoppingCart( arguments[0] );
@@ -315,9 +336,12 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
             if ($scope.shoppingcart.numOfproductsTotal == 0)
             $scope.shoppingcart.haveProducts = false;
+            console.log('to-send');
+            console.log($scope.shoppingcart.products);
+            $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart );
         }
 
-        $rootScope.$broadcast( ConstantsService.SHOPPINGCART_CHANGED, $scope.shoppingcart );
+
     };
 
     function addDeliveryAndinstalation(){
@@ -347,10 +371,11 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
     }
 
     function addInstalation( key ) {
-        if($scope.shoppingcart.products[key].addIntalation)
-            $scope.shoppingcart.products[key].addIntalation = false;
+        console.log(key);
+        if($scope.shoppingcart.products[key].addInstalation)
+            $scope.shoppingcart.products[key].addInstalation = false;
         else
-            $scope.shoppingcart.products[key].addIntalation = true;
+            $scope.shoppingcart.products[key].addInstalation = true;
     }
 
     function increaseShoppingCart( key, newQuantity ) {

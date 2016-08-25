@@ -8,7 +8,7 @@
 	</div>
 	<?php require_once(_INC.'menu-accesorios.php') ?>
 	<div id="video_aux" class="txt-12 text-center">
-		<button data-modal="ingreso-registro" class="hidden-xs btn btn-lg bg-color2 c-blanco text-uppercase">¿Como comprar?</button>
+		<button data-modal="test" class="hidden-xs btn btn-lg bg-color2 c-blanco text-uppercase">¿Cómo comprar?</button>
 	</div>
 	<div id="usuario" data-toogle="Usuarios registardos" class="txt-12 text-center">
 		<?php if( !isset($_SESSION['id']) ): ?>

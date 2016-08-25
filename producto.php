@@ -98,7 +98,7 @@ $cabecero = new html\Cabecero($opciones);
 														<br>
 													</div>
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="selectedProduct.stock_unit == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.details, 1, selectedProduct.price_client, 0, 0, selectedProduct.img, 'rin', selectedProduct.size )" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="selectedProduct.stock_unit == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.details, 1, selectedProduct.price_client, 0, 0, selectedProduct.img, 'rin', selectedProduct.size, selectedProduct )" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>
@@ -161,7 +161,7 @@ $cabecero = new html\Cabecero($opciones);
 														<br>
 													</div>
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="selectedProduct.stock_unit == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="selectedProduct.stock_unit == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'tire', selectedProduct.size, selectedProduct)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>
@@ -212,7 +212,7 @@ $cabecero = new html\Cabecero($opciones);
 														<br>
 													</div>
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="selectedProduct.stock_unit == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="selectedProduct.stock_unit == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size, selectedProduct)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>
@@ -264,7 +264,7 @@ $cabecero = new html\Cabecero($opciones);
 														<br>
 													</div>
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="selectedProduct.stock == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="selectedProduct.stock == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size, selectedProduct)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>
@@ -318,7 +318,7 @@ $cabecero = new html\Cabecero($opciones);
 														<br>
 													</div>
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="selectedProduct.stock == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="selectedProduct.stock == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedProduct.size, selectedProduct)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>
@@ -407,7 +407,7 @@ $cabecero = new html\Cabecero($opciones);
 														<br>
 													</div>
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="((selectedSize == undefined) && (response.subType == 'plumillas' || response.subType == 'pijamas para vehiculos') || (selectedProduct.stock == 0 && selectedSize.units == 0))" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedSize)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="((selectedSize == undefined) && (response.subType == 'plumillas' || response.subType == 'pijamas para vehiculos') || (selectedProduct.stock == 0 && selectedSize.units == 0))" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, selectedProductType, selectedSize, selectedProduct)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>
@@ -580,7 +580,7 @@ $cabecero = new html\Cabecero($opciones);
 												<br>
 												<div class="row">
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="selectedProduct.stock_unit == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'portaequipajes', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="selectedProduct.stock_unit == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'portaequipajes', selectedProduct.size, selectedProduct)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>
@@ -615,7 +615,7 @@ $cabecero = new html\Cabecero($opciones);
 												<br>
 												<div class="row">
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="selectedProduct.stock == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'light_hid', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="selectedProduct.stock == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'light_hid', selectedProduct.size, selectedProduct)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>
@@ -652,7 +652,7 @@ $cabecero = new html\Cabecero($opciones);
 												<br>
 												<div class="row">
 													<div class="col-xs-12 text-right">
-														<button ng-disabled="selectedProduct.stock == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'accesorios/universales', selectedProduct.size)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
+														<button ng-disabled="selectedProduct.stock == 0" ng-click="addToShoppingCart(selectedProduct.id, selectedProduct.referencie, selectedProduct.referencie, '000000', 1, selectedProduct.referencie, 1, selectedProduct.price, 0, 0, selectedProduct.img, 'accesorios/universales', selectedProduct.size, selectedProduct)" class="btn btn-info c-color2 text-uppercase"><i class="fa fa-shopping-cart"></i>&nbsp; Añadir producto</button>
 													</div>
 												</div>
 											</div>

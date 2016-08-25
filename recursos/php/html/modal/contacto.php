@@ -34,21 +34,21 @@
     				<div class="col-sm-6 txt-12">
     					<p>
     						<i class="fa fa-map-marker txt-36 c-color3"></i><br>
-    						<b>Sede Norte (Oficinas)</b><br>
-    						<i>Calle 162 No. 21-06  PBX: 678 3050</i><br>
-							<br>
-    						<b>San Andresito (Local)</b><br>
-    						<i>Carrera 38 No. 7-50 / Tel: 351 3069</i>
+    						<b>Bodega:</b><br>
+    						<i>CELTA TRADE PARK Bodega 149B</i><br>
+							<!-- <br> -->
+    						<!-- <b>San Andresito (Local)</b><br>
+    						<i>Carrera 38 No. 7-50 / Tel: 351 3069</i> -->
     					</p>
     					<p>
     						<i class="fa fa-phone txt-36 c-color3"></i>
     						&nbsp;
-							<b>312 305 5601 - 320 346 4903</b>
+							<b>313 305 3509 – 312 305 5601 – 320 346 4903/b>
     					</p>
     					<p>
     						<i class="fa fa-envelope-o txt-36 c-color3"></i>
     						&nbsp;
-							<b>info@rinestym.com</b>
+							<b>garajetym@gmail.com</b>
     					</p>
 
     					<br>

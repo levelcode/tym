@@ -71,13 +71,13 @@
 								</li>
 								<!-- <li>
 									<a href="./cms-admin-ebooks">Ebooks</a>
-								</li> 
+								</li>
 							</ul>
 						</div>
 			</li> -->
 
 
-			<li data-nombre="recolector">
+			<!-- <li data-nombre="recolector">
 							<a href="#">
 								<div class="bg">
 									<svg class="icono" width="60" viewBox="0 0 32 32">
@@ -107,7 +107,7 @@
 									</li>
 								</ul>
 							</div>
-			</li>
+			</li> -->
 
 			<!-- <li data-nombre="bascula">
 							<a href="#">

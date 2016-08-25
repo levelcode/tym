@@ -15,11 +15,11 @@
 					<div class="col-lg-6">
 						<a href="https://www.facebook.com/rinestym/" target="_blank"><i class="fa fa-facebook-square txt-28"></i></a>
 
-						<!-- <a><i class="fa fa-twitter-square txt-28"></i></a> -->
+						<a href="https://www.instagram.com/rines.tym/"><i class="fa fa-twitter-square txt-28"></i></a>
 
 						<a href="https://www.instagram.com/rines_tym_colombia/" target="_blank"><i class="fa fa-instagram txt-28"></i></a>
 
-						<!-- <a href=""><i class="fa fa-youtube-square txt-28"></i></a> -->
+						<a href="https://www.youtube.com/user/wwwrinestymcom"><i class="fa fa-youtube-square txt-28"></i></a>
 					</div>
 				</div>
 			</div>
@@ -37,6 +37,7 @@
 
 
 <?php require_once(_MODAL.'contacto.php'); ?>
+<?php require_once(_MODAL.'test.php'); ?>
 <?php require_once(_INC.'catalogo-accesorios.php'); ?>
 <?php //require_once(_MODAL.'detalle-producto.php'); ?>
 <?php require_once(_MODAL.'mi-perfil.php'); ?>

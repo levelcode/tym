@@ -41,16 +41,24 @@
 			                            <td class="text-right" ng-if="!product.addIntalation" ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
                                         <td class="text-right" ng-if="product.addIntalation" ng-bind="(product.price * product.cant) + product.price_instalation | currency : '$' : 0"></td>
                                         <td ng-if="order.deliveryCity == 'BOGOTA'">
-                                            <input type="checkbox" name="instalation" ng-model="instalation" id="checkout-instalation" ng-change="recalculateTotals(key, 'addInstalation', quantity)">
+                                            <input type="checkbox" name="instalation" ng-model="instalation" ng-checked="product.addInstalation" value="{{key}}" id="checkout-instalation" ng-change="recalculateTotals(key, 'addInstalation', quantity)">
                                         </td>
                                         <td><i style="cursor: pointer;" ng-click="removeProduct( key )" class="fa fa-trash-o"></i></td>
 			                        </tr>
+                                    <tr class="text-right" ng-if="shoppingcart.instalationValue > 0">
+                                        <td colspan="4">
+                                            <b class="txt-24 c-color3">Instalación:</b>
+                                        </td>
+                                        <td>
+                                            <b class="c-color4 txt-24" ng-bind="shoppingcart.instalationValue | currency : '$' : 0"></b>
+                                        </td>
+                                    </tr>
 			                        <tr class="text-right">
 			                            <td colspan="4">
 			                                <b class="txt-24 c-color3">Total:</b>
 			                            </td>
 			                            <td>
-			                                <b class="c-color4 txt-24" ng-bind="shoppingcart.total | currency : '$' : 0"></b>
+			                                <b class="c-color4 txt-24" ng-bind="shoppingcart.total + shoppingcart.instalationValue | currency : '$' : 0"></b>
 			                            </td>
 			                        </tr>
 			                    </tbody>
@@ -73,9 +81,11 @@
 							</div> -->
 						</div>
 
-                        <div class="alert alert-info bg-color4" ng-if="delivery">
+                        <div class="alert alert-info bg-color4" ng-if="order.deliveryCity != undefined">
 			            	<i>El envío es gratis</i>
-                            <p>Si deseas la instalación de algún producto, esta tendrá un costo adicional y lo puedes agendar atraves de nuestro chat</p>
+                        </div>
+                        <div class="alert alert-info bg-color4" ng-if="order.deliveryCity == 'BOGOTA'">
+                            <p>la opción de instalación de algún producto es disponible solo para envíos a Bogotá D.C, esta tendrá un costo adicional y lo puedes agendar atraves de nuestro chat</p>
                         </div>
 			            <!-- <div class="alert alert-info bg-color4" ng-if="!localDelivery && delivery">
 			            	<i>Los envíos a ciudades diferente de bogota son realizadas por la empresa ENCOEXPRESS con la siguiente tarifa contra-entrega</i>

@@ -6,13 +6,17 @@
             <div class="titulo">
                 <h1>Políticas de garantía</h1>
             </div>
+            <p>
+                Si el producto que adquirió presenta algún inconveniente de calidad o defecto de fábrica y usted ha cumplido con todas las recomendaciones de cuidado y uso, y el término de la garantía que se le ha ofrecido no ha vencido, puede ingresar a nuestra página www.garajetym.com, debe alistar la factura de compra o en su defecto documento mediante el cual demuestre el día y fecha de su compra. Con el fin de atender su petición de efectividad de la garantía, se procederá en los términos y según las reglas establecidas en el Título III, Capítulo I en la Ley 1480 de 2011 – Estatuto de Protección al Consumidor y el Decreto 735 de 2013, en la legislación Colombiana Vigente. Para una solicitud de garantía o cambio debe ingresar a www.garajetym.com, hacer clic en el icono ubicado en la parte superior derecha, ingresar a CONTACTO, diligenciar el formulario, enviarlo y esperar a que nuestros profesionales, validen la información quienes se comunicarán por teléfono o a su correo, para dar respuesta a su solicitud y brindarle toda la accesoria necesaria. También puede realizar la solicitud a través de nuestro chat online. Procedimiento: 1. Si el cambio o reparación del producto adquirido a través de www.garajetym.com, cumple con las políticas de garantía, este será recogido en su casa.
+2. Análisis del artículo y el estado del mismo por parte de nuestro personal calificado: Una vez el auditor de calidad revise el producto se tomará la decisión que corresponda atendiendo lo dispuesto en las normas que regulan la materia, si el departamento de calidad aprueba la garantía en primera instancia se le arreglará, en caso de que no tenga arreglo se le dará una producto nuevo. 3. El Departamento de calidad dará respuesta a la solicitud de garantía por escrito, dentro de los 5 días hábiles a su llegada a nuestras bodegas. La efectividad de la garantía, se adelantará atendiendo las reglas contenidas en la Ley 1480 de 2011 y Decreto 735 de 2013. 4. Una vez se autorice un arreglo, cambio o el Auditor de Calidad determine que su solicitud ha sido negada, se coordinará una cita para llevar el producto a su casa. Pasado este término IMPORT AND EXPORT TECH MARK LTDA  (TYM) no se hace responsable.
+            </p>
             <p>POLÍTICA DE PRIVACIDAD, TRATAMIENTO Y
 
 PROTECCIÓN DE DATOS PERSONALES
 
 Con la autorización del tratamiento de datos personales el titular de los mismos acepta los términos
 
-de la presente política. Varichem es respetuosa de los datos personales e
+de la presente política. www.garajetym.com es respetuosa de los datos personales e
 
 información que le suministran sus clientes actuales, pasados y potenciales. En la presente Política
 
@@ -38,7 +42,7 @@ para fines administrativos, comerciales y de publicidad y contacto frente a los 
 
 3. DATOS PERSONALES.
 
-La información objeto de tratamiento por parte de Varichem, en adelante en este
+La información objeto de tratamiento por parte de www.garajetym.com, en adelante en este
 
 documento “Datos personales”, es aquella que suministran los Titulares, cuando acceden a sus
 
@@ -48,7 +52,7 @@ sexo, teléfono, dirección física y electrónica, país, ciudad y demás datos
 
 solicitados en el proceso de registro, los cuales en ningún caso serán de carácter sensible en los
 
-términos de ley. Varichem no recopilará datos considerados como Datos
+términos de ley. www.garajetym.com no recopilará datos considerados como Datos
 
 Sensibles según lo dispuesto en la Ley 1581 de 2012, como por ejemplo, datos que revelen el origen
 
@@ -62,25 +66,25 @@ PERSONALES Y OTRA INFORMACIÓN.
 
 Mediante la autorización expresa verbal o por escrito, el Titular autoriza expresa o inequívocamente
 
-a Varichem S.A.S para recolectar datos personales y cualquier otra información
+a www.garajetym.com S.A.S para recolectar datos personales y cualquier otra información
 
 que suministre, así como para realizar el tratamiento sobre sus datos personales, de conformidad con
 
 esta Política de Privacidad y la ley. 5. TRATAMIENTO DE LOS DATOS PERSONALES
 
-ALMACENADOS EN LAS BASES DE DATOS DE Varichem
+ALMACENADOS EN LAS BASES DE DATOS DE www.garajetym.com
 
-Varichem solo usará, procesará y circulará los datos personales para las
+www.garajetym.com solo usará, procesará y circulará los datos personales para las
 
 finalidades descritas y para los tratamientos autorizados en esta Política de Privacidad o en las leyes
 
 vigentes. En adición a lo mencionado en otras cláusulas, cada TITULAR expresamente autoriza
 
-a Varichem. para la recolección, uso y circulación de sus datos personales y otra
+a www.garajetym.com. para la recolección, uso y circulación de sus datos personales y otra
 
 información para los siguientes propósitos:
 
-I. Establecer comunicación entre Varichem. y el TITULAR para
+I. Establecer comunicación entre www.garajetym.com. y el TITULAR para
 
 cualquier propósito relacionado con las finalidades que se establecen en la presente política,
 
@@ -106,7 +110,7 @@ VII. Cuando la información deba ser revelada para cumplir con leyes, regulacion
 
 procesos legales, para asegurar el cumplimiento de los términos y condiciones, para detener o
 
-prevenir fraudes, ataques a la seguridad de Varichem. o de otros, prevenir
+prevenir fraudes, ataques a la seguridad de www.garajetym.com. o de otros, prevenir
 
 problemas técnicos o protegerlos derechos de otros como lo requieran los términos y
 
@@ -116,19 +120,19 @@ VIII. Los demás descritos en la presente política o en la Ley.
 
 6. ALMACENAMIENTO DE DATOS PERSONALES.
 
-El Titular autoriza expresamente a Varichem. para que este lo almacene de la
+El Titular autoriza expresamente a www.garajetym.com. para que este lo almacene de la
 
 forma que considere más oportuna y cumpla con la seguridad requerida para la protección de los
 
 datos.
 
-7. MEDIDAS DE SEGURIDAD Varichem.
+7. MEDIDAS DE SEGURIDAD www.garajetym.com.
 
 se compromete al uso correcto y tratamiento de los datos personales, evitando el acceso no
 
 autorizado de terceros que permita conocer o vulnerar, modificar, divulgar y/o destruir la información
 
-que reposa en sus bases de datos. Por tal motivo, Varichemcuenta con protocolos
+que reposa en sus bases de datos. Por tal motivo, www.garajetym.comcuenta con protocolos
 
 de seguridad y acceso a sus sistemas de información, almacenamiento y procesamiento incluidas
 
@@ -136,7 +140,7 @@ medidas físicas de control de riesgos de seguridad.
 
 8 DERECHOS DE LOS TITULARES.
 
-Varichem. informa a los titulares que, conforme a la legislación vigente, estos
+www.garajetym.com. informa a los titulares que, conforme a la legislación vigente, estos
 
 tienen el derecho de conocer, actualizar, rectificar su información, y/o revocar la autorización para su
 
@@ -180,7 +184,7 @@ c. Peticiones y Consultas Sobre Datos Personales. Cuando el titular de los datos
 
 causahabientes deseen consultar la información que reposa en la base de
 
-datos, Varichem. responderá la solicitud en plazo de máximo diez (10)
+datos, www.garajetym.com. responderá la solicitud en plazo de máximo diez (10)
 
 días. En cumplimiento a lo dispuesto en la Ley 1581 de 2012, cuando no fuere posible atender
 
@@ -198,13 +202,13 @@ información contenida en las bases de datos debe ser objeto de corrección, act
 
 supresión, o cuando adviertan el presunto incumplimiento de cualquiera de los deberes
 
-contenidos en la Ley 1581 de 2012, podrán presentar un reclamo ante Varichem., el cual será tramitado bajo las siguientes reglas:
+contenidos en la Ley 1581 de 2012, podrán presentar un reclamo ante www.garajetym.com., el cual será tramitado bajo las siguientes reglas:
 
-1. El reclamo se formulará mediante solicitud dirigida a Varichem. con la identificación de los Titulares, la descripción de los hechos que dan
+1. El reclamo se formulará mediante solicitud dirigida a www.garajetym.com. con la identificación de los Titulares, la descripción de los hechos que dan
 
 lugar al reclamo, la dirección, y se anexarán los documentos que se quieran hacer
 
-valer. Si el reclamo resulta incompleto, Varichem. podrá requerir al
+valer. Si el reclamo resulta incompleto, www.garajetym.com. podrá requerir al
 
 interesado dentro de los cinco (5) días siguientes a la recepción del reclamo para que
 
@@ -212,7 +216,7 @@ subsane las fallas. Transcurridos dos (2) meses desde la fecha del requerimiento
 
 que el solicitante presente la información requerida, se entenderá que ha desistido del
 
-reclamo. En caso de que Varichem. no sea competente para
+reclamo. En caso de que www.garajetym.com. no sea competente para
 
 resolver el reclamo, dará traslado a quien corresponda en un término máximo de dos
 

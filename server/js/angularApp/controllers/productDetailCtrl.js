@@ -13,7 +13,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
     if( shoppingCartInCookie != undefined )
         $scope.shoppingcart = shoppingCartInCookie;
 
-    $scope.addToShoppingCart = function( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax, img, type, size ) {
+    $scope.addToShoppingCart = function( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax, img, type, size, productInfo ) {
 
         var isNumber = UtilService.isInteger( cant );
 
@@ -39,8 +39,9 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
                 $scope.shoppingcart.minimumOrderValueInvalid = false;
                 $scope.shoppingcart.hasDiscount = false;
                 $scope.shoppingcart.sended = false;
+				$scope.shoppingcart.toSend = undefined;
 
-                var firtsProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax, img, type, size);
+                var firtsProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax, img, type, size, productInfo);
 
                 $scope.shoppingcart.products[$scope.shoppingcart.numOfproductsSubtotal] = firtsProduct;
                 $scope.shoppingcart.numOfproductsSubtotal++;
@@ -50,7 +51,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
             } else {
                 if (($scope.shoppingcart != undefined) && ($scope.shoppingcart.products != undefined)) {
 
-                    var currentProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax, img, type, size);
+                    var currentProduct = _chargeProductObject(productId, name, PLU, barcode, categoryId, presentation, quantity, price, discount, tax, img, type, size, productInfo);
 
                     var products = $scope.shoppingcart.products;
                     var quantityProductIncreased = false;
@@ -83,11 +84,21 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
     };
 
-    function _chargeProductObject( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax, img, type, size ) {
+    function _chargeProductObject( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax, img, type, size, productInfo ) {
 
         var priceUnit =  parseFloat( price );
         var discount = parseInt( discount );
         var taxUnit = parseFloat( tax );
+
+		console.log(productInfo);
+		var currentInstalationPrice = 0;
+		if(productInfo.price_instalation != undefined )
+			currentInstalationPrice = productInfo.price_instalation;
+		if(productInfo.instalation_price != undefined )
+			currentInstalationPrice = productInfo.instalation_price;
+		if(productInfo.instalation != undefined )
+			currentInstalationPrice = productInfo.instalation;
+
 
         var currentProduct = new Object();
 
@@ -105,6 +116,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
         currentProduct.discount = discount == 0 ? 0 : discount;
 		currentProduct.size = size.size;
 		currentProduct.addInstalation = false;
+		currentProduct.instalationValue = parseInt(currentInstalationPrice);
+
 
         return currentProduct;
     }

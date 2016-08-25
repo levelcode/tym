@@ -1468,12 +1468,13 @@ function filter_years( $to_filter ) {
         foreach ($result as $key => $value) {
             $sorted[] = (string)$key;
         }
-        sort($sorted);
+        rsort($sorted);
         $to_send = $sorted;
     }else {
         $to_send = $years[0];
     }
-    // echo "---------------";
+
+    rsort($to_send);
     // var_dump($to_send);
 
     return $to_send;
@@ -1900,27 +1901,41 @@ function get_product($post){
             }
         break;
         case 'bomperestribos':
+            $sub = '';
             switch($post['data']['sub']){
                 case 'delantero':
-                        $query_result = get_bomper_delantero_by_id($post['data']['id']);
+                    $query_result = get_bomper_delantero_by_id($post['data']['id']);
+                    $sub = 'delantero';
                 break;
                 case 'trasero':
-                        $query_result = get_bomper_trasero_by_id($post['data']['id']);
+                    $query_result = get_bomper_trasero_by_id($post['data']['id']);
+                    $sub = 'trasero';
                 break;
                 case 'estribo':
                     $query_result = get_estribo_by_id($post['data']['id']);
+                    $sub = 'estribo';
                 break;
             }
             if(isset($query_result[0])){
-                $result->images = get_images($post['data']['category'], $post['data']['id']);
+                $result->images = get_images($post['data']['category'], $post['data']['id'], $post['data']['sub']);
                 $result->data = $query_result[0];
                 $result->status = "SUCCESS";
             }else{
                 $result->data = $query_result;
                 $result->status = "ERROR";
             }
+            break;
         case 'accesorios':
-            $query_result = get_universal_by_id($post['data']['id']);
+
+            switch ($_POST['data']['sub']) {
+                case 'tanques':
+                    $query_result = get_tank_by_id($post['data']['id']);
+                    break;
+                default:
+                    $query_result = get_universal_by_id($post['data']['id']);
+                    break;
+            }
+
             if(isset($query_result[0])){
                 $result->images = get_images($post['data']['category'], $post['data']['id'], $post['data']['sub']);
                 $result->data = $query_result[0];
@@ -2017,7 +2032,7 @@ function get_bomper_trasero_by_id( $product_id, $reference = null ) {
     return Core\query($sql, array());
 }
 function get_estribo_by_id( $product_id, $reference = null ) {
-    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."bomper_estribo_product WHERE id = ". $product_id;
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."estribo_product WHERE id = ". $product_id;
     if(isset($reference))
         $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
     //var_dump($sql);
@@ -2025,6 +2040,14 @@ function get_estribo_by_id( $product_id, $reference = null ) {
 }
 function get_universal_by_id($product_id, $reference = null){
     $sql  = "SELECT * FROM ".$GLOBALS['prefix']."universal WHERE id = ". $product_id;
+    if(isset($reference))
+        $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
+    //var_dump($sql);
+    return Core\query($sql, array());
+}
+
+function get_tank_by_id($product_id, $reference = null){
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."tank_product WHERE id = ". $product_id;
     if(isset($reference))
         $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
     //var_dump($sql);

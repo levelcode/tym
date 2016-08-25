@@ -2,7 +2,7 @@
 namespace App\DB;
 function conectar() {
     try {
-        $_SERVER["DB_DB"] = isset($_SERVER["DB_DB"]) ? $_SERVER["DB_DB"] : "bocetos_tym";
+        $_SERVER["DB_DB"] = isset($_SERVER["DB_DB"]) ? $_SERVER["DB_DB"] : "garajety_data";
         $_SERVER["DB_USER"] = isset($_SERVER["DB_USER"]) ? $_SERVER["DB_USER"] : "root";
         $_SERVER["DB_PASS"] = isset($_SERVER["DB_PASS"]) ? $_SERVER["DB_PASS"] : "root";
         $_SERVER["DB_HOST"] = isset($_SERVER["DB_HOST"]) ? $_SERVER["DB_HOST"] : "localhost";

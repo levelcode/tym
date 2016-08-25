@@ -4,6 +4,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	var model = { model : 'ninguno' };
 	var year = 'ninguno';
 	$scope.loadingCompatibles = true;
+	$scope.selectedSize = undefined;
 
 	$scope.selectedCar = { vehicle, model, year};
 
@@ -26,6 +27,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
                 $scope.shoppingcart.products = [{}];
                 $scope.shoppingcart.subtotal = 0;
                 $scope.shoppingcart.shippingCharge = 0;
+				$scope.shoppingcart.instalationValue = 0;
 					$scope.shoppingcart.shippingChargeAndInstalation = 0;
 					$scope.shoppingcart.addDelivery = false;
 					$scope.shoppingcart.addDeliveryAndinstalation = false;
@@ -101,7 +103,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
         currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
         currentProduct.price = priceUnit;
         currentProduct.discount = discount == 0 ? 0 : discount;
-		currentProduct.size = size.toLowerCase();
+		currentProduct.size = size.size;
+		currentProduct.addInstalation = false;
 
         return currentProduct;
     }
@@ -279,6 +282,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 					result.subType = subcategory;
 					result.info = jsonObject.data;
 					result.images = jsonObject.images;
+					loadSizesAndUnids(subcategory, data.data);
 					$scope.show(result);
 		            break;
 				default:
@@ -291,6 +295,41 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
     	});
 	}
 
+	function loadSizesAndUnids(subcategory, data){
+		console.log(data);
+		var productOptions = [];
+		switch (subcategory) {
+			case 'plumillas':
+					var parentItems = data.size.split(',');
+					console.log(parentItems);
+					angular.forEach(parentItems, function(value, key){
+						var childItems = value.split('/');
+						var sizeAvailable = childItems[0];
+						var unitsAvailable = childItems[1];
+						var currentItem = {units:unitsAvailable, size:sizeAvailable};
+						productOptions.push(currentItem);
+					})
+					$scope.productOptions = productOptions;
+				break;
+			case 'pijamas para vehiculos':
+				var parentItems = data.size.split(',');
+				console.log(parentItems);
+				angular.forEach(parentItems, function(value, key){
+					var childItems = value.split('/');
+					var sizeAvailable = childItems[0];
+					var unitsAvailable = childItems[1];
+					var currentItem = {units:unitsAvailable, size:sizeAvailable};
+					productOptions.push(currentItem);
+				})
+				$scope.productOptions = productOptions;
+				break;
+			default:
+
+		}
+	}
+	$scope.$on('UPDATE_STOCK', function(event, data){
+		$scope.selectedSize = data;
+	});
 	$scope.changeImage = function(newImage){
 		$scope.selectedProduct.img = newImage;
 	}

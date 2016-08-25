@@ -22,7 +22,7 @@
 			                            <th>PRECIO</th>
 			                            <th>CANTIDAD</th>
 			                            <th>SUBTOTAL</th>
-                                        <th>INSTALACIÓN</th>
+                                        <th ng-if="order.deliveryCity == 'BOGOTA'">INSTALACIÓN</th>
                                         <th></th>
 			                        </tr>
 			                    </thead>
@@ -38,9 +38,10 @@
 			                            	<select name="quantity" ng-model="quantity" ng-init="quantity = product.cant" id="shop-cant" ng-change="recalculateTotals(key, 'newValue', quantity)" ng-options="item for item in quantityDropdownItems" class="form-control">
 			                            	</select>
 			                            </td>
-			                            <td class="text-right" ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
-                                        <td >
-                                            <input type="checkbox" name="instalation" ng-model="instalation" id="checkout-instalation">
+			                            <td class="text-right" ng-if="!product.addIntalation" ng-bind="(product.price * product.cant) | currency : '$' : 0"></td>
+                                        <td class="text-right" ng-if="product.addIntalation" ng-bind="(product.price * product.cant) + product.price_instalation | currency : '$' : 0"></td>
+                                        <td ng-if="order.deliveryCity == 'BOGOTA'">
+                                            <input type="checkbox" name="instalation" ng-model="instalation" id="checkout-instalation" ng-change="recalculateTotals(key, 'addInstalation', quantity)">
                                         </td>
                                         <td><i style="cursor: pointer;" ng-click="removeProduct( key )" class="fa fa-trash-o"></i></td>
 			                        </tr>
@@ -60,8 +61,8 @@
                         <div class="row" ng-show="shoppingcart != undefined">
 							<div class="col-xs-12 text-uppercase text-left" ng-show="!deliveryAndInstalation">
 								<label>
-									<input type="checkbox" name="delivery" ng-model="delivery" ng-checked="shoppingcart.shippingFree != undefined && shoppingcart.addDelivery" id="checkout-delivery">
-									Envío  <a data-modal="politicas-de-garantia">Política de garantía</a>
+									<!-- <input type="checkbox" name="delivery" ng-model="delivery" ng-checked="shoppingcart.shippingFree != undefined && shoppingcart.addDelivery" id="checkout-delivery"> -->
+									  <a data-modal="politicas-de-garantia">Política de garantía</a>
 								</label>
 							</div>
                             <!-- <div class="col-xs-12 text-uppercase text-left">
@@ -105,7 +106,7 @@
 	            		</div>
 	            		<hr class="visible-xs">
             		</div>
-            		<div class="col-sm-5" ng-if="shoppingcart.addDelivery || shoppingcart.addDeliveryAndinstalation || delivery">
+            		<div class="col-sm-5">
                         <form name="paymentForm" method="post" action="https://gateway.payulatam.com/ppp-web-gateway/">
                 			<div class="registro-compra bg-color3 text-left">
                 				<h3 class="text-uppercase">Datos de envío</h3>
@@ -128,7 +129,7 @@
                 						<input type="text" name="shippingAddress" ng-model="order.shippingAddress" id="" class="form-control" required>
                 					</div>
                                     <div class="form-group">
-    									<select name="deliveryCity" ng-model="order.deliveryCity" id="deliveryCity" class="form-control">
+    									<select name="deliveryCity" ng-model="order.deliveryCity" ng-change="$emit('CITY_CHANGED', order.deliveryCity)" id="deliveryCity" class="form-control">
     										<option disabled value="">Seleccione una ciudad</option>
                                             <option ng-value="ARMENIA">ARMENIA</option>
                                             <option ng-value="BARRANQUILLA">BARRANQUILLA</option>
@@ -184,6 +185,7 @@
                         </form>
             		</div>
             	</div>
+                <br>
                 <div class="row">
                     <div class="col-md-12">
                         <img class="pull-right img-responsive" src="/recursos/img/formas-de-pago.png" alt="pagos payu">

@@ -29,8 +29,8 @@
 			                    <tbody>
 			                        <tr ng-repeat="(key, product) in shoppingcart.products">
 			                            <td>
-                                            <img ng-if="product.type == 'kit completo' || product.type == 'marco placa' || product.type == 'rejilla frontal' || product.type == 'cubierta stops traseros' || product.type == 'exploradoras' || product.type == 'barra de exploradoras' || product.type == 'tanques' || product.type == 'barra antivolco' || product.type == 'plumillas' || product.type == 'barra luces led' || product.type == 'portabicicleta' || product.type == 'portabicicleta de techo' || product.type == 'filtro de aire' || product.type == 'pijamas para vehiculos' || product.type == 'pitos' || product.type == 'reflejo logo' || product.type == 'rines ciegos' || product.type == 'tapete maletero'"  style="width:50px;height:auto;" ng-src="/admin/recursos/img/accesorios/{{product.type}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
-			                                <img ng-if="product.type != 'kit completo' && product.type != 'marco placa' && product.type != 'rejilla frontal' && product.type != 'cubierta stops traseros' && product.type != 'exploradoras' && product.type != 'barra de exploradoras' && product.type != 'tanques' && product.type != 'barra antivolco' && product.type != 'plumillas' && product.type != 'barra luces led' && product.type != 'portabicicleta' && product.type != 'portabicicleta de techo' && product.type != 'filtro de aire' && product.type != 'pijamas para vehiculos' && product.type != 'pitos' && product.type != 'reflejo logo' && product.type != 'rines ciegos' && product.type != 'tapete maletero'" style="width:50px;height:auto;" ng-src="/admin/recursos/img/{{product.type}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
+                                            <img ng-if="product.type == 'accesorios' || product.type == 'kit completo' || product.type == 'marco placa' || product.type == 'rejilla frontal' || product.type == 'cubierta stops traseros' || product.type == 'exploradoras' || product.type == 'barra de exploradoras' || product.type == 'tanques' || product.type == 'barra antivolco' || product.type == 'plumillas' || product.type == 'barra luces led' || product.type == 'portabicicleta' || product.type == 'portabicicleta de techo' || product.type == 'filtro de aire' || product.type == 'pijamas para vehiculos' || product.type == 'pitos' || product.type == 'reflejo logo' || product.type == 'rines ciegos' || product.type == 'tapete maletero'"  style="width:50px;height:auto;" ng-src="/admin/recursos/img/{{product.type}}/{{product.subcategory}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
+			                                <img ng-if="product.type != 'accesorios' && product.type != 'kit completo' && product.type != 'marco placa' && product.type != 'rejilla frontal' && product.type != 'cubierta stops traseros' && product.type != 'exploradoras' && product.type != 'barra de exploradoras' && product.type != 'tanques' && product.type != 'barra antivolco' && product.type != 'plumillas' && product.type != 'barra luces led' && product.type != 'portabicicleta' && product.type != 'portabicicleta de techo' && product.type != 'filtro de aire' && product.type != 'pijamas para vehiculos' && product.type != 'pitos' && product.type != 'reflejo logo' && product.type != 'rines ciegos' && product.type != 'tapete maletero'" style="width:50px;height:auto;" ng-src="/admin/recursos/img/{{product.type}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
 			                            </td>
 			                            <td ng-bind="product.name"></td>
 			                            <td class="text-right" ng-bind="product.price | currency : '$' : 0"></td>
@@ -85,7 +85,7 @@
 			            	<i>El envío es gratis</i>
                         </div>
                         <div class="alert alert-info bg-color4" ng-if="order.deliveryCity == 'BOGOTA'">
-                            <p>la opción de instalación de algún producto es disponible solo para envíos a Bogotá D.C, esta tendrá un costo adicional y lo puedes agendar atraves de nuestro chat</p>
+                            <p>Si deseas la instalación de un producto, esta tiene un costo adicional, lo puedes ver al dar clic en el cuadrito de la columna de instalación, frente a cada producto. Debes agendar la instalación a través de nuestro chat o a nuestro correo garajetym@gmail.com</p>
                         </div>
 			            <!-- <div class="alert alert-info bg-color4" ng-if="!localDelivery && delivery">
 			            	<i>Los envíos a ciudades diferente de bogota son realizadas por la empresa ENCOEXPRESS con la siguiente tarifa contra-entrega</i>
@@ -166,7 +166,7 @@
                                     <input name="merchantId"    type="hidden"  value="{{merchantId}}"   >
                                     <input name="accountId"     type="hidden"  value="{{accountId}}" >
                                     <input name="buyerFullName" type="hidden"  value="{{order.userName}}" >
-                                    <input name="description"   type="hidden"  value="{{'Compra TYM'+referenceCode}}"  >
+                                    <input name="description"   type="hidden"  value="{{'Compra TYM '+referenceCode +'--'+ shoppingcartDescription}}"  >
                                     <input name="referenceCode" type="hidden"  value="{{referenceCode}}" >
                                     <input name="shippingAddress" type="hidden"  value="{{order.shippingAddress}}" >
                                     <input name="shippingCity" type="hidden"  value="{{order.deliveryCity}}" >

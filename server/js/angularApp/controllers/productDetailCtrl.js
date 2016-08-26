@@ -85,7 +85,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
     };
 
     function _chargeProductObject( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax, img, type, size, productInfo ) {
-
+		console.log(arguments);
         var priceUnit =  parseFloat( price );
         var discount = parseInt( discount );
         var taxUnit = parseFloat( tax );
@@ -114,9 +114,10 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
         currentProduct.tax = taxUnit == 0 ? 0 : taxUnit;
         currentProduct.price = priceUnit;
         currentProduct.discount = discount == 0 ? 0 : discount;
-		currentProduct.size = size.size;
+		currentProduct.size = (size == undefined) ? '': size;
 		currentProduct.addInstalation = false;
 		currentProduct.instalationValue = parseInt(currentInstalationPrice);
+		currentProduct.subcategory = (productInfo.name != undefined) ? productInfo.name: '';
 
 
         return currentProduct;

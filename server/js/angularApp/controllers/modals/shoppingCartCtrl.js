@@ -10,6 +10,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
         if( shoppingCartInCookie != undefined ) {
             $scope.shoppingcart = shoppingCartInCookie;
+            generatePayuDescription();
             $scope.subtotal = $scope.shoppingcart.subtotal;
             $scope.shippingCharge = $scope.shoppingcart.shippingCharge;
             $scope.tax = $scope.shoppingcart.tax;
@@ -106,40 +107,26 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
 
     $rootScope.$on( ConstantsService.SHOPPINGCART_CHANGED, function(event, data){
         $scope.shoppingcart = data;
-
         if ( !$scope.shoppingcart.haveProducts ) {
-
             $cookies.remove('shoppingcart', cookiesOptions);
             $scope.shoppingcart = undefined;
-
         }else {
-
             var shoppingCartSubtotals;
-
             shoppingCartSubtotals = calculateShoppingcartSubtotals($scope.shoppingcart.products);
-
             $scope.shoppingcart.instalationValue = shoppingCartSubtotals.instalation;
             $scope.shoppingcart.subtotal = shoppingCartSubtotals.productsSubtotal;
             $scope.shoppingcart.tax = shoppingCartSubtotals.productsTaxTotal;
-
             var auxSubtotal = $scope.shoppingcart.subtotal;
-
             if ( $scope.shoppingcart.hasDiscount ) {
                 $scope.shoppingcart.subtotal -= $scope.shoppingcart.pointsDoDiscount;
-
                 auxSubtotal += $scope.shoppingcart.pointsDoDiscount;
             }
-
             var shippingCharge = getShippingCharge(auxSubtotal, $scope.shoppingcart.instalationUsed, $scope.shoppingcart.deliveryUsed, $scope.shoppingcart.addDeliveryAndinstalation, $scope.shoppingcart.products );
-
             if( shippingCharge > 80000 ){
                 shippingCharge = 80000;
             }
-
             console.info($scope.shoppingcart);
-
             $scope.shoppingcart.shippingCharge = shippingCharge;
-
             if ( $scope.shoppingcart.addDelivery || $scope.shoppingcart.addDeliveryAndinstalation ) {
                 $scope.shoppingcart.total = $scope.shoppingcart.subtotal + $scope.shoppingcart.shippingCharge;
                 $scope.shoppingcart.shippingFree = false;
@@ -149,46 +136,44 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
             }else {
                 $scope.shoppingcart.total = $scope.shoppingcart.subtotal;
             }
-
-
             $scope.shippingCharge = $scope.shoppingcart.shippingCharge;
             $scope.subtotal = $scope.shoppingcart.subtotal;
-
-
             if (minimumOrderValue != undefined) {
-
                 $scope.shoppingcart.minimumOrderValue = minimumOrderValue;
-
                 if ($scope.shoppingcart.subtotal < minimumOrderValue)
                 $scope.shoppingcart.minimumOrderValueInvalid = true;
                 else
                 $scope.shoppingcart.minimumOrderValueInvalid = false;
-
             }
-
-
             if (limitPayuOrderValue != undefined) {
                 if ($scope.shoppingcart.total > limitPayuOrderValue)
                 $scope.shoppingcart.limitOrderValueInvalid = true;
                 else
                 $scope.shoppingcart.limitOrderValueInvalid = false;
             }
-
             if ( limitForFreeShipping != undefined )
             $scope.shoppingcart.limitForFreeShipping = limitForFreeShipping;
-
-
-
             $scope.total = $scope.shoppingcart.total;
-
             var itemsSignature = $scope.apiKey + '~' + $scope.merchantId + '~' + $scope.referenceCode + '~' + $scope.shoppingcart.total + '~' + 'COP';
             createSignature(itemsSignature);
-
             $cookies.putObject('shoppingcart', $scope.shoppingcart, cookiesOptions);
+            generatePayuDescription();
         }
-
-
     });
+
+    function generatePayuDescription(){
+        var description = '';
+        angular.forEach($scope.shoppingcart.products, function(value, key){
+            var instalation = (value.addInstalation) ? "instalacion" :"";
+            var subcategory = (value.subcategory != '') ? value.subcategory:"";
+            var customSize = (value.size.size != undefined && value.size.size != '') ? value.size.size:'';
+
+            var productDescription = '('+value.type+')'+'('+subcategory+')'+'('+customSize+')'+'('+value.PLU+')'+'('+value.cant+')'+'('+value.price+')'+'('+instalation+')'+'||';
+            description += productDescription;
+        });
+        $scope.shoppingcartDescription = description;
+        console.log(description);
+    }
 
     function createSignature(string){
         $scope.signature = MD5(string);

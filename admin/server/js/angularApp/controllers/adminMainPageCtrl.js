@@ -21,7 +21,30 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 
 	angular.element(document).ready(function(){
 		getMothPromotions();
+		mayInterestYouItems();
 	});
+
+	function mayInterestYouItems(){
+		$scope.loadingData = true;
+		var post = 	{};
+			post.a = 'list_varios';
+			post.from = 'admin-main-page';
+			post.action = "get_may_interest_you";
+        $http.post("server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+                console.log(data);
+                $scope.loadingData = false;
+                switch( data['status'] ) {
+                	case 'LOADED':
+		            	var jsonObject = angular.fromJson(data);
+			            $scope.
+			            break;
+                }
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+	}
 
 	function getMothPromotions() {
 		$scope.loadingData = true;

@@ -85,7 +85,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
     };
 
     function _chargeProductObject( productId, name, PLU, barcode, categoryId, presentation, cant, price, discount, tax, img, type, size, productInfo ) {
-		console.log(arguments);
+		console.log(productInfo);
         var priceUnit =  parseFloat( price );
         var discount = parseInt( discount );
         var taxUnit = parseFloat( tax );
@@ -117,7 +117,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 		currentProduct.size = (size == undefined) ? '': size;
 		currentProduct.addInstalation = false;
 		currentProduct.instalationValue = parseInt(currentInstalationPrice);
-		currentProduct.subcategory = (productInfo.name != undefined) ? productInfo.name: '';
+		currentProduct.subcategory = (productInfo.name != undefined) ? productInfo.name: productInfo.from;
+		currentProduct.from = (productInfo.from != undefined) ? productInfo.from: '';
 
 
         return currentProduct;
@@ -188,7 +189,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	}
 
 	$scope.show = function( data ){
-		console.log(data);
+		console.log(data.info.img);
 		$scope.response = data;
 		$scope.showComptariblesProducts = false	;
 		$scope.selectedProductType = data.type;
@@ -286,7 +287,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 			post.data = { category : productCategory, ref : referencie, id : productId, sub: subcategory };
         $http.post("/admin/server/api/Ajax.php", post)
         .success(function (data, status, headers, config) {
-            console.log(data);
+            console.log(data.data.img);
             $scope.loadingData = false;
             switch( data['status'] ) {
             	case 'SUCCESS':
@@ -297,6 +298,8 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 					result.info = jsonObject.data;
 					result.images = jsonObject.images;
 					loadSizesAndUnids(subcategory, data.data);
+					console.log(result);
+					console.log(jsonObject.data.img);
 					$scope.show(result);
 		            break;
 				default:

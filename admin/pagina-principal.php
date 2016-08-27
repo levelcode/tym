@@ -98,6 +98,8 @@ $cabecero = new html\Cabecero($opciones);
 								<div class="form-group">
 									<label for="promotionDetail">Rines:</label>
 									<input type="text" name="promotionOne" ng-model="promotions[0].detail" class="form-control" required>
+									<input type="text" name="promotionOne" ng-model="promotions[0].detail" class="form-control" required>
+									<input type="text" name="promotionOne" ng-model="promotions[0].detail" class="form-control" required>
 								</div>
 							</div>
 							<div class="col-sm-6 col-lg-6">

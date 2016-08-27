@@ -165,7 +165,7 @@ tymApp.controller( 'shoppingCartCtrl', ['$scope', '$cookies', '$rootScope', 'Con
         var description = '';
         angular.forEach($scope.shoppingcart.products, function(value, key){
             var instalation = (value.addInstalation) ? "instalacion" :"";
-            var subcategory = (value.subcategory != '') ? value.subcategory:"";
+            var subcategory = (value.subcategory != undefined && value.subcategory != '') ? value.subcategory:"";
             var customSize = (value.size.size != undefined && value.size.size != '') ? value.size.size:'';
 
             var productDescription = '('+value.type+')'+'('+subcategory+')'+'('+customSize+')'+'('+value.PLU+')'+'('+value.cant+')'+'('+value.price+')'+'('+instalation+')'+'||';

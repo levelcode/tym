@@ -360,6 +360,25 @@ function list_varios( $data, $local = false ){
                 }
                 //var_dump($info_to_return['tires']);
                 $info_to_return['accesorios'] = _index_universals(get_universals());
+                $original_size_of_accesories = count($info_to_return['accesorios']);
+
+                $special_order_items = array('plumillas', 'pijamas para vehiculos', 'portabicicletas');
+                $init_array = array();
+                foreach ($special_order_items as $key => $value) {
+                    $init_array[$value] = $info_to_return['accesorios'][$value];
+                    unset($info_to_return['accesorios'][$value]);
+                }
+                $aux_accesories = $info_to_return['accesorios'];
+                $info_to_return['accesorios'] = array();
+
+                foreach ($init_array as $key => $value) {
+                    $info_to_return['accesorios'][$key] = $value;
+                }
+                foreach ($aux_accesories as $key => $value) {
+                    $info_to_return['accesorios'][$key] = $value;
+                }
+
+                // array_push($info_to_return['accesorios'], $init_array);
 
                 if( !empty($info_to_return['tires']) ) {
                     $tires_products_result = get_tire_products($info_to_return['tires']);
@@ -407,6 +426,7 @@ function list_varios( $data, $local = false ){
                         $cromados = _index_cromados(get_cromados_products($value));
 
                         if( !empty($cromados) ) {
+                            // var_dump($cromados);
                             _add_to_accesorios( $info_to_return , $cromados );
                         }
 
@@ -501,7 +521,7 @@ function list_varios( $data, $local = false ){
                     }
 
                     if( $vehicle[0]['sin_barras'] == '1' ){
-                        $type_info = get_product_barra_type_info( 7 );
+                        $type_info = get_produc_barra_type_info( 7 );
                         $barras_techo = get_barras_transversales();
                         $info_to_return['barras_techo'][$type_info[0]['tipo']] = $barras_techo;
                     }
@@ -606,6 +626,36 @@ function list_varios( $data, $local = false ){
                 $info_to_return['promotions'] = get_promotions();
                 $info_to_return['status'] = 'LOADED';
                 break;
+                case 'get_may_interest_you':
+                $info_to_return['mayInterestYouItems'] = get_may_interest_you_items();
+                $grouped = array();
+                $accesories_items  = array('kit completo' , 'marco placa' , 'rejilla frontal' , 'cubierta stops traseros' , 'exploradoras' , 'barra de exploradoras' , 'tanques' , 'barra antivolco' , 'plumillas' , 'barra luces led' , 'portabicicleta' , 'portabicicleta de techo' , 'filtro de aire' , 'pijamas para vehiculos' , 'pitos' , 'reflejo logo' , 'rines ciegos' , 'tapete maletero');
+                foreach ($info_to_return['mayInterestYouItems'] as $key => $value) {
+                        //
+                        // $table = explode('-', $value['detail'])[0];
+                        // $product_id = explode('-', $value['detail'])[1];
+                        // $custom_message = explode('-', $value['detail'])[2];
+                        // $query = array();
+                        //
+                        // if(in_array($table, $accesories_items)){
+                        //     $aux = $table;
+                        //     $table = 'accesorios';
+                        //     $query['data']['sub'] = $aux;
+                        // }
+                        //
+                        // $query['data']['category'] = $table;
+                        // $query['data']['id'] = $product_id;
+                        // $result = get_product($query);
+                        // $result = json_decode($result);
+                        // $result->data->category_aux = (isset($query['data']['sub'])) ? $query['data']['sub']: $table;
+                        // $result->data->custom_message = $custom_message;
+                        // array_push($promotion_products, $result);
+
+                    $grouped[$value['category']][] = $value;
+                }
+                $info_to_return['mayInterestYouItems'] = $grouped;
+                $info_to_return['status'] = 'LOADED';
+                break;
             }
             break;
 
@@ -654,9 +704,9 @@ function _index_universals( $universal_products ){
 function _index_cromados( $cromado_products ){
     $new_array = array();
     foreach ($cromado_products as $key => $value) {
+        $value['from'] = "cromados";
         $new_array[$value['name']][] = $value;
     }
-
     return $new_array;
 }
 
@@ -1630,6 +1680,10 @@ function get_promotions() {
     return Core\query($sql, array());
 }
 
+function get_may_interest_you_items() {
+    $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "aux_promotions ORDER BY id ASC";
+    return Core\query($sql, array());
+}
 
 function get_all_vehicles() {
     $sql = "SELECT * FROM ".$GLOBALS["prefix"]. "vehicle WHERE status = 1 ORDER BY brand ASC";
@@ -1934,42 +1988,54 @@ function get_product($post){
             break;
         case 'accesorios':
 
+            $from = null;
             switch ($_POST['data']['sub']) {
                 case 'tanques':
                     $query_result = get_tank_by_id($post['data']['id']);
+                    $from = $_POST['data']['sub'];
                     break;
                 case 'tapete maletero':
                     $query_result = get_tapete_maletero_by_id($post['data']['id']);
+                    $from = $_POST['data']['sub'];
                     break;
                 case 'barra antivolco':
                     $query_result = get_barra_antivolco_by_id($post['data']['id']);
+                    $from = $_POST['data']['sub'];
                     break;
                 case 'exploradoras':
                     $query_result = get_exploradora_by_id($post['data']['id']);
+                    $from = $_POST['data']['sub'];
                     break;
                 case 'barra de exploradoras':
                     $query_result = get_barras_de_exploradoras_by_id($post['data']['id']);
+                    $from = $_POST['data']['sub'];
                     break;
                 case 'cromados':
                     $query_result = get_cromado_by_id($post['data']['id']);
+                    $from = $_POST['data']['sub'];
                     break;
                 case 'cubierta stops traseros':
                     $query_result = get_cromado_by_id($post['data']['id']);
+                    $from = 'cromados';
                     break;
                 case 'pisa alfombras':
                     $query_result = get_cromado_by_id($post['data']['id']);
+                    $from = 'cromados';
                     break;
                 case 'cortina maletero':
                     $query_result = get_cromado_by_id($post['data']['id']);
+                    $from = 'cromados';
                     break;
                 default:
-                    $query_result = get_universal_by_id($post['data']['id']);
+                    $query_result = get_cromado_by_id($post['data']['id']);
+                    $from = 'cromados';
                     break;
             }
 
             if(isset($query_result[0])){
                 $result->images = get_images($post['data']['category'], $post['data']['id'], $post['data']['sub']);
                 $result->data = $query_result[0];
+                $result->data['from'] = $from;
                 $result->status = "SUCCESS";
             }else{
                 $result->data = $query_result;

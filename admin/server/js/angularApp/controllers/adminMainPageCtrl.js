@@ -37,7 +37,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
                 switch( data['status'] ) {
                 	case 'LOADED':
 		            	var jsonObject = angular.fromJson(data);
-			            $scope.
+			            $scope.mayInterestYouItems = jsonObject.mayInterestYouItems;
 			            break;
                 }
             }).

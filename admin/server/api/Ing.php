@@ -284,7 +284,6 @@ function list_varios( $data, $local = false ){
                 case 'get_products':
                 //var_dump($data);
                 $model_by_name = search_model_by_name( $data['modelName'], $data['vehicleId'] );
-                //var_dump($model_by_name);
                 $model_id = NULL;
                 if ( count($model_by_name) > 1 ){
                     $model_id = select_model_id( $model_by_name, $data['year'] );
@@ -320,7 +319,7 @@ function list_varios( $data, $local = false ){
                 if( !empty($info_to_return['rin_types']) ) {
                     $rin_products_result = get_rin_products( $info_to_return['rin_types'] );
 
-                    //var_dump($rin_products_result);
+                    // var_dump($rin_products_result);
 
                     switch ( $rin_products_result->status ) {
                         case 'FOUND':
@@ -358,11 +357,11 @@ function list_varios( $data, $local = false ){
                     }
 
                 }
-                //var_dump($info_to_return['tires']);
+                // var_dump($info_to_return['tires']);
                 $info_to_return['accesorios'] = _index_universals(get_universals());
                 $original_size_of_accesories = count($info_to_return['accesorios']);
 
-                $special_order_items = array('plumillas', 'pijamas para vehiculos', 'portabicicletas');
+                $special_order_items = array('portabicicletas', 'pijamas para vehiculos', 'plumillas');
                 $init_array = array();
                 foreach ($special_order_items as $key => $value) {
                     $init_array[$value] = $info_to_return['accesorios'][$value];
@@ -383,7 +382,7 @@ function list_varios( $data, $local = false ){
                 if( !empty($info_to_return['tires']) ) {
                     $tires_products_result = get_tire_products($info_to_return['tires']);
 
-                    //var_dump($tires_products_result);
+                    // var_dump($tires_products_result);
 
                     switch ( $tires_products_result->status ) {
                         case 'FOUND':
@@ -400,12 +399,14 @@ function list_varios( $data, $local = false ){
                     $info_to_return['tire_products'] = array();
                 }
 
+                // var_dump($info_to_return['tire_products']);
+
                 $info_to_return['bomberestribos_products']['delantero'] = array();
                 $info_to_return['bomberestribos_products']['trasero'] = array();
                 $info_to_return['bomberestribos_products']['estribo'] = array();
                 $info_to_return['parrilas_techo'] = array();
                 $info_to_return['barras_techo'] = array();
-
+                // var_dump($model_id);
                 if( count($model_id) > 1 ){
                     foreach( $model_id as $value ){
                         $vehicle = get_vehicle_model_by_id($value);
@@ -417,7 +418,7 @@ function list_varios( $data, $local = false ){
                         $tapetes = get_tapete_maletero_products( $value );
                         $tanks = get_tanks( $value );
                         $barra_de_exploradoras = get_barra_de_exploradoras($value);
-
+                        // echo '22323'
                         $parrilas_techo_size = get_parrilla_techo_product_size_by_model_id( $value );
                         $barras_techo_type = get_barra_techo_product_size_by_model_id( $value );
 
@@ -426,17 +427,16 @@ function list_varios( $data, $local = false ){
                         $cromados = _index_cromados(get_cromados_products($value));
 
                         if( !empty($cromados) ) {
-                            // var_dump($cromados);
                             _add_to_accesorios( $info_to_return , $cromados );
                         }
 
                         if( !empty($exploradoras) ) {
                             $info_to_return['accesorios']['exploradoras'] = $exploradoras;
                         }
-
                         if( $vehicle[0]['sin_barras'] == '1' ){
                             $type_info = get_product_barra_type_info( 7 );
                             $barras_techo = get_barras_transversales();
+                            // var_dump($barras_techo);
                             $info_to_return['barras_techo'][$type_info[0]['tipo']] = $barras_techo;
                         }
 
@@ -504,12 +504,12 @@ function list_varios( $data, $local = false ){
                     $barra_antivolco = get_barra_antivolco_products_by_model_id( $model_id );
 
                     $tanks = get_tanks( $model_id );
+
                     $barra_de_exploradoras = get_barra_de_exploradoras($model_id);
 
                     $exploradoras = get_exploradora_product_by_model_id($model_id);
 
                     $cromados = _index_cromados(get_cromados_products($model_id));
-
 
 
                     if( !empty($cromados) ) {
@@ -519,13 +519,15 @@ function list_varios( $data, $local = false ){
                     if( !empty($exploradoras) ) {
                         $info_to_return['accesorios']['exploradoras'] = $exploradoras;
                     }
-
+                    // var_dump($vehicle);
                     if( $vehicle[0]['sin_barras'] == '1' ){
-                        $type_info = get_produc_barra_type_info( 7 );
+                        // echo '-----';
+                        $type_info = get_product_barra_type_info( 7 );
+                        // var_dump($type_info);
                         $barras_techo = get_barras_transversales();
                         $info_to_return['barras_techo'][$type_info[0]['tipo']] = $barras_techo;
                     }
-
+                    // echo '-----';
                     if( !empty($tanks) ) {
                         $tank_products = get_all_tank_products();
                         $info_to_return['accesorios']['tanques'] = $tank_products;
@@ -586,7 +588,7 @@ function list_varios( $data, $local = false ){
                 $info_to_return['light_hid_products'] = get_lights_hd_all_products();
 
                 $info_to_return['status'] = "PRODUCTS_LOADED";
-                //var_dump(error_get_last());
+                // var_dump(error_get_last());
                 break;
                 case 'get_compatible_tires_with_rin';
                 $tire_products = get_compatible_tires_with_rin( $data['diameter'], $data['width'] );
@@ -631,27 +633,27 @@ function list_varios( $data, $local = false ){
                 $grouped = array();
                 $accesories_items  = array('kit completo' , 'marco placa' , 'rejilla frontal' , 'cubierta stops traseros' , 'exploradoras' , 'barra de exploradoras' , 'tanques' , 'barra antivolco' , 'plumillas' , 'barra luces led' , 'portabicicleta' , 'portabicicleta de techo' , 'filtro de aire' , 'pijamas para vehiculos' , 'pitos' , 'reflejo logo' , 'rines ciegos' , 'tapete maletero');
                 foreach ($info_to_return['mayInterestYouItems'] as $key => $value) {
-                        //
-                        // $table = explode('-', $value['detail'])[0];
-                        // $product_id = explode('-', $value['detail'])[1];
-                        // $custom_message = explode('-', $value['detail'])[2];
-                        // $query = array();
-                        //
-                        // if(in_array($table, $accesories_items)){
-                        //     $aux = $table;
-                        //     $table = 'accesorios';
-                        //     $query['data']['sub'] = $aux;
-                        // }
-                        //
-                        // $query['data']['category'] = $table;
-                        // $query['data']['id'] = $product_id;
-                        // $result = get_product($query);
-                        // $result = json_decode($result);
-                        // $result->data->category_aux = (isset($query['data']['sub'])) ? $query['data']['sub']: $table;
-                        // $result->data->custom_message = $custom_message;
-                        // array_push($promotion_products, $result);
 
-                    $grouped[$value['category']][] = $value;
+                        $table = explode('-', $value['detail'])[0];
+                        $product_id = explode('-', $value['detail'])[1];
+                        $custom_message = explode('-', $value['detail'])[2];
+                        $query = array();
+
+                        if(in_array($table, $accesories_items)){
+                            $aux = $table;
+                            $table = 'accesorios';
+                            $query['data']['sub'] = $aux;
+                        }
+
+                        $query['data']['category'] = $table;
+                        $query['data']['id'] = $product_id;
+                        $result = get_product($query);
+                        $result = json_decode($result);
+                        $result->data->category_aux = (isset($query['data']['sub'])) ? $query['data']['sub']: $table;
+                        $result->data->custom_message = $custom_message;
+                        array_push($promotion_products, $result);
+
+                    $grouped[$value['category']][] = $result;
                 }
                 $info_to_return['mayInterestYouItems'] = $grouped;
                 $info_to_return['status'] = 'LOADED';
@@ -1987,32 +1989,32 @@ function get_product($post){
             }
             break;
         case 'accesorios':
-
             $from = null;
-            switch ($_POST['data']['sub']) {
+            // var_dump($post['data']['sub']);
+            switch ($post['data']['sub']) {
                 case 'tanques':
                     $query_result = get_tank_by_id($post['data']['id']);
-                    $from = $_POST['data']['sub'];
+                    $from = $post['data']['sub'];
                     break;
                 case 'tapete maletero':
                     $query_result = get_tapete_maletero_by_id($post['data']['id']);
-                    $from = $_POST['data']['sub'];
+                    $from = $post['data']['sub'];
                     break;
                 case 'barra antivolco':
                     $query_result = get_barra_antivolco_by_id($post['data']['id']);
-                    $from = $_POST['data']['sub'];
+                    $from = $post['data']['sub'];
                     break;
                 case 'exploradoras':
                     $query_result = get_exploradora_by_id($post['data']['id']);
-                    $from = $_POST['data']['sub'];
+                    $from = $post['data']['sub'];
                     break;
                 case 'barra de exploradoras':
                     $query_result = get_barras_de_exploradoras_by_id($post['data']['id']);
-                    $from = $_POST['data']['sub'];
+                    $from = $post['data']['sub'];
                     break;
                 case 'cromados':
                     $query_result = get_cromado_by_id($post['data']['id']);
-                    $from = $_POST['data']['sub'];
+                    $from = $post['data']['sub'];
                     break;
                 case 'cubierta stops traseros':
                     $query_result = get_cromado_by_id($post['data']['id']);
@@ -2027,8 +2029,8 @@ function get_product($post){
                     $from = 'cromados';
                     break;
                 default:
-                    $query_result = get_cromado_by_id($post['data']['id']);
-                    $from = 'cromados';
+                    $query_result = get_universal_by_id($post['data']['id']);
+                    $from = 'accesorios';
                     break;
             }
 
@@ -2176,7 +2178,7 @@ function get_exploradora_by_id($product_id, $reference = null){
 }
 
 function get_barras_de_exploradoras_by_id($product_id, $reference = null){
-    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."barras_de_exploradoras_product WHERE id = ". $product_id;
+    $sql  = "SELECT * FROM ".$GLOBALS['prefix']."barras_exploradoras_product WHERE id = ". $product_id;
     if(isset($reference))
         $sql .= " AND referencie LIKE ".'\''.$reference.'\'';
     //var_dump($sql);

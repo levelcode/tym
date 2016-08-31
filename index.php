@@ -51,7 +51,7 @@ $cabecero = new html\Cabecero($opciones);
 											<small ng-bind="item.data.brand"></small>
 										</div>
 										<i class="st-separador"></i>
-										<p class="txt-15 ng-cloak" ng-bind="item.data.custom_message"></p>
+										<p class="txt-15 ng-cloak" ng-bind-html="item.data.custom_message"></p>
 									</div>
 									<div class="col-sm-6">
 										<br>

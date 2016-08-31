@@ -14,10 +14,15 @@ tymApp.controller('productListHeader', [ '$scope', '$rootScope', 'ConstantsServi
 		$scope.selectedCar = data;
 	});
 
-	$scope.openProductType = function( productType ) {
+	$rootScope.$on('product_category_changed', function( event, data ){
+		$scope.interestYouItems = data;
+	});
 
+	$scope.openProductType = function( productType ) {
         $rootScope.$broadcast( ConstantsService.CHANGE_PRODUCTS, productType );
 
     }
+
+
 
 }]);

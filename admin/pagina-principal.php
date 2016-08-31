@@ -94,48 +94,10 @@ $cabecero = new html\Cabecero($opciones);
 					<div class="col-xs-12">
 						<form id="monthPromo" name="monthPromo" novalidate>
 					    	<br>
-							<div class="col-sm-6 col-lg-6">
+							<div class="col-sm-6 col-lg-6" ng-repeat="(groupName, group) in mayInterestYouItems">
 								<div class="form-group">
-									<label for="promotionDetail">Rines:</label>
-									<input type="text" name="promotionOne" ng-model="promotions[0].detail" class="form-control" required>
-									<input type="text" name="promotionOne" ng-model="promotions[0].detail" class="form-control" required>
-									<input type="text" name="promotionOne" ng-model="promotions[0].detail" class="form-control" required>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-6">
-								<div class="form-group">
-									<label for="promotionDetail">Llantas:</label>
-									<input type="text" name="promotionTwo" ng-model="promotions[1].detail" class="form-control" required>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-6">
-								<div class="form-group">
-									<label for="promotionDetail">Accesorios:</label>
-									<input type="text" name="promotioThree" ng-model="promotions[2].detail" class="form-control" required>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-6">
-								<div class="form-group">
-									<label for="promotionDetail">Barras techo:</label>
-									<input type="text" name="promotioThree" ng-model="promotions[2].detail" class="form-control" required>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-6">
-								<div class="form-group">
-									<label for="promotionDetail">Portaequipajes:</label>
-									<input type="text" name="promotioThree" ng-model="promotions[2].detail" class="form-control" required>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-6">
-								<div class="form-group">
-									<label for="promotionDetail">Parrillas Techo:</label>
-									<input type="text" name="promotioThree" ng-model="promotions[2].detail" class="form-control" required>
-								</div>
-							</div>
-							<div class="col-sm-6 col-lg-6">
-								<div class="form-group">
-									<label for="promotionDetail">Bomper y estribos:</label>
-									<input type="text" name="promotioThree" ng-model="promotions[2].detail" class="form-control" required>
+									<label for="promotionDetail" ng-bind="groupName+':'"></label>
+									<input type="text" ng-repeat="(key, item) in group" name="promotionOne{{item.category}}{{item.id}}" ng-model="item.detail" class="form-control" required>
 								</div>
 							</div>
 							<div class="col-xs-12 bloque text-right">

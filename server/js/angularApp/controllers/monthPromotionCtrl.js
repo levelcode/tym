@@ -1,10 +1,36 @@
-tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', function( $scope, $http, $sce, $timeout ){
+tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', '$rootScope', function( $scope, $http, $sce, $timeout, $rootScope ){
 
 	$scope.loadingData = false;
 
 	angular.element(document).ready(function(){
 		loadPromotion();
+		mayInterestYouItems();
 	});
+	$scope.showInterestYouItems = function(items){
+		$rootScope.$emit('interest_you_items_loaded', items);
+	}
+
+	function mayInterestYouItems(){
+		$scope.loadingData = true;
+		var post = 	{};
+			post.a = 'list_varios';
+			post.from = 'admin-main-page';
+			post.action = "get_may_interest_you";
+        $http.post("admin/server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+                console.log(data);
+                $scope.loadingData = false;
+                switch( data['status'] ) {
+                	case 'LOADED':
+		            	var jsonObject = angular.fromJson(data);
+						$scope.showInterestYouItems(jsonObject.mayInterestYouItems);
+			            break;
+                }
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+	}
 
 	function loadPromotion( ){
 		$scope.loadingData = true;
@@ -75,9 +101,9 @@ tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', 
 		console.log(subcategory);
 		console.log(product.size);
 		if(subcategory != undefined){
-			alert('founded');
+			// alert('founded');
 			console.log();
-			url = "/producto/accesorios" + productType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+			url = "/producto/accesorios/" + productType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
 		}else{
 			switch (productType) {
 				case 'rin':
@@ -105,7 +131,7 @@ tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', 
 			}
 		}
 		console.log(url);
-		// window.location = url;
+		window.location = url;
 	}
 
 }]);

@@ -207,17 +207,18 @@
 					<div class="col-sm-2 text-center te-puede-interesar">
 						<h5 class="text-uppercase txt-18 c-color4">Te puede interesar</h5>
 						<i class="st-separador"></i>
-
-						<div class="tipo">
+						<div class="tipo" ng-repeat="(key, value) in interestYouItems">
 							<div class="cuadro">
-								<span><a class="accesorios">Tapete maletero</a></span>
-								<a href="#plumillas" data-producto-nombre="tapete-maletero" ng-click="openProductType('accesorios')" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
+								<span><a class="accesorios" ng-bind="value.data.brand"></a></span>
+								<a ng-click="" style="margin-top: 10px;" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 							</div>
-							<div class="foto img1">
-
+							<div class="foto">
+								<!-- <img ng-if="product.type == 'accesorios' || product.type == 'kit completo' || product.type == 'marco placa' || product.type == 'rejilla frontal' || product.type == 'cubierta stops traseros' || product.type == 'exploradoras' || product.type == 'barra de exploradoras' || product.type == 'tanques' || product.type == 'barra antivolco' || product.type == 'plumillas' || product.type == 'barra luces led' || product.type == 'portabicicleta' || product.type == 'portabicicleta de techo' || product.type == 'filtro de aire' || product.type == 'pijamas para vehiculos' || product.type == 'pitos' || product.type == 'reflejo logo' || product.type == 'rines ciegos' || product.type == 'tapete maletero'"  style="width:50px;height:auto;" ng-src="/admin/recursos/img/{{product.type}}/{{product.subcategory}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto">
+								<img ng-if="product.type != 'accesorios' && product.type != 'kit completo' && product.type != 'marco placa' && product.type != 'rejilla frontal' && product.type != 'cubierta stops traseros' && product.type != 'exploradoras' && product.type != 'barra de exploradoras' && product.type != 'tanques' && product.type != 'barra antivolco' && product.type != 'plumillas' && product.type != 'barra luces led' && product.type != 'portabicicleta' && product.type != 'portabicicleta de techo' && product.type != 'filtro de aire' && product.type != 'pijamas para vehiculos' && product.type != 'pitos' && product.type != 'reflejo logo' && product.type != 'rines ciegos' && product.type != 'tapete maletero'" style="width:50px;height:auto;" ng-src="/admin/recursos/img/{{product.type}}-products/{{product.id}}/{{product.img}}" alt="imagen de producto"> -->
+								<img class="interest-you-item" src="recursos/img/footer-pijamas.jpg" alt="">
 							</div>
 						</div>
-						<div class="tipo">
+						<!-- <div class="tipo">
 							<div class="cuadro">
 								<span>Pijamas para vehiculos</span>
 								<a href="" data-producto-nombre="pijamas-para-vehiculos" style="margin-top: 10px;"  ng-click="openProductType('accesorios')" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
@@ -232,7 +233,7 @@
 							</div>
 							<div class="foto img3">
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>

@@ -117,7 +117,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 		currentProduct.size = (size == undefined) ? '': size;
 		currentProduct.addInstalation = false;
 		currentProduct.instalationValue = parseInt(currentInstalationPrice);
-		currentProduct.subcategory = (productInfo.name != undefined) ? productInfo.name: productInfo.from;
+		currentProduct.subcategory = (productInfo.name != undefined) ? productInfo.name: (productInfo.subType != undefined) ? productInfo.subType : productInfo.from;
 		currentProduct.from = (productInfo.from != undefined) ? productInfo.from: '';
 
 
@@ -189,11 +189,14 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 	}
 
 	$scope.show = function( data ){
-		console.log(data.info.img);
+		console.log(data);
 		$scope.response = data;
 		$scope.showComptariblesProducts = false	;
 		$scope.selectedProductType = data.type;
 		$scope.selectedProduct = data.info;
+		if(data.subType != undefined){
+			$scope.selectedProduct.subType = data.subType;
+		}
 		$scope.selectedProduct.img = data.images[0];
 		$scope.selectedProductImages = data.images;
 

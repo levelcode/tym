@@ -708,6 +708,8 @@ function filter_tires( $tires ){
 function _index_universals( $universal_products ){
     $new_array = array();
     foreach ($universal_products as $key => $value) {
+        $value['from'] = 'accesorios';
+        $value['is_univesal'] = true;
         $new_array[$value['name']][] = $value;
     }
 
@@ -2046,20 +2048,9 @@ function get_product($post){
                     $query_result = get_cromado_by_id($post['data']['id']);
                     $from = $post['data']['sub'];
                     break;
-                case 'cubierta stops traseros':
-                    $query_result = get_cromado_by_id($post['data']['id']);
-                    $from = 'cromados';
-                    break;
-                case 'pisa alfombras':
-                    $query_result = get_cromado_by_id($post['data']['id']);
-                    $from = 'cromados';
-                    break;
-                case 'cortina maletero':
-                    $query_result = get_cromado_by_id($post['data']['id']);
-                    $from = 'cromados';
-                    break;
                 default:
                     $query_result = get_universal_by_id($post['data']['id']);
+                    //var_dump($query_result);
                     $from = 'accesorios';
                     break;
             }

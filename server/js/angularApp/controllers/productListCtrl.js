@@ -303,7 +303,11 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
 				break;
 			case 'accesorios':
-				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;
+				var extraParam = '';
+				if(product.from == 'cromados'){
+					extraParam = 'cro';
+				}
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id+'-'+extraParam;
 				break;
 			case 'barras':
 				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;

@@ -283,11 +283,19 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 
 	function getProductByIdAndReference(productCategory, referencie, productId, subcategory){
 		$scope.loadingData = true;
+		var fromCromados = false;
+		var idItems =  productId.split('-');
+		if(idItems.length > 1){
+			subcategory = 'cromados';
+			productId = idItems[0];
+		}
+
 		var post = {};
 			post.a = 'unique_element';
 			post.from = productCategory;
 			post.action = "get_product";
-			post.data = { category : productCategory, ref : referencie, id : productId, sub: subcategory };
+			post.data = { category : productCategory, ref : referencie, id : productId, sub: subcategory};
+		console.log(post);
         $http.post("/admin/server/api/Ajax.php", post)
         .success(function (data, status, headers, config) {
             console.log(data.data.img);
@@ -306,7 +314,7 @@ tymApp.controller('productDetailCtrl', ['$scope', '$rootScope', '$cookies', '$ro
 					$scope.show(result);
 		            break;
 				default:
-					console.log(jsonObject);
+					console.log(data + ' ' + status);
 					break;
             }
         }).

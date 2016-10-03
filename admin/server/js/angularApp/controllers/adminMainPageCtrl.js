@@ -18,6 +18,7 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 	//data arrays
 	$scope.menuItems = {};
 	$scope.universalProductsTypes = {};
+	$scope.items = [];
 
 	angular.element(document).ready(function(){
 		getMothPromotions();
@@ -103,6 +104,42 @@ adminTymApp.controller('adminMainPageCtrl', ['$scope', '$http', '$timeout', '$co
 			post.from = 'admin-main-page';
 			post.action = "update_main_page_promotion";
 			post.data = data;
+
+        $http.post("server/api/Ajax.php", post)
+            .success(function (data, status, headers, config) {
+
+                console.log(data);
+                $scope.loadingData = false;
+
+                switch( data['status'] ) {
+                	case 'SUCCESS':
+		            	var jsonObject = angular.fromJson(data);
+
+			            st.ventanaInfo.abrir("Guandado con éxito", "success", 2000);
+		            break;
+		            case 'ERROR':
+		            	st.ventanaInfo.abrir("Intentalo de nuevo", "error", 2000);
+		            	$timeout(function() {$window.location.reload();} , 1000 );
+		            break;
+                }
+
+            }).
+            error(function (data, status, headers, config) {
+                console.info(data + ":(");
+            });
+
+	}
+	$scope.updateSpecialPromotion = function(itemsToUpdate){
+		console.log(itemsToUpdate);
+		$scope.loadingData = true;
+
+		st.ventanaInfo.abrir("Guardando", "success", 4000);
+
+		var post = 	{};
+			post.a = 'update_item';
+			post.from = 'admin-main-page';
+			post.action = "update_aux_promotions";
+			post.data = itemsToUpdate;
 
         $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {

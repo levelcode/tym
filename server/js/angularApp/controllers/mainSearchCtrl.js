@@ -42,7 +42,7 @@ tymApp.controller( 'mainSearchCtrl', [ '$scope', '$http', '$rootScope', 'Constan
 		var post = 	{};
 			post.a = 'read';
 
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("/admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
                 console.log(data);
             }).
@@ -62,7 +62,7 @@ tymApp.controller( 'mainSearchCtrl', [ '$scope', '$http', '$rootScope', 'Constan
 			post.action = "get_models_by_brand";
 			post.brandId = selectedVehicleBrand.id;
 
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("/admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
 
                 console.log(data);
@@ -96,7 +96,7 @@ tymApp.controller( 'mainSearchCtrl', [ '$scope', '$http', '$rootScope', 'Constan
 			post.action = "get_years_by_model";
 			post.modelName = modelSelected.model;
 
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("/admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
 
                 console.log(data);
@@ -157,7 +157,7 @@ tymApp.controller( 'mainSearchCtrl', [ '$scope', '$http', '$rootScope', 'Constan
 			post.from = 'home';
 			post.action = 'load_vehicles';
 
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("/admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
 
                 console.log(data);

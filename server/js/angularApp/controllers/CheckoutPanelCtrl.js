@@ -113,7 +113,7 @@ tymApp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookie
                 var order = newOrder;
 
                 order.date = UtilService.getDateMySql();
-               
+
                 order.from = 'WEB';
 
                 order.points = order.shoppingcart.subtotal * ConstantsService.POINTS_BASE;
@@ -239,7 +239,7 @@ tymApp.controller('CheckoutPanelCtrl', ['$scope', '$rootScope', '$log', '$cookie
 
         $scope.loadingAddresses = true;
 
-        $http.get("admin/server/api/Ajax.php")
+        $http.get("/admin/server/api/Ajax.php")
             .success(function (data, status, headers, config) {
 
                 $scope.loadingAddresses = false;

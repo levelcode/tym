@@ -1,4 +1,6 @@
 .htaccess
 admin/.htaccess
 admin/recursos/csv
+admin/recursos/img
+recursos/img/*
 .DS_Store

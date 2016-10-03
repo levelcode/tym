@@ -169,6 +169,15 @@ function update_item( $data ) {
                 }else {
                     $info_to_return['status'] = 'ERROR';
                 }
+                break;
+                case 'update_aux_promotions':
+                $updated = update_aux_promotions( $data['data'] );
+
+                if( $updated ) {
+                    $info_to_return['status'] = 'SUCCESS';
+                }else {
+                    $info_to_return['status'] = 'ERROR';
+                }
 
                 break;
             }
@@ -651,6 +660,8 @@ function list_varios( $data, $local = false ){
                         $result = json_decode($result);
                         $result->data->category_aux = (isset($query['data']['sub'])) ? $query['data']['sub']: $table;
                         $result->data->custom_message = $custom_message;
+                        $result->data->origin_string = $value['detail'];
+                        $result->data->origin_id = $value['id'];
                         array_push($promotion_products, $result);
 
                     $grouped[$value['category']][] = $result;
@@ -1593,6 +1604,25 @@ function update_month_promotion_in_main_page( $data ) {
     foreach ($data as $key => $item) {
         $item_to_update['id'] = $item['id'];
         $item_to_update['detail'] = $item['detail'];
+        $insert_id = Core\update($item_to_update);
+    }
+
+    $completed = false;
+    if( isset($insert_id) )
+        $completed = true;
+
+    return $completed;
+
+}
+
+function update_aux_promotions( $data ) {
+
+    $item_to_update['table'] = "aux_promotions";
+    $item_to_update['column_id'] = "id";
+
+    foreach ($data as $key => $item) {
+        $item_to_update['id'] = $key;
+        $item_to_update['detail'] = $item;
         $insert_id = Core\update($item_to_update);
     }
 

@@ -7,10 +7,10 @@ tymApp.controller('startCtrl', ['$scope', '$http', '$timeout', '$cookies', '$win
 	$scope.loadingChartData = false;
 
 	angular.element(document).ready(function(){
-		
+
 		//loadNotifications();
 		//loadChart();
-		
+
 	});
 
 	$scope.previewNotification = function( collectRequestId, wasteId ) {
@@ -78,9 +78,9 @@ tymApp.controller('startCtrl', ['$scope', '$http', '$timeout', '$cookies', '$win
 			post.where = 1;
 			post.client_id = id;
 
-        $http.post("server/api/Ajax.php", post)
+        $http.post("/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
-                
+
 
                 console.log(data);
 
@@ -104,7 +104,7 @@ tymApp.controller('startCtrl', ['$scope', '$http', '$timeout', '$cookies', '$win
         	$scope.notifications.data = na;
         	$scope.notifications.empty = false;
         }else {
-        	$scope.notifications.empty = true;	
+        	$scope.notifications.empty = true;
         }
 
 	}
@@ -159,7 +159,7 @@ tymApp.controller('startCtrl', ['$scope', '$http', '$timeout', '$cookies', '$win
         $http.post("server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
             	$scope.loadingChartData = false;
-                
+
                 console.log(data);
 
                 var jsonObject = angular.fromJson( data );
@@ -169,7 +169,7 @@ tymApp.controller('startCtrl', ['$scope', '$http', '$timeout', '$cookies', '$win
                 		drawGoogleChart( jsonObject.data_chart );
                 		break;
             		case 'EMPTY':
-                		
+
                 		break;
                 }
 
@@ -182,7 +182,7 @@ tymApp.controller('startCtrl', ['$scope', '$http', '$timeout', '$cookies', '$win
 
 	function drawGoogleChart(  ) {
 
-		
+
 
 	}
 

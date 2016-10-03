@@ -92,17 +92,17 @@ $cabecero = new html\Cabecero($opciones);
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-xs-12">
-						<form id="monthPromo" name="monthPromo" novalidate>
+						<form id="monthPromo" name="auxPromo" novalidate>
 					    	<br>
 							<div class="col-sm-6 col-lg-6" ng-repeat="(groupName, group) in mayInterestYouItems">
 								<div class="form-group">
 									<label for="promotionDetail" ng-bind="groupName+':'"></label>
-									<input type="text" ng-repeat="(key, item) in group" name="promotionOne{{item.category}}{{item.id}}" ng-model="item.detail" class="form-control" required>
+									<input type="text" ng-repeat="(key, item) in group" name="promotionOne{{groupName}}{{key}" ng-model="items[item.data.origin_id]" ng-init="items[item.data.origin_id] = item.data.origin_string" class="form-control" required>
 								</div>
 							</div>
 							<div class="col-xs-12 bloque text-right">
 								<button class="btn btn-danger" ng-click="cancelAll()"><i class="fa fa-remove"></i> &nbsp;Cancelar</button>
-								<button id="save_waste_info" class="btn btn-success" ng-click="updatePromotion( promotions )" ng-disabled="sendingRequest || monthPromo.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
+								<button id="save_waste_info" class="btn btn-success" ng-click="updateSpecialPromotion( items )" ng-disabled="sendingRequest || auxPromo.$invalid"><i class="fa fa-save" ng-if="!sendingRequest"></i><i class="fa fa-circle-o-notch fa-spin" ng-if="sendingRequest"></i> &nbsp;Guardar</button>
 							</div>
 						</form>
 					</div>

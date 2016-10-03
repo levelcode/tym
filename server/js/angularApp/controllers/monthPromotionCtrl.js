@@ -16,7 +16,7 @@ tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', 
 			post.a = 'list_varios';
 			post.from = 'admin-main-page';
 			post.action = "get_may_interest_you";
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("/admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
                 console.log(data);
                 $scope.loadingData = false;
@@ -40,7 +40,7 @@ tymApp.controller('monthPromotionCtrl', ['$scope', '$http', '$sce', '$timeout', 
 			post.from = 'home';
 			post.action = "get_main_page_promotion";
 
-        $http.post("admin/server/api/Ajax.php", post)
+        $http.post("/admin/server/api/Ajax.php", post)
             .success(function (data, status, headers, config) {
 
                 console.log(data);

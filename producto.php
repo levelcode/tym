@@ -37,7 +37,7 @@ $cabecero = new html\Cabecero($opciones);
 						<div id="detalle-producto" ng-controller="productDetailCtrl">
 							<div class="container">
 								<row>
-									<div class="col-sm-10" ng-cloak>
+									<div class="col-sm-12" ng-cloak>
 										<div class="row">
 											<div class="col-sm-6">
 												<p class="txt-18 text-uppercase"><span class="c-color3">Escogiste:</span> {{selectedCar.vehicle.brand}} / {{selectedCar.model.model}} / {{selectedCar.year}}</p>
@@ -734,7 +734,7 @@ $cabecero = new html\Cabecero($opciones);
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-2 text-center te-puede-interesar">
+									<!-- <div class="col-sm-2 text-center te-puede-interesar">
 										<h5 class="text-uppercase txt-18 c-color4">Te puede interesar</h5>
 										<i class="st-separador"></i>
 
@@ -762,7 +762,7 @@ $cabecero = new html\Cabecero($opciones);
 												<a data-nombre="accesorios-accesorios" class="btn text-uppercase bg-color3 txt-11 c-blanco">Comprar<br>Ahora</a>
 											</div>
 										</div>
-									</div>
+									</div> -->
 								</row>
 							</div>
 						</div>

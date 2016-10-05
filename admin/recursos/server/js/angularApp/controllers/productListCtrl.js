@@ -305,9 +305,9 @@ tymApp.controller('productListCtrl', ['$scope', '$rootScope', 'ConstantsService'
 			case 'accesorios':
 				var extraParam = '';
 				if(product.from == 'cromados'){
-					extraParam = '-cro';
+					extraParam = 'cro';
 				}
-				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id+extraParam;
+				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id+'-'+extraParam;
 				break;
 			case 'barras':
 				url = "/producto/" + productType + '/' + productSubType + '/' + product.referencie.trim().replace(' ', '-') + '/' + product.id;

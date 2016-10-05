@@ -2056,6 +2056,7 @@ function get_product($post){
             }
 
             if(isset($query_result[0])){
+                // var_dump($post['data']['category'].' '.$post['data']['id'].' '.$post['data']['sub']);
                 $result->images = get_images($post['data']['category'], $post['data']['id'], $post['data']['sub']);
                 $result->data = $query_result[0];
                 $result->data['from'] = $from;

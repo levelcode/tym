@@ -1,0 +1,110 @@
+@import (reference) "config.less";
+@import (reference) "general.less";
+
+.carousel{
+	.carousel-indicators{
+		text-align: right;
+		width: 100%;
+		margin-left: 0;
+		left: 0;
+		padding-right: 40px;
+		li{
+			border-color: @color3;
+			&.active{
+				background-color: @color3;
+			}
+		}
+		/*right: 40px;*/
+	}
+	.carousel-inner{
+		.item{
+			.carousel-caption{
+				left: 40px;
+				right: 40px;
+				bottom: 40px;
+				text-align: right;
+				.etiqueta{
+					display: inline-block;
+					background-color: rgba(0, 0, 0, .5);
+					background: linear-gradient(90deg, transparent, rgba(0, 0, 0, .6) 80%, transparent);
+					padding: 8px 24px;
+					.grande{
+						font-size: 30px;
+						color: @color3;
+						font-family: @f-f1;
+						font-weight: 500;
+						line-height: 30px;
+					}
+				}
+			}
+		}
+	}
+	.carousel-control{
+		&.left, &.right{
+			//background: none;
+			/*&:hover{
+				background-color: rgba(0,0,0,0.1);
+			}*/
+		}
+		.flecha{
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			&.fa-3x{
+				margin-top: -30px;
+				margin-left: -10px;
+			}
+		}
+	}
+}
+@media (min-width: 768px){
+	.carousel{
+		.carousel-inner{
+			.item{
+				.carousel-caption{
+					.etiqueta{
+						.grande{
+							font-size: 50px;
+							line-height: 50px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+/* subir el contenido en esta página */
+#cabecero{
+	margin-bottom: -100px;
+}
+
+/* slider */
+#slider{
+	#rotabanner{
+		.carousel-inner{
+			.item{
+				background-position: center;
+				background-repeat: no-repeat;
+				height: 560px;
+				&.sld-1{
+					background-image: url(../img/sld-1.jpg);
+				}
+				&.sld-2{
+					background-image: url(../img/sld-2.jpg);
+				}
+				&.sld-3{
+					background-image: url(../img/sld-3.jpg);
+				}
+				.container{
+					.row{
+						.col-xs-12{
+							height: 560px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

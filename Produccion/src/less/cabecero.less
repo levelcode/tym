@@ -1,0 +1,250 @@
+@import (reference) "config.less";
+@import (reference) "general.less";
+
+/* animaciones */
+@keyframes logo{
+	25%{
+		transform: scale(.96);
+	}
+	50%{
+		transform: scale(1);
+	}
+	75%{
+		transform: scale(.96);
+	}
+}
+
+#cabecero{
+	@alto-cabecero: 84px;
+	width: 100%;
+	height: @alto-cabecero;
+	background-color: fade(@color1, 80%);
+	box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+	z-index: 18;
+	height: @alto-cabecero;
+	position: relative;
+	background-image: url(../img/bg-cabecero.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	.logo{
+		display: block;
+		position: absolute;
+		left: 0;
+		top: 0;
+		transform-origin: 50% 0;
+		width: 182px;
+		height: 84px;
+		background-image: url(../img/logo-xs.png);
+		background-position: center;
+		background-repeat: no-repeat;
+		&:hover{
+			animation-name: logo;
+			animation-duration: .4s;
+			animation-iteration-count: 1;
+		}
+	}
+	#alternador-menu{
+		display: block;
+		width: (@alto-cabecero / 2);
+		height: (@alto-cabecero / 2);
+		background-image: url(../img/alternador-menu.png);
+		position: absolute;
+		background-repeat: no-repeat;
+		background-position: center;
+		right: 0;
+		top: 0;
+		cursor: pointer;
+		z-index: 20;
+		background-color: rgba(0, 0, 0, 0.4);
+	}
+	.menu{
+		position: absolute;
+		width: 280px;
+		top: 0;
+		right: 0;
+		background-color: #42bef0;
+		z-index: 19;
+		box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+		display: none;
+		ul{
+			list-style: none;
+			.no-pm;
+			font-family: @f-f1;
+			padding-top: 92px;
+			font-size: 22px;
+			font-weight: 500;
+			padding-left: 10px;
+			padding-right: 10px;
+			li{
+				&:first-child{
+					a{
+						border-top: none;
+					}
+				}
+				&:last-child{
+					a{
+						border-bottom: none;
+					}
+				}
+				a{
+					display: block;
+					padding-top: 24px;
+					padding-bottom: 20px;
+					border-top: 2px solid #2193d7;
+					border-bottom: 2px solid @color2;
+					color: @color2;
+					&:hover{
+						color: @blanco;
+					}
+				}
+			}
+		}
+
+	}	
+	#alternador-menu-accesorios{
+		background-color: rgba(0, 0, 0, 0.4);
+		width: (@alto-cabecero / 2);
+		height: (@alto-cabecero / 2);
+		position: absolute;
+		top: (@alto-cabecero / 2);
+		right: 0;
+		border-radius: 4px;
+		z-index: 18;
+		color: @blanco;
+		text-shadow: rgba(0, 0, 0, 0.5);
+		cursor: pointer;
+		transition-property: left, transform;
+		transition-duration: .2s;
+		background-image: url(../img/bg-menu-accesorios-l.png);
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+	.menu-accesorios{
+		width: 80px;
+		position: absolute;
+		left: 0;
+		top: 88px;
+		background-color: lighten(@color1, 10%);
+		z-index: 18;
+		border-top: 3px solid #222;
+		box-shadow: inset 0 0 40px rgba(0, 0, 0, .3), 0 0 40px rgba(0, 0, 0, .4);
+		ul{
+			.no-pm;
+			list-style-type: none;
+			font-family: @f-f1;
+			font-weight: 600;
+			padding-left: 6px;
+			padding-right: 6px;
+			li{
+				&:first-child{
+					a{
+						border-top: none;
+					}
+				}
+				&:last-child{
+					a{
+						border-bottom: none;
+					}
+				}
+				a{
+					position: relative;
+					display: block;
+					padding-top: 20px;
+					padding-bottom: 20px;
+					border-top: 2px solid @color1;
+					border-bottom: 2px solid lighten(@color1, 20%);
+					font-size: 14px;
+					color: #bce7ff;
+					text-shadow: 0 0 20px rgba(255, 255, 255, 0.5), 0 0 10px rgba(255, 255, 255, 0.5);
+					&:hover, &.activo{
+						color: @blanco;
+					}
+					&.activo{
+						&::after{
+							content: '';
+							display: block;
+							width: 50px;
+							height: 25px;
+							position: absolute;
+							bottom: 0;
+							left: 8px;
+							background-image: url(../img/menu-accesorios-activo.png);
+							background-position: center;
+							background-size: cover;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	#usuario{
+		position: absolute;
+		right: (@alto-cabecero / 2);
+		top: 0;
+		padding-right: 10px;
+		height: @alto-cabecero;
+		padding-top: 20px;
+		background-repeat: no-repeat;
+		background-position: center;
+	}
+
+	#btn-carro-compras{
+		position: fixed;
+		right: -8px;
+		top: 96px;
+		z-index: 10;
+		border-radius: 6px 0 0 6px;
+		padding-right: 20px;
+		background-color: fade(@rojo, 80%);
+		font-size: 12px;
+		transition-property: font-size, right;
+		transition-duration: .4s;
+		.badge{
+			font-weight: 300;
+		}
+	}
+}
+
+@media (min-width:768px){
+	@alto-cabecero: 84px;
+	#cabecero{
+		.logo{
+			width: 300px;
+			height: 84px;
+			background-image: url(../img/logo.png);
+		}
+		.menu-accesorios{
+			width: 105px;
+			ul{
+				li{
+					a{
+						font-size: 20px;
+						padding-top: 26px;
+						padding-bottom: 26px;
+						&.activo{
+							&::after{
+								width: 74px;
+								height: 37px;
+								left: 10px;
+							}
+						}
+					}
+				}
+			}
+		}
+		#alternador-menu, #alternador-menu-accesorios{
+			width: @alto-cabecero;
+			height: @alto-cabecero;
+		}
+		#alternador-menu-accesorios{
+			right: @alto-cabecero;
+			top: 0;
+		}
+		#usuario{
+			right: @alto-cabecero * 2;
+		}
+	}
+}
+//@media (min-width:992px){}
+//@media (min-width:1200px){}

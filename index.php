@@ -4,8 +4,8 @@ require_once('recursos/php/config.php');
 
 $opciones = array(
 	'responsivo' => true,
-	'descripcion' => 'Progracol es una empresa de ',
-	'autor' => 'prograCOL - http://progracol.com',
+	'descripcion' => 'TYM Accesorios',
+	'autor' => 'PrograCOL - http://progracol.com',
 	'titulo' => _TITULO,
 	'css' => array(
 		'recursos/css/index.css'

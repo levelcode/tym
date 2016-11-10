@@ -15,7 +15,7 @@
 			<div class="ingreso" data-modal="ingreso-registro">
 				<img src="/recursos/img/icono-usuario.png" alt="usuario">
 				<br>
-				Ingreso&nbsp;·&nbsp;Registro
+				Ingreso&nbsp;·&nbsp;Registro2
 				<br>
 			</div>
 		<?php endif;?>

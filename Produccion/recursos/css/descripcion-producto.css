@@ -1,0 +1,116 @@
+#contenido{background-image:url(../img/bg-empresas-aliadas.jpg);background-position:center;background-size:cover}.carousel .carousel-inner .item .sld{background-color:rgba(48,49,63,.8);padding:60px 20px;border-radius:8px;color:#bce7ff;font-weight:200;font-size:13px}.carousel .carousel-inner .item .sld h2{margin-top:0;margin-bottom:0}.carousel .carousel-inner .item .sld h3{margin-top:0;margin-bottom:30px;font-style:italic;font-weight:200;font-size:16px;color:#fff}.carousel .carousel-inner .item .sld h3 a{color:#fff}.carousel .carousel-inner .item .sld i{font-weight:500;color:#fff}.carousel .carousel-indicators{position:static;text-align:center;margin-left:0;margin-right:0;margin-top:32px;left:0;width:100%}.carousel .carousel-indicators li{box-shadow:0 0 20px rgba(0,0,0,.6)}.carousel .carousel-control.left,.carousel .carousel-control.right{background:0 0}#titulo{position:absolute;width:240px;height:48px;background-image:url(../img/titulo-empresas-aliadas.png);background-repeat:no-repeat;background-position:center;background-size:cover;left:40px}#titulo h1{font-size:12px;position:absolute;left:84px;top:0}@media (min-width:768px){#titulo{width:439px;height:88px;left:140px}#titulo h1{font-size:24px;left:150px;top:14px}}#slider{padding-top:132px;padding-bottom:132px;}
+#detalle-producto {
+    /*display:none;position:fixed;overflow:auto;width:100%;height:100%;top:0;left:0;z-index:20;background-color:rgba(0,0,0,.8);padding-top:60px*/
+}
+
+#detalle-producto .container {
+    background-color: #5f627c;
+    position: relative;
+    border: 6px solid #2e3d98;
+    outline: #36baef solid 2px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    box-shadow: 0 0 60px rgba(0,0,0,.4)
+}
+
+#detalle-producto .container .cerrar {
+    position: absolute;
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: #2e3d98;
+    border: 1px solid #36baef;
+    right: 0;
+    top: -48px;
+    line-height: 34px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer
+}
+
+#detalle-producto .container .cerrar::before {
+    content: 'x'
+}
+
+#detalle-producto .container .producto .imagen img, #month_promotions img {
+    border-radius: 6px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,.6)
+}
+
+#detalle-producto .container .producto .nombre {
+    font-weight: 900;
+    text-shadow: 0 0 20px #36baef
+}
+
+#detalle-producto .container .producto .form-control {
+    background-color: #30313f;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,.3)
+}
+
+#detalle-producto .container #slider-productos-compatibles li {
+    padding: 0 8px
+}
+
+#detalle-producto .container #slider-productos-compatibles li a {
+    background-color: #fff;
+    display: inline-block;
+    padding: 4px;
+    border-radius: 4px
+}
+
+@media (min-width: 1200px) {
+    #detalle-producto .container .producto .nombre {
+        font-size:80px;
+        line-height: 80px
+    }
+
+    #detalle-producto .container .producto .unidades {
+        font-size: 18px
+    }
+}
+
+.precio {
+    font-weight: 100;
+}
+
+.thumbnail-option {
+    margin-bottom: 5px;
+}
+
+.thumbnail-option img {
+    width: 100px;
+}
+
+.thumbnail-option img:hover {
+    box-shadow: 4px 4px 4px rgb(91, 192, 222)!important;
+}
+
+.thumbnail-option-active {
+    box-shadow: 4px 4px 4px rgb(91, 192, 222)!important;
+}
+
+#modal-politicas-de-garantia {
+    z-index: 22;
+    width: 80%;
+    left: 13%;
+}
+
+.handy {
+    cursor: pointer;
+}
+
+.negro {
+    color: black !important;
+}
+
+.rojo {
+    color: #FF0000 !important;
+}
+
+.interest-you-item {
+    /*height: 100px;*/
+    width: 140px;
+}

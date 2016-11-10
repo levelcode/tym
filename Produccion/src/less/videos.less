@@ -1,0 +1,89 @@
+@import (reference) "config.less";
+@import (reference) "general.less";
+
+
+#contenido{
+	background-color: @negro;
+	//background-image: url(../img/bg-videos.jpg);
+	background-position: center;
+	background-size: cover;
+}
+
+#titulo{
+	position: absolute;
+	width: 240px;
+	height: 48px;
+	background-image: url(../img/titulo-videos.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	left: 40px;
+	h1{
+		font-size: 12px;
+		position: absolute;
+		left: 84px;
+		top: 0;
+	}
+}
+@media (min-width:768px){
+	#titulo{
+		width: 439px;
+		height: 88px;
+		left: 140px;
+		h1{
+			font-size: 24px;
+			left: 150px;
+			top: 14px;
+		}
+	}
+}
+
+
+
+
+
+
+/* videos */
+
+.carousel{
+	.carousel-indicators{
+		position: static;
+		margin-top: 30px;
+		text-align: right;
+		width: 100%;
+		margin-left: 0;
+		left: 0;
+		padding-right: 40px;
+		li{
+			border-color: @color3;
+			&.active{
+				background-color: @color3;
+			}
+		}
+		/*right: 40px;*/
+	}
+}
+
+#videos{
+	padding-top: 120px;
+	padding-bottom: 40px;
+	iframe{
+		//border: 2px solid @blanco;
+		border-radius: 6px;
+	}
+}
+@media (min-width:768px){
+	#videos{
+		//padding-top: 120px;
+	}
+}
+@media (min-width:992px){
+	#videos{
+		//padding-top: 90px;
+	}
+}
+@media (min-width:1200px){
+	#videos{
+		//padding-top: 110px;
+	}
+}

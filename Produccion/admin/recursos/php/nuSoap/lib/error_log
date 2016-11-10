@@ -1,0 +1,30 @@
+[04-Nov-2016 07:31:52 America/Denver] PHP Warning:  require_once(Mail/mimeDecode.php): failed to open stream: No such file or directory in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/nusoapmime.php on line 42
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  require_once(): Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/nusoapmime.php on line 42
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soapclient.php on line 26
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_transport_http.php on line 15
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.xmlschema.php on line 15
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_val.php on line 17
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_fault.php on line 14
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.wsdl.php on line 15
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_server.php on line 16
+[04-Nov-2016 07:31:52 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_parser.php on line 15
+[04-Nov-2016 07:36:26 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_transport_http.php on line 15
+[04-Nov-2016 07:36:26 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_transport_http.php on line 15
+[04-Nov-2016 07:36:26 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_parser.php on line 15
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.xmlschema.php on line 15
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_val.php on line 17
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_val.php on line 17
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.wsdl.php on line 15
+[04-Nov-2016 07:36:27 America/Denver] PHP Warning:  require_once(Mail/mimeDecode.php): failed to open stream: No such file or directory in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/nusoapmime.php on line 42
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  require_once(): Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/nusoapmime.php on line 42
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_fault.php on line 14
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.xmlschema.php on line 15
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.wsdl.php on line 15
+[04-Nov-2016 07:36:27 America/Denver] PHP Warning:  require_once(Mail/mimeDecode.php): failed to open stream: No such file or directory in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/nusoapmime.php on line 42
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  require_once(): Failed opening required 'Mail/mimeDecode.php' (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/nusoapmime.php on line 42
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_server.php on line 16
+[04-Nov-2016 07:36:27 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_server.php on line 16
+[04-Nov-2016 07:36:28 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_fault.php on line 14
+[04-Nov-2016 07:36:28 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soapclient.php on line 26
+[04-Nov-2016 07:36:28 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soap_parser.php on line 15
+[04-Nov-2016 07:36:28 America/Denver] PHP Fatal error:  Class 'nusoap_base' not found in /home3/garajety/public_html/admin/recursos/php/nuSoap/lib/class.soapclient.php on line 26

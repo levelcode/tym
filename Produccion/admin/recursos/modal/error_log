@@ -1,0 +1,6 @@
+[04-Nov-2016 07:11:19 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/admin/recursos/modal/editar-perfil.php on line 71
+[04-Nov-2016 07:11:19 America/Denver] PHP Notice:  Undefined index: url in /home3/garajety/public_html/admin/recursos/modal/pdfCotizacion.php on line 1
+[04-Nov-2016 07:15:54 America/Denver] PHP Notice:  Undefined index: url in /home3/garajety/public_html/admin/recursos/modal/pdfCotizacion.php on line 1
+[04-Nov-2016 07:15:54 America/Denver] PHP Notice:  Undefined index: url in /home3/garajety/public_html/admin/recursos/modal/pdfCotizacion.php on line 1
+[04-Nov-2016 07:15:55 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/admin/recursos/modal/editar-perfil.php on line 71
+[04-Nov-2016 07:15:55 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/admin/recursos/modal/editar-perfil.php on line 71

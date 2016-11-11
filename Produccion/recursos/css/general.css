@@ -1,3 +1,62 @@
+/* Levelcode */
+
+.telefono_whatsapp{
+    font-size: 19px;
+    color: green;
+    background: white;
+    width: 37px;
+    position: fixed;
+    right: 0px;
+    top: 139px;
+    text-align: center;
+    border-radius: 5px 0px 0px 5px;
+    box-shadow: 0 0 10px -3px black;
+    line-height: 5px;
+    padding: 5px 0px;
+}
+.telefono_whatsapp p{
+    display: none;
+}
+.telefono_whatsapp i{
+   font-size: 26px;
+}
+
+@media (min-width: 768px) {
+    .telefono_whatsapp{
+        font-size: 19px;
+        color: green;
+        background: white;
+        width: 160px;
+        position: fixed;
+        right: 0px;
+        top: 139px;
+        text-align: center;
+        border-radius: 5px 0px 0px 5px;
+        box-shadow: 0 0 10px -3px black;
+        line-height: 5px;
+        padding: 5px 0px;
+    }
+    .telefono_whatsapp i, .telefono_whatsapp p{
+        display: inline-block;
+        margin-left:10px
+    }
+}
+.comocomprar{
+    background-color: rgba(255,0,0,0.6);
+    width: 140px;
+    height: 66px;
+    font-size: 13px;
+    margin-top: -10px;
+    border: solid 2px rgba(78, 0, 0, 0.5);
+    text-shadow: 0 0 5px #3e0000;
+}
+.comocomprar i{
+    font-size: 30px;
+    line-height: 12px;
+}
+
+/* Levelcode */
+
 #cabecero .logo:hover,.btn:hover {
     animation-duration: .4s;
     animation-iteration-count: 1
@@ -1638,3 +1697,4 @@ noscript {
     /*height: 100px;*/
     width: 140px;
 }
+

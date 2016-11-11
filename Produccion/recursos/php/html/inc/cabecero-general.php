@@ -8,7 +8,8 @@
 	</div>
 	<?php require_once(_INC.'menu-accesorios.php') ?>
 	<div id="video_aux" class="txt-12 text-center">
-		<button data-modal="test" class="hidden-xs btn btn-lg bg-color2 c-blanco text-uppercase">¿Cómo comprar?</button>
+		<button data-modal="test" class="hidden-xs btn btn-lg c-blanco text-uppercase comocomprar"><span><p>¿Cómo comprar?</p><i class="fa fa-youtube-play" aria-hidden="true"></i></span></button>
+		<a class="telefono_whatsapp" href="tel:3125095398"><span><i class="fa fa-whatsapp" aria-hidden="true"></i><p>3125095398</p></span></a>
 	</div>
 	<div id="usuario" data-toogle="Usuarios registardos" class="txt-12 text-center">
 		<?php if( !isset($_SESSION['id']) ): ?>

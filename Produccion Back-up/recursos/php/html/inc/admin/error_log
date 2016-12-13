@@ -1,0 +1,18 @@
+[04-Nov-2016 07:05:15 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/menu-general.php on line 138
+[04-Nov-2016 07:05:15 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/usuario.php on line 2
+[04-Nov-2016 07:05:15 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 25
+[04-Nov-2016 07:05:15 America/Denver] PHP Notice:  Use of undefined constant _INC_ADMIN - assumed '_INC_ADMIN' in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31
+[04-Nov-2016 07:05:15 America/Denver] PHP Warning:  require(_INC_ADMINmenu-general.php): failed to open stream: No such file or directory in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31
+[04-Nov-2016 07:05:15 America/Denver] PHP Fatal error:  require(): Failed opening required '_INC_ADMINmenu-general.php' (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31
+[04-Nov-2016 07:06:06 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/usuario.php on line 2
+[04-Nov-2016 07:06:06 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/usuario.php on line 2
+[04-Nov-2016 07:06:07 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/menu-general.php on line 138
+[04-Nov-2016 07:06:07 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/menu-general.php on line 138
+[04-Nov-2016 07:06:07 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 25
+[04-Nov-2016 07:06:07 America/Denver] PHP Notice:  Use of undefined constant _INC_ADMIN - assumed '_INC_ADMIN' in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31
+[04-Nov-2016 07:06:07 America/Denver] PHP Warning:  require(_INC_ADMINmenu-general.php): failed to open stream: No such file or directory in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31
+[04-Nov-2016 07:06:07 America/Denver] PHP Fatal error:  require(): Failed opening required '_INC_ADMINmenu-general.php' (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31
+[04-Nov-2016 07:06:08 America/Denver] PHP Notice:  Undefined variable: _SESSION in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 25
+[04-Nov-2016 07:06:08 America/Denver] PHP Notice:  Use of undefined constant _INC_ADMIN - assumed '_INC_ADMIN' in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31
+[04-Nov-2016 07:06:08 America/Denver] PHP Warning:  require(_INC_ADMINmenu-general.php): failed to open stream: No such file or directory in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31
+[04-Nov-2016 07:06:08 America/Denver] PHP Fatal error:  require(): Failed opening required '_INC_ADMINmenu-general.php' (include_path='.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home3/garajety/public_html/recursos/php/html/inc/admin/cabecero-general.php on line 31

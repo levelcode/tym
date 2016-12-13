@@ -10,7 +10,6 @@
     top: 139px;
     text-align: center;
     border-radius: 5px 0px 0px 5px;
-    box-shadow: 0 0 10px -3px black;
     line-height: 5px;
     padding: 5px 0px;
 }
@@ -24,17 +23,17 @@
 @media (min-width: 768px) {
     .telefono_whatsapp{
         font-size: 19px;
-        color: green;
-        background: white;
+        color: white;
+        background: transparent;
         width: 160px;
-        position: fixed;
-        right: 0px;
-        top: 139px;
+        position: absolute;
+        right: -273px;
+        top: 6px;
         text-align: center;
         border-radius: 5px 0px 0px 5px;
-        box-shadow: 0 0 10px -3px black;
         line-height: 5px;
         padding: 5px 0px;
+        text-decoration: none;
     }
     .telefono_whatsapp i, .telefono_whatsapp p{
         display: inline-block;
@@ -926,11 +925,11 @@ a.st-enlace:hover::after {
 #cabecero {
     width: 100%;
     background-color: rgba(48,49,63,.8);
-    box-shadow: 0 0 10px rgba(0,0,0,.2);
+    box-shadow: 0 0 10px 0px black;
     z-index: 18;
     height: 84px;
     position: relative;
-    background-image: url(../img/bg-cabecero.png)
+    background-image: url(../img/bg-cabecero.png);
 }
 
 #cabecero .logo {
@@ -1027,18 +1026,20 @@ a.st-enlace:hover::after {
     width: 80px;
     position: absolute;
     left: 0;
-    top: 88px;
+    top: 83px;
     background-color: #46485c;
     z-index: 18;
-    border-top: 3px solid #222;
-    box-shadow: inset 0 0 40px rgba(0,0,0,.3),0 0 40px rgba(0,0,0,.4)
+    border-top: 2px solid #222;
+    box-shadow: inset 0 0 40px rgba(0,0,0,.3),0 0 40px rgba(0,0,0,.4);
+    border-radius: 0px 0px 20px 0px;
+    height: 810px;
 }
 
 #cabecero .menu-accesorios ul {
     padding: 0 6px;
     margin: 0;
     list-style-type: none;
-    font-weight: 600
+    font-weight: 600;
 }
 
 #cabecero .menu-accesorios ul li:first-child a {
@@ -1057,12 +1058,17 @@ a.st-enlace:hover::after {
     border-top: 2px solid #30313f;
     border-bottom: 2px solid #5c5e79;
     font-size: 14px;
-    color: #bce7ff;
-    text-shadow: 0 0 20px rgba(255,255,255,.5),0 0 10px rgba(255,255,255,.5)
+    letter-spacing: 0.5px;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.56);
+    color: #e0e0e0;
+    text-decoration:none;
+    transition: all .3s ease-in-out;
 }
 
 #cabecero .menu-accesorios ul li a.activo,#cabecero .menu-accesorios ul li a:hover {
-    color: #fff
+    color: #fff;
+    text-shadow: 0 0 5px rgba(251, 232, 156, 0.45);
+    transform:scale(1.05);
 }
 
 #cabecero .menu-accesorios ul li a.activo::after {
@@ -1090,14 +1096,15 @@ a.st-enlace:hover::after {
 #cabecero #btn-carro-compras {
     position: fixed;
     right: -8px;
-    top: 96px;
+    top: 175px;
     z-index: 10;
+    background-color: #a91015 !important;
     border-radius: 6px 0 0 6px;
     padding-right: 20px;
-    background-color: rgba(255,0,0,.8);
+    background-color: transparent;
     font-size: 12px;
     transition-property: font-size,right;
-    transition-duration: .4s
+    transition-duration: .4s;
 }
 
 #cabecero #btn-carro-compras .badge {
@@ -1110,6 +1117,20 @@ a.st-enlace:hover::after {
 }
 
 @media (min-width: 768px) {
+    #cabecero #btn-carro-compras {
+        position: absolute;
+        right: 0px;
+        top: 44px;
+        z-index: 10;
+        border-radius: 6px 0 0 6px;
+        padding-right: 20px;
+        background-color: transparent;
+        font-size: 16px;
+        transition-property: font-size,right;
+        transition-duration: .4s;
+        height: 30px;
+        line-height: 16px;
+    }
     #cabecero .logo {
         width:300px;
         height: 84px;
@@ -1134,7 +1155,8 @@ a.st-enlace:hover::after {
 
     #cabecero #alternador-menu,#cabecero #alternador-menu-accesorios {
         width: 84px;
-        height: 84px
+        height: 84px;
+        display: none;
     }
 
     #cabecero #alternador-menu-accesorios {
@@ -1143,7 +1165,7 @@ a.st-enlace:hover::after {
     }
 
     #cabecero #usuario {
-        right: 168px
+        right: 157px;
     }
 
     #cabecero #video_aux {
@@ -1386,6 +1408,32 @@ noscript {
     color: #4ec2f1
 }
 
+.footer-menu .menu{
+   width: auto;
+   margin: 0 auto;
+   border-bottom: solid 1px;
+   margin-bottom: 20px;
+}
+.footer-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.footer-menu li {
+    /* float: left; */
+}
+
+.footer-menu li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 8px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
 #buscador {
     position: absolute;
     background-color: rgba(48,49,63,.6);
@@ -1401,11 +1449,10 @@ noscript {
 }
 
 #buscador .form-control {
-    background-color: #30313f;
-    color: #fff;
-    border: none;
+    background-color: rgb(255, 255, 255);
+    color: #000;
     border-radius: 4px;
-    text-shadow: 2px 2px 0 rgba(0,0,0,.3)
+    box-shadow: 0 0 10px -3px;
 }
 
 #modal-contacto {
@@ -1467,6 +1514,12 @@ noscript {
 }
 
 @media (min-width: 768px) {
+    .footer-menu .menu{
+        width: 515px;
+    }
+    .footer-menu .menu li{
+        float:left
+    }
     #modal-contacto .contenido {
         display:inline-block
     }
@@ -1596,7 +1649,7 @@ noscript {
     position: absolute;
     right: -15px;
     bottom: -15px;
-    transform: rotate(45degff
+    transform: rotate(45deg)
 }
 
 .te-puede-interesar .tipo .foto {
@@ -1649,7 +1702,6 @@ noscript {
 }
 
 #cabecero {
-    position: fixed;
     top: 0;
     left: 0;
     z-index: 999;

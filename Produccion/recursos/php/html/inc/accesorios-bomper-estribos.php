@@ -1,4 +1,4 @@
-							<h1 class="titulo text-uppercase">Bomper y Estribos</h1>
+							<h1 class="titulo text-uppercase">Bumpers y Estribos</h1>
 							<hr>
 							<div class="row">
 								<div class="col-sm-6 col-md-4">

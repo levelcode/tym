@@ -1,0 +1,63 @@
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Undefined index: remPdf in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 13
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 16
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Undefined index: transport_company in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 32
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Undefined index: main_address in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 33
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Undefined index: mobile_phone in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 34
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Undefined index: name in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 35
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Undefined index: last_name in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 35
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Undefined index: plate in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 36
+[04-Nov-2016 08:18:17 America/Bogota] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 41
+[04-Nov-2016 08:18:17 America/Bogota] PHP Warning:  Invalid argument supplied for foreach() in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 41
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Undefined index: remPdf in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 11
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 29
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Undefined index: transport_company in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 45
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Undefined index: main_address in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 46
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Undefined index: mobile_phone in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 47
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Undefined index: name in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 48
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Undefined index: last_name in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 48
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Undefined index: plate in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 49
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 54
+[04-Nov-2016 07:18:21 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 54
+[04-Nov-2016 07:18:21 America/Denver] PHP Notice:  Undefined variable: vw in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 309
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Undefined index: remPdf in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 13
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 16
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Undefined index: transport_company in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 32
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Undefined index: main_address in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 33
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Undefined index: mobile_phone in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 34
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Undefined index: name in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 35
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Undefined index: last_name in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 35
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Undefined index: plate in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 36
+[04-Nov-2016 08:25:59 America/Bogota] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 41
+[04-Nov-2016 08:25:59 America/Bogota] PHP Warning:  Invalid argument supplied for foreach() in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 41
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Undefined index: remPdf in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 13
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 16
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Undefined index: transport_company in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 32
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Undefined index: main_address in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 33
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Undefined index: mobile_phone in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 34
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Undefined index: name in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 35
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Undefined index: last_name in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 35
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Undefined index: plate in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 36
+[04-Nov-2016 08:26:00 America/Bogota] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 41
+[04-Nov-2016 08:26:00 America/Bogota] PHP Warning:  Invalid argument supplied for foreach() in /home3/garajety/public_html/admin/recursos/pdf/documentos/logistic_remission.php on line 41
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: remPdf in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 11
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 29
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: transport_company in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 45
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: main_address in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 46
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: mobile_phone in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 47
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: name in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 48
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: last_name in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 48
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: plate in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 49
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 54
+[04-Nov-2016 07:26:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 54
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined variable: vw in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 309
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: remPdf in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 11
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 29
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: transport_company in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 45
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: main_address in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 46
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: mobile_phone in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 47
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: name in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 48
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: last_name in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 48
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined index: plate in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 49
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Trying to get property of non-object in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 54
+[04-Nov-2016 07:26:03 America/Denver] PHP Warning:  Invalid argument supplied for foreach() in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 54
+[04-Nov-2016 07:26:03 America/Denver] PHP Notice:  Undefined variable: vw in /home3/garajety/public_html/admin/recursos/pdf/documentos/remision.php on line 309

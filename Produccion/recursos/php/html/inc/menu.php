@@ -1,4 +1,4 @@
-<div id="alternador-menu"></div>
+<div id="alternador-menu" class="footer-menu">
 <nav class="menu">
 	<ul class="text-uppercase text-center">
 		<li>
@@ -18,3 +18,4 @@
 		</li>
 	</ul>
 </nav>
+</div>

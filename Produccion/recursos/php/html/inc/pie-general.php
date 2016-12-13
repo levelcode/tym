@@ -1,13 +1,32 @@
 <footer id="pie">
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-6 chat">
-				<a href="">
-					<span>Chat</span>
-					<i class="fa fa-comments-o"></i>
-				</a>
+			<div class="col-sx-12">
+				<div id="alternador-menu" class="footer-menu">
+					<nav class="menu">
+						<ul class="text-uppercase text-center">
+							<li>
+								<a href="/nuestra-compania">Nuestra Compañía</a>
+							</li>
+							<li>
+								<a href="/videos">Vídeos</a>
+							</li>
+							<li>
+								<a href="/galerias">Galerías</a>
+							</li>
+							<li>
+								<a href="/empresas-aliadas">Empresas Aliadas</a>
+							</li>
+							<li>
+								<a href="/contacto" data-modal="contacto">Contacto</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
 			</div>
-			<div class="col-sm-6 redes">
+		</div>
+		<div class="row">
+			<div class="col-xs-12 redes">
 				<div class="row">
 					<div class="col-lg-6">
 						<i>Búscanos en redes sociales</i>

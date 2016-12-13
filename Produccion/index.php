@@ -117,7 +117,6 @@ $cabecero = new html\Cabecero($opciones);
 										<i>Tapete maletero</i>
 									</a>
 									<div class="col-xs-6 cuadro no-padding bg">
-										<!-- <img src="recursos/img/img-tanques.jpg" class="img-responsive hidden-xs"> -->
 									</div>
 								</div>
 							</div>
@@ -127,7 +126,6 @@ $cabecero = new html\Cabecero($opciones);
 										<i>Pijamas para vehículos</i>
 									</a>
 									<div class="col-xs-6 cuadro no-padding bg">
-										<!-- <img src="recursos/img/img-racks.jpg" class="img-responsive hidden-xs"> -->
 									</div>
 								</div>
 							</div>
@@ -137,7 +135,6 @@ $cabecero = new html\Cabecero($opciones);
 										<i>Plumillas</i>
 									</a>
 									<div class="col-xs-6 cuadro no-padding bg">
-										<!-- <img src="recursos/img/img-bicicleteros.jpg" class="img-responsive hidden-xs"> -->
 									</div>
 								</div>
 							</div>

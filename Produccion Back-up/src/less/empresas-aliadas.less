@@ -1,0 +1,99 @@
+@import (reference) "config.less";
+@import (reference) "general.less";
+
+#contenido{
+	background-image: url(../img/bg-empresas-aliadas.jpg);
+	background-position: center;
+	background-size: cover;
+}
+
+.carousel{
+	.carousel-inner{
+		.item{
+			.sld{
+				background-color: fade(@color1, 80%);
+				padding: 60px 20px;
+				border-radius: 8px;
+				color: #bce7ff;
+				font-weight: 200;
+				font-size: 13px;
+				h2{
+					margin-top: 0;
+					margin-bottom: 0;
+				}
+				h3{
+					margin-top: 0;
+					margin-bottom: 30px;
+					font-style: italic;
+					font-weight: 200;
+					font-size: 16px;
+					color: @blanco;
+					a{
+						color: @blanco;
+					}
+				}
+				i{
+					font-weight: 500;
+					color: @blanco;
+				}
+				
+			}
+		}
+	}
+	.carousel-indicators{
+		position: static;
+		text-align: center;
+		margin-left: 0;
+		margin-right: 0;
+		margin-top: 32px;
+		left: 0;
+		width: 100%;
+		li{
+			box-shadow: 0 0 20px rgba(0, 0, 0, .6);
+		}
+	}
+	.carousel-control{
+		&.left, &.right{
+			background: none;
+			/*&:hover{
+				background-color: rgba(0,0,0,0.1);
+			}*/
+		}
+	}
+}
+
+#titulo{
+	position: absolute;
+	width: 240px;
+	height: 48px;
+	background-image: url(../img/titulo-empresas-aliadas.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	left: 40px;
+	h1{
+		font-size: 12px;
+		position: absolute;
+		left: 84px;
+		top: 0;
+	}
+}
+@media (min-width:768px){
+	#titulo{
+		width: 439px;
+		height: 88px;
+		left: 140px;
+		h1{
+			font-size: 24px;
+			left: 150px;
+			top: 14px;
+		}
+	}
+}
+//@media (min-width:992px){}
+//@media (min-width:1200px){}
+
+
+#slider{
+	padding-top: 132px;
+}

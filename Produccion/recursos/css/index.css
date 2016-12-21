@@ -20,7 +20,7 @@
     width: 100%;
     margin-left: 0;
     left: 0;
-    padding-right: 40px
+    padding-right: calc(50% - 24px);
 }
 .carousel .carousel-indicators li {
     border-color: #36baef
@@ -61,7 +61,8 @@
 #slider #rotabanner .carousel-inner .item {
     background-position: center;
     background-repeat: no-repeat;
-    height: 560px
+    height: 240px;
+    background-size: calc(100% + 440px) auto;
 }
 #slider #rotabanner .carousel-inner .item.sld-1 {
     background-image: url(../img/sld-1.jpg)
@@ -73,15 +74,34 @@
     background-image: url(../img/sld-3.jpg)
 }
 #slider #rotabanner .carousel-inner .item .container .row .col-xs-12 {
-    height: 560px
 }
-#buscador {
-    left: 50%;
-    max-width: 248px;
-    margin-left: -124px;
-    top: 120px
-}
+
 @media (min-width: 768px) {
+    .carousel .carousel-indicators {
+        text-align: right;
+        width: 100%;
+        margin-left: 0;
+        left: 0;
+        padding-right: 40px;
+    }
+    #slider #rotabanner .carousel-inner .item {
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 560px;
+        background-size: cover;
+    }
+    #slider #rotabanner .carousel-inner .item.sld-1 {
+        background-image: url(../img/sld-1.jpg)
+    }
+    #slider #rotabanner .carousel-inner .item.sld-2 {
+        background-image: url(../img/sld-2.jpg)
+    }
+    #slider #rotabanner .carousel-inner .item.sld-3 {
+        background-image: url(../img/sld-3.jpg)
+    }
+    #slider #rotabanner .carousel-inner .item .container .row .col-xs-12 {
+        height: 560px
+    }
     .carousel .carousel-inner .item .carousel-caption .etiqueta .grande {
         font-size: 50px;
         line-height: 50px
